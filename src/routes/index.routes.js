@@ -1,6 +1,6 @@
 import {login} from '../controllers/login.js';
 import {logout} from '../controllers/logout.js';
-//import { variables } from './app/lib.js';
+//import {variables} from './app/lib.js';
 //const {route} = variables;
 
 const routes_session = ['dashboard'];
@@ -15,7 +15,7 @@ const modulosRoutes = async (url_page,mod)=>{//console.warn('url_page='+url_page
   }else{
     let html = await response.text();
     var token = localStorage.getItem("Token");
-    console.log(token);
+    console.log('token='+token);
 
     for(var i=0; i<routes_session.length;i++){
       console.warn(routes_session[i]+'='+mod);
@@ -29,7 +29,7 @@ const modulosRoutes = async (url_page,mod)=>{//console.warn('url_page='+url_page
   }
 }
 
-function controlRoutes(route){
+function controlRoutes(route){ console.log('route='+route);
   if(route=='login/index'){login();}
   if(route=='logout/index'){logout();}
 }

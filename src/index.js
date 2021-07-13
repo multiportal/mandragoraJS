@@ -12,8 +12,6 @@ import { getQueryVariable,url_vars,menuWeb } from './app/functions.js';
 
 const {location,base_url,page_path,route} = variables;
 
-inicio();
-
 window.addEventListener('hashchange', ()=>{
     let hash = location.hash;console.warn(hash);
     var vars = getQueryVariable(hash);console.log(vars);
@@ -26,5 +24,6 @@ window.addEventListener('hashchange', ()=>{
     //console.warn('route='+route);
     controlRoutes(route);
 });
-//console.warn('route='+route);
-controlRoutes(route);
+
+//Función Inicio
+inicio();

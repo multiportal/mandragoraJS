@@ -3,7 +3,7 @@ function logout(){
     localStorage.clear();
     var token = localStorage.getItem("Token");
     if(token==null){
-        console.warn('TOKEN CLEAR|');
+        console.warn('TOKEN CLEAR');
         setTimeout(function(){window.location.href='#/';},3000);
     }
 }

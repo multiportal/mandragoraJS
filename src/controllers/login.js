@@ -1,25 +1,12 @@
 /* VARIABLES CONSTANTES*/
-console.log('/* VARIABLES CONSTANTES*/');
-//const protocol = window.location.protocol;
+var loc = window.location;
+const dominio = loc.origin + '/';
+const path_url1 = loc.pathname;
+var path_url = path_url1.replace("/", "");
 
-const host = window.location.host;
-console.log('host='+host);
-const dominio = window.location.origin+'/';
-console.log('dominio='+dominio);
-const dominio1 = window.location.origin;
-console.log('dominio1='+dominio1);
-const path_url = window.location.pathname;
-console.log('path_url='+path_url);
-
-//const URL = window.location.href;
-//var proyecto = 'mandragoraJSF'; //PROYECTO
-//var path_root = (host=='localhost')?'MisSitios/' + proyecto + '/':'';
-//var page_url = dominio+path_root;
-
+console.log('/* javascript login | VARIABLES CONSTANTES*/');
 var api_login = 'http://localhost/MisSitios/mandragoraJSF/api/login/';
 console.log('api_login='+api_login);
-
-console.log('javascript login');
 
 function btnLogin(){
 const formulario = document.getElementById('form-login');
@@ -48,7 +35,7 @@ function btnGuardar(e){
         console.log(data);
         localStorage.setItem("Token", JSON.stringify(data.token));
         //Redireccionar al Dashboard
-        location.href= dominio1 + path_url + '#/dashboard';
+        location.href= dominio + path_url + '#/dashboard';
     })
     .catch(err=>console.log(err));    
 }

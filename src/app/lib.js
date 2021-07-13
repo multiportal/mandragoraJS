@@ -1,6 +1,5 @@
-import {getQueryVariable,filename,url_vars,menuWeb} from './functions.js';
-import {modulosRoutes,menu_web,routes_session} from '../routes/index.routes.js';
-
+import {getQueryVariable,filename,url_vars,menuWeb,reMod} from './functions.js';
+import {modulosRoutes,controlRoutes,menu_web} from '../routes/index.routes.js';
 /*VARIABLES SYS*/
 var loc = window.location;
 var dt = new Date();
@@ -52,7 +51,6 @@ const variables = {
   hash: has,
   URL: URL,
   quest: quest,
-
   path_url: path_url,
   proyecto: proyecto,
   sub_path: sub_path,
@@ -63,10 +61,8 @@ const variables = {
   path_tema: path_tema,
   base_url: base_url,
   page_url: page_url,
-
   pag_name: pag_name,
   vars: vars,
-
   mod: mod,
   ext: ext,
   id: id,
@@ -79,6 +75,8 @@ function inicio() {
   console.log('Corriendo funcion inicio');
   modulosRoutes(url_mod,mod);
   menuWeb(mod,menu_web);
+  controlRoutes(route);
+  reMod(mod,loc);
 }
 
 /*LOGS*******************************************************/
@@ -88,6 +86,7 @@ console.log(day);
 console.log(mon);
 console.log(year);
 console.log('protocol=' + protocol);
+console.log('host=' + host);
 console.log('dominio=' + dominio);
 console.log('dominio1=' + dominio1);
 console.warn('hash=' + has);
@@ -105,7 +104,6 @@ console.log('tema=' + tema);
 console.log('path_tema=' + path_tema);
 console.log('pag_name=' + pag_name);
 console.log('vars=' + vars);
-
 console.log('mod=' + mod);
 console.log('ext=' + ext);
 console.log('id=' + id);

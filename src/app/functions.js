@@ -106,4 +106,10 @@ function footer(){
   f.innerHTML = year + ' &copy; VcardAppJS v.1.2.14. Diseñada por <a target="_blank" href="http://multiportal.com.mx">[:MULTIPORTAL:]</a>.';
 }
 
-export {getQueryVariable,filename,url_vars,menuWeb};
+function reMod(mod,loc){
+  if(mod=='' || mod=='undefined'){
+    loc.href='#/';
+  }
+}
+
+export {getQueryVariable,filename,url_vars,menuWeb,reMod};
