@@ -1,2 +1,2 @@
 # mandragoraJS
-Single Page Application (spa) - Javascript
+Single Page Application (spa) - CMS Javascript
