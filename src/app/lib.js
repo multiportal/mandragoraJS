@@ -1,5 +1,3 @@
-import {getQueryVariable,filename,url_vars,menuWeb,reMod} from './functions.js';
-import {modulosRoutes,controlRoutes,menu_web} from '../routes/index.routes.js';
 /*VARIABLES SYS*/
 var loc = window.location;
 var dt = new Date();
@@ -73,10 +71,6 @@ const variables = {
 /* FUNCIONES */
 function inicio() {
   console.log('Corriendo funcion inicio');
-  modulosRoutes(url_mod,mod);
-  menuWeb(mod,menu_web);
-  controlRoutes(route);
-  reMod(mod,loc);
 }
 
 /*LOGS*******************************************************/
