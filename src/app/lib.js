@@ -1,6 +1,8 @@
 
 function vars(){
 /*VARIABLES SYS*/
+var w = window;
+var d = document;
 var loc = window.location;
 var dt = new Date();
 var day = dt.getDate();

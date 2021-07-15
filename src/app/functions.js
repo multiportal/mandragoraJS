@@ -1,4 +1,5 @@
 /*FUNCIONES*/
 
+/*FUNCIONES GENERALES*/
 
 export {};
