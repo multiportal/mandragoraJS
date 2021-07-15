@@ -31,12 +31,12 @@ function urlVars(vars){
   return url_var;
 }
 
-function menuWeb(m,no_menu){
+function menuWeb(h,no_menu){
   let menu = document.querySelector('#menuweb');
   let n = no_menu.length;//console.warn('count:'+n);
   menu.classList.remove('d-none');
   for(var i=0; i<n; i++){//console.warn(i+'|'+no_menu[i]);
-    if(no_menu[i]==m){
+    if(no_menu[i]==h){
       //console.warn('Session: '+no_menu[0]+'='+m);
       menu.classList.add('d-none');
     }

@@ -80,10 +80,9 @@ return variables;
 
 /* FUNCIONES */
 function inicio() {
-  console.log('Corriendo funcion inicio');
   const v = vars();
-  menuWeb(v.mod,no_menu);
   //fileExist(v.mod,v.url_mod);
+  menuWeb(v.hash,no_menu);
   router(v.hash,v.url_mod);
 
 /*LOGS*******************************************************/
@@ -114,5 +113,7 @@ console.log('ext=' + v.ext);
 console.log('id=' + v.id);
 console.warn('url_mod=' + v.url_mod);
 /*************************************************************/
+
+  console.log('Corriendo funcion inicio');
 }
 export {inicio,vars};
