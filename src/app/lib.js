@@ -35,7 +35,7 @@ const {mod,ext,id} = url_vars(vars);
 var ext2 = '/' + ext;
 var route = mod + ext2;
 var url_mod = base_url + page_path + mod + '/' + ext + '.html';
-//var url_mod = base_url + page_path + route +'.html';
+var url404 = base_url + page_path + '404/index.html';
 
 const variables = {
   location: loc,
@@ -67,7 +67,8 @@ const variables = {
   ext: ext,
   id: id,
   route: route,
-  url_mod: url_mod
+  url_mod: url_mod,
+  url404: url404,
 };
 
 /* FUNCIONES */

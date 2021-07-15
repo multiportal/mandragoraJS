@@ -2,7 +2,7 @@
 CMS-Javascript (spa) 
 Autor: Guillermo Jiménez López
 Fecha de Actualización: 11.07.2021
-Versión: 1.2.2
+Versión: 1.0.0
 */
 //import './assets/bootstrap-5.0.2/css/bootstrap.min.css';
 import './assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js';
@@ -17,13 +17,10 @@ window.addEventListener('hashchange', ()=>{
     var vars = getQueryVariable(hash);console.log(vars);
     const {mod,ext,id} = url_vars(vars);
     var route = mod + '/' + ext;
-    var url_mod = base_url + page_path + mod + '/' + ext + '.html';
-    //var url_mod = base_url + page_path + route +'.html';
+    var url_mod = base_url + page_path + route +'.html';
     modulosRoutes(url_mod,mod);
     menuWeb(mod,menu_web);
-    //console.warn('route='+route);
-    controlRoutes(route);
+    controlRoutes(route);console.warn('route='+route);
 });
 
-//Función Inicio
 inicio();
