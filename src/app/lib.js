@@ -1,6 +1,6 @@
 //import {consola} from './console.js';
 import {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,reMod} from './functions.js';
-import {router} from '../routes/index.routes.js';
+import {no_menu,router,controlRoutes} from '../routes/index.routes.js';
 
 function variables(){
 /*VARIABLES SYS*/
@@ -94,8 +94,10 @@ var url404 = base_url + page_path + '404/index.html';
 function inicio() {
   const v = variables();console.log(v);
   const {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,url_mod,url_m} = v;
-  router(hash,url_mod);
-  
+  menuWeb(hash,no_menu);
+  router(hash,url_mod,v.url404);
+  controlRoutes(route);
+
   //console.log(consola(v));
   reMod(mod);
   console.log('Corriendo funcion inicio');
