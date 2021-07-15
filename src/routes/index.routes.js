@@ -1,7 +1,5 @@
 import {login} from '../controllers/login.js';
 import {logout} from '../controllers/logout.js';
-//import {variables} from './app/lib.js';
-//const {route} = variables;
 
 const routes_session = ['dashboard'];
 const menu_web = ['login','logout','registro','forget','dashboard'];
@@ -35,6 +33,3 @@ function controlRoutes(route){ console.log('route='+route);
 }
 
 export {modulosRoutes,controlRoutes,menu_web,routes_session};
-
-
-
