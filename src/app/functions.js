@@ -67,9 +67,9 @@ const getRoutes = async (url)=>{
   content.innerHTML=html;
 }
 
-function reMod(mod,loc){
+function reMod(mod){
   if(mod=='' || mod=='undefined'){
-    loc.href='#/';
+    window.location.href='#/';
   }
 }
 
@@ -128,4 +128,4 @@ function footer(){
 //Configuracion de la funcion: [hora.js].
 
 
-export {};
+export {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,reMod};

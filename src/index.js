@@ -8,14 +8,16 @@ Versión: 1.0.1
 import './assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js';
 import {consola} from './app/console.js';
 import {inicio,variables} from './app/lib.js';
-import {} from './app/functions.js';
-import {} from './routes/index.routes.js';
+import {reMod} from './app/functions.js';
+import {router} from './routes/index.routes.js';
 
 
 window.addEventListener('hashchange',()=>{
     const v = variables();
-    const {fecha,hash,URL} = v;
-    
+    const {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,url_mod,url_m} = v;
+    router(hash,url_mod);
+
+    reMod(mod);
     console.log(consola(v));
 });
 
