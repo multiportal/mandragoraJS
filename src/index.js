@@ -1,24 +1,26 @@
 /* 
 CMS-Javascript (spa) 
 Autor: Guillermo Jiménez López
-Fecha de Actualización: 14.07.2021
-Versión: 1.0.0
+Fecha de Actualización: 15.07.2021
+Versión: 1.0.1
 */
 //import './assets/bootstrap-5.0.2/css/bootstrap.min.css';
 import './assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js';
-import {inicio,vars} from './app/lib.js';
-import {router,no_menu} from './routes/index.routes.js';
-import {menuWeb,fileExist} from './app/functions.js';
+import {consola} from './app/console.js';
+import {inicio,variables} from './app/lib.js';
+import {reMod,menuWeb} from './app/functions.js';
+import {no_menu,router,controlRoutes} from './routes/index.routes.js';
 
-const v = vars();
+
 window.addEventListener('hashchange',()=>{
-    const {hash,vars_Url,mod,ext,id,url_mod} = vars();
-    console.warn('has='+hash);
-    console.log(vars_Url);
-    console.warn('url_mod='+url_mod);
-    //fileExist(mod,url_mod);
+    const v = variables();
+    const {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,url_mod,url_m} = v;
     menuWeb(hash,no_menu);
-    router(hash,url_mod);
+    router(hash,url_mod,v.url404);
+    controlRoutes(route);
+
+    reMod(mod);
+    console.log(consola(v));
 });
 
 inicio();
