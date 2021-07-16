@@ -51,20 +51,24 @@ const fileExist = async (mod,url)=>{
   return new_Mod;
 }
 
-const getRoutes = async (url)=>{
+const getRoutes = async (hash,url,routes_session)=>{
   let content = document.getElementById('app-modulo'); 
   let response = await fetch(url);
-  let html = await response.text();console.log(html);
-  var token = localStorage.getItem("Token");console.log('token='+token);
-
-    /*for(var i=0; i<routes_session.length;i++){
-      console.warn(routes_session[i]+'='+mod);
-      if((token==null || token=='undefined') && routes_session[i]==mod){
+  if(!response.ok){
+    console.error('Error 404: La página No existe');
+    content.innerHTML= `<div class="alert alert-danger" role="alert"><strong>Error 404(Fetch):</strong> La página No existe. <a href="#/" class="alert-link">Volver al Inicio</a></div>`
+  }else{
+    console.log('OK');
+    var token = localStorage.getItem("Token");console.log('token='+token);
+    let html = await response.text();console.log(html);
+    for(var i=0; i<routes_session.length;i++){
+      var r_ses = routes_session[i];
+      if(token==null && hash==r_ses){
         html = `<div class="alert alert-warning" role="alert"><strong>No Autorizado:</strong> No tiene permiso para esta página. <a href="#/" class="alert-link">Volver al Inicio</a></div>`
       }
-    }*/
-
-  content.innerHTML=html;
+    }console.warn(hash+'='+r_ses);
+    content.innerHTML=html;    
+  }
 }
 
 function reMod(mod){
