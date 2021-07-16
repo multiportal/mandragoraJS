@@ -93,9 +93,9 @@ var url404 = base_url + page_path + '404/index.html';
 /* FUNCIONES */
 function inicio() {
   const v = variables();console.log(v);
-  const {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,url_mod,url_m} = v;
+  const {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,url_mod,url_m,url404} = v;
   menuWeb(hash,no_menu);
-  router(hash,url_mod,v.url404);
+  router(hash,url_mod,url404);
   controlRoutes(route);
 
   //console.log(consola(v));
