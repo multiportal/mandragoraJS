@@ -55,7 +55,7 @@ const getRoutes = async (hash,url,routes_session)=>{
   let content = document.getElementById('app-modulo'); 
   let response = await fetch(url);
   if(!response.ok){
-    console.error('Error 404: La página No existe');
+    console.error('Error 404(Fetch): La página No existe');
     content.innerHTML= `<div class="alert alert-danger" role="alert"><strong>Error 404(Fetch):</strong> La página No existe. <a href="#/" class="alert-link">Volver al Inicio</a></div>`
   }else{
     console.log('OK');
