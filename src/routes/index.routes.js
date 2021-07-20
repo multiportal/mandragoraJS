@@ -1,7 +1,8 @@
 //import { } from '../app/lib.js';
-import {getRoutes} from "../app/functions.js";
+import { getRoutes } from "../app/functions.js";
 import { login } from "../controllers/login.js";
 import { logout } from "../controllers/logout.js";
+import { dashboard } from "../controllers/dashboard.js";
 
 const routes_session = ['#/dashboard'];
 const no_menu = ['#/dashboard','#/forget','#/login','#/logout','#/registro'];
@@ -21,6 +22,7 @@ const router = async (hash,url_mod,url404) =>{console.log('hash=>'+hash);
 function controlRoutes(route){ console.log('route='+route);
   if(route=='login/index'){login();}
   if(route=='logout/index'){logout();}
+  if(route=='dashboard/index'){dashboard();}
 }
 
 export {no_menu,router,controlRoutes};
