@@ -6,7 +6,7 @@ const path_url1 = loc.pathname;
 var path_url = path_url1.replace("/", "");
 
 console.log('/* javascript login | VARIABLES CONSTANTES*/');
-var api_login = (host!='localhost')?'https://portafolio1.webcindario.com/api/login/':'http://localhost/MisSitios/mandragoraJSF/api/login/';
+var api_login = (host!='localhost')?'https://portafoliom.herokuapp.com/api/login/':'http://localhost/MisSitios/mandragoraJSF/api/login/';
 console.log('api_login='+api_login);
 
 function btnLogin(){
