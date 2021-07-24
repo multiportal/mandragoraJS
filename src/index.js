@@ -1,26 +1,27 @@
 /* 
 CMS-Javascript (spa) 
 Autor: Guillermo Jiménez López
-Fecha de Actualización: 11.07.2021
-Versión: 1.0.0
+Fecha de Actualización: 24.07.2021
+Versión: 1.0.1
 */
 //import './assets/bootstrap-5.0.2/css/bootstrap.min.css';
 import './assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js';
-import { inicio,variables } from './app/lib.js';
-import { modulosRoutes,controlRoutes,menu_web,routes_session } from './routes/index.routes.js';
-import { getQueryVariable,url_vars,menuWeb } from './app/functions.js';
+import {consola} from './app/console.js';
+import {inicio,variables} from './app/lib.js';
+import {reMod,menuWeb,consoleLocal} from './app/functions.js';
+import {no_menu,router,controlRoutes} from './routes/index.routes.js';
 
-const {location,base_url,page_path,route} = variables;
 
-window.addEventListener('hashchange', ()=>{
-    let hash = location.hash;console.warn(hash);
-    var vars = getQueryVariable(hash);console.log(vars);
-    const {mod,ext,id} = url_vars(vars);
-    var route = mod + '/' + ext;
-    var url_mod = base_url + page_path + route +'.html';
-    modulosRoutes(url_mod,mod);
-    menuWeb(mod,menu_web);
-    controlRoutes(route);console.warn('route='+route);
+window.addEventListener('hashchange',()=>{
+    consoleLocal('warn','Event Listener');
+    const v = variables();
+    const {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,url_mod,url_m,url404} = v;
+    menuWeb(hash,no_menu);
+    router(hash,url_mod,url404);
+    controlRoutes(route);
+
+    reMod(mod);
+    consoleLocal('log',consola(v));
 });
 
 inicio();

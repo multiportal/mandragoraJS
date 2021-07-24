@@ -1,35 +1,28 @@
-import {login} from '../controllers/login.js';
-import {logout} from '../controllers/logout.js';
+//import { } from '../app/lib.js';
+import { getRoutes,consoleLocal } from "../app/functions.js";
+import { login } from "../controllers/login.js";
+import { logout } from "../controllers/logout.js";
+import { dashboard } from "../controllers/dashboard.js";
 
-const routes_session = ['dashboard'];
-const menu_web = ['login','logout','registro','forget','dashboard'];
+const routes_session = ['/dashboard'];
+const no_menu = ['/dashboard','/forget','/login','/logout','/registro'];
+const menu_web = ['/','/Home','/nosotros','/productos','/contacto'];
 
-const modulosRoutes = async (url_page,mod)=>{//console.warn('url_page='+url_page);
-  let content = document.getElementById('app-modulo'); 
-  let response = await fetch(url_page);
-  if(!response.ok){
-    console.error('Error 404: La página No existe');
-    content.innerHTML = '<div class="alert alert-danger" role="alert"><strong>Error 404:</strong> La página No existe. <a href="#/" class="alert-link">Volver al Inicio</a></div>';
-  }else{
-    let html = await response.text();
-    var token = localStorage.getItem("Token");
-    console.log('token='+token);
-
-    for(var i=0; i<routes_session.length;i++){
-      console.warn(routes_session[i]+'='+mod);
-      if((token==null || token=='undefined') && routes_session[i]==mod){
-        html = `<div class="alert alert-warning" role="alert"><strong>No Autorizado:</strong> No tiene permiso para esta página. <a href="#/" class="alert-link">Volver al Inicio</a></div>`
-      }
+const router = async (hash,url_mod,url404) =>{consoleLocal('log','hash=>'+hash);
+    const pages = [].concat(menu_web,no_menu);
+    if(hash!=''){let v1=0;
+      for(let i=0;i<pages.length;i++){
+        var ps = '#' + pages[i];
+        if(hash==ps){v1=1;break;}
+      }consoleLocal('log',hash+'='+ps);
+      if(v1==1){getRoutes(hash,url_mod,routes_session);}else{getRoutes(hash,url404,routes_session);console.error('Error 404: La página No existe');}
     }
+};
 
-    console.log(html);
-    content.innerHTML=html;
-  }
-}
-
-function controlRoutes(route){ console.log('route='+route);
+function controlRoutes(route){ consoleLocal('log','route='+route);
   if(route=='login/index'){login();}
   if(route=='logout/index'){logout();}
+  if(route=='dashboard/index'){dashboard();}
 }
 
-export {modulosRoutes,controlRoutes,menu_web,routes_session};
+export {no_menu,router,controlRoutes};
