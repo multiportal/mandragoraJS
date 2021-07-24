@@ -1,7 +1,7 @@
 /* 
 CMS-Javascript (spa) 
 Autor: Guillermo Jiménez López
-Fecha de Actualización: 15.07.2021
+Fecha de Actualización: 24.07.2021
 Versión: 1.0.1
 */
 //import './assets/bootstrap-5.0.2/css/bootstrap.min.css';
