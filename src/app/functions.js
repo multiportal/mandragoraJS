@@ -36,7 +36,8 @@ function menuWeb(h,no_menu){
   let n = no_menu.length;//console.warn('count:'+n);
   menu.classList.remove('d-none');
   for(var i=0; i<n; i++){//console.warn(i+'|'+no_menu[i]);
-    if(no_menu[i]==h){//console.warn('Session: '+no_menu[0]+'='+m);
+    var nm = '#' + no_menu[i];
+    if(h==nm){//console.warn('Session: '+ nm + '=' + h);
       menu.classList.add('d-none');
     }
   }
@@ -55,18 +56,19 @@ const getRoutes = async (hash,url,routes_session)=>{
   let content = document.getElementById('app-modulo'); 
   let response = await fetch(url);
   if(!response.ok){
-    console.error('Error 404: La página No existe');
+    console.error('Error 404(Fetch): La página No existe');
     content.innerHTML= `<div class="alert alert-danger" role="alert"><strong>Error 404(Fetch):</strong> La página No existe. <a href="#/" class="alert-link">Volver al Inicio</a></div>`
   }else{
-    console.log('OK');
-    var token = localStorage.getItem("Token");console.log('token='+token);
-    let html = await response.text();console.log(html);
+    consoleLocal('log','OK');
+    var token = localStorage.getItem("Token");consoleLocal('log','token='+token);
+    let html = await response.text();consoleLocal('log',html);
     for(var i=0; i<routes_session.length;i++){
-      var r_ses = routes_session[i];
+      var r_ses = '#' + routes_session[i];
       if(token==null && hash==r_ses){
         html = `<div class="alert alert-warning" role="alert"><strong>No Autorizado:</strong> No tiene permiso para esta página. <a href="#/" class="alert-link">Volver al Inicio</a></div>`
       }
-    }console.warn(hash+'='+r_ses);
+    }
+    if(hash==r_ses){consoleLocal('warn',hash+'='+r_ses);}   
     content.innerHTML=html;    
   }
 }
@@ -81,6 +83,26 @@ function reMod(mod){
 function ssl(){
   //const protocol = window.location.protocol;console.log("protocol=" + protocol);
   if(protocol=="http:"){window.location="https://"+host+"/"+path_root;}
+}
+
+function consoleLocal(type,val){
+  let host = window.location.host;
+  if(host=='localhost'){
+    switch (type) {
+      case 'log':
+        console.log(val);
+      break;
+      case 'warn':
+        console.warn(val);
+      break;
+      case 'error':
+        console.error(val);
+      break;
+      default:
+        console.log(val);
+      break;
+    }
+  }
 }
 
 function fecha() {
@@ -132,4 +154,4 @@ function footer(){
 //Configuracion de la funcion: [hora.js].
 
 
-export {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,reMod};
+export {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,reMod,consoleLocal};
