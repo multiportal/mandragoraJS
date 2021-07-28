@@ -15,7 +15,12 @@ const router = async (hash,url_mod,url404) =>{consoleLocal('log','hash=>'+hash);
         var ps = '#' + pages[i];
         if(hash==ps){v1=1;break;}
       }consoleLocal('log',hash+'='+ps);
-      if(v1==1){getRoutes(hash,url_mod,routes_session);}else{getRoutes(hash,url404,routes_session);console.error('Error 404: La página No existe');}
+      if(v1==1){
+        getRoutes(hash,url_mod,routes_session);
+      }else{
+        getRoutes(hash,url404,routes_session);
+        console.error('Error 404: La página No existe');
+      }
     }
 };
 
