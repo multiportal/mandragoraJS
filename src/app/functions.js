@@ -73,6 +73,12 @@ const getRoutes = async (hash,url,routes_session)=>{
   }
 }
 
+function getModules(views){
+  const divElement = document.createElement('div');
+  divElement.innerHTML = views;      
+  return divElement;
+}
+
 function reMod(mod){
   if(mod=='' || mod=='undefined'){
     window.location.href='#/';
@@ -154,4 +160,4 @@ function footer(){
 //Configuracion de la funcion: [hora.js].
 
 
-export {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,reMod,consoleLocal};
+export {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,getModules,reMod,consoleLocal};
