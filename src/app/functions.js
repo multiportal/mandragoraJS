@@ -31,13 +31,14 @@ function urlVars(vars){
   return url_var;
 }
 
-function menuWeb(h,no_menu){
+function menuWeb(h,no_menu,routes_session){
   let menu = document.querySelector('#menuweb');
   let n = no_menu.length;//console.warn('count:'+n);
+
   menu.classList.remove('d-none');
   for(var i=0; i<n; i++){//console.warn(i+'|'+no_menu[i]);
-    var nm = '#' + no_menu[i];
-    if(h==nm){//console.warn('Session: '+ nm + '=' + h);
+    var nm = '#' + no_menu[i];//console.warn(nm);
+    if(h==nm){//console.warn('Session: '+ h + '=' + nm);
       menu.classList.add('d-none');
     }
   }
@@ -61,14 +62,14 @@ const getRoutes = async (hash,url,routes_session)=>{
   }else{
     consoleLocal('log','OK');
     var token = localStorage.getItem("Token");consoleLocal('log','token='+token);
-    let html = await response.text();consoleLocal('log',html);
+    let html = await response.text();//consoleLocal('log',html);
     for(var i=0; i<routes_session.length;i++){
       var r_ses = '#' + routes_session[i];
-      if(token==null && hash==r_ses){
+      if((token==null || token==undefined) && hash==r_ses){
         html = `<div class="alert alert-warning" role="alert"><strong>No Autorizado:</strong> No tiene permiso para esta página. <a href="#/" class="alert-link">Volver al Inicio</a></div>`
       }
     }
-    if(hash==r_ses){consoleLocal('warn',hash+'='+r_ses);}   
+    if(hash==r_ses){consoleLocal('warn',hash+'='+r_ses);} //consoleLocal('warn','Validación(getRoutes):'+hash+'='+r_ses);  
     content.innerHTML=html;    
   }
 }
@@ -128,29 +129,22 @@ function fecha() {
   return fecha;
 }
 
-//Fecha de Actuaización
-function fecha_hora_update(val) {
-  const inputUpdate = document.querySelector("#f_update");
-  const fecha1 = fecha();
-  if(val==1){
-  setTimeout(fecha_hora_update, 1000);
-  }
-  if (mod=='tarjetas' || mod=='empresas' || mod=='perfil') {
-    inputUpdate.value = fecha1;
-  }
+//Fecha de Actualización
+function fecha_hora_update(val,inputId) {
+  const inputUpdate = document.querySelector(inputId);
+  var fecha1 = fecha();
+  inputUpdate.value = fecha1;
+  if(val==1){setTimeout(fecha_hora_update, 1000);}
 }
 
 //Fecha de Creación
-function fecha_hora_create(val) {
-  const inputCreate = document.querySelector("#f_create");
-  const fecha2 = fecha();
-  if(val==1){
-  setTimeout(fecha_hora_create, 1000);
-  }
-  if (mod=='tarjetas' || mod=='empresas' || mod=='perfil') {    
-    inputCreate.value = fecha2;
-  }
+function fecha_hora_create(val,inputId) {
+  const inputCreate = document.querySelector(inputId);
+  var fecha2 = fecha();
+  inputCreate.value = fecha;
+  if(val==1){setTimeout(fecha_hora_create, 1000);}
 }
+
 
 function footer(){
   const f = document.querySelector("#footer_page");
@@ -160,4 +154,4 @@ function footer(){
 //Configuracion de la funcion: [hora.js].
 
 
-export {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,getModules,reMod,consoleLocal};
+export {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,getModules,reMod,consoleLocal,fecha_hora_create,fecha_hora_update,fecha};
