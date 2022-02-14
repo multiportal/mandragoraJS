@@ -31,13 +31,13 @@ function urlVars(vars){
   return url_var;
 }
 
-function menuWeb(h,no_menu_web,routes_session){
+function menuWeb(h,no_menu_web,rutas_session){
   let menu = document.querySelector('#menuweb');
   let btnLogin = document.querySelector('.user-login');
   let userActivo = document.querySelector('.user-activo');
   let userLogout = document.querySelector('.user-logout');
   let n = no_menu_web.length;//console.warn('count:'+n);
-  let k = routes_session.length;//console.warn('count:'+k);
+  let k = rutas_session.length;//console.warn('count:'+k);
   
   menu.classList.remove('d-none');
   for(var i=0; i<n; i++){//console.warn(i+'|'+no_menu_web[i]);
@@ -51,9 +51,9 @@ function menuWeb(h,no_menu_web,routes_session){
   btnLogin.classList.remove('d-none');
   userActivo.classList.add('d-none');
   userLogout.classList.add('d-none');
-  for(var i=0; i<k; i++){//console.warn(i+'|'+routes_session[i]);
-    var rs = '#' + routes_session[i]; //console.warn(h + '=' + rs);
-    if(h==rs){console.warn('Session: ('+token+') '+ h + '=' + rs);
+  for(var i=0; i<k; i++){//console.warn(i+'|'+rutas_session[i]);
+    var rs = '#' + rutas_session[i]; //console.warn(h + '=' + rs);
+    if(h==rs){//console.warn('Session: ('+token+') '+ h + '=' + rs);
       if((token!=null && token!=undefined) && (token!='null' && token!='undefined')){
         btnLogin.classList.add('d-none');
         userActivo.classList.remove('d-none');
