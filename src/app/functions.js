@@ -31,15 +31,34 @@ function urlVars(vars){
   return url_var;
 }
 
-function menuWeb(h,no_menu,routes_session){
+function menuWeb(h,no_menu_web,routes_session){
   let menu = document.querySelector('#menuweb');
-  let n = no_menu.length;//console.warn('count:'+n);
-
+  let btnLogin = document.querySelector('.user-login');
+  let userActivo = document.querySelector('.user-activo');
+  let userLogout = document.querySelector('.user-logout');
+  let n = no_menu_web.length;//console.warn('count:'+n);
+  let k = routes_session.length;//console.warn('count:'+k);
+  
   menu.classList.remove('d-none');
-  for(var i=0; i<n; i++){//console.warn(i+'|'+no_menu[i]);
-    var nm = '#' + no_menu[i];//console.warn(nm);
+  for(var i=0; i<n; i++){//console.warn(i+'|'+no_menu_web[i]);
+    var nm = '#' + no_menu_web[i];//console.warn(nm);
     if(h==nm){//console.warn('Session: '+ h + '=' + nm);
       menu.classList.add('d-none');
+    }
+  }
+  
+  let token = localStorage.getItem("Token");
+  btnLogin.classList.remove('d-none');
+  userActivo.classList.add('d-none');
+  userLogout.classList.add('d-none');
+  for(var i=0; i<k; i++){//console.warn(i+'|'+routes_session[i]);
+    var rs = '#' + routes_session[i]; //console.warn(h + '=' + rs);
+    if(h==rs){console.warn('Session: ('+token+') '+ h + '=' + rs);
+      if((token!=null && token!=undefined) && (token!='null' && token!='undefined')){
+        btnLogin.classList.add('d-none');
+        userActivo.classList.remove('d-none');
+        userLogout.classList.remove('d-none');
+      }
     }
   }
 }
@@ -65,10 +84,11 @@ const getRoutes = async (hash,url,routes_session)=>{
     let html = await response.text();//consoleLocal('log',html);
     for(var i=0; i<routes_session.length;i++){
       var r_ses = '#' + routes_session[i];
-      if((token==null || token==undefined) && hash==r_ses){
+      if((token==null || token=='undefined') && hash==r_ses){
         html = `<div class="alert alert-warning" role="alert"><strong>No Autorizado:</strong> No tiene permiso para esta página. <a href="#/" class="alert-link">Volver al Inicio</a></div>`
       }
     }
+    if(token!=null && hash=='#/login'){setTimeout(() => {window.location.href='#/dashboard';}, 1000); }
     if(hash==r_ses){consoleLocal('warn',hash+'='+r_ses);} //consoleLocal('warn','Validación(getRoutes):'+hash+'='+r_ses);  
     content.innerHTML=html;    
   }
