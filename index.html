@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MandragoraJS SPA</title>
+    <!-- Icons for Dashboard -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Bootstrap Page -->
     <link href="./src/assets/bootstrap-5.0.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -29,8 +31,14 @@
               <li class="nav-item">
                 <a class="nav-link" href="#/contacto">Contacto</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item user-login">
                 <a class="btn btn-primary" href="#/login">Login</a>
+              </li>
+              <li class="nav-item user-activo">
+                <a class="nav-link" href="#/dashboard">Usuario</a>
+              </li>
+              <li class="nav-item user-logout">
+                <a class="nav-link" href="#/logout">Salir</a>
               </li>
             </ul>
           </div>
@@ -39,7 +47,6 @@
 
     <div id="app-modulo"></div>
 
-    <!--script src="./src/assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js"></script-->
     <script src="./src/index.js" type="module"></script>    
 </body>
 </html>

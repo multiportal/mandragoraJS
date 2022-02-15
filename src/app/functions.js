@@ -31,14 +31,34 @@ function urlVars(vars){
   return url_var;
 }
 
-function menuWeb(h,no_menu){
+function menuWeb(h,no_menu_web,rutas_session){
   let menu = document.querySelector('#menuweb');
-  let n = no_menu.length;//console.warn('count:'+n);
+  let btnLogin = document.querySelector('.user-login');
+  let userActivo = document.querySelector('.user-activo');
+  let userLogout = document.querySelector('.user-logout');
+  let n = no_menu_web.length;//console.warn('count:'+n);
+  let k = rutas_session.length;//console.warn('count:'+k);
+  
   menu.classList.remove('d-none');
-  for(var i=0; i<n; i++){//console.warn(i+'|'+no_menu[i]);
-    var nm = '#' + no_menu[i];
-    if(h==nm){//console.warn('Session: '+ nm + '=' + h);
+  for(var i=0; i<n; i++){//console.warn(i+'|'+no_menu_web[i]);
+    var nm = '#' + no_menu_web[i];//console.warn(nm);
+    if(h==nm){//console.warn('Session: '+ h + '=' + nm);
       menu.classList.add('d-none');
+    }
+  }
+  
+  let token = localStorage.getItem("Token");
+  btnLogin.classList.remove('d-none');
+  userActivo.classList.add('d-none');
+  userLogout.classList.add('d-none');
+  for(var i=0; i<k; i++){//console.warn(i+'|'+rutas_session[i]);
+    var rs = '#' + rutas_session[i]; //console.warn(h + '=' + rs);
+    if(h==rs){//console.warn('Session: ('+token+') '+ h + '=' + rs);
+      if((token!=null && token!=undefined) && (token!='null' && token!='undefined')){
+        btnLogin.classList.add('d-none');
+        userActivo.classList.remove('d-none');
+        userLogout.classList.remove('d-none');
+      }
     }
   }
 }
@@ -61,16 +81,23 @@ const getRoutes = async (hash,url,routes_session)=>{
   }else{
     consoleLocal('log','OK');
     var token = localStorage.getItem("Token");consoleLocal('log','token='+token);
-    let html = await response.text();consoleLocal('log',html);
+    let html = await response.text();//consoleLocal('log',html);
     for(var i=0; i<routes_session.length;i++){
       var r_ses = '#' + routes_session[i];
-      if(token==null && hash==r_ses){
+      if((token==null || token=='undefined') && hash==r_ses){
         html = `<div class="alert alert-warning" role="alert"><strong>No Autorizado:</strong> No tiene permiso para esta página. <a href="#/" class="alert-link">Volver al Inicio</a></div>`
       }
     }
-    if(hash==r_ses){consoleLocal('warn',hash+'='+r_ses);}   
+    if(token!=null && hash=='#/login'){setTimeout(() => {window.location.href='#/dashboard';}, 1000); }
+    if(hash==r_ses){consoleLocal('warn',hash+'='+r_ses);} //consoleLocal('warn','Validación(getRoutes):'+hash+'='+r_ses);  
     content.innerHTML=html;    
   }
+}
+
+function getModules(views){
+  const divElement = document.createElement('div');
+  divElement.innerHTML = views;      
+  return divElement;
 }
 
 function reMod(mod){
@@ -122,29 +149,22 @@ function fecha() {
   return fecha;
 }
 
-//Fecha de Actuaización
-function fecha_hora_update(val) {
-  const inputUpdate = document.querySelector("#f_update");
-  const fecha1 = fecha();
-  if(val==1){
-  setTimeout(fecha_hora_update, 1000);
-  }
-  if (mod=='tarjetas' || mod=='empresas' || mod=='perfil') {
-    inputUpdate.value = fecha1;
-  }
+//Fecha de Actualización
+function fecha_hora_update(val,inputId) {
+  const inputUpdate = document.querySelector(inputId);
+  var fecha1 = fecha();
+  inputUpdate.value = fecha1;
+  if(val==1){setTimeout(fecha_hora_update, 1000);}
 }
 
 //Fecha de Creación
-function fecha_hora_create(val) {
-  const inputCreate = document.querySelector("#f_create");
-  const fecha2 = fecha();
-  if(val==1){
-  setTimeout(fecha_hora_create, 1000);
-  }
-  if (mod=='tarjetas' || mod=='empresas' || mod=='perfil') {    
-    inputCreate.value = fecha2;
-  }
+function fecha_hora_create(val,inputId) {
+  const inputCreate = document.querySelector(inputId);
+  var fecha2 = fecha();
+  inputCreate.value = fecha;
+  if(val==1){setTimeout(fecha_hora_create, 1000);}
 }
+
 
 function footer(){
   const f = document.querySelector("#footer_page");
@@ -154,4 +174,4 @@ function footer(){
 //Configuracion de la funcion: [hora.js].
 
 
-export {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,reMod,consoleLocal};
+export {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,getModules,reMod,consoleLocal,fecha_hora_create,fecha_hora_update,fecha};
