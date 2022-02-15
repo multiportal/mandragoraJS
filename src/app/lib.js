@@ -1,6 +1,6 @@
 //import {consola} from './console.js';
 import {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,reMod,consoleLocal} from './functions.js';
-import {no_menu,routes_session,router,controlRoutes} from '../routes/index.routes.js';
+import {no_menu_web,menu_web,routes_session,router,controlRoutes} from '../routes/index.routes.js';
 
 function variables(){
 /*VARIABLES SYS*/
@@ -99,7 +99,7 @@ function inicio() {
   console.log('Corriendo funcion inicio');
   const v = variables();consoleLocal('log',v);
   const {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,hash2,url_mod,url_m,url404} = v;
-  menuWeb(hash2,no_menu,routes_session);
+  menuWeb(hash2,no_menu_web,menu_web);
   router(hash,hash2,url_mod,url404);
   controlRoutes(route,id);
 
