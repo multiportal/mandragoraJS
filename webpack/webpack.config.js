@@ -45,7 +45,7 @@ module.exports = {
   },
   plugins:[
     new plugin({
-      template: './index.html'
+      template: './src/index.html'
     })
   ]
 };
