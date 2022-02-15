@@ -42,7 +42,7 @@ function btnGuardar(e){
         }else{
             let msj = document.getElementById('msj-error');
             msj.innerHTML = `<div class="alert alert-danger" role="alert">Usuario o Contraseña Incorrectos</div>`;
-            localStorage.setItem("Token", null);
+            //localStorage.setItem("Token", null);
         }
     })
     .catch(err=>console.log(err));    
