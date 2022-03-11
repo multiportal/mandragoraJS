@@ -7,7 +7,7 @@ var path_url = path_url1.replace("/", "");
 
 console.log('/* javascript login | VARIABLES CONSTANTES*/');
 var api_login = (host!='localhost')?'https://portafoliom.herokuapp.com/api/login/':'http://localhost/MisSitios/mandragora/api/login/';
-console.log('api_login='+api_login);
+if(host=='localhost'){console.log('api_login='+api_login);}
 
 function btnLogin(){
 const formulario = document.getElementById('form-login');
