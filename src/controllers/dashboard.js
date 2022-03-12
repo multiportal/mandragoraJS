@@ -3,7 +3,7 @@ import {variables} from '../app/lib.js';
 const v = variables();
 const {host,dominio,path_url,base_url} = v;
 let dashCss = base_url+'src/assets/css/dashboard.css';
-if(host=='localhost'){console.warn(dashCss);}
+if(host=='localhost'){console.log(dashCss);}
 
 function btnSidebar(){
 //<![CDATA[
