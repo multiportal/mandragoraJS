@@ -33,7 +33,7 @@ function btnGuardar(e){
         },
         body: JSON.stringify(datos)
     }).then(res=>res.json()).then(data=>{
-        console.log(data);
+        if(host=='localhost'){console.log(data);}
         localStorage.setItem("Token", JSON.stringify(data.token));
         let token = localStorage.getItem("Token");
         //Redireccionar al Dashboard
