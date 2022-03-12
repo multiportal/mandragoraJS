@@ -1,16 +1,17 @@
 //DASHBOARD.JS
 import {variables} from '../app/lib.js';
-
 const v = variables();
-const {host,dominio,page_url} = v;
+const {host,dominio,path_url,base_url} = v;
+let dashCss = base_url+'src/assets/css/dashboard.css';
+if(host=='localhost'){console.warn(dashCss);}
 
 function btnSidebar(){
 //<![CDATA[
   if(document.createStyleSheet) {
-    document.createStyleSheet(page_url+'src/assets/css/dashboard.css');
+    document.createStyleSheet(dashCss);
   }
   else {
-    var styles = "@import url('"+page_url+"src/assets/css/dashboard.css');";
+    var styles = "@import url('"+dashCss+"');";
     var newSS=document.createElement('link');
     newSS.rel='stylesheet';
     newSS.href='data:text/css,'+escape(styles);
