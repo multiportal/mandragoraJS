@@ -2,7 +2,7 @@
 
 function btnSidebar(){
 //<![CDATA[
-  if(document.createStyleSheet) {
+  /*if(document.createStyleSheet) {
     document.createStyleSheet('http://localhost/MisSitios/mandragoraJS/src/assets/css/dashboard.css');
   }
   else {
@@ -11,7 +11,7 @@ function btnSidebar(){
     newSS.rel='stylesheet';
     newSS.href='data:text/css,'+escape(styles);
     document.getElementsByTagName("head")[0].appendChild(newSS);
-  }
+  }*/
   //]]>
 
 let btnSalir = document.querySelector('.bx-log-out')
