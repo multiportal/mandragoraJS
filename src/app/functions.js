@@ -88,7 +88,7 @@ const getRoutes = async (hash,url,routes_session)=>{
         html = `<div class="alert alert-warning" role="alert"><strong>No Autorizado:</strong> No tiene permiso para esta página. <a href="#/" class="alert-link">Volver al Inicio</a></div>`
       }
     }
-    if(token!=null && hash=='#/login'){setTimeout(() => {window.location.href='#/dashboard';}, 1000); }
+    if((token!=null && token!='undefined') && hash=='#/login'){setTimeout(() => {window.location.href='#/dashboard';}, 1000); }
     if(hash==r_ses){consoleLocal('warn',hash+'='+r_ses);} //consoleLocal('warn','Validación(getRoutes):'+hash+'='+r_ses);  
     content.innerHTML=html;    
   }
