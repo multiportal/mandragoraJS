@@ -23,14 +23,12 @@ const src_path = 'src/'; //RESOURCE PATH
 const page_path = src_path + 'pages/'; //PAGE PATH
 
 /*VARIABLES CONSTANTES*/
-const protocol = loc.protocol;
-const host = loc.host;
-const dominio = loc.origin + '/';
-const dominio1 = loc.origin;
-const path_url1 = loc.pathname;
-const hash = loc.hash;
-const URL = loc.href;
-const quest = loc.search; // [OBSOLETA] -> Obtención del valor de las variable ej. ?mod=producto&ext=cate
+const {protocol, host, origin, pathname, hash, href, search} = loc;
+const dominio = origin + '/';
+const dominio1 = origin;
+const path_url1 = pathname;
+const URL = href;
+const quest = search; // [OBSOLETA] -> Obtención del valor de las variable ej. ?mod=producto&ext=cate
 const path_url = path_url1.replace("/", "");
 const path_root = (host == 'localhost') ? 'MisSitios/' + proyecto + '/' + sub_path : sub_path;
 const base_url = dominio + path_url;
