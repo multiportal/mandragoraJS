@@ -173,5 +173,4 @@ function footer(){
 
 //Configuracion de la funcion: [hora.js].
 
-
 export {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,getModules,reMod,consoleLocal,fecha_hora_create,fecha_hora_update,fecha};
