@@ -1,5 +1,6 @@
-_docs
 node_modules
+api
 package-lock.json
 *.db
 .env
+.vscode
