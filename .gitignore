@@ -3,3 +3,4 @@ api
 package-lock.json
 *.db
 .env
+.vscode
