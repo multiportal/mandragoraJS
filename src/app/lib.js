@@ -93,7 +93,7 @@ var url404 = base_url + page_path + '404/index.html';
 }
 
 /* FUNCIONES */
-function inicio() {
+/*function inicio() {
   console.log('Corriendo funcion inicio');
   const v = variables();consoleLocal('log',v);
   const {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,hash2,url_mod,url_m,url404} = v;
@@ -102,6 +102,5 @@ function inicio() {
   controlRoutes(route,id);
 
   reMod(mod);  
-}
-
-export {inicio,variables};
+}*/
+export {variables};
