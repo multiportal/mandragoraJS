@@ -1,11 +1,12 @@
-import Home from "./home";
-import nosotros from "./nosotros";
-import NotFound from "./404";
+import { pages } from "./pages";
+import { pagesSys } from "./pages-sys";
+import NotFound from "../pages/404/index.html";
 
-const pages = {
-  home: Home,
-  nosotros: nosotros,
-  notFound: NotFound,
-};
-
-export { pages };
+export default (page) => {
+  var views = pages[page];
+  views = (views == undefined) ? NotFound : views;
+  //console.log(page+'=>',views);
+  const divElement = document.createElement('div');
+  divElement.innerHTML = views;
+  return divElement;
+}

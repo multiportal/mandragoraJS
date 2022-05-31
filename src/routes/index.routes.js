@@ -1,8 +1,7 @@
 import { consoleLocal } from "../app/functions";
-import Pages from "../controllers/pages";
+import Pages from "../controllers/index";
 
 let content = document.getElementById('app-modulo');
-
 
 const no_menu_web = ['/dashboard', '/forget', '/login', '/logout', '/registro'];//Out menu web
 const menu_web = ['/', '/Home', '/nosotros', '/productos', '/contacto'];//pages for menu web
@@ -18,7 +17,7 @@ const router = (hash, hash2) => {
       if (hash2 == hashPages) { ps = 1; break; }
     } consoleLocal('info', 'infoInicial:' + hash + '=>' + hashPages);
     let fPages = hashPages.replace('#/','');
-    console.log('Function:',fPages);
+    //console.log('Function:',fPages);
     if (ps == 1) {
       content.appendChild(Pages(fPages));//Exist page
       console.log('INFO:' + hash2 + '=>' + hashPages);
