@@ -1,29 +1,42 @@
 import { consoleLocal } from "../app/functions";
 import Pages from "../controllers/index";
 
-let content = document.getElementById('app-modulo');
-
-const no_menu_web = ['/dashboard', '/forget', '/login', '/logout', '/registro'];//Out menu web
-const menu_web = ['/', '/Home', '/nosotros', '/productos', '/contacto'];//pages for menu web
-
-const router = (hash, hash2) => {
-  consoleLocal('log', 'hash=>' + hash);
+const router = async (hash, hash2) => {
+  console.log('hash=>' + hash);
+  let page = hash2.replace('#/', '');
+  let content = document.getElementById('app-modulo');
   content.innerHTML = '';
-  const pages = [].concat(menu_web, no_menu_web);//console.log(pages);
-  if (hash != '') {
-    let ps = 0;
-    for (let i = 0; i < pages.length; i++) {
-      var hashPages = '#' + pages[i];
-      if (hash2 == hashPages) { ps = 1; break; }
-    } consoleLocal('info', 'infoInicial:' + hash + '=>' + hashPages);
-    let fPages = hashPages.replace('#/','');
-    //console.log('Function:',fPages);
-    if (ps == 1) {
-      content.appendChild(Pages(fPages));//Exist page
-      console.log('INFO:' + hash2 + '=>' + hashPages);
-    } else {
-      //Not page exist
-      console.error('Error 404: La página No existe!');
+
+  switch (hash) {
+    case "#/": {
+      return content.appendChild(Pages(page));
+    }
+    case "#/nosotros": {
+      return content.appendChild(Pages(page));
+    }
+    case "#/productos": {
+      return content.appendChild(Pages(page));
+    }
+    case "#/contacto": {
+      return content.appendChild(Pages(page));
+    }
+    case "#/dashboard": {
+      return content.appendChild(Pages(page));
+    }
+    case "#/forget": {
+      return content.appendChild(Pages(page));
+    }
+    case "#/login": {
+      return content.appendChild(Pages(page));
+    }
+    case "#/logout": {
+      return content.appendChild(Pages(page));
+    }
+    case "#/register": {
+      return content.appendChild(Pages(page));
+    }
+    default: {
+      return content.appendChild(Pages('404'));
     }
   }
 }

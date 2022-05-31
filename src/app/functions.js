@@ -114,7 +114,7 @@ function ssl(){
 
 function consoleLocal(type,val){
   let host = window.location.host;
-  if(host=='localhost'){
+  if(host=='localhost' || host=='localhost:8080'){
     switch (type) {
       case 'log':
         console.log(val);

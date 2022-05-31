@@ -10,19 +10,14 @@ import './assets/bootstrap-5.0.2/css/bootstrap.min.css';
 import './assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js';
 import './assets/main.scss';
 //Files import for App
-import {variables} from './app/lib';
-import  {router} from './routes/index.routes';
+import {inicio,load,variables} from './app/lib';
+import {consoleLocal} from './app/functions';
 
-const v = variables();
-const {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,hash2,url_mod,url_m,url404} = v;
-
-window.addEventListener('hashchange',()=>{
-    const v = variables();
-    const {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,hash2,url_mod,url_m,url404} = v;
-    router(hash,hash2);
+window.addEventListener('hashchange',()=>{consoleLocal('warn','Event Listener');
+    load();
 });
 
-router(hash,hash2);
+inicio();
 
 /*
 import {consola} from './app/console.js';
