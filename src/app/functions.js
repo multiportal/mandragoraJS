@@ -100,7 +100,7 @@ function getModules(views){
   return divElement;
 }
 
-function reMod(mod){
+function reload(mod){
   if(mod=='' || mod=='undefined'){
     window.location.href='#/';
   }
@@ -114,7 +114,7 @@ function ssl(){
 
 function consoleLocal(type,val){
   let host = window.location.host;
-  if(host=='localhost' || host=='localhost:8080'){
+  if(host=='localhost'){
     switch (type) {
       case 'log':
         console.log(val);
@@ -173,4 +173,4 @@ function footer(){
 
 //Configuracion de la funcion: [hora.js].
 
-export {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,getModules,reMod,consoleLocal,fecha_hora_create,fecha_hora_update,fecha};
+export {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,getModules,reload,consoleLocal,fecha_hora_create,fecha_hora_update,fecha};
