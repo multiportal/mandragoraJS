@@ -1,6 +1,6 @@
 //import {consola} from './console.js';
-import { filename, getQueryVariable, urlVars, menuWeb, fileExist, getRoutes, reload, consoleLocal } from './functions.js';
-import { no_menu_web, menu_web, routes_session, router, controlRoutes } from '../routes/index.routes.js';
+import { filename, getQueryVariable, urlVars, menuWeb, reload, consoleLocal } from './functions.js';
+import { router, controlRoutes, pages, pagesSys } from '../routes/index.routes.js';
 
 function variables() {
   /*VARIABLES SYS*/
@@ -108,6 +108,8 @@ function load() {
   const v = variables(); consoleLocal('log', v);
   const { hash, URL, pag_name, vars_Url, mod, ext, id, ext2, route, hash2, url_mod, url_m, url404 } = v;
   router(hash, hash2, mod, ext);
+  controlRoutes(route,id);
+  menuWeb(hash2,mod,pages,pagesSys);
   //Redirect to main page
   reload(mod);
 }

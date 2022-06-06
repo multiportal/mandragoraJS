@@ -31,7 +31,7 @@ function urlVars(vars){
   return url_var;
 }
 
-function menuWeb(h,no_menu_web,rutas_session){
+/*function menuWeb(h,no_menu_web,rutas_session){
   let menu = document.querySelector('#menuweb');
   let btnLogin = document.querySelector('.user-login');
   let userActivo = document.querySelector('.user-activo');
@@ -61,6 +61,29 @@ function menuWeb(h,no_menu_web,rutas_session){
       }
     }
   }
+}*/
+
+function menuWeb(hash,mod,rutas_web,rutas_session){
+  let token = localStorage.getItem("Token"); console.log(token);
+  let menu = document.querySelector('#menuweb');
+  let btnLogin = document.querySelector('.user-login');
+  let userActivo = document.querySelector('.user-activo');
+  let userLogout = document.querySelector('.user-logout');
+
+  menu.classList.remove('d-none');
+  if(rutas_session[mod]){
+    menu.classList.add('d-none');
+  }
+
+  btnLogin.classList.remove('d-none');
+  userActivo.classList.add('d-none');
+  userLogout.classList.add('d-none');
+  if((token!=null && token!=undefined) && (token!='null' && token!='undefined')){
+    btnLogin.classList.add('d-none');
+    userActivo.classList.remove('d-none');
+    userLogout.classList.remove('d-none');
+  }
+
 }
 
 const fileExist = async (mod,url)=>{
