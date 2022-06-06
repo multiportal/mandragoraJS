@@ -1,4 +1,4 @@
-import { consoleLocal } from "../app/functions";
+import { consoleLocal, getRoutesSesion } from "../app/functions";
 import Pages from "../controllers/index";
 import { pages } from "../controllers/pages";
 import { pagesSys } from "../controllers/pages-sys";
@@ -8,7 +8,8 @@ import { dashboard } from "../controllers/dashboard.js";
 
 const router = async (hash, hash2, mod, ext) => {
   consoleLocal('log','hash=>' + hash);
-  let page = (mod!='Home' && ext!='index')?ext:mod;//console.log(page,mod,ext);
+  getRoutesSesion(mod);
+  let page = (mod!='Home' && ext!='index')?ext:mod;console.log(page,mod,ext);
   let content = document.getElementById('app-modulo');
   content.innerHTML = '';
   if(hash){
@@ -22,6 +23,7 @@ function controlRoutes(route,id){ consoleLocal('log','route='+route);
   if(route=='logout/index'){logout();}
   if(route=='dashboard/index'){dashboard();}
   //if(route=='profile/index'){profile();}
+
 }
 
 export { router,controlRoutes,pages,pagesSys };
