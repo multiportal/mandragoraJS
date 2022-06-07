@@ -51,7 +51,6 @@ export function menuWeb(hash,mod,rutas_web,rutas_sys){
     userActivo.classList.remove('d-none');
     userLogout.classList.remove('d-none');
   }
-
 }
 
 const fileExist = async (mod,url)=>{
@@ -88,7 +87,7 @@ const getRoutes = async (hash,url,routes_session)=>{
 export function getRoutesSesion(mod){
   var token = localStorage.getItem("Token");consoleLocal('log','token='+token);
   console.log('getRoutesSesion')
-  if((token==null || token=='undefined') && mod=='dashboard'){setTimeout(() => {window.location.href='#/noauth';}, 1000);}
+  if((token==null || token=='undefined') && mod=='dashboard'){setTimeout(() => {window.location.href='#/noauth';}, 100);}
   if((token!=null && token!='undefined') && mod=='login'){setTimeout(() => {window.location.href='#/dashboard';}, 1000); }
 }
 
