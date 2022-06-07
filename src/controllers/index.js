@@ -7,8 +7,5 @@ export default (page) => {
   const pagesAll = {...pages, ...pagesSys}//console.log('pagesAll:',pagesAll);
   var views = pagesAll[page];
   views = (views == undefined) ? NotFound : views; //console.log(page+'=>',views);
-  //const divElement = document.createElement('div');
-  //divElement.innerHTML = views;
-  //return divElement;
   return getModules(views);
 }

@@ -10,7 +10,6 @@ import './assets/css/dashboard.css'; //** 3 WARNINGS IN WEBPACK FOR BUILD */
 import './assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js';
 import './assets/main.scss';
 //Files import for App
-//import {consola} from './app/console.js';
 import {inicio,load} from './app/lib';
 import {consoleLocal} from './app/functions';
 

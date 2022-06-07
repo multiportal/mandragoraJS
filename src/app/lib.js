@@ -38,8 +38,8 @@ function variables() {
   var tema = 'default';
   var path_tema = 'temas/' + tema + '/';
   var pag_name = filename();
-  var vars_Url = getQueryVariable(hash, sub_path);
-  let { mod, ext, id } = urlVars(vars_Url);
+  var vars_Url = getQueryVariable(hash, sub_path);// 
+  let { mod, ext, id } = urlVars(vars_Url);//Cambiar a Hash 
   var url_m = base_url + page_path + mod + '/' + ext + '.html';
   //mod = fileExist(mod,url_m);
   var ext2 = '/' + ext;
@@ -93,24 +93,13 @@ function variables() {
 }
 
 /* FUNCIONES */
-/*function inicio() {
-  console.log('Corriendo funcion inicio');
-  const v = variables();consoleLocal('log',v);
-  const {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,hash2,url_mod,url_m,url404} = v;
-  menuWeb(hash2,no_menu_web,menu_web);
-  router(hash,hash2,url_mod,url404);
-  controlRoutes(route,id);
-
-  reload(mod);  
-}*/
-
 function load() {
   const v = variables(); consoleLocal('log', v);
-  const { hash, URL, pag_name, vars_Url, mod, ext, id, ext2, route, hash2, url_mod, url_m, url404 } = v;
+  const { hash, mod, ext, id, route, hash2 } = v;
   router(hash, hash2, mod, ext);
   controlRoutes(route,id);
   menuWeb(hash2,mod,pages,pagesSys);
-  //Redirect to main page
+  //Redirect to #/ (Home)
   reload(mod);
 }
 

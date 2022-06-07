@@ -167,7 +167,3 @@ export function footer(){
   const f = document.querySelector("#footer_page");
   f.innerHTML = year + ' &copy; VcardAppJS v.1.2.14. Diseñada por <a target="_blank" href="http://multiportal.com.mx">[:MULTIPORTAL:]</a>.';
 }
-
-//Configuracion de la funcion: [hora.js].
-
-//export {filename,getQueryVariable,urlVars,menuWeb,fileExist,getRoutes,getModules,reload,consoleLocal,fecha_hora_create,fecha_hora_update,fecha};
