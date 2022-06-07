@@ -86,7 +86,6 @@ const getRoutes = async (hash,url,routes_session)=>{
 
 export function getRoutesSesion(mod){
   var token = localStorage.getItem("Token");consoleLocal('log','token='+token);
-  console.log('getRoutesSesion')
   if((token==null || token=='undefined') && mod=='dashboard'){setTimeout(() => {window.location.href='#/noauth';}, 100);}
   if((token!=null && token!='undefined') && mod=='login'){setTimeout(() => {window.location.href='#/dashboard';}, 1000); }
 }

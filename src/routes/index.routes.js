@@ -1,7 +1,6 @@
 import { consoleLocal, getRoutesSesion } from "../app/functions";
 import Pages from "../controllers/index";
-import { pages } from "../controllers/pages";
-import { pagesSys } from "../controllers/pages-sys";
+import { pages, pagesSys } from "../controllers/pages";
 import { login } from "../controllers/login.js";
 import { logout } from "../controllers/logout.js";
 import { dashboard } from "../controllers/dashboard.js";

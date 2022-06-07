@@ -1,6 +1,5 @@
 import { getModules } from "../app/functions";
-import { pages } from "./pages";
-import { pagesSys } from "./pages-sys";
+import { pages, pagesSys } from "./pages";
 import NotFound from "../pages/404/index.html";
 
 export default (page) => {
