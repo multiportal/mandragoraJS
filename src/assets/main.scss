@@ -1,6 +1,12 @@
 $bg_primary: #ccc;
+$color-text: #000;
+$color-link: #fff;
 
 body {
     background: $bg_primary;
-    color: #000000;
+    color: $color-text;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: $color-link;
 }
