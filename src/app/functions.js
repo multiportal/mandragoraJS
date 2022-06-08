@@ -110,7 +110,7 @@ export function ssl(){
 
 export function consoleLocal(type,val){
   let host = window.location.host;
-  if(host=='localhost' || host=='localhost:8080'){
+  if(host=='localhost' || host=='localhost:9001'){
     switch (type) {
       case 'log':
         console.log(val);

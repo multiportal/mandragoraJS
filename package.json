@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx webpack server --mode=development",
     "build": "npm run clean && webpack --config ./webpack/webpack.config.prod.js --env env=prod",
-    "start": "npx webpack serve --config ./webpack/webpack.config.dev.js --env env=dev --open --port 4000",
+    "start": "npx webpack serve --config ./webpack/webpack.config.dev.js --env env=dev --open",
     "webpackdev": "npx webpack --config ./webpack/webpack.config.js --mode=development",
     "webpackpro": "npx webpack --config ./webpack/webpack.config.js --mode=production",
     "clean": "rimraf dist"
