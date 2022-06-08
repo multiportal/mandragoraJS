@@ -1,9 +1,8 @@
 /* VARIABLES CONSTANTES*/
 var loc = window.location;
-const host = loc.host;
+const {host,pathname} = loc;
 const dominio = loc.origin + '/';
-const path_url1 = loc.pathname;
-var path_url = path_url1.replace("/", "");
+var path_url = pathname.replace("/", "");
 
 console.log('/* javascript login | VARIABLES CONSTANTES*/');
 var api_login = (host!='localhost')?'https://portafoliom.herokuapp.com/api/login/':'http://localhost/MisSitios/mandragora/api/login/';

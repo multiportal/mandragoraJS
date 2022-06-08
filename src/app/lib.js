@@ -18,37 +18,36 @@ function variables() {
 
   /*VARIABLES DE ENTORNO*/
   const proyecto = 'mandragoraJS'; //PROYECTO
-  const sub_path = '#/'; //SUB_PATH
-  const src_path = 'src/'; //RESOURCE PATH
-  const page_path = src_path + 'pages/'; //PAGE PATH
+  const path_hash = '#/'; //path_hash
+  const path_src = 'src/'; //RESOURCE PATH
+  const path_page = path_src + 'pages/'; //PAGE PATH
 
   /*VARIABLES CONSTANTES*/
   const { protocol, host, origin, pathname, hash, href, search } = loc;
   const dominio = origin + '/';
   const dominio1 = origin;
-  const path_url1 = pathname;
   const URL = href;
   const quest = search; // [OBSOLETA] -> Obtención del valor de las variable ej. ?mod=producto&ext=cate
-  const path_url = path_url1.replace("/", "");
-  const path_root = (host == 'localhost') ? 'MisSitios/' + proyecto + '/' + sub_path : sub_path;
+  const path_url = pathname.replace("/", "");
   const base_url = dominio + path_url;
-  const page_url = dominio + path_root;
+  const path_root = (host == 'localhost') ? path_url + path_hash : path_hash;//Revisar
+  const page_url = dominio + path_root;//
 
   /* VARIABLES */
   var tema = 'default';
   var path_tema = 'temas/' + tema + '/';
   var pag_name = filename();
-  var vars_Url = getQueryVariable(hash, sub_path);// 
+  var vars_Url = getQueryVariable(hash, path_hash);// 
   let { mod, ext, id } = urlVars(vars_Url);//Cambiar a Hash 
-  var url_m = base_url + page_path + mod + '/' + ext + '.html';
+  //var url_m = base_url + path_page + mod + '/' + ext + '.html';
   //mod = fileExist(mod,url_m);
   var ext2 = '/' + ext;
   var route = mod + ext2;
   var modh = (mod) ? mod : '';
   var exth = (ext && ext != 'index') ? '/' + ext : '';
   var hash2 = '#/' + modh + exth;
-  var url_mod = base_url + page_path + route + '.html';
-  var url404 = base_url + page_path + '404/index.html';
+  var url_mod = base_url + path_page + route + '.html';
+  var url404 = base_url + path_page + '404/index.html';
 
   const v = {
     w,
@@ -60,14 +59,14 @@ function variables() {
     year,
     fecha,
     proyecto,
-    sub_path,
-    src_path,
-    page_path,
+    path_hash,
+    path_src,
+    path_page,
     protocol,
     host,
     dominio,
     dominio1,
-    path_url1,
+    pathname,
     hash, //Load
     URL, //Load
     quest,
@@ -86,7 +85,6 @@ function variables() {
     route, //Load
     hash2,
     url_mod, //Load
-    url_m,
     url404
   };
   return v;
