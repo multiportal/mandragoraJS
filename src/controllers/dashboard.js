@@ -42,7 +42,7 @@ sidebarBtn.addEventListener("click", ()=>{
 function dashboard(){
   //Retardo para activar btnLogin
   setTimeout(function(){
-    if(host=='localhost' || host=='localhost:8080'){console.log('btnSidebar Activado');}
+    if(host=='localhost' || host=='localhost:9001'){console.log('btnSidebar Activado');}
     btnSidebar();
   },1000);
 }
