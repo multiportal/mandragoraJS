@@ -60,8 +60,8 @@ function variables() {
     fecha,
     proyecto,
     path_hash,
-    path_src,
-    path_page,
+    path_src,//NOT
+    path_page,//NOT
     protocol,
     host,
     dominio,
@@ -73,7 +73,7 @@ function variables() {
     path_url,
     path_root,
     base_url,
-    page_url,
+    page_url, 
     tema,
     path_tema,
     pag_name, //Load
@@ -84,8 +84,8 @@ function variables() {
     ext2, //Load
     route, //Load
     hash2,
-    url_mod, //Load
-    url404
+    url_mod, //Load-NOT
+    url404 //NOT
   };
   return v;
 }
