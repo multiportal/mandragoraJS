@@ -13,7 +13,7 @@ if($_SERVER['HTTP_HOST']==$h_s || $_SERVER['HTTP_HOST']=='www.'.$h_s){
 }else{
     // Localhost Development
     $db_host = "localhost";
-    $db_base = "apirest";
+    $db_base = "apirest";//"db_links";
     $db_user = "root"; 
     $db_pass = "";     	        
 }
