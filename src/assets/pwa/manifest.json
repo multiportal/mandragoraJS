@@ -1,0 +1,24 @@
+{
+	"name": "VCARD-APP",
+	"short_name": "VCARD-APP",
+	"version": "1.1.2",
+	"description": "VCARD - Tarjetas de Contacto Digital",
+	"scope": ".",
+	"start_url": "https://vcardappjs.herokuapp.com/app/",
+	"display": "standalone",
+	"orientation": "portrait",
+	"theme_color": "#000",
+	"background_color": "#fff",
+	"icons": [
+	  {
+		"src": "icon/apple-icon-180x180.png",
+		"sizes": "180x180",
+		"type": "image/png"
+	  },
+	  {
+		"src": "icon/apple-icon-152x152.png",
+		"sizes": "152x152",
+		"type": "image/png"
+	  }
+	]
+  }  
