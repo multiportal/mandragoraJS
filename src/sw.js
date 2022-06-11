@@ -1,13 +1,14 @@
 //Service Worker sw.js / index.php
-let loc = window.location;
+let loc = location;
 const {pathname} = loc;
-const path_url = pathname.replace("/", "");
+const path = pathname.replace("sw.js","");
 
 self.addEventListener('install', function(event) {
   console.log('[Service Worker] Instalando Service Worker (sw.js)...', event);
   event.waitUntil(
 	caches.open('static').then(function(cache) {
-	  cache.addAll(['/'+path_url+'', '/'+path_url+'index.html', '/'+path_url+'manifest.json','/'+path_url+'appCon.js']);
+		console.log(path);
+	  cache.addAll([path, path+'index.html']);
 	})
   );
 });
