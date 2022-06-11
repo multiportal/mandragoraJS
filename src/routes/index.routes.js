@@ -1,4 +1,4 @@
-import { consoleLocal, getRoutesSesion } from "../app/functions";
+import { consoleLocal, getRoutesSesion, capitalize } from "../app/functions";
 import Pages from "../controllers/index";
 import { pages, pagesSys } from "../controllers/pages";
 import { login } from "../controllers/login.js";
@@ -7,6 +7,8 @@ import { dashboard } from "../controllers/dashboard.js";
 
 const router = async (hash, hash2, mod, ext) => {
   consoleLocal('log','hash=>' + hash);
+  let ext2 = (ext!='index')?' / '+capitalize(ext):'';
+  document.title = 'MandragoraJS SPA - ' + capitalize(mod) + ext2;
   getRoutesSesion(mod);
   let page = (mod!='Home' && ext!='index')?ext:mod;// console.log(page,mod,ext);
   let content = document.getElementById('app-modulo');
