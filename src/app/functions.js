@@ -128,6 +128,10 @@ export function consoleLocal(type,val){
   }
 }
 
+export function capitalize(word) {
+  return word[0].toUpperCase() + word.slice(1).toLowerCase();
+}
+
 export function fecha() {
   var dt = new Date();
   var hora = dt.getHours();
