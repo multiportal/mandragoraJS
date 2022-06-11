@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 //const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
@@ -15,6 +16,14 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/assets/pwa/sw.js', to: 'sw.js' },
+        /*{ from: 'src/assets/pwa/icon/', to: 'icon/' },*/
+        { from: 'src/assets/pwa/icon/apple-icon-152x152.png', to: 'icon/apple-icon-152x152.png' },
+        { from: 'src/assets/pwa/icon/apple-icon-180x180.png', to: 'icon/apple-icon-180x180.png' },
+      ],
     }),
     /*new WorkboxPlugin.GenerateSW({
       // these options encourage the ServiceWorkers to get in there fast
