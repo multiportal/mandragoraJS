@@ -1,5 +1,6 @@
 /**PAGES SYSTEM**/
 import dashboard from "../pages/dashboard/index.html";
+import settings from "../pages/dashboard/settings.html";
 import forget from "../pages/forget/index.html";
 import login from "../pages/login/index.html";
 import logout from "../pages/logout/index.html";
@@ -22,6 +23,7 @@ export const pages = {
 
 export const pagesSys = {
   dashboard: dashboard,
+  settings: settings,
   forget: forget,
   login: login,
   logout: logout,
