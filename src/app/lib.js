@@ -32,6 +32,7 @@ function variables() {
   const base_url = dominio + path_url;
   const path_root = (host == 'localhost') ? path_url + path_hash : path_hash;//Revisar
   const page_url = dominio + path_root;//
+  const screenw = screen.width;
 
   /* VARIABLES */
   var tema = 'default';
@@ -74,6 +75,7 @@ function variables() {
     path_root,
     base_url,
     page_url, 
+    screenw,
     tema,
     path_tema,
     pag_name, //Load

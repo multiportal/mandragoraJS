@@ -23,4 +23,11 @@ body {
 .card{
     margin: 0; 
     padding: 0;
+    min-width: 260px;
+}
+
+@media screen and (max-width: 320px) {
+    .home-content{
+        width: 305px
+    }   
 }
