@@ -1,17 +1,26 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./src/index.js",
+  mode: "production",
   output: {
     path: path.resolve(__dirname, "../dist"),
     filename: "bundle.js",
   },
-  mode: "production",
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/assets/pwa/sw.js', to: 'sw.js' },
+        /*{ from: 'src/assets/pwa/icon/', to: 'icon/' },*/
+        { from: 'src/assets/pwa/icon/apple-icon-152x152.png', to: 'icon/apple-icon-152x152.png' },
+        { from: 'src/assets/pwa/icon/apple-icon-180x180.png', to: 'icon/apple-icon-180x180.png' },
+      ],
     }),
     new MiniCssExtractPlugin(),
   ],

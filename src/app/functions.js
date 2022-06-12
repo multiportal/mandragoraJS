@@ -38,18 +38,21 @@ export function menuWeb(hash,mod,rutas_web,rutas_sys){
   let userActivo = document.querySelector('.user-activo');
   let userLogout = document.querySelector('.user-logout');
 
-  menu.classList.remove('d-none');
+  /*menu.classList.remove('d-none');
   if(rutas_sys[mod]){
     menu.classList.add('d-none');
-  }
+  }*/
 
-  btnLogin.classList.remove('d-none');
-  userActivo.classList.add('d-none');
-  userLogout.classList.add('d-none');
-  if((token!=null && token!=undefined) && (token!='null' && token!='undefined')){
-    btnLogin.classList.add('d-none');
-    userActivo.classList.remove('d-none');
-    userLogout.classList.remove('d-none');
+  //SESION - MENU WEB
+  if(rutas_web[mod]){
+    btnLogin.classList.remove('d-none');
+    userActivo.classList.add('d-none');
+    userLogout.classList.add('d-none');
+    if((token!=null && token!=undefined) && (token!='null' && token!='undefined')){
+      btnLogin.classList.add('d-none');
+      userActivo.classList.remove('d-none');
+      userLogout.classList.remove('d-none');
+    }
   }
 }
 

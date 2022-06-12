@@ -17,11 +17,11 @@ import categorias from "../pages/productos/categorias.html";
 import contacto from "../pages/contacto/index.html";
 
 export const pages = {
-  Home: Home,
-  nosotros: nosotros,
-  productos: productos,
-  categorias: categorias,
-  contacto: contacto
+  Home: menu+Home,
+  nosotros: menu+nosotros,
+  productos: menu+productos,
+  categorias: menu+categorias,
+  contacto: menu+contacto
 };
 
 export const pagesSys = {
