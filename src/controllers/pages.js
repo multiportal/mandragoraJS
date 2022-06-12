@@ -6,6 +6,9 @@ import login from "../pages/login/index.html";
 import logout from "../pages/logout/index.html";
 import register from "../pages/registro/index.html";
 import noauth from "../pages/noauth/index.html";
+/**COMPONENTS**/
+import menu from "../components/menu.html";
+import sidebar from "../components/sidebar.html";
 /**PAGES**/
 import Home from "../pages/Home/index.html";
 import nosotros from "../pages/nosotros/index.html";
@@ -22,8 +25,8 @@ export const pages = {
 };
 
 export const pagesSys = {
-  dashboard: dashboard,
-  settings: settings,
+  dashboard: sidebar+dashboard,
+  settings: sidebar+settings,
   forget: forget,
   login: login,
   logout: logout,

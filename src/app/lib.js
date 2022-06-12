@@ -97,7 +97,7 @@ function load() {
   const v = variables(); consoleLocal('log', v);
   const { hash, mod, ext, id, route, hash2 } = v;
   router(hash, hash2, mod, ext);
-  controlRoutes(route,id);
+  controlRoutes(route,mod,id);
   menuWeb(hash2,mod,pages,pagesSys);
   //Redirect to #/ (Home)
   reload(mod);

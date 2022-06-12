@@ -19,11 +19,10 @@ const router = async (hash, hash2, mod, ext) => {
 }
 
 //Functions for Controllers JS
-function controlRoutes(route,id){ consoleLocal('log','route='+route);
+function controlRoutes(route,mod,id){ consoleLocal('log','route='+route);
   if(route=='login/index'){login();}
   if(route=='logout/index'){logout();}
-  if(route=='dashboard/index'){dashboard();}
-  //if(route=='profile/index'){profile();}
+  if(route=='dashboard/index' || mod=='dashboard'){dashboard();}
 }
 
 export { router,controlRoutes,pages,pagesSys };
