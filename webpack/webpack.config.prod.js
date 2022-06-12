@@ -17,7 +17,6 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: 'src/assets/pwa/sw.js', to: 'sw.js' },
-        /*{ from: 'src/assets/pwa/icon/', to: 'icon/' },*/
         { from: 'src/assets/pwa/icon/apple-icon-152x152.png', to: 'icon/apple-icon-152x152.png' },
         { from: 'src/assets/pwa/icon/apple-icon-180x180.png', to: 'icon/apple-icon-180x180.png' },
       ],
