@@ -261,8 +261,8 @@ global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$dbSQLite;
     if($ID!=NULL && $ID!=''){
         if($us==$U || $pa==$P){
             $token = sha1(uniqid(rand(),true));//Generador de Token //Token();
-            $toks = "INSERT INTO $tab_token (ID_user,Token,Estado,Fecha) VALUES ('{$ID}','{$token}','Activo','{$date}')";
-            $tok = $conec->prepare($toks);
+            $tok = "INSERT INTO $tab_token (ID_user,Token,Estado,Fecha) VALUES ('{$ID}','{$token}','Activo','{$date}')";
+            $tok = $conec->prepare($tok);
             $tok->execute();
             if($tok){
                 if($dbSQLite!=''){
@@ -293,6 +293,16 @@ global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$dbSQLite;
     }else{Error('ERROR 400: Mala Respuesta');}
 }
 
+//PROFILE
+function profile(){
+    $token = $_POST['token'];
+    $validar = verificarToken($token);
+    header("HTTP/1.1 200 OK");
+    header('Content-Type: application/json');
+    $resultado['mensaje']=$validar; 
+    echo json_encode($resultado);
+}
+
 //ERROR
 function Error($error){
     header('Content-Type: application/json');
@@ -303,6 +313,7 @@ function Error($error){
 $msj_test='Mensaje de prueba';
 $msj_ok='ok';
 $msj_login='Usted esta en el Login';
+$msj_profile='Usted esta en el Profile';
 //ERROR
 $Error_id='No existe ID!';
 $Error_msj ='La consulta no se ejecuto';
