@@ -11,7 +11,7 @@ header('P3P: CP="IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA"');
 //header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $_POST = json_decode(file_get_contents('php://input'),true);
-    profile();
+    login();
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET'){
