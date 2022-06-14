@@ -5,7 +5,7 @@ const dominio = loc.origin + '/';
 var path_url = pathname.replace("/", "");
 
 console.log('/* javascript login | VARIABLES CONSTANTES*/');
-var api_login = (host!='localhost')?'https://portafoliom.herokuapp.com/api/login/':'http://localhost/MisSitios/mandragoraJS/api/login/';
+var api_login = (host!='localhost' && host!='localhost:9001')?'https://portafoliom.herokuapp.com/api/login/':'http://localhost/MisSitios/mandragoraJS/api/login/';
 if(host=='localhost'){console.log('api_login='+api_login);}
 
 function btnLogin(){
@@ -32,7 +32,7 @@ function btnGuardar(e){
         },
         body: JSON.stringify(datos)
     }).then(res=>res.json()).then(data=>{
-        if(host=='localhost'){console.log(data);}
+        if(host=='localhost' || host=='localhost:9001'){console.log(data);}
         localStorage.setItem("Token", JSON.stringify(data.token));
         let token = localStorage.getItem("Token");
         //Redireccionar al Dashboard

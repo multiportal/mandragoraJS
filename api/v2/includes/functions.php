@@ -261,8 +261,8 @@ global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$dbSQLite;
     if($ID!=NULL && $ID!=''){
         if($us==$U || $pa==$P){
             $token = sha1(uniqid(rand(),true));//Generador de Token //Token();
-            $tok = "INSERT INTO $tab_token (ID_user,Token,Estado,Fecha) VALUES ('{$ID}','{$token}','Activo','{$date}')";
-            $tok = $conec->prepare($tok);
+            $toks = "INSERT INTO $tab_token (ID_user,Token,Estado,Fecha) VALUES ('{$ID}','{$token}','Activo','{$date}')";
+            $tok = $conec->prepare($toks);
             $tok->execute();
             if($tok){
                 if($dbSQLite!=''){

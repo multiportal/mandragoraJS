@@ -27,7 +27,10 @@ export const functionFetch = async (Api, endpoint, method, datos) => {
 }
 
 export const fetchProfile = async (Api) => {
-    let token = localStorage.getItem("Token"); //consoleLocal('log','token='+token);
+    let tok1 = localStorage.getItem("Token"); //console.log('log','token='+token);
+    let tok2 = tok1.replace('"',''); //console.log('log','token='+tok2);
+    let token = tok2.replace('"',''); console.log('log','token='+token);
+
     const profile = await functionFetch(Api, 'v2/_token', 'GET', '');
     console.log('Profile:',profile);
 
