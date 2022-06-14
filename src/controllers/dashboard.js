@@ -44,7 +44,8 @@ async function btnSidebar() {
   }
 
   //let users = await functionFetch(Api,'v2/_signup','GET','');console.log(users);
-  fetchProfile(Api);
+  const {data} = await fetchProfile(Api); console.log(data.InfoUser);
+  let user = data.InfoUser;
 
 }
 

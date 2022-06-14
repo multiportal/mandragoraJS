@@ -295,12 +295,20 @@ global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$dbSQLite;
 
 //PROFILE
 function profile(){
+global $conec,$tab_signup;
     $token = $_POST['token'];
     $validar = verificarToken($token);
+    $ID=$validar['ID_user'];
+    $sql = $conec->prepare("SELECT * FROM $tab_signup WHERE ID=ID");
+    $sql->bindValue(':ID', $ID);
+    $sql->execute();
+    $json=$sql->fetch(PDO::FETCH_ASSOC);
     header("HTTP/1.1 200 OK");
     header('Content-Type: application/json');
-    $resultado['mensaje']=$validar; 
-    echo json_encode($resultado);
+    $resultado['InfoToken']=$validar;
+    $resultado['InfoUser']=$json;
+    $res['data']=$resultado; 
+    echo json_encode($res);
 }
 
 //ERROR
