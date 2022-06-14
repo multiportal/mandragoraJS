@@ -49,6 +49,8 @@ function variables() {
   var hash2 = '#/' + modh + exth;
   var url_mod = base_url + path_page + route + '.html';
   var url404 = base_url + path_page + '404/index.html';
+  /* URL-API */
+  const Api = (host!='localhost' && host!='localhost:9001')?'https://portafoliom.herokuapp.com/api':'http://localhost/MisSitios/mandragoraJS/api';
 
   const v = {
     w,
@@ -87,7 +89,8 @@ function variables() {
     route, //Load
     hash2,
     url_mod, //Load-NOT
-    url404 //NOT
+    url404, //NOT
+    Api
   };
   return v;
 }
