@@ -6,7 +6,7 @@ const { host, dominio, path_url, base_url, screenw, Api } = v;
 let dashCss = base_url + 'src/assets/css/dashboard.css';
 if (host == 'localhost') { console.log(dashCss); }
 
-function btnSidebar() {
+async function btnSidebar() {
   //<![CDATA[
   /*if(document.createStyleSheet) {
     document.createStyleSheet(dashCss);
@@ -43,7 +43,7 @@ function btnSidebar() {
     side.classList.add('close');
   }
 
-  //functionFetch(Api,'v2/_signup','GET','');
+  //let users = await functionFetch(Api,'v2/_signup','GET','');console.log(users);
   fetchProfile(Api);
 
 }
