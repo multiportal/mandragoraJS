@@ -299,7 +299,7 @@ global $conec,$tab_signup;
     $token = $_POST['token'];
     $validar = verificarToken($token);
     $ID=$validar['ID_user'];
-    $sql = $conec->prepare("SELECT * FROM $tab_signup WHERE ID=ID");
+    $sql = $conec->prepare("SELECT * FROM $tab_signup WHERE ID=:ID");//Limit Info
     $sql->bindValue(':ID', $ID);
     $sql->execute();
     $json=$sql->fetch(PDO::FETCH_ASSOC);

@@ -43,9 +43,13 @@ async function btnSidebar() {
     side.classList.add('close');
   }
 
-  //let users = await functionFetch(Api,'v2/_signup','GET','');console.log(users);
-  const {data} = await fetchProfile(Api); console.log(data.InfoUser);
-  let user = data.InfoUser;
+  //INFO USER /////////
+  const {email,username,nombre,foto,puesto,status} = await fetchProfile(Api,'InfoUser');
+  const u = document.querySelector('.profile_name');
+  u.innerHTML=username;
+  const job = document.querySelector('.job');
+  job.innerHTML=puesto;
+  /////////////////////
 
 }
 

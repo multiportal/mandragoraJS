@@ -1,8 +1,8 @@
 export const functionFetch = async (Api, endpoint, method, datos) => {
     const url = `${Api}/${endpoint}`;
     let tok1 = localStorage.getItem("Token");
-    let tok2 = tok1.replace('"','');
-    const token = tok2.replace('"','');
+    let tok2 = tok1.replace('"', '');
+    const token = tok2.replace('"', '');
     const data = { ...datos, token };
     const config = (datos != null) ? {
         method: method,
@@ -33,7 +33,19 @@ export const functionFetch = async (Api, endpoint, method, datos) => {
     }
 }
 
-export const fetchProfile = async (Api) => {
-    const profile = await functionFetch(Api, 'profile/index.php', 'POST', '');//console.log('Profile:',profile);
-    return profile;
+export const fetchProfile = async (Api, info) => {
+    const {data} = await functionFetch(Api, 'profile/index.php', 'POST', '');//console.log('Profile:',data);
+
+    switch (info) {
+        case 'InfoUser':
+            return data.InfoUser;
+        break;
+        case 'InfoToken':
+            return data.InfoToken;
+        break;
+        default:
+            return data;
+        break;
+    }
+    
 }
