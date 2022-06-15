@@ -32,7 +32,7 @@ export function urlVars(vars){
 }
 
 export function menuWeb(hash,mod,rutas_web,rutas_sys){
-  let token = localStorage.getItem("Token"); console.log(token);
+  let token = localStorage.getItem("Token"); //console.log(token);
   let menu = document.querySelector('#menuweb');
   let btnLogin = document.querySelector('.user-login');
   let userActivo = document.querySelector('.user-activo');
