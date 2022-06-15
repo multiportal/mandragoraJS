@@ -1,8 +1,6 @@
 export const functionFetch = async (Api, endpoint, method, datos) => {
     const url = `${Api}/${endpoint}`;
-    let tok1 = localStorage.getItem("Token");
-    let tok2 = tok1.replace('"', '');
-    const token = tok2.replace('"', '');
+    let token = localStorage.getItem("Token");
     const data = { ...datos, token };
     const config = (datos != null) ? {
         method: method,
@@ -28,8 +26,8 @@ export const functionFetch = async (Api, endpoint, method, datos) => {
             console.error('Error 404(Fetch): ');
         }
     } else {
-        const res = await response.json();//console.log(res);
-        return res;
+        const data = await response.json();//console.log(res);
+        return data;
     }
 }
 

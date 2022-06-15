@@ -285,7 +285,8 @@ global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$dbSQLite;
                 $resultado['mensaje']='OK';
                 $resultado['token']=$token;
                 $resultado['VerifcarToken']=verificarToken($token);
-                echo json_encode($resultado);
+                $res['data']=$resultado;
+                echo json_encode($res);
             }
         }else{
             Error('ERROR: El usuario o password es incorrecto');

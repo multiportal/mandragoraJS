@@ -31,9 +31,10 @@ function btnGuardar(e){
             'Content-Type':'application/json'
         },
         body: JSON.stringify(datos)
-    }).then(res=>res.json()).then(data=>{
-        if(host=='localhost' || host=='localhost:9001'){console.log(data);}
-        localStorage.setItem("Token", JSON.stringify(data.token));
+    }).then(res=>res.json()).then(resp=>{
+        const {data} = resp;
+        if(host=='localhost' || host=='localhost:9001'){console.log(resp);}
+        localStorage.setItem("Token", data.token);//localStorage.setItem("Token", JSON.stringify(data.token));
         let token = localStorage.getItem("Token");
         //Redireccionar al Dashboard
         if(token!=null && token!='undefined'){
@@ -49,8 +50,8 @@ function btnGuardar(e){
 
 const login = () => {
     const url = api_login+'';
-    fetch(url).then(res=>res.json()).then(data=>{
-        console.log(data);
+    fetch(url).then(res=>res.json()).then(resp=>{
+        console.log(resp);
     })
     .catch(err=>console.log(err));
     //Retardo para activar btnLogin
