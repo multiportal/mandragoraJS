@@ -13,13 +13,13 @@ if($_SERVER['HTTP_HOST']==$h_s || $_SERVER['HTTP_HOST']=='www.'.$h_s){
 }else{
     // Localhost Development
     $db_host = "localhost";
-    $db_base = "db_links";//"db_links";
+    $db_base = "apirest";//"db_links";
     $db_user = "root"; 
     $db_pass = "";     	        
 }
 // Settings
 $config = [
-    "driver" => "sqlite",
+    "driver" => "mysql",
     "host" => $db_host,
     "database" => $db_base,
     "username" => $db_user,
