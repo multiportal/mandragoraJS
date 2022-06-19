@@ -291,7 +291,7 @@ global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$dbSQLite;
         }else{
             Error('ERROR: El usuario o password es incorrecto');
         }
-    }else{Error('ERROR 400: Mala Respuesta');}
+    }else{Error('ERROR: El usuario o password es incorrecto');}
 }
 
 //PROFILE
