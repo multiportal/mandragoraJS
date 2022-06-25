@@ -19,10 +19,10 @@ async function btnSidebar() {
   }*/
   //]]>
 
-  let btnSalir = document.querySelector('.bx-log-out')
-  btnSalir.addEventListener('click', () => {
-    window.location.href = '#/logout';
-  });
+  let btnSalir = document.querySelector('.bx-log-out');
+  if(btnSalir!=null){
+    btnSalir.addEventListener('click', () => {window.location.href = '#/logout';});
+  }
 
   let arrow = document.querySelectorAll(".arrow");
   for (var i = 0; i < arrow.length; i++) {
@@ -34,9 +34,9 @@ async function btnSidebar() {
 
   let sidebar = document.querySelector(".sidebar");
   let sidebarBtn = document.querySelector(".bx-menu");//console.log(sidebarBtn);
-  sidebarBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
-  });
+  if(sidebarBtn!=null){
+    sidebarBtn.addEventListener("click", () => {sidebar.classList.toggle("close");});
+  }
 
   if(screenw<=740){
     let side = document.querySelector('.sidebar');
@@ -46,9 +46,9 @@ async function btnSidebar() {
   //INFO USER /////////
   const {email,username,nombre,foto,puesto,status} = await fetchProfile(Api,'InfoUser');
   const u = document.querySelector('.profile_name');
-  u.innerHTML=username;
+  if(u!=null){u.innerHTML=username;}
   const job = document.querySelector('.job');
-  job.innerHTML=puesto;
+  if(job!=null){job.innerHTML=puesto;}
   /////////////////////
 
 }

@@ -10,7 +10,7 @@ if(host=='localhost' || host=='localhost:9001'){console.log('api_login='+api_log
 
 function btnLogin(){
 const formulario = document.getElementById('form-login');
-formulario.addEventListener('submit', btnGuardar);
+if(formulario!=null){formulario.addEventListener('submit', btnGuardar);console.log('btnLogin Activado');}
 }
 
 function btnGuardar(e){
@@ -62,7 +62,6 @@ const login = () => {
     .catch(err=>console.log(err));
     //Retardo para activar btnLogin
     setTimeout(function(){
-        console.log('btnLogin Activado');
         btnLogin();
     },1000);
 }
