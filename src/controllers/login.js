@@ -1,11 +1,10 @@
+import {variables} from '../app/lib';
+const v = variables();
 /* VARIABLES CONSTANTES*/
-var loc = window.location;
-const {host,pathname} = loc;
-const dominio = loc.origin + '/';
-var path_url = pathname.replace("/", "");
+const {host,pathname,dominio,path_url,Api} = v;
 
 console.log('/* javascript login | VARIABLES CONSTANTES*/');
-var api_login = (host!='localhost' && host!='localhost:9001')?'https://portafoliom.herokuapp.com/api/login/':'http://localhost/MisSitios/mandragoraJS/api/login/';
+let api_login = Api + '/login/';
 if(host=='localhost' || host=='localhost:9001'){console.log('api_login='+api_login);}
 
 function btnLogin(){
