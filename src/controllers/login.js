@@ -1,7 +1,7 @@
 import {variables} from '../app/lib';
 const v = variables();
 /* VARIABLES CONSTANTES*/
-const {host,pathname,dominio,path_url,Api} = v;
+const {host,dominio,path_url,Api} = v;
 
 console.log('/* javascript login | VARIABLES CONSTANTES*/');
 let api_login = Api + '/login/';
