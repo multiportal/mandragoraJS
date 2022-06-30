@@ -50,7 +50,7 @@ function variables() {
   var url_mod = base_url + path_page + route + '.html';
   var url404 = base_url + path_page + '404/index.html';
   /* URL-API */
-  const Api = (host!='localhost' && host!='localhost:9001')?'https://apirestm.herokuapp.com/api':'https://apirestm.herokuapp.com/api';
+  const Api = (host!='localhost:9001')?'https://apirestm.herokuapp.com/api':'http://localhost/MisSitios/apirestm/api';
 
   const v = {
     w,
