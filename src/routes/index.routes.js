@@ -1,6 +1,6 @@
-import { consoleLocal, getRoutesSesion, capitalize } from "../app/functions";
-import Pages from "../controllers/index";
-import { pages, pagesSys } from "../controllers/pages";
+import { consoleLocal, getRoutesSesion, capitalize } from "../app/functions.js";
+import Pages from "../controllers/index.js";
+import { pages, pagesSys } from "../controllers/pages.js";
 import { login } from "../controllers/login.js";
 import { logout } from "../controllers/logout.js";
 import { dashboard } from "../controllers/dashboard.js";
