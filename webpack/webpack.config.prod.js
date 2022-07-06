@@ -1,43 +1,45 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: './src/index.js',
-  devServer: {
-    contentBase: path.join(__dirname, './../build'),
-    compress: true,
-    port: 9000,
-  },
+  entry: "./src/index.js",
+  mode: "production",
   output: {
-    path: path.resolve(__dirname, './../build'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, "../dist"),
+    filename: "bundle.js",
   },
-  plugins:[
+  plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: "./src/index.html",
     }),
     new CopyPlugin({
       patterns: [
         { from: 'src/assets/pwa/sw.js', to: 'sw.js' },
-        { from: 'src/assets/pwa/icon/', to: 'assets/pwa/icon/icon/' },
-        { from: 'src/assets/img/', to: 'assets/img/' },
         { from: 'src/assets/pwa/icon/apple-icon-152x152.png', to: 'icon/apple-icon-152x152.png' },
         { from: 'src/assets/pwa/icon/apple-icon-180x180.png', to: 'icon/apple-icon-180x180.png' },
       ],
     }),
+    new MiniCssExtractPlugin(),
   ],
   module: {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          "css-loader",
+        ],
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
-          // Creates `style` nodes from JS strings
-          "style-loader",
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
           // Translates CSS into CommonJS
           "css-loader",
           // Compiles Sass to CSS
@@ -48,14 +50,15 @@ module.exports = {
         test: /\.html$/i,
         loader: "html-loader",
       },
-      /*{
+      {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
-      },*/
+      },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
     ],
   },
+  devtool: "eval-source-map",
 };
