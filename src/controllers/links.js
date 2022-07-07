@@ -99,12 +99,12 @@ function borrar() {
   },2000);
 }
 
-export default function links(){
+function links(){
   //Retardo para activar btnLogin
   setTimeout(function(){
-    console.log('links Activado');
     linksList();
+    console.log('links Activado');
   },1000);
 }
 
-//export {links};
+export {links};
