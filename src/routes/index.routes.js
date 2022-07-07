@@ -26,7 +26,7 @@ function controlRoutes(route,mod,id){ consoleLocal('log','route='+route);
   if(route=='logout/index'){logout();}
   if(route=='dashboard/index' || (mod=='dashboard' || mod=='links')){dashboard();}
   if(route=='links/index'){links();}
-  if(route=='links/add'){linksAdd();}
+  if(route=='links/linksAdd'){linksAdd();}
 
 }
 

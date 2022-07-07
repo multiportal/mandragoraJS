@@ -15,6 +15,7 @@ const linksList = async () => {
   const { data } = await response.json();
   //let datos = data.data;
   console.log(data);
+  list.innerHTML = ``;
   data.forEach(element => {
     const { ID, title, url, description, cate, user_id, created_at } = element;
     let list = document.querySelector('#list');
@@ -92,7 +93,7 @@ function borrar() {
   console.log('Click Eliminar');
   setTimeout(function () {
     console.log('links Recargado');
-    window.location.href = dominio + path_url + '#/links';
+    linksList();//window.location.href = dominio + path_url + '#/links';
   }, 2000);
 }
 

@@ -1,4 +1,5 @@
 import { fecha } from '../app/functions.js';
+import { fetchProfile } from '../app/fetch.js';
 import { variables } from '../app/lib';
 const v = variables();
 /* VARIABLES CONSTANTES*/
@@ -21,7 +22,7 @@ function fechaId() {
   setTimeout(fechaId, 1000);
 }
 
-function btnGuardar(e) {
+async function btnGuardar(e) {
   e.preventDefault();
   console.log('Validación de Datos');
   let Token = localStorage.getItem('Token');//console.log('TOKEN: ' + Token);
@@ -30,7 +31,8 @@ function btnGuardar(e) {
   let des = document.getElementById('description').value;
   let cat = document.getElementById('cate').value;
   let fc = document.getElementById('fc').value;
-  let uid = 1//document.getElementById('ID').value;
+  const {ID} = await fetchProfile(Api,'InfoUser');//ID USER
+  let uid = ID;//document.getElementById('ID').value;
   //var datos = new FormData(btnForm);
   var datos = {
     //ID: 4,
@@ -44,7 +46,6 @@ function btnGuardar(e) {
   }
   console.log(datos);
   const url_post = api_links;console.warn(url_post);  
-  /*
   fetch(url_post, {
     method: 'POST',
     headers: {
@@ -58,14 +59,13 @@ function btnGuardar(e) {
     window.location.href = dominio + path_url + '#/links';
   })
     .catch(err => console.error(err));
-    */
 }
 
 function linksAdd() {
   //Retardo para activar btnLogin
   setTimeout(function () {
-    console.log('linksAdd Activado');
     btnAdd();
+    console.log('linksAdd Activado');
   }, 1000);
 
 }
