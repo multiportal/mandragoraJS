@@ -11,7 +11,7 @@ import './assets/font-awesome-5.14.0/css/all.min.css';
 import './assets/css/style.css';
 //import './assets/main.scss';
 import './assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js';
-import './assets/js/sweetalert2.all.min.js';
+//import './assets/js/sweetalert2.all.min.js';
 //import './sw.js'; //SERVICE WORKER
 import './assets/pwa/appCon.js';
 //Files import for App

@@ -238,3 +238,13 @@
   font-size: 26px;
   font-weight: 600;
 }
+
+.row{
+  --bs-gutter-x:0;
+}
+
+.card{
+  margin: 8px 10px; 
+  padding: 0;
+  min-width: 260px;
+}

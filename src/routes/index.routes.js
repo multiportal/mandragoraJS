@@ -5,6 +5,7 @@ import { login } from "../controllers/login.js";
 import { logout } from "../controllers/logout.js";
 import { dashboard } from "../controllers/dashboard.js";
 import { links } from "../controllers/links.js";
+import { linksAdd } from "../controllers/link-add.js";
 
 const router = async (hash, hash2, mod, ext) => {
   consoleLocal('log','hash=>' + hash);
@@ -23,8 +24,9 @@ const router = async (hash, hash2, mod, ext) => {
 function controlRoutes(route,mod,id){ consoleLocal('log','route='+route);
   if(route=='login/index'){login();}
   if(route=='logout/index'){logout();}
-  if(route=='dashboard/index' || mod=='dashboard'){dashboard();}
-  if(route=='links/index' || mod=='links'){dashboard();links();}
+  if(route=='dashboard/index' || (mod=='dashboard' || mod=='links')){dashboard();}
+  if(route=='links/index'){links();}
+  if(route=='links/add'){linksAdd();}
 
 }
 
