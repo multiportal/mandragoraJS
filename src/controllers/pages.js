@@ -6,6 +6,10 @@ import login from "../pages/login/index.html";
 import logout from "../pages/logout/index.html";
 import register from "../pages/registro/index.html";
 import noauth from "../pages/noauth/index.html";
+import links from "../pages/links/index.html";
+import linksAdd from "../pages/links/add.html";
+import linksEdit from "../pages/links/edit.html";
+
 /**COMPONENTS**/
 import menu from "../components/menu.html";
 import sidebar from "../components/sidebar.html";
@@ -31,5 +35,8 @@ export const pagesSys = {
   login: login,
   logout: logout,
   registro: register,
-  noauth: noauth
+  noauth: noauth,
+  links: sidebar+links,
+  linksAdd: sidebar+linksAdd,
+  linksEdit: sidebar+linksEdit,
 };
