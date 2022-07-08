@@ -51,7 +51,7 @@ const linksList = async () => {
   let Token = localStorage.getItem('Token');
 
   lista.addEventListener('click', (e) => {
-    const id = e.target.getAttribute('data-id'); console.log(id);
+    const id = e.target.getAttribute('data-id'); //console.log(id);
     if (id != null) {
       Swal.fire({
         title: '¿Esta seguro de eliminar el registro (' + id + ')?',
@@ -78,9 +78,8 @@ const linksList = async () => {
             console.log(data);
             //Redireccionar al Dashboard location.href= dominio + path_url + '#/links';
             borrar();
-          })
-            .catch(err => console.error(err));
-          Swal.fire('¡Eliminado!', 'El registro ha sido eliminado.', 'success')
+          }).catch(err => console.error(err));
+          Swal.fire('¡Eliminado!', 'El registro ha sido eliminado.', 'success');
         }
       })
     }
