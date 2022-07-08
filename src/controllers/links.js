@@ -13,8 +13,7 @@ const linksList = async () => {
   let url_get = api_links;
   const response = await fetch(url_get);
   const { data } = await response.json();
-  //let datos = data.data;
-  console.log(data);
+  //console.log(data);
   list.innerHTML = ``;
   data.forEach(element => {
     const { ID, title, url, description, cate, user_id, created_at } = element;
@@ -30,7 +29,7 @@ const linksList = async () => {
               </a>
               <p class="m-2">${cate} - ${created_at}</p>
               <p class="card-text">${description}</p>
-              <a class="btn btn-secondary" href="#/links/edit/${ID}"><i class="fa fa-edit"></i> Editar</a>
+              <a class="btn btn-secondary" href="#/links/linksEdit/${ID}"><i class="fa fa-edit"></i> Editar</a>
               <button data-id="${ID}" class="btn btn-danger"><i class="fa fa-trash"></i> Borrar</button>
             </div>
           </div>

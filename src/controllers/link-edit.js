@@ -1,3 +1,4 @@
+import { consoleLocal } from '../app/functions';
 import { variables } from '../app/lib';
 const v = variables();
 /* VARIABLES CONSTANTES*/
@@ -15,11 +16,10 @@ function btnEdit() {
 
 const formEdit = async (id) => {
     const formulario = document.getElementById('contentForm');
-    //let api_url = api_links+id;console.log(api_url);
-    let url_get = api_links + id; //console.log(url_get);
+    let url_get = api_links + id; console.log(url_get);
     const response = await fetch(url_get);
-    const data = await response.json();
-    //consoleLocal('log',data);
+    const { data } = await response.json();
+    consoleLocal('log',data);
     data.forEach(element => {
         const { ID, title, url, description, cate, user_id, created_at } = element;
         formulario.innerHTML = `

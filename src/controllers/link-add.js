@@ -18,8 +18,10 @@ function btnAdd() {
 
 function fechaId() {
   let inputFecha = document.getElementById('fc');
-  inputFecha.value = fecha();
-  setTimeout(fechaId, 1000);
+  if(inputFecha!==null){
+    inputFecha.value = fecha();
+    setTimeout(fechaId, 1000);  
+  }
 }
 
 async function btnGuardar(e) {
@@ -44,8 +46,8 @@ async function btnGuardar(e) {
     created_at: fc,
     token: Token
   }
-  console.log(datos);
-  const url_post = api_links;console.warn(url_post);  
+  //console.log(datos);
+  const url_post = api_links;//console.warn(url_post);  
   fetch(url_post, {
     method: 'POST',
     headers: {

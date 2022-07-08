@@ -7,7 +7,6 @@ import logout from "../pages/logout/index.html";
 import register from "../pages/registro/index.html";
 import noauth from "../pages/noauth/index.html";
 import links from "../pages/links/index.html";
-import list from "../pages/list/index.html"
 import linksAdd from "../pages/links/add.html";
 import linksEdit from "../pages/links/edit.html";
 
@@ -32,13 +31,12 @@ export const pages = {
 export const pagesSys = {
   dashboard: sidebar+dashboard,
   settings: sidebar+settings,
-  links: sidebar+links,
-  list: sidebar+list,
   forget: forget,
   login: login,
   logout: logout,
   registro: register,
   noauth: noauth,
+  links: sidebar+links,
   linksAdd: sidebar+linksAdd,
   linksEdit: sidebar+linksEdit,
 };
