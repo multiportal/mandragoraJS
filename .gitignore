@@ -1,6 +1,8 @@
 _docs
-build
 node_modules
+build
+api
 package-lock.json
+*.db
 .env
 .vscode
