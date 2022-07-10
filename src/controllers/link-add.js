@@ -1,4 +1,4 @@
-import { fecha } from '../app/functions.js';
+import { consoleLocal, fecha } from '../app/functions.js';
 import { fetchProfile } from '../app/fetch.js';
 import { variables } from '../app/lib';
 const v = variables();
@@ -54,9 +54,8 @@ async function btnGuardar(e) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(datos)
-  }).then(res => res.json()).then(data => {
-    //const {data} = data;
-    console.log(data);
+  }).then(res => res.json()).then(data => {//const {data} = data;
+    consoleLocal(data);
     //Redireccionar al Dashboard
     window.location.href = dominio + path_url + '#/links';
   })
@@ -69,7 +68,6 @@ function linksAdd() {
     btnAdd();
     console.log('linksAdd Activado');
   }, 1000);
-
 }
 
 export { linksAdd };

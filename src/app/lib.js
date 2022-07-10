@@ -31,6 +31,7 @@ function variables() {
   const path_url = pathname.replace("/", "");
   const base_url = dominio + path_url;
   const path_root = (host == 'localhost') ? path_url + path_hash : path_hash;//Revisar
+  const path_build = (host == 'localhost:9001')?'../':'./';
   const page_url = dominio + path_root;//
   const screenw = screen.width;
 
@@ -75,6 +76,7 @@ function variables() {
     quest,
     path_url,
     path_root,
+    path_build,
     base_url,
     page_url, 
     screenw,

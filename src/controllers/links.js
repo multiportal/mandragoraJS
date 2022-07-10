@@ -2,7 +2,7 @@
 import { variables } from '../app/lib';
 const v = variables();
 /* VARIABLES CONSTANTES*/
-const { host, dominio, path_url, Api } = v;
+const { host, dominio, path_url, path_build, Api } = v;
 
 console.log('/* javascript login | VARIABLES CONSTANTES*/');
 const api_links = Api + '/v2/links/';
@@ -22,7 +22,7 @@ const linksList = async () => {
       list.innerHTML += `
         <!--div class="col-md-4"-->
           <div id="${ID}" class="card" style="width: 18rem;">
-            <img src="../../assets/img/bg/1.jpg" class="card-img-top" alt="">
+            <img src="${path_build}assets/img/bg/1.jpg" class="card-img-top" alt="">
             <div class="card-body">
               <a href="${url}" target="_blank">
                 <h5 class="card-title">${title}</h5>
