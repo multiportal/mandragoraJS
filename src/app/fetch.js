@@ -33,7 +33,6 @@ export const functionFetch = async (Api, endpoint, method, datos) => {
 
 export const fetchProfile = async (Api, info) => {
     const {data} = await functionFetch(Api, 'profile/index.php', 'POST', '');//console.log('Profile:',data);
-
     switch (info) {
         case 'InfoUser':
             return data.InfoUser;
@@ -45,5 +44,4 @@ export const fetchProfile = async (Api, info) => {
             return data;
         break;
     }
-    
 }
