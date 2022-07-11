@@ -19,7 +19,7 @@ const router = async (hash, hash2, mod, ext) => {
 }
 
 //Functions for Controllers JS
-function controlRoutes(route,mod,id){ consoleLocal('log','route='+route);
+function controlRoutes(route,mod,ext,id){ consoleLocal('log','route='+route);
   if(route=='login/index'){login();}
   if(route=='logout/index'){logout();}
   if(route=='dashboard/index' || mod=='dashboard'){dashboard();}
