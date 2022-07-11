@@ -1,11 +1,10 @@
+//LINKS-ADD.JS
 import { consoleLocal, fecha } from '../app/functions.js';
 import { fetchProfile } from '../app/fetch.js';
 import { variables } from '../app/lib';
-const v = variables();
 /* VARIABLES CONSTANTES*/
-const { host, dominio, path_url, Api } = v;
-
-console.log('/* javascript login | VARIABLES CONSTANTES*/');
+const { host, dominio, path_url, Api } = variables();
+console.log('/* javascript LINKS-ADD | VARIABLES CONSTANTES*/');
 const api_links = Api + '/v2/links/';
 if (host == 'localhost' || host == 'localhost:9001') { console.log('api_links=' + api_links); }
 ////////////////////////
