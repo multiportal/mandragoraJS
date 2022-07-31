@@ -20,10 +20,10 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: 'src/assets/pwa/sw.js', to: 'sw.js' },
-        { from: 'src/assets/pwa/icon/', to: 'assets/pwa/icon/icon/' },
-        { from: 'src/assets/img/', to: 'assets/img/' },
         { from: 'src/assets/pwa/icon/apple-icon-152x152.png', to: 'icon/apple-icon-152x152.png' },
         { from: 'src/assets/pwa/icon/apple-icon-180x180.png', to: 'icon/apple-icon-180x180.png' },
+        { from: 'src/assets/pwa/icon/', to: 'assets/pwa/icon/icon/' },
+        { from: 'src/assets/img/', to: 'assets/img/' },
       ],
     }),
   ],
@@ -48,10 +48,10 @@ module.exports = {
         test: /\.html$/i,
         loader: "html-loader",
       },
-      /*{
+      {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
-      },*/
+      },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
