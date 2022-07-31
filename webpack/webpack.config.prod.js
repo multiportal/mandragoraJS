@@ -19,6 +19,8 @@ module.exports = {
         { from: 'src/assets/pwa/sw.js', to: 'sw.js' },
         { from: 'src/assets/pwa/icon/apple-icon-152x152.png', to: 'icon/apple-icon-152x152.png' },
         { from: 'src/assets/pwa/icon/apple-icon-180x180.png', to: 'icon/apple-icon-180x180.png' },
+        { from: 'src/assets/pwa/icon/', to: 'assets/pwa/icon/icon/' },
+        { from: 'src/assets/img/', to: 'assets/img/' },
       ],
     }),
     new MiniCssExtractPlugin(),
@@ -27,19 +29,12 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          "css-loader",
-        ],
+        use: [{loader: MiniCssExtractPlugin.loader,},"css-loader",],
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
+          {loader: MiniCssExtractPlugin.loader,},
           // Translates CSS into CommonJS
           "css-loader",
           // Compiles Sass to CSS
