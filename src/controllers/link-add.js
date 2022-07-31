@@ -2,11 +2,12 @@
 import { consoleLocal, fecha } from '../app/functions.js';
 import { fetchProfile } from '../app/fetch.js';
 import { variables } from '../app/lib';
+import { api_links, Api } from '../app/urls';
 /* VARIABLES CONSTANTES*/
-const { host, dominio, path_url, Api } = variables();
-console.log('/* javascript LINKS-ADD | VARIABLES CONSTANTES*/');
-const api_links = Api + '/v2/links/';
-if (host == 'localhost' || host == 'localhost:9001') { console.log('api_links=' + api_links); }
+const { host, dominio, path_url } = variables();
+//console.log('/* javascript LINKS-ADD | VARIABLES CONSTANTES*/');
+//const api_links = Api + '/v2/links/';
+//if (host == 'localhost' || host == 'localhost:9001') { console.log('api_links=' + api_links); }
 ////////////////////////
 
 function btnAdd() {
