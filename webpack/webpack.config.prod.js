@@ -10,9 +10,9 @@ module.exports = {
     path: path.resolve(__dirname, "../dist"),
     filename: "bundle.js",
   },
-  performance : {
+  /*performance : {
     hints : false
-  },
+  },*/
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
