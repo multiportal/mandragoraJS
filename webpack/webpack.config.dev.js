@@ -22,7 +22,7 @@ module.exports = {
         //{ from: 'src/assets/pwa/icon/apple-icon-152x152.png', to: 'icon/apple-icon-152x152.png' },
         //{ from: 'src/assets/pwa/icon/apple-icon-180x180.png', to: 'icon/apple-icon-180x180.png' },
         //{ from: 'src/assets/pwa/icon/', to: 'assets/pwa/icon/icon/' },
-        { from: 'src/assets/img/', to: 'src/assets/img/' },
+        { from: 'src/assets', to: 'src/assets' },
         { from: 'src/pages', to: 'src/pages' },
       ],
     }),
