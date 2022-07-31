@@ -1,17 +1,28 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./src/index.js",
+  mode: "production",
   output: {
     path: path.resolve(__dirname, "../dist"),
     filename: "bundle.js",
   },
-  mode: "production",
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
+    }),
+    new CopyPlugin({
+      patterns: [
+        //{ from: 'src/assets/pwa/sw.js', to: 'sw.js' },
+        //{ from: 'src/assets/pwa/icon/apple-icon-152x152.png', to: 'icon/apple-icon-152x152.png' },
+        //{ from: 'src/assets/pwa/icon/apple-icon-180x180.png', to: 'icon/apple-icon-180x180.png' },
+        //{ from: 'src/assets/pwa/icon/', to: 'assets/pwa/icon/icon/' },
+        { from: 'src/assets/img/', to: 'src/assets/img/' },
+        { from: 'src/pages', to: 'src/pages' },
+      ],
     }),
     new MiniCssExtractPlugin(),
   ],
@@ -19,19 +30,12 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          "css-loader",
-        ],
+        use: [{loader: MiniCssExtractPlugin.loader,},"css-loader",],
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
+          {loader: MiniCssExtractPlugin.loader,},
           // Translates CSS into CommonJS
           "css-loader",
           // Compiles Sass to CSS
