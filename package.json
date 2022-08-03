@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx webpack server --mode=development",
-    "build": "npm run clean && webpack --config ./webpack/webpack.config.prod.js --env env=prod",
-    "start": "npx webpack serve --config ./webpack/webpack.config.dev.js --env env=dev --open",
+    "build": "npm run clean && npx webpack serve --config ./webpack/webpack.config.prod.js --env env=prod --open",
+    "dev": "npx webpack serve --config ./webpack/webpack.config.dev.js --env env=dev --open",
+    "start": "npx webpack serve --config ./webpack/webpack.config.prod.js --env env=prod --open",
     "webpackdev": "npx webpack --config ./webpack/webpack.config.js --mode=development",
     "webpackpro": "npx webpack --config ./webpack/webpack.config.js --mode=production",
     "clean": "rimraf dist"
