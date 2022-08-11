@@ -24,6 +24,7 @@ module.exports = {
         { from: 'src/assets/pwa/icon/apple-icon-180x180.png', to: 'icon/apple-icon-180x180.png' },
         { from: 'src/assets/pwa/icon/', to: 'assets/pwa/icon/' },
         { from: 'src/assets/img/', to: 'assets/img/' },
+        { from: 'src/pages/404.html', to: '404.html' },
       ],
     }),
   ],
