@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run clean && npx webpack serve --config ./webpack/webpack.config.prod.js --env env=prod --open",
+    "build": "npm run clean && npx webpack --config ./webpack/webpack.config.js --mode=production",
     "dev": "npx webpack serve --config ./webpack/webpack.config.dev.js --env env=dev --open",
     "start": "node src/main.js",
     "webpackdev": "npx webpack --config ./webpack/webpack.config.js --mode=development",
