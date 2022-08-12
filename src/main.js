@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 8000;
 var colors = require('colors');
 colors.enable();
 
-app.use(express.static(__dirname + '/build'));
+app.use(express.static(__dirname + './../build'));
 //app.use((req, res, next) => {res.status(404).sendFile(__dirname + '/build/src/pages/404.html');});
 
 app.listen(PORT, () => {
