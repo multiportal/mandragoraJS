@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run clean && npx webpack --config ./webpack/webpack.config.js --mode=production",
     "dev": "npx webpack serve --config ./webpack/webpack.config.dev.js --env env=dev --open",
-    "start": "node main.js",
+    "start": "node src/main.js",
     "webpackdev": "npx webpack --config ./webpack/webpack.config.js --mode=development",
     "webpackpro": "npx webpack --config ./webpack/webpack.config.js --mode=production",
     "clean": "rimraf dist"
@@ -31,8 +31,7 @@
     "webpack-dev-server": "^4.7.4"
   },
   "devDependencies": {
-    "webpack-cli": "^4.9.2",
-    "workbox-webpack-plugin": "^6.5.3"
+    "webpack-cli": "^4.9.2"
   },
   "proxy": "http://localhost:9000"
 }
