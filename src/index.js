@@ -1,7 +1,7 @@
 /* 
 CMS-Javascript (spa) 
 Autor: Guillermo Jiménez López
-Fecha de Actualización: 07.06.2022
+Fecha de Actualización: 12.08.2022
 Versión: 1.0.4
 */
 //Files import for webpack
