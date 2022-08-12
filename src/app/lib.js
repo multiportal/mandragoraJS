@@ -93,15 +93,20 @@ var url404 = base_url + page_path + '404/index.html';
 }
 
 /* FUNCIONES */
-function inicio() {
-  console.log('Corriendo funcion inicio');
+function load() {
   const v = variables();consoleLocal('log',v);
   const {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,hash2,url_mod,url_m,url404} = v;
   menuWeb(hash2,no_menu_web,menu_web);
   router(hash,hash2,url_mod,url404);
   controlRoutes(route,id);
-
-  reMod(mod);  
+  //Redirect to main page
+  reMod(mod);
+  //consoleLocal('log',consola(v));
 }
 
-export {inicio,variables};
+function inicio(){
+  console.log('Corriendo funcion inicio');
+  load();
+}
+
+export {inicio,load,variables};
