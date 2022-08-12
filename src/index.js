@@ -1,8 +1,8 @@
 /* 
 CMS-Javascript (spa) 
 Autor: Guillermo Jiménez López
-Fecha de Actualización: 15.06.2022
-Versión: 1.0.7
+Fecha de Actualización: 12.08.2022
+Versión: 1.0.8
 */
 //Files import for webpack
 import './assets/bootstrap-5.0.2/css/bootstrap.min.css';
