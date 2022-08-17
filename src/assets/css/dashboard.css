@@ -224,10 +224,12 @@
   height: 60px;
   display: flex;
   align-items: center;
+  background: #1d1b31;
 }
+
 .home-section .home-content .bx-menu,
 .home-section .home-content .text{
-  color: #11101d;
+  color: #fff;
   font-size: 35px;
 }
 .home-section .home-content .bx-menu{
@@ -237,4 +239,14 @@
 .home-section .home-content .text{
   font-size: 26px;
   font-weight: 600;
+}
+
+.row{
+  --bs-gutter-x:0;
+}
+
+.card{
+  margin: 8px 10px; 
+  padding: 0;
+  min-width: 260px;
 }
