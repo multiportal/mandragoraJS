@@ -4,22 +4,25 @@ import { functionFetch, fetchProfile } from '../app/fetch.js';
 import { Api } from '../app/urls.js';
 const v = variables();
 const { host, dominio, path_url, base_url, screenw } = v;
-let dashCss = base_url + 'src/assets/css/dashboard.css';
+let dashCss = base_url + 'assets/css/dashboard.css';
 if (host == 'localhost') { console.log(dashCss); }
 
-async function btnSidebar() {
+function loadStyleDashboard(){
   //<![CDATA[
-  /*if(document.createStyleSheet) {
-    document.createStyleSheet(dashCss);
-  }else {
-    var styles = "@import url('"+dashCss+"');";
-    var newSS=document.createElement('link');
-    newSS.rel='stylesheet';
-    newSS.href='data:text/css,'+escape(styles);
-    document.getElementsByTagName("head")[0].appendChild(newSS);
-  }*/
+    if(document.createStyleSheet) {
+      document.createStyleSheet(dashCss);
+    }else {
+      var styles = "@import url('"+dashCss+"');";
+      var newSS=document.createElement('link');
+      newSS.rel='stylesheet';
+      newSS.href='data:text/css,'+escape(styles);
+      document.getElementsByTagName("head")[0].appendChild(newSS);
+    }
   //]]>
+}
 
+async function btnSidebar() {
+  //Dashboard
   let btnSalir = document.querySelector('.bx-log-out');
   if(btnSalir!=null){
     btnSalir.addEventListener('click', () => {window.location.href = '#/logout';});
@@ -60,6 +63,8 @@ function dashboard() {
     if (host == 'localhost' || host == 'localhost:9001') { console.log('btnSidebar Activado'); }
     btnSidebar();
   }, 1000);
+
+  loadStyleDashboard();
 }
 
 export { dashboard };

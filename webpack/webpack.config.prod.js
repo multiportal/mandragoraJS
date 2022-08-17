@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+/*SIN USO EN PRODUCCION*/
 module.exports = {
   entry: "./src/index.js",
   mode: "production",
@@ -22,8 +22,10 @@ module.exports = {
         { from: 'src/assets/pwa/sw.js', to: 'sw.js' },
         { from: 'src/assets/pwa/icon/apple-icon-152x152.png', to: 'icon/apple-icon-152x152.png' },
         { from: 'src/assets/pwa/icon/apple-icon-180x180.png', to: 'icon/apple-icon-180x180.png' },
+        { from: 'src/assets/pwa/manifest.json', to: 'assets/pwa/manifest.json'},
         { from: 'src/assets/pwa/icon/', to: 'assets/pwa/icon/' },
-        { from: 'src/assets/img/', to: 'assets/img/' },
+        { from: 'src/assets/css/dashboard.css', to: 'assets/css/dashboard.css' },
+        { from: 'src/assets/img/', to: 'assets/img/' },      
       ],
     }),
     new MiniCssExtractPlugin(),

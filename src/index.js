@@ -6,7 +6,7 @@ Versión: 1.0.8
 */
 //Files import for webpack
 import './assets/bootstrap-5.0.2/css/bootstrap.min.css';
-import './assets/css/dashboard.css'; //** 3 WARNINGS IN WEBPACK FOR BUILD */
+//import './assets/css/dashboard.css'; //** 3 WARNINGS IN WEBPACK FOR BUILD -->ADD DOM */
 //import './assets/font-awesome-5.14.0/css/all.min.css';
 //import './assets/css/style.css';
 //import './assets/main.scss';
