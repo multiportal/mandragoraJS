@@ -1,8 +1,9 @@
 export const functionFetch = async (Api, endpoint, method, datos) => {
     const url = `${Api}/${endpoint}`;
     let token = localStorage.getItem("Token");
+    token = (token && token != undefined)?token:'';
     const data = { ...datos, token };
-    const config = (datos != null) ? {
+    /*const config = (datos != null) ? {
         method: method,
         headers: {
             'Content-Type': 'application/json'
@@ -13,7 +14,16 @@ export const functionFetch = async (Api, endpoint, method, datos) => {
         headers: {
             'Content-Type': 'application/json'
         }
-    };
+    };*/
+    const jsonData = (datos != null)?JSON.stringify(data):'';
+    const config = {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: jsonData
+    }
+
     //try {} catch (error) {}
     const response = await fetch(url, config);
     if (!response.ok) {
