@@ -89,7 +89,8 @@ const getRoutes = async (hash,url,routes_session)=>{
 
 export function getRoutesSesion(mod){
   var token = localStorage.getItem("Token");consoleLocal('log','token='+token);
-  if(mod=='dashboard' && (token==null || token=='undefined')){/*setTimeout(() => {*/window.location.href='#/noauth';/*}, 100);*/}
+  //Generar array de paginas privadas const privatePage=['dashboard','links'];
+  if((mod=='dashboard' || mod=='links') && (token==null || token=='undefined')){/*setTimeout(() => {*/window.location.href='#/noauth';/*}, 100);*/}
   if(mod=='login' && (token!=null && token!='undefined')){/*setTimeout(() => {*/window.location.href='#/dashboard';/*}, 100);*/}
 }
 
