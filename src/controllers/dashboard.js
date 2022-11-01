@@ -67,7 +67,7 @@ function dashboard() {
   setTimeout(function () {
     if (host == 'localhost' || host == 'localhost:9001') { console.log('btnSidebar Activado'); }
     btnSidebar();
-  }, 2000);
+  }, 1000);
 
   loadStyleDashboard();
 }
