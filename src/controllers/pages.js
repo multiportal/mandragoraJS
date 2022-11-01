@@ -33,3 +33,7 @@ export const pagesSys = {
   registro: register,
   noauth: noauth
 };
+
+export const privatePage = [
+  'dashboard'
+];
