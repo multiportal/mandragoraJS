@@ -3,7 +3,7 @@ import { variables } from '../app/lib.js';
 import { functionFetch, fetchProfile } from '../app/fetch.js';
 import { Api } from '../app/urls.js';
 const v = variables();
-const { host, dominio, path_url, base_url, screenw } = v;
+const { host, dominio, path_url, base_url, screenw, mod } = v;
 let dashCss = base_url + 'assets/css/dashboard.css';
 if (host == 'localhost') { console.log(dashCss); }
 
