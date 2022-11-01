@@ -48,11 +48,16 @@ async function btnSidebar() {
   }
 
   //INFO USER /////////
-  const {email,username,nombre,foto,puesto,status} = await fetchProfile(Api,'InfoUser');
-  const u = document.querySelector('.profile_name');
-  if(u!=null){u.innerHTML=username;}
-  const job = document.querySelector('.job');
-  if(job!=null){job.innerHTML=puesto;}
+  //setTimeout(async () => {    
+    if(mod === 'dashboard'){
+      console.log('DASHBOARD-GET PROFILE');
+      const {email,username,nombre,foto,puesto,status} = await fetchProfile(Api,'InfoUser');
+      const u = document.querySelector('.profile_name');
+      if(u!=null){u.innerHTML=username;}
+      const job = document.querySelector('.job');
+      if(job!=null){job.innerHTML=puesto;}    
+    }
+  //}, 1000);
   /////////////////////
 
 }
