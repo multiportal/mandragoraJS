@@ -92,8 +92,8 @@ export function getRoutesSesion(mod,privatePage){
   //Generar array de paginas privadas const privatePage=['dashboard','links'];
   let n = privatePage.length; //console.log(n);
   for(let i=0;i<n;i++){
-    if(mod === privatePage[i]){console.log('No autorizado:',mod+'='+privatePage[i]);}
-    if(mod === privatePage[i] && (token==null || token=='undefined')){/*setTimeout(() => {*/window.location.href='#/noauth';/*}, 100);*/}
+    if(mod === privatePage[i]){console.log('Autorizado:',mod+'='+privatePage[i]);}
+    if((token==null || token=='undefined') && mod === privatePage[i]){/*setTimeout(() => {*/window.location.href='#/noauth';/*}, 100);*/}
   }
   //if((mod=='dashboard' || mod=='links') && (token==null || token=='undefined')){/*setTimeout(() => {*/window.location.href='#/noauth';/*}, 100);*/}
   if(mod=='login' && (token!=null && token!='undefined')){/*setTimeout(() => {*/window.location.href='#/dashboard';/*}, 100);*/}
