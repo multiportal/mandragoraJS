@@ -1,6 +1,5 @@
 _docs
 node_modules
-build
 api
 package-lock.json
 *.db

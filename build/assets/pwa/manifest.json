@@ -1,0 +1,24 @@
+{
+	"name": "SPA-APP",
+	"short_name": "SPA-APP",
+	"version": "1.1.2",
+	"description": "SPA - Single Page Application",
+	"scope": ".",
+	"start_url": "https://mylinksm.herokuapp.com",
+	"display": "standalone",
+	"orientation": "portrait",
+	"theme_color": "#000",
+	"background_color": "#fff",
+	"icons": [
+	  {
+		"src": "icon/apple-icon-180x180.png",
+		"sizes": "180x180",
+		"type": "image/png"
+	  },
+	  {
+		"src": "icon/apple-icon-152x152.png",
+		"sizes": "152x152",
+		"type": "image/png"
+	  }
+	]
+  }  
