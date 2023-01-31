@@ -40,3 +40,8 @@ export const pagesSys = {
   linksAdd: sidebar+linksAdd,
   linksEdit: sidebar+linksEdit,
 };
+
+export const privatePage = [
+  'dashboard',
+  'links'
+];
