@@ -1,5 +1,5 @@
 import {variables} from '../app/lib';
-import { Api } from '../app/urls';
+import { Api } from '../app/const';
 const v = variables();
 /* VARIABLES CONSTANTES*/
 const {host,dominio,path_url} = v;

@@ -1,8 +1,8 @@
 //LINKS.JS
 import { consoleLocal } from '../app/functions';
-import { fetchProfile } from '../app/fetch.js';
+import { fetchProfile } from '../app/fetch';
 import { variables } from '../app/lib';
-import { api_links, Api } from '../app/urls';
+import { api_links, Api } from '../app/const';
 /* VARIABLES CONSTANTES*/
 const { host, dominio, path_url, path_build } = variables();
 console.log('/* javascript LINKS | VARIABLES CONSTANTES*/');
