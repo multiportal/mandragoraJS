@@ -1,7 +1,7 @@
 //DASHBOARD.JS
-import { variables } from '../app/lib.js';
-import { functionFetch, fetchProfile } from '../app/fetch.js';
-import { Api } from '../app/urls.js';
+import { variables } from '../app/lib';
+import { functionFetch, fetchProfile } from '../app/fetch';
+import { Api } from '../app/const';
 const v = variables();
 const { host, dominio, path_url, base_url, screenw, mod } = v;
 let dashCss = base_url + 'assets/css/dashboard.css';
