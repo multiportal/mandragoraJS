@@ -1,3 +1,4 @@
+import { reload } from "../functions/main";
 
 function vars() {
   /*VARIABLES SYS*/
@@ -37,6 +38,11 @@ function vars() {
   var tema = 'default';
   var path_tema = 'temas/' + tema + '/';
 
+  var mod='';
+  var ext='';
+  var id='';
+  var ext2='';
+
   const v = {
     w,
     d,
@@ -69,10 +75,10 @@ function vars() {
     path_tema,
     //pag_name, //Load
     //vars_Url, //Load
-    //mod, //Load
-    //ext, //Load
-    //id, //Load
-    //ext2, //Load
+    mod, //Load
+    ext, //Load
+    id, //Load
+    ext2, //Load
     //route, //Load
     //hash2,
     //url_mod, //Load-NOT
@@ -84,12 +90,12 @@ function vars() {
 /* FUNCIONES */
 function load() {
   const v = vars(); console.log('Load...',v)//consoleLocal('log', v);
-  //const { hash, mod, ext, id, route, hash2 } = v;
+  const {mod}=v;//const { hash, mod, ext, id, route, hash2 } = v;
   //router(hash, hash2, mod, ext);
   //controlRoutes(route,mod,ext,id);
   //menuWeb(hash2,mod,pages,pagesSys);
   //Redirect to #/ (Home)
-  //reload(mod);
+  reload(mod);
 }
 
 function init() {

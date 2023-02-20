@@ -1,3 +1,14 @@
+export function getModules(views){
+  const divElement = document.createElement('div');
+  divElement.innerHTML = views;      
+  return divElement;
+}
+
+export function reload(mod){
+  if(mod=='' || mod==undefined){
+    window.location.href='#/';
+  }
+}
 
 /*FUNCIONES GENERALES*/
 export function ssl(){
