@@ -14,7 +14,7 @@ import './assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js';
 //import './sw.js'; //SERVICE WORKER
 //import './assets/pwa/appCon.js';
 //Files import for App
-import { init, load } from './app/lib/index';
+import { init, load } from './app/lib';
 import { consoleLocal } from './app/functions/main';
 
 //HASHCHANGE EVENT LISTENER FOR APP
