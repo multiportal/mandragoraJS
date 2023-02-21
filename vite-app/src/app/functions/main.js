@@ -1,10 +1,29 @@
-const fileExist = async (mod,url)=>{
+export function filename() {
+  var rutaAbsoluta = self.location.href; //console.log(rutaAbsoluta);
+  var posicionUltimaBarra = rutaAbsoluta.lastIndexOf("/");
+  var rutaRelativa = rutaAbsoluta.substring(posicionUltimaBarra + "/".length, rutaAbsoluta.length);
+  return rutaRelativa;
+}
+
+export const fileExist = async (mod,url)=>{
   let new_Mod=mod;console.log(url);
   let response = await fetch(url);
   if(!response.ok){
     new_Mod='404';console.error('NO EXISTE!');
   }
   return new_Mod;
+}
+
+export function queryVars(h){
+  var vars = h.split('/');
+  var mod=vars[1];
+  var ext=vars[2];
+  var id=vars[3];
+  mod = (mod == '' || mod == undefined) ? 'Home' : mod;
+  ext = (ext == '' || ext == undefined) ? 'index' : ext;
+  id = (id == '' || id == undefined) ? '' : id;
+  const url_var = {mod,ext,id};
+  return url_var;
 }
 
 export const router = (hash, mod, ext, title) => {
@@ -26,8 +45,8 @@ export function getModules(views) {
   return divElement;
 }
 
-export function reload(mod) {
-  if (mod == '' || mod == undefined) {
+export function reload(mod,hash) {
+  if (mod == '' || mod == undefined || hash == '') {
     window.location.href = '#/';
   }
 }

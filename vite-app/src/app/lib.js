@@ -1,6 +1,8 @@
-import { reload } from "./functions/main";
+import env from "./env";
+import { reload, queryVars, filename } from "./functions/main";
 
 function vars() {
+  const { proyecto, path_hash, path_src, path_page } = env();
   /*VARIABLES SYS*/
   var w = window;
   var d = document;
@@ -15,10 +17,10 @@ function vars() {
   //var mod = '';//var ext = '';//var id = '';
 
   /*VARIABLES DE ENTORNO*/
-  const proyecto = 'mandragoraJS'; //PROYECTO
-  const path_hash = '#/'; //path_hash
-  const path_src = 'src/'; //RESOURCE PATH
-  const path_page = path_src + 'pages/'; //PAGE PATH
+  //const proyecto = 'mandragoraJS'; //PROYECTO
+  //const path_hash = '#/'; //path_hash
+  //const path_src = 'src/'; //RESOURCE PATH
+  //const path_page = path_src + 'pages/'; //PAGE PATH
 
   /*VARIABLES CONSTANTES*/
   const { protocol, host, origin, pathname, hash, href, search } = loc;
@@ -37,11 +39,15 @@ function vars() {
   /* VARIABLES */
   var tema = 'default';
   var path_tema = 'temas/' + tema + '/';
-
-  var mod='';
-  var ext='';
-  var id='';
-  var ext2='';
+  var pag_name = filename();
+  let { mod, ext, id } = queryVars(hash);//Cambiar a Hash 
+  var ext2 = '/' + ext;
+  var route = mod + ext2;
+  var modh = (mod) ? mod : '';
+  var exth = (ext && ext != 'index') ? '/' + ext : '';
+  var hash2 = '#/' + modh + exth;
+  var url_mod = base_url + path_page + route + '.html';
+  var url404 = base_url + path_page + '404/index.html';
 
   const v = {
     w,
@@ -73,16 +79,17 @@ function vars() {
     screenh,
     tema,
     path_tema,
-    //pag_name, //Load
+    pag_name, //Load
     //vars_Url, //Load
     mod, //Load
     ext, //Load
     id, //Load
     ext2, //Load
-    //route, //Load
-    //hash2,
-    //url_mod, //Load-NOT
-    //url404, //NOT
+    route, //Load
+    hash2,
+    url_mod, //Load-NOT
+    url404, //NOT
+    vars
   };
   return v;
 }
@@ -90,12 +97,12 @@ function vars() {
 /* FUNCIONES */
 function load() {
   const v = vars(); console.log('Load...',v)//consoleLocal('log', v);
-  const {mod}=v;//const { hash, mod, ext, id, route, hash2 } = v;
+  const {mod,hash}=v;//const { hash, mod, ext, id, route, hash2 } = v;
   //router(hash, hash2, mod, ext);
   //controlRoutes(route,mod,ext,id);
   //menuWeb(hash2,mod,pages,pagesSys);
   //Redirect to #/ (Home)
-  reload(mod);
+  reload(mod,hash);
 }
 
 function init() {
