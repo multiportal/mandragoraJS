@@ -99,7 +99,7 @@ function load() {
 }
 
 function init() {
-  console.log('Corriendo funcion init');
+  console.log('Run function init');
   load();
 }
 
