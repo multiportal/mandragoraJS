@@ -1,4 +1,4 @@
-import { reload } from "../functions/main";
+import { reload } from "./functions/main";
 
 function vars() {
   /*VARIABLES SYS*/
