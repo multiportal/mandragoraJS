@@ -8,7 +8,7 @@ import {defineConfig} from 'vite'
 export default defineConfig({
   assetsInclude: ['**/*.html'],
   plugins: [
-    handlebars({
+    createHtmlPlugin({
       partialDirectory: resolve(__dirname, 'partials'),
     }),
   ],

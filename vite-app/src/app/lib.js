@@ -1,5 +1,5 @@
 import env from "./env";
-//import { privatePage } = './controllers/pages';
+import { privatePage } from './controllers/pages';
 import { router, reload, queryVars, filename } from "./functions/main";
 
 function vars() {
