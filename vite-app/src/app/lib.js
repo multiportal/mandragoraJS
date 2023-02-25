@@ -1,8 +1,9 @@
 import env from "./env";
-import { reload, queryVars, filename } from "./functions/main";
+//import { privatePage } = './controllers/pages';
+import { router, reload, queryVars, filename } from "./functions/main";
 
 function vars() {
-  const { proyecto, path_hash, path_src, path_page } = env();
+  const { title, proyecto, path_hash, path_src, path_page } = env();
   /*VARIABLES SYS*/
   var w = window;
   var d = document;
@@ -14,7 +15,6 @@ function vars() {
   mon = (mon < 10) ? '0' + mon : mon;
   var year = dt.getFullYear();
   var fecha = year + '-' + mon + '-' + day
-  //var mod = '';//var ext = '';//var id = '';
 
   /*VARIABLES DE ENTORNO*/
   //const proyecto = 'mandragoraJS'; //PROYECTO
@@ -58,6 +58,7 @@ function vars() {
     mon,
     year,
     fecha,
+    title,
     proyecto,
     path_hash,
     path_src,//NOT
@@ -89,7 +90,6 @@ function vars() {
     hash2,
     url_mod, //Load-NOT
     url404, //NOT
-    vars
   };
   return v;
 }
@@ -97,8 +97,8 @@ function vars() {
 /* FUNCIONES */
 function load() {
   const v = vars(); console.log('Load...',v)//consoleLocal('log', v);
-  const {mod,hash}=v;//const { hash, mod, ext, id, route, hash2 } = v;
-  //router(hash, hash2, mod, ext);
+  const { hash, mod, ext, id, route, hash2, title } = v;
+  router(hash, mod, ext, title, privatePage);
   //controlRoutes(route,mod,ext,id);
   //menuWeb(hash2,mod,pages,pagesSys);
   //Redirect to #/ (Home)
