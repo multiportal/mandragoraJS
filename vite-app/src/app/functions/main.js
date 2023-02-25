@@ -1,3 +1,5 @@
+import Pages from "./../controllers/index";
+
 export function filename() {
   var rutaAbsoluta = self.location.href; //console.log(rutaAbsoluta);
   var posicionUltimaBarra = rutaAbsoluta.lastIndexOf("/");
@@ -26,7 +28,7 @@ export function queryVars(h){
   return url_var;
 }
 
-export const router = (hash, mod, ext, title) => {
+export const router = (hash, mod, ext, title, privatePage) => {
   consoleLocal('log', 'hash=>' + hash);
   let ext2 = (ext != 'index') ? ' / ' + capitalize(ext) : '';
   document.title = title + ' - ' + capitalize(mod) + ext2;
@@ -42,6 +44,7 @@ export const router = (hash, mod, ext, title) => {
 export function getRoutesSesion(mod,privatePage){
   var token = localStorage.getItem("Token");consoleLocal('log','token='+token);
   //Generar array de paginas privadas const privatePage=['dashboard','links'];
+  //const privatePage = await import(pPage);
   let n = privatePage.length; //console.log(n);
   for(let i=0;i<n;i++){
     if(mod === privatePage[i]){console.log('Autorizado:',mod+'='+privatePage[i]);}
