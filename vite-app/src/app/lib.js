@@ -1,6 +1,7 @@
 import env from "./env";
 import { privatePage } from './controllers/pages';
 import { router, reload, queryVars, filename } from "./functions/main";
+import controlRoutes from "../routes/index.routes";
 
 function vars() {
   const { title, proyecto, path_hash, path_src, path_page } = env();
@@ -99,7 +100,7 @@ function load() {
   const v = vars(); console.log('Load...',v)//consoleLocal('log', v);
   const { hash, mod, ext, id, route, hash2, title } = v;
   router(hash, mod, ext, title, privatePage);
-  //controlRoutes(route,mod,ext,id);
+  controlRoutes(route,mod,ext,id);
   //menuWeb(hash2,mod,pages,pagesSys);
   //Redirect to #/ (Home)
   reload(mod,hash);

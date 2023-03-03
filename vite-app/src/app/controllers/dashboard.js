@@ -1,9 +1,11 @@
 //DASHBOARD.JS
-import { variables } from '../app/lib.js';
-import { functionFetch, fetchProfile } from '../app/fetch.js';
-import { Api } from '../app/const';
-const v = variables();
-const { host, dominio, path_url, base_url, screenw, mod } = v;
+import { consoleLocal } from '../functions/main';
+import { functionFetch, fetchProfile } from '../fetch';
+import { vars } from '../lib';
+import { Api } from '../const';
+
+/* VARIABLES CONSTANTES*/
+const { host, dominio, path_url, base_url, screenw, mod } = vars();
 let dashCss = base_url + 'assets/css/dashboard.css';
 if (host == 'localhost') { console.log(dashCss); }
 
