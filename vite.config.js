@@ -4,11 +4,9 @@ import {
 
 export default defineConfig({
   assetsInclude: ['**/*.html'],
-  /*
   root: './',
   build: {
     outDir: 'dist',
   },
-  publicDir: 'src/assets',
-  */
+  publicDir: 'public',
 })
