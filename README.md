@@ -1,2 +1,2 @@
-# mandragoraJS
-Single Page Application (spa) - CMS Javascript
+# mandragoraJS - VITE
+Single Page Application (spa) - CMS Javascript - VITE

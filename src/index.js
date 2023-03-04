@@ -1,12 +1,12 @@
 /* 
 CMS-Javascript (spa) 
 Autor: Guillermo Jiménez López
-Fecha de Actualización: 12.08.2022
-Versión: 1.0.8
+Fecha de Actualización: 03.03.2023
+Versión: 1.2.2 - Vite
 */
 //Files import for webpack
 import './assets/bootstrap-5.0.2/css/bootstrap.min.css';
-//import './assets/css/dashboard.css'; //** 3 WARNINGS IN WEBPACK FOR BUILD -->ADD DOM */
+import './assets/css/dashboard.css'; //** 3 WARNINGS IN WEBPACK FOR BUILD -->ADD DOM */
 import './assets/font-awesome-5.14.0/css/all.min.css';
 import './assets/css/style.css';
 //import './assets/main.scss';

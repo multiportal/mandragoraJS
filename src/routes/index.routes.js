@@ -8,13 +8,13 @@ import { links } from "../controllers/links.js";
 import { linksAdd } from "../controllers/link-add.js";
 import { linksEdit } from "../controllers/link-edit.js";
 
-const router = async (hash, hash2, mod, ext) => {
+const router = (hash, hash2, mod, ext) => {
   consoleLocal('log','hash=>' + hash);
   let ext2 = (ext!='index')?' / '+capitalize(ext):'';
   document.title = 'MandragoraJS SPA - ' + capitalize(mod) + ext2;
   getRoutesSesion(mod,privatePage);
   let page = (mod!='Home' && ext!='index')?ext:mod;// console.log(page,mod,ext);
-  let content = document.getElementById('app-modulo');
+  let content = document.getElementById('app');
   content.innerHTML = '';
   if(hash){
     return content.appendChild(Pages(page));
