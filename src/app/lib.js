@@ -1,6 +1,7 @@
 //import {consola} from './console.js';
-import { filename, getQueryVariable, urlVars, menuWeb, reload, consoleLocal } from './functions.js';
-import { router, controlRoutes, pages, pagesSys } from '../routes/index.routes.js';
+import { title, proyecto, path_hash, path_src, path_page, hostTest } from './env';
+import { filename, getQueryVariable, urlVars, menuWeb, reload, consoleLocal } from './functions';
+import { router, controlRoutes, pages, pagesSys } from '../routes/index.routes';
 
 function variables() {
   /*VARIABLES SYS*/
@@ -17,10 +18,10 @@ function variables() {
   //var mod = '';//var ext = '';//var id = '';
 
   /*VARIABLES DE ENTORNO*/
-  const proyecto = 'mandragoraJS'; //PROYECTO
-  const path_hash = '#/'; //path_hash
-  const path_src = 'src/'; //RESOURCE PATH
-  const path_page = path_src + 'pages/'; //PAGE PATH
+  //const proyecto = 'mandragoraJS'; //PROYECTO
+  //const path_hash = '#/'; //path_hash
+  //const path_src = 'src/'; //RESOURCE PATH
+  //const path_page = path_src + 'pages/'; //PAGE PATH
 
   /*VARIABLES CONSTANTES*/
   const { protocol, host, origin, pathname, hash, href, search } = loc;
@@ -50,8 +51,7 @@ function variables() {
   var hash2 = '#/' + modh + exth;
   var url_mod = base_url + path_page + route + '.html';
   var url404 = base_url + path_page + '404/index.html';
-  /* URL-API */
-  //const Api = (host!='localhost:9001')?'https://apirestm.000webhostapp.com/api':'http://localhost/MisSitios/apirestm/api';
+  /////////////////////
 
   const v = {
     w,
@@ -62,10 +62,12 @@ function variables() {
     mon,
     year,
     fecha,
+    title,
     proyecto,
     path_hash,
     path_src,//NOT
     path_page,//NOT
+    hostTest,
     protocol,
     host,
     dominio,
@@ -108,7 +110,7 @@ function load() {
 }
 
 function inicio() {
-  console.log('Corriendo funcion inicio');
+  console.log('Run function inicio');
   load();
 }
 
