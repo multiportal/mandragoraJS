@@ -1,6 +1,6 @@
 //LINKS-EDIT.JS
 import { consoleLocal } from '../app/functions';
-import { fetchProfile } from '../app/fetch';
+import { fetchProfile } from '../app/services/fetch';
 import { variables } from '../app/lib';
 import { api_links, Api } from '../app/const';
 /* VARIABLES CONSTANTES*/

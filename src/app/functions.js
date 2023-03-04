@@ -119,7 +119,7 @@ export function ssl(){
 
 export function consoleLocal(type,val){
   let host = window.location.host;
-  if(host=='localhost' || host=='localhost:9001'){
+  if(host=='localhost' || host=='127.0.0.1:5173'){
     switch (type) {
       case 'log':
         console.log(val);
@@ -177,4 +177,10 @@ export function fecha_hora_create(val,inputId) {
 export function footer(){
   const f = document.querySelector("#footer_page");
   f.innerHTML = year + ' &copy; VcardAppJS v.1.2.14. Diseñada por <a target="_blank" href="http://multiportal.com.mx">[:MULTIPORTAL:]</a>.';
+}
+
+export function consola(v){
+  const {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,url_mod,url_m} = v;
+  const nv = {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,url_mod,url_m};//console.log(nv);
+  return nv;
 }

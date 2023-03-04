@@ -1,7 +1,8 @@
 //DASHBOARD.JS
 import { variables } from '../app/lib.js';
-import { functionFetch, fetchProfile } from '../app/fetch.js';
+import { functionFetch, fetchProfile } from '../app/services/fetch.js';
 import { Api } from '../app/const';
+
 const v = variables();
 const { host, dominio, path_url, base_url, screenw, mod } = v;
 let dashCss = base_url + 'assets/css/dashboard.css';
@@ -67,11 +68,10 @@ async function btnSidebar() {
 function dashboard() {
   //Retardo para activar btnLogin
   setTimeout(function () {
-    if (host == 'localhost' || host == 'localhost:9001') { console.log('btnSidebar Activado'); }
+    if (host == 'localhost' || host == '127.0.0.1:5173') { console.log('btnSidebar Activado'); }
     btnSidebar();
   }, 1000);
-
-  loadStyleDashboard();
+  //loadStyleDashboard();
 }
 
 export { dashboard };
