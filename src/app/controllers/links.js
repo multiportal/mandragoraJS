@@ -3,6 +3,7 @@ import { consoleLocal } from '../functions';
 import { fetchProfile } from '../services/fetch';
 import { variables } from '../lib';
 import { api_links, Api } from '../const';
+
 /* VARIABLES CONSTANTES*/
 const { host, dominio, path_url, path_build } = variables();
 console.log('/* javascript LINKS | VARIABLES CONSTANTES*/');
@@ -11,14 +12,14 @@ if (host == 'localhost' || host == 'localhost:9001') { console.log('api_links=' 
 ////////////////////////
 
 const linksList = async () => {
-  let url_get = api_links;
-  const response = await fetch(url_get);
-  const { data } = await response.json();
-  //console.log(data);
+  let list = document.querySelector('#list');
   list.innerHTML = ``;
+  let url_get = api_links;
+  const response = await fetch(url_get); //console.log(response.status);
+  if(response.status == 200){
+  const { data } = await response.json(); //console.log(data);
   data.forEach(element => {
     const { ID, title, url, description, cate, user_id, created_at } = element;
-    let list = document.querySelector('#list');
     if (element) {
       list.innerHTML += `
         <!--div class="col-md-4"-->
@@ -47,6 +48,10 @@ const linksList = async () => {
       `;
     }
   });
+  } else if(response.status == 404){ 
+    console.error('STATUS 404: Lista no encontrada!');
+    list.innerHTML = `<div>Lista no encontrada!</div>`;
+  }
 
   let lista = document.getElementById('list');
   let Token = localStorage.getItem('Token');

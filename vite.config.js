@@ -1,5 +1,14 @@
-import { defineConfig } from 'vite'
+import {
+  defineConfig
+} from 'vite'
 
 export default defineConfig({
   assetsInclude: ['**/*.html'],
+  /*
+  root: './',
+  build: {
+    outDir: 'dist',
+  },
+  publicDir: 'src/assets',
+  */
 })
