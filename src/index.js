@@ -12,14 +12,15 @@ import './assets/css/style.css';
 //import './assets/main.scss';
 import './assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js';
 //import './assets/js/sweetalert2.all.min.js';
-//import './sw.js'; //SERVICE WORKER
+//import './assets/pwa/sw.js'; //SERVICE WORKER
 import './assets/pwa/appCon.js';
 //Files import for App
-import {inicio,load} from './app/lib.js';
-import {consoleLocal} from './app/functions.js';
+import { inicio, load } from './app/lib.js';
+import { consoleLocal } from './app/functions.js';
 
 //HASHCHANGE EVENT LISTENER FOR APP
-window.addEventListener('hashchange',()=>{consoleLocal('warn','Event Listener');
+window.addEventListener('hashchange', () => {
+    consoleLocal('warn', 'Event Listener');
     load();
 });
 
