@@ -1,8 +1,8 @@
 //LINKS-ADD.JS
-import { consoleLocal, fecha } from '../app/functions';
-import { fetchProfile } from '../app/services/fetch';
-import { variables } from '../app/lib';
-import { api_links, Api } from '../app/const';
+import { consoleLocal, fecha } from '../functions';
+import { fetchProfile } from '../services/fetch';
+import { variables } from '../lib';
+import { api_links, Api } from '../const';
 /* VARIABLES CONSTANTES*/
 const { host, dominio, path_url } = variables();
 //console.log('/* javascript LINKS-ADD | VARIABLES CONSTANTES*/');

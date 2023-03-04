@@ -1,12 +1,12 @@
-import { consoleLocal, getRoutesSesion, capitalize } from "../app/functions.js";
-import Pages from "../controllers/index.js";
-import { pages, pagesSys, privatePage } from "../controllers/pages.js";
-import { login } from "../controllers/login.js";
-import { logout } from "../controllers/logout.js";
-import { dashboard } from "../controllers/dashboard.js";
-import { links } from "../controllers/links.js";
-import { linksAdd } from "../controllers/link-add.js";
-import { linksEdit } from "../controllers/link-edit.js";
+import { consoleLocal, getRoutesSesion, capitalize } from "../app/functions";
+import Pages from "../app/controllers/index";
+import { pages, pagesSys, privatePage } from "../app/controllers/pages";
+import { login } from "../app/controllers/login";
+import { logout } from "../app/controllers/logout";
+import { dashboard } from "../app/controllers/dashboard";
+import { links } from "../app/controllers/links";
+import { linksAdd } from "../app/controllers/link-add";
+import { linksEdit } from "../app/controllers/link-edit";
 
 const router = (hash, hash2, mod, ext) => {
   consoleLocal('log','hash=>' + hash);
