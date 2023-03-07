@@ -2,6 +2,7 @@
 import { variables } from '../lib';
 import { functionFetch, fetchProfile } from '../services/fetch';
 import { Api } from '../const';
+import { consoleLocal } from '../functions';
 
 const v = variables();
 const { host, dominio, path_url, base_url, screenw, mod, hostDev } = v;
@@ -53,7 +54,8 @@ async function btnSidebar() {
     //if(mod === 'dashboard'){
       const u = document.querySelector('.profile_name');
       const job = document.querySelector('.job');
-      console.log('DASHBOARD-GET PROFILE');
+      consoleLocal('log','DASHBOARD-GET PROFILE');
+      console.log('AUTORIZADO');
       if(u!=null && job!=null){
         const {email,username,nombre,foto,puesto,status} = await fetchProfile(Api,'InfoUser');
         if(u!=null){u.innerHTML=username;}      

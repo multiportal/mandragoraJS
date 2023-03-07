@@ -55,7 +55,7 @@ function btnGuardar(e){
 const login = () => {
     const url = api_login+'';
     fetch(url).then(res=>res.json()).then(resp=>{
-        console.log(resp);
+        consoleLocal('log',resp);
     })
     .catch(err=>console.log(err));
     //Retardo para activar btnLogin
