@@ -68,7 +68,7 @@ async function btnSidebar() {
 function dashboard() {
   //Retardo para activar btnLogin
   setTimeout(function () {
-    if (host == 'localhost' || host == hostDev) { console.log('btnSidebar Activado'); }
+    if (host == hostDev) { console.log('btnSidebar Activado'); }
     btnSidebar();
   }, 1000);
   //loadStyleDashboard();

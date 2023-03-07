@@ -6,7 +6,7 @@ const { host, dominio, path_url, hostDev } = v;
 
 console.log('/* javascript login | VARIABLES CONSTANTES*/');
 let api_login = Api + '/login/';
-if(host=='localhost' || host==hostDev){console.log('api_login='+api_login);}
+if(host==hostDev){console.log('api_login='+api_login);}
 
 function btnLogin(){
 const formulario = document.getElementById('form-login');
@@ -33,7 +33,7 @@ function btnGuardar(e){
         body: JSON.stringify(datos)
     }).then(res=>res.json()).then(resp=>{
         const {data} = resp;
-        if(host=='localhost' || host==hostDev){console.log(resp);}
+        if(host==hostDev){console.log(resp);}
         console.log('getToken:'+data.token);
         localStorage.setItem("Token", data.token);//localStorage.setItem("Token", JSON.stringify(data.token));
         let token = localStorage.getItem("Token"); console.log('Res-Token:'+token);

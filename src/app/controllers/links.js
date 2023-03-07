@@ -8,7 +8,7 @@ import { api_links, Api } from '../const';
 const { host, dominio, path_url, path_build, hostDev } = variables();
 console.log('/* javascript Links | VARIABLES CONSTANTES*/');
 //const api_links = Api + '/v2/links/';
-if (host == 'localhost' || host == hostDev) { console.log('api_links=' + api_links); }
+if (host == hostDev) { console.log('api_links=' + api_links); }
 ////////////////////////
 
 const linksList = async () => {

@@ -1,3 +1,5 @@
+import { variables } from "./lib";
+
 /*FUNCIONES*/
 export function filename() {
   var rutaAbsoluta = self.location.href; //console.log(rutaAbsoluta);
@@ -118,8 +120,8 @@ export function ssl(){
 }
 
 export function consoleLocal(type,val){
-  let host = window.location.host;
-  if(host=='localhost' || host=='127.0.0.1:5173'){
+  const {host, hostDev}=variables();
+  if(host == hostDev){
     switch (type) {
       case 'log':
         console.log(val);
