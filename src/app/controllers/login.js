@@ -1,5 +1,6 @@
 import {variables} from '../lib';
 import { Api } from '../const';
+import { consoleLocal } from '../functions';
 const v = variables();
 /* VARIABLES CONSTANTES*/
 const { host, dominio, path_url, hostDev } = v;
@@ -32,11 +33,10 @@ function btnGuardar(e){
         },
         body: JSON.stringify(datos)
     }).then(res=>res.json()).then(resp=>{
-        const {data} = resp;
-        if(host==hostDev){console.log(resp);}
-        console.log('getToken:'+data.token);
+        const {data} = resp;consoleLocal('log',resp);
+        consoleLocal('log','getToken:'+data.token);
         localStorage.setItem("Token", data.token);//localStorage.setItem("Token", JSON.stringify(data.token));
-        let token = localStorage.getItem("Token"); console.log('Res-Token:'+token);
+        let token = localStorage.getItem("Token"); consoleLocal('log','Res-Token:'+token);
         //Redireccionar al Dashboard
         if(token!=null && token!='undefined'){
             location.href= dominio + path_url + '#/dashboard';

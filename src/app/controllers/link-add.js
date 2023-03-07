@@ -7,7 +7,7 @@ import { api_links, Api } from '../const';
 const { host, dominio, path_url, hostDev } = variables();
 //console.log('/* javascript Links-Add | VARIABLES CONSTANTES*/');
 //const api_links = Api + '/v2/links/';
-//if (host == hostDev) { console.log('api_links=' + api_links); }
+//consoleLocal('log','api_links=' + api_links);
 ////////////////////////
 
 function btnAdd() {
