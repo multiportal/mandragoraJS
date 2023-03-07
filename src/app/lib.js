@@ -1,5 +1,5 @@
 //import {consola} from './console.js';
-import { title, proyecto, path_hash, path_src, path_page, hostTest } from './env';
+import { title, proyecto, path_hash, path_src, path_page, hostDev } from './env';
 import { filename, getQueryVariable, urlVars, menuWeb, reload, consoleLocal } from './functions';
 import { router, controlRoutes, pages, pagesSys } from '../routes/index.routes';
 
@@ -32,7 +32,7 @@ function variables() {
   const path_url = pathname.replace("/", "");
   const base_url = dominio + path_url;
   const path_root = (host == 'localhost') ? path_url + path_hash : path_hash;//Revisar
-  const path_build = (host == 'localhost:9001')?'../':'./';
+  const path_build = (host == 'localhost:9001')?'../':'./'; //Revisar
   const page_url = dominio + path_root;//
   const screenw = screen.width;
 
@@ -67,7 +67,7 @@ function variables() {
     path_hash,
     path_src,//NOT
     path_page,//NOT
-    hostTest,
+    hostDev,
     protocol,
     host,
     dominio,

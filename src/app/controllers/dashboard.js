@@ -4,9 +4,9 @@ import { functionFetch, fetchProfile } from '../services/fetch';
 import { Api } from '../const';
 
 const v = variables();
-const { host, dominio, path_url, base_url, screenw, mod } = v;
+const { host, dominio, path_url, base_url, screenw, mod, hostDev } = v;
 let dashCss = base_url + 'assets/css/dashboard.css';
-if (host == 'localhost') { console.log(dashCss); }
+if (host == hostDev) { console.log(dashCss); }
 
 function loadStyleDashboard(){
   //<![CDATA[
@@ -68,7 +68,7 @@ async function btnSidebar() {
 function dashboard() {
   //Retardo para activar btnLogin
   setTimeout(function () {
-    if (host == 'localhost' || host == '127.0.0.1:5173') { console.log('btnSidebar Activado'); }
+    if (host == 'localhost' || host == hostDev) { console.log('btnSidebar Activado'); }
     btnSidebar();
   }, 1000);
   //loadStyleDashboard();

@@ -5,10 +5,10 @@ import { variables } from '../lib';
 import { api_links, Api } from '../const';
 
 /* VARIABLES CONSTANTES*/
-const { host, dominio, path_url, path_build } = variables();
-console.log('/* javascript LINKS | VARIABLES CONSTANTES*/');
+const { host, dominio, path_url, path_build, hostDev } = variables();
+console.log('/* javascript Links | VARIABLES CONSTANTES*/');
 //const api_links = Api + '/v2/links/';
-if (host == 'localhost' || host == 'localhost:9001') { console.log('api_links=' + api_links); }
+if (host == 'localhost' || host == hostDev) { console.log('api_links=' + api_links); }
 ////////////////////////
 
 const linksList = async () => {
