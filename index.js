@@ -18,6 +18,7 @@ import '/public/assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js';
 //import { inicio, load } from './app/lib.js';
 //import { consoleLocal } from './app/functions.js';
 
+
 //HASHCHANGE EVENT LISTENER FOR APP
 window.addEventListener('hashchange', () => {
     consoleLocal('warn', 'Event Listener');
