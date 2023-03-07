@@ -1,6 +1,6 @@
 import { getModules } from "../functions";
 import { pages, pagesSys } from "./pages";
-import NotFound from "../../pages/404/index.html";
+import NotFound from "../../pages/404/index.html?raw";
 
 export default (page) => {
   const pagesAll = {...pages, ...pagesSys}//console.log('pagesAll:',pagesAll);
