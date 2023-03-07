@@ -1,0 +1,24 @@
+{
+	"name": "MandragoraJS-APP",
+	"short_name": "MandragoraJS-APP",
+	"version": "1.1.2",
+	"description": "MandragoraJS - Single Page Application",
+	"scope": ".",
+	"start_url": "http://127.0.0.1:5173/",
+	"display": "standalone",
+	"orientation": "portrait",
+	"theme_color": "#000",
+	"background_color": "#fff",
+	"icons": [
+	  {
+		"src": "icon/apple-icon-180x180.png",
+		"sizes": "180x180",
+		"type": "image/png"
+	  },
+	  {
+		"src": "icon/apple-icon-152x152.png",
+		"sizes": "152x152",
+		"type": "image/png"
+	  }
+	]
+  }  
