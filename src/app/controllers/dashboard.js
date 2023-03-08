@@ -3,31 +3,32 @@ import { variables } from '../lib';
 import { functionFetch, fetchProfile } from '../services/fetch';
 import { Api } from '../const';
 import { consoleLocal } from '../functions';
+import { typeDev } from '../env';
 
 const v = variables();
 const { host, dominio, path_url, base_url, screenw, mod, hostDev } = v;
-let dashCss = base_url + 'assets/css/dashboard.css';
-if (host == hostDev) { console.log(dashCss); }
 
-function loadStyleDashboard(){
+function loadStyleDashboard() {
+  let dashCss = base_url + 'assets/css/dashboard.css';
+  if (host == hostDev) { console.log(dashCss); }
   //<![CDATA[
-    if(document.createStyleSheet) {
-      document.createStyleSheet(dashCss);
-    }else {
-      var styles = "@import url('"+dashCss+"');";
-      var newSS=document.createElement('link');
-      newSS.rel='stylesheet';
-      newSS.href='data:text/css,'+escape(styles);
-      document.getElementsByTagName("head")[0].appendChild(newSS);
-    }
+  if (document.createStyleSheet) {
+    document.createStyleSheet(dashCss);
+  } else {
+    var styles = "@import url('" + dashCss + "');";
+    var newSS = document.createElement('link');
+    newSS.rel = 'stylesheet';
+    newSS.href = 'data:text/css,' + escape(styles);
+    document.getElementsByTagName("head")[0].appendChild(newSS);
+  }
   //]]>
 }
 
 async function btnSidebar() {
   //Dashboard
   let btnSalir = document.querySelector('.bx-log-out');
-  if(btnSalir!=null){
-    btnSalir.addEventListener('click', () => {window.location.href = '#/logout';});
+  if (btnSalir != null) {
+    btnSalir.addEventListener('click', () => { window.location.href = '#/logout'; });
   }
 
   let arrow = document.querySelectorAll(".arrow");
@@ -40,28 +41,28 @@ async function btnSidebar() {
 
   let sidebar = document.querySelector(".sidebar");
   let sidebarBtn = document.querySelector(".bx-menu");//console.log(sidebarBtn);
-  if(sidebarBtn!=null){
-    sidebarBtn.addEventListener("click", () => {sidebar.classList.toggle("close");});
+  if (sidebarBtn != null) {
+    sidebarBtn.addEventListener("click", () => { sidebar.classList.toggle("close"); });
   }
 
-  if(screenw<=740){
+  if (screenw <= 740) {
     let side = document.querySelector('.sidebar');
     side.classList.add('close');
   }
 
   //INFO USER /////////
   //setTimeout(async () => {    
-    //if(mod === 'dashboard'){
-      const u = document.querySelector('.profile_name');
-      const job = document.querySelector('.job');
-      consoleLocal('log','DASHBOARD-GET PROFILE');
-      console.log('AUTORIZADO');
-      if(u!=null && job!=null){
-        const {email,username,nombre,foto,puesto,status} = await fetchProfile(Api,'InfoUser');
-        if(u!=null){u.innerHTML=username;}      
-        if(job!=null){job.innerHTML=puesto;}      
-      }
-    //}
+  //if(mod === 'dashboard'){
+  const u = document.querySelector('.profile_name');
+  const job = document.querySelector('.job');
+  consoleLocal('log', 'DASHBOARD-GET PROFILE');
+  console.log('AUTORIZADO');
+  if (u != null && job != null) {
+    const { email, username, nombre, foto, puesto, status } = await fetchProfile(Api, 'InfoUser');
+    if (u != null) { u.innerHTML = username; }
+    if (job != null) { job.innerHTML = puesto; }
+  }
+  //}
   //}, 1000);
   /////////////////////
 
