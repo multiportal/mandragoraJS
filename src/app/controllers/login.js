@@ -1,5 +1,5 @@
 import {variables} from '../lib';
-import { Api } from '../const';
+import { Api } from '../const.env';
 import { consoleLocal } from '../functions';
 const v = variables();
 /* VARIABLES CONSTANTES*/

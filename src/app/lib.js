@@ -1,5 +1,5 @@
 //import {consola} from './console.js';
-import { title, proyecto, path_hash, path_src, path_page, hostDev, hostPre } from './env';
+import { title, proyecto, path_hash, path_src, path_page, hostDev, hostPre } from './const.env';
 import { filename, getQueryVariable, urlVars, menuWeb, reload, consoleLocal } from './functions';
 import { router, controlRoutes, pages, pagesSys } from '../routes/index.routes';
 

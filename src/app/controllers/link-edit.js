@@ -2,7 +2,7 @@
 import { consoleLocal } from '../functions';
 import { fetchProfile } from '../services/fetch';
 import { variables } from '../lib';
-import { api_links, Api } from '../const';
+import { api_links, Api } from '../const.env';
 /* VARIABLES CONSTANTES*/
 const { host, dominio, path_url, hostDev } = variables();
 //console.log('/* javascript Links-Edit | VARIABLES CONSTANTES*/');
