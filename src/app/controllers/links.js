@@ -24,7 +24,7 @@ const linksList = async () => {
   console.log(url_get);
   const response = await fetch(url_get); //console.log(response.status);
   if (response.status == 200) {
-    const { data } = await response.json(); console.log(data);
+    const { data } = await response.json(); //console.log(data);
     if(data){
       data.forEach(element => {
         const { ID, title, url, description, cate, user_id, created_at } = element;
@@ -49,8 +49,12 @@ const linksList = async () => {
       });
     } else { list.innerHTML = noResult; }
   } else if (response.status == 404) {
-    console.error('STATUS 404: Lista no encontrada!');
-    list.innerHTML = `<div>Lista no encontrada!</div>`;
+    console.error('Error 404: ¡Consulta No encontrada!');
+    list.innerHTML = `<div class="col-md-4 mx-auto">
+      <div class="card card-body text-center">
+        <p>Error 404: ¡Consulta No encontrada!</p>
+      </div>
+    </div>`;
   }
 
   let lista = document.getElementById('list');
