@@ -110,7 +110,7 @@ function links() {
   setTimeout(function () {
     linksList();
     console.log('links Activado');
-  }, 1000);
+  }, 500);
 }
 
 export { links };

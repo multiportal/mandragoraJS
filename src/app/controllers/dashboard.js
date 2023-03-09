@@ -41,7 +41,15 @@ async function btnSidebar() {
   let sidebar = document.querySelector(".sidebar");
   let sidebarBtn = document.querySelector(".bx-menu");//console.log(sidebarBtn);
   if (sidebarBtn != null) {
-    sidebarBtn.addEventListener("click", () => { sidebar.classList.toggle("close"); });
+    let bar = localStorage.getItem('bar');
+    if(bar=='true'){sidebar.classList.toggle("close");}
+    sidebarBtn.addEventListener("click", () => {
+      let sbar = sidebar.classList.toggle("close"); //console.log(sbar);
+      localStorage.setItem("bar",sbar);
+      bar = localStorage.getItem('bar'); //console.log('Bar-Click:',bar);
+    });
+    console.log('Bar-Load:',bar);
+    //sidebarBtn.addEventListener("click", () => { sidebar.classList.toggle("close"); });
   }
 
   if (screenw <= 740) {
@@ -72,7 +80,7 @@ function dashboard() {
   setTimeout(function () {
     if (host == hostDev) { console.log('btnSidebar Activado'); }
     btnSidebar();
-  }, 1000);
+  }, 500);
   //loadStyleDashboard();
 }
 

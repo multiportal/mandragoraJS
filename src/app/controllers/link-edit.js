@@ -103,7 +103,7 @@ function linksEdit(id) {
     setTimeout(function () {
         console.log('linksEdit Activado');
         formEdit(id);
-    }, 1000);
+    }, 500);
 }
 
 export { linksEdit };
