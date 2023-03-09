@@ -54,8 +54,8 @@ async function btnSidebar() {
   //if(mod === 'dashboard'){
   const u = document.querySelector('.profile_name');
   const job = document.querySelector('.job');
-  consoleLocal('log', 'DASHBOARD-GET PROFILE');
-  console.log('AUTORIZADO');
+  let msjProfile = (host == hostDev) ? ': DASHBOARD-GET PROFILE' : '';
+  console.log('AUTORIZADO'+msjProfile);
   if (u != null && job != null) {
     const { email, username, nombre, foto, puesto, status } = await fetchProfile(Api, 'InfoUser');
     if (u != null) { u.innerHTML = username; }

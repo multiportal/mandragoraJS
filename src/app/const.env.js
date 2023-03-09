@@ -9,5 +9,5 @@ export const typeDev = 'vite'; //vite or webpack
 export const hostDev = (typeDev == 'vite') ? '127.0.0.1:5173' : 'localhost:9001';
 export const hostPre = (typeDev == 'vite') ? '127.0.0.1:4173' : 'localhost';
 /* URL-API */
-export const Api = (host!=hostDev && host!=hostPre)?'https://apirestm.webcindario.com/api':'http://localhost/MisSitios/apirestm/api';
+export const Api = (host!=hostPre)?'https://apirestm.webcindario.com/api':'http://localhost/MisSitios/apirestm/api';
 export const api_links = Api + '/v2/links/';/* URL-LINKS */
