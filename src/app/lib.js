@@ -1,7 +1,7 @@
 //import {consola} from './console.js';
 import { title, proyecto, path_hash, path_src, path_page, hostDev, hostPre } from './const.env';
 import { filename, getQueryVariable, urlVars, menuWeb, reload, consoleLocal } from './functions';
-import { router, controlRoutes, pages, pagesSys } from '../routes/index.routes';
+import { controlRoutes, router, pages, pagesSys } from '../routes/index.routes';
 
 function variables() {
   /*VARIABLES SYS*/
@@ -103,7 +103,7 @@ function variables() {
 function load() {
   const v = variables(); consoleLocal('log', v);
   const { hash, mod, ext, id, route, hash2 } = v;
-  router(hash, hash2, mod, ext);
+  router(hash, mod, ext);
   controlRoutes(route,mod,ext,id);
   menuWeb(hash2,mod,pages,pagesSys);
   //Redirect to #/ (Home)

@@ -1,4 +1,6 @@
 import { variables } from "./lib";
+import Pages from "../app/controllers/index";
+import { privatePage } from "../app/controllers/pages";
 
 /*FUNCIONES*/
 export function filename() {
@@ -65,6 +67,19 @@ const fileExist = async (mod,url)=>{
     new_Mod='404';console.error('NO EXISTE!');
   }
   return new_Mod;
+}
+
+export const router = (hash, mod, ext) => {
+  consoleLocal('log','hash=>' + hash);
+  let ext2 = (ext!='index')?' / '+capitalize(ext):'';
+  document.title = 'MandragoraJS SPA - ' + capitalize(mod) + ext2;
+  getRoutesSesion(mod,privatePage);
+  let page = (mod!='Home' && ext!='index')?ext:mod;// console.log(page,mod,ext);
+  let content = document.getElementById('app');
+  content.innerHTML = '';
+  if(hash){
+    return content.appendChild(Pages(page));
+  }
 }
 
 const getRoutes = async (hash,url,routes_session)=>{
