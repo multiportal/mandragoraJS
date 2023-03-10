@@ -4,7 +4,7 @@
 	"version": "1.1.2",
 	"description": "MandragoraJS - Single Page Application",
 	"scope": ".",
-	"start_url": "http://127.0.0.1:4173/",
+	"start_url": "https://multiportal.github.io",
 	"display": "standalone",
 	"orientation": "portrait",
 	"theme_color": "#000",
