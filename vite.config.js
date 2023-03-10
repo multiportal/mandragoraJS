@@ -1,10 +1,8 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  //base: '/mandragoraJS/'
-  /*
-  assetsInclude: ['** /*.html'],
-  */
+  /*assetsInclude: ['** /*.html'],*/
+  base: '/mandragoraJS/',
   root: './',
   build: {
     outDir: 'web',
