@@ -75,7 +75,7 @@ var Ci=(a,f)=>()=>(f||a((f={exports:{}}).exports,f),f.exports);var $s=Ci((Bn,Wt)
 </div>\r
 `,$i=`<div class="container text-center">\r
     <h1>Logout</h1>\r
-    <img src="../../assets/img/loading.gif">\r
+    <img src="./assets/img/loading.gif">\r
     <p>Espere un momento...</p>\r
     <a href="#/">Inicio</a>\r
 </div>\r
@@ -287,7 +287,7 @@ var Ci=(a,f)=>()=>(f||a((f={exports:{}}).exports,f),f.exports);var $s=Ci((Bn,Wt)
         <li>\r
             <div class="profile-details">\r
                 <div class="profile-content">\r
-                    <img src="../../assets/img/sinfoto.png" alt="profileImg">\r
+                    <img src="./assets/img/sinfoto.png" alt="profileImg">\r
                 </div>\r
                 <div class="name-job">\r
                     <div class="profile_name">name</div>\r
