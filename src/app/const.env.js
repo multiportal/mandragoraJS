@@ -1,7 +1,7 @@
 const {host} = window.location;
 /*VARIABLES DE ENTORNO*/
 export const title = 'MandragoraJS SPA';
-export const proyecto = 'mandragoraJS'; //PROYECTO
+//export const proyecto = 'mandragoraJS'; //PROYECTO
 export const path_hash = '#/'; //PATH HASH
 export const path_src = 'src/'; //PATH RESOURCE 
 export const path_page = path_src + 'pages/'; //PATH PAGE

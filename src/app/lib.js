@@ -63,7 +63,7 @@ function variables() {
     year,
     fecha,
     title,
-    proyecto,
+    //proyecto,//Not
     path_hash,
     path_src,//NOT
     path_page,//NOT
@@ -102,12 +102,12 @@ function variables() {
 /* FUNCIONES */
 function load() {
   const v = variables(); consoleLocal('log', v);
-  const { hash, mod, ext, id, route, hash2 } = v;
-  router(hash, mod, ext);
+  const { hash, mod, ext, id, route, page_url, title } = v;
+  router(hash, mod, ext, title);
   controlRoutes(route,mod,ext,id);
-  menuWeb(hash2,mod,pages,pagesSys);
+  menuWeb(hash,mod,pages,pagesSys);
   //Redirect to #/ (Home)
-  reload(mod);
+  reload(mod,page_url);
 }
 
 function inicio() {

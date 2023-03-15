@@ -69,10 +69,10 @@ const fileExist = async (mod,url)=>{
   return new_Mod;
 }
 
-export const router = (hash, mod, ext) => {
+export const router = (hash, mod, ext, title) => {
   consoleLocal('log','hash=>' + hash);
   let ext2 = (ext!='index')?' / '+capitalize(ext):'';
-  document.title = 'MandragoraJS SPA - ' + capitalize(mod) + ext2;
+  document.title = title + ' - ' + capitalize(mod) + ext2;
   getRoutesSesion(mod,privatePage);
   let page = (mod!='Home' && ext!='index')?ext:mod;// console.log(page,mod,ext);
   let content = document.getElementById('app');
@@ -116,10 +116,10 @@ export function getRoutesSesion(mod,privatePage){
   if(mod=='login' && (token!=null && token!='undefined')){/*setTimeout(() => {*/window.location.href='#/dashboard';/*}, 100);*/}
 }
 
-export function getModules(views){
-  const divElement = document.createElement('div');
-  divElement.innerHTML = views;      
-  return divElement;
+export function reload(mod,page_url){
+  if(mod=='' || mod=='undefined'){
+    window.location.href=page_url;//'#/';
+  }
 }
 
 export function reload(mod){
