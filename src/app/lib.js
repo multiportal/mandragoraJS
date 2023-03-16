@@ -1,5 +1,5 @@
 //import {consola} from './console.js';
-import { title, proyecto, path_hash, path_src, path_page, hostDev, hostPre } from './const.env';
+import { title, path_hash, path_src, path_page, hostDev, hostPre } from './const.env';
 import { filename, getQueryVariable, urlVars, menuWeb, reload, consoleLocal } from './functions';
 import { controlRoutes, router, pages, pagesSys } from '../routes/index.routes';
 
@@ -104,7 +104,7 @@ function load() {
   const v = variables(); consoleLocal('log', v);
   const { hash, mod, ext, id, route, page_url, title } = v;
   router(hash, mod, ext, title);
-  controlRoutes(route,mod,ext,id);
+  controlRoutes(v);
   menuWeb(hash,mod,pages,pagesSys);
   //Redirect to #/ (Home)
   reload(mod,page_url);

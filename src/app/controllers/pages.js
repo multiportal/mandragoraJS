@@ -41,6 +41,11 @@ export const pagesSys = {
   linksEdit: sidebar+linksEdit,
 };
 
+export const pagesAll = {
+  ...pages, 
+  ...pagesSys
+};//console.log('pagesAll:',pagesAll);
+
 export const privatePage = [
   'dashboard',
   'links'

@@ -1,4 +1,5 @@
 import { variables } from "./lib";
+import { pagesAll } from "../app/controllers/pages";
 import Pages from "../app/controllers/index";
 import { privatePage } from "../app/controllers/pages";
 
@@ -116,15 +117,15 @@ export function getRoutesSesion(mod,privatePage){
   if(mod=='login' && (token!=null && token!='undefined')){/*setTimeout(() => {*/window.location.href='#/dashboard';/*}, 100);*/}
 }
 
+export function getModules(views){
+  const divElement = document.createElement('div');
+  divElement.innerHTML = views;      
+  return divElement;
+}
+
 export function reload(mod,page_url){
   if(mod=='' || mod=='undefined'){
     window.location.href=page_url;//'#/';
-  }
-}
-
-export function reload(mod){
-  if(mod=='' || mod=='undefined'){
-    window.location.href='#/';
   }
 }
 
@@ -156,6 +157,41 @@ export function consoleLocal(type,val){
 
 export function capitalize(word) {
   return word[0].toUpperCase() + word.slice(1).toLowerCase();
+}
+
+export function loadStyle(arrCss,prefix) {
+  const {host, hostDev}=variables();
+  if (arrCss.length > 0) {
+    for (let i=0; i<arrCss.length; i++) {
+      let node = document.getElementById(prefix+i);
+      if(node){
+        if (host == hostDev) {console.log('Ok: dash-'+i);}
+      }else{
+        if (host == hostDev) {console.log(arrCss[i]);}
+        //<![CDATA[
+        if (document.createStyleSheet) {
+          document.createStyleSheet(arrCss[i]);
+        } else {
+          var styles = "@import url('" + arrCss[i] + "');";
+          var newSS = document.createElement('link');
+          newSS.id = prefix+i;
+          newSS.rel = 'stylesheet';
+          newSS.href = 'data:text/css,' + escape(styles);
+          document.getElementsByTagName("head")[0].appendChild(newSS);
+        }
+        //]]>
+      }
+    }
+  }
+}
+
+export function delStyle(arrNum,prefix){
+  for(let i=0; i<arrNum; i++){
+    let nodo = document.getElementById(prefix+i);
+    if(nodo){console.log(nodo);
+      document.getElementsByTagName("head")[0].removeChild(nodo);
+    }  
+  }
 }
 
 export function fecha() {
@@ -200,4 +236,31 @@ export function consola(v){
   const {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,url_mod,url_m} = v;
   const nv = {hash,URL,pag_name,vars_Url,mod,ext,id,ext2,route,url_mod,url_m};//console.log(nv);
   return nv;
+}
+
+export function loading(){
+  let body = document.getElementsByTagName("body")[0];
+  let layer = 'layerLoading';
+  let content = `<div class="${layer}">
+    <img src="./assets/img/loader-green.gif" alt=""/>
+    <p>Cargando...</p>
+  </div>`;
+  var div = document.createElement('div');
+  div.id = 'load';
+  div.innerHTML=content;
+  body.appendChild(div);
+  setTimeout(() => {
+    let nodo = document.getElementById(div.id);
+    if(nodo){//console.log(nodo);
+      body.removeChild(nodo);
+    }
+  }, 1500);    
+}
+
+export function controlLoading(){
+  const {mod,ext} = variables();
+  let page = (mod!='Home' && ext!='index')?ext:mod;// console.log(page,mod,ext);
+  //let pag = Pages(page); console.log('PAGINA:',pag);
+  var views = pagesAll[page];
+  if(mod!='logout' && mod!='noauth' && views!=undefined){loading();}
 }
