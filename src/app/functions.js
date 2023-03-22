@@ -165,9 +165,9 @@ export function loadStyle(arrCss,prefix) {
     for (let i=0; i<arrCss.length; i++) {
       let node = document.getElementById(prefix+i);
       if(node){
-        if (host == hostDev) {console.log('Ok: dash-'+i);}
+        consoleLocal('log','Ok: dash-'+i);
       }else{
-        if (host == hostDev) {console.log(arrCss[i]);}
+        consoleLocal('log',arrCss[i]);
         //<![CDATA[
         if (document.createStyleSheet) {
           document.createStyleSheet(arrCss[i]);
@@ -188,7 +188,7 @@ export function loadStyle(arrCss,prefix) {
 export function delStyle(arrNum,prefix){
   for(let i=0; i<arrNum; i++){
     let nodo = document.getElementById(prefix+i);
-    if(nodo){console.log(nodo);
+    if(nodo){consoleLocal('log',nodo);
       document.getElementsByTagName("head")[0].removeChild(nodo);
     }  
   }
