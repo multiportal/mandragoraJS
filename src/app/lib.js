@@ -31,10 +31,11 @@ function variables() {
   const quest = search; // [OBSOLETA] -> Obtención del valor de las variable ej. ?mod=producto&ext=cate
   const path_url = pathname.replace("/", "");
   const base_url = dominio + path_url;
-  const path_root = (host == 'localhost') ? path_url + path_hash : path_hash;//Revisar
+  const path_root = (host == 'localhost' || (host != hostDev && host != hostPre)) ? path_url + path_hash : path_hash;//Revisar
   const path_build = (host == 'localhost:9001')?'../':'./'; //Revisar
   const page_url = dominio + path_root;//
   const screenw = screen.width;
+  const screenh = screen.height;
 
   /* VARIABLES */
   var tema = 'default';
@@ -63,7 +64,7 @@ function variables() {
     year,
     fecha,
     title,
-    //proyecto,//Not
+    //proyecto,//NOT
     path_hash,
     path_src,//NOT
     path_page,//NOT
@@ -83,6 +84,7 @@ function variables() {
     base_url,
     page_url, 
     screenw,
+    screenh,
     tema,
     path_tema,
     pag_name, //Load
