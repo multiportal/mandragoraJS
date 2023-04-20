@@ -80,7 +80,7 @@ export const router = (hash, mod, ext, title) => {
   let page = (mod!='Home' && ext!='index')?ext:mod; //console.log(page,mod,ext);
   //SEGMENTO PARA CARGAR EN DASHBOARD
   //let idApp = (mod=='dashboard' && ext!='index')?'appDash':'app'; console.log(idApp);
-  //let content = document.getElementById(idApp);
+  let content = document.getElementById('app');
   //if(content){
     content.innerHTML = '';
     if(hash){
