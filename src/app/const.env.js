@@ -11,3 +11,4 @@ export const hostPre = (typeDev == 'vite') ? '127.0.0.1:4173' : 'localhost';
 /* URL-API */
 export const Api = (host!=hostDev)?'https://apirestm.webcindario.com/api':'http://localhost/MisSitios/apirestm/api';
 export const api_links = Api + '/v2/links/';/* URL-LINKS */
+export const apiVer = Api + '/v2/api_version';

@@ -7,6 +7,7 @@ import { dashboard } from "../app/controllers/dashboard";
 import { links } from "../app/controllers/links";
 import { linksAdd } from "../app/controllers/link-add";
 import { linksEdit } from "../app/controllers/link-edit";
+//import Home from "../app/controllers/home";
 
 //Functions for Controllers JS
 function controlRoutes(v){ 

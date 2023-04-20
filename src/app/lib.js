@@ -1,6 +1,6 @@
 //import {consola} from './console.js';
 import { title, path_hash, path_src, path_page, hostDev, hostPre } from './const.env';
-import { filename, getQueryVariable, urlVars, menuWeb, reload, consoleLocal } from './functions';
+import { filename, getQueryVariable, urlVars, menuWeb, reload, consoleLocal, compVersion } from './functions';
 import { controlRoutes, router, pages, pagesSys } from '../routes/index.routes';
 
 function variables() {
@@ -104,12 +104,13 @@ function variables() {
 /* FUNCIONES */
 function load() {
   const v = variables(); consoleLocal('log', v);
-  const { hash, mod, ext, id, route, page_url, title } = v;
+  const { hash, mod, ext, page_url, base_url, title } = v;
   router(hash, mod, ext, title);
   controlRoutes(v);
   menuWeb(hash,mod,pages,pagesSys);
   //Redirect to #/ (Home)
   reload(mod,page_url);
+  compVersion(base_url);
 }
 
 function inicio() {

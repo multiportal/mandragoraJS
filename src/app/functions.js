@@ -1,7 +1,8 @@
 import { variables } from "./lib";
-import { pagesAll } from "../app/controllers/pages";
+import { pagesAll, privatePage } from "../app/controllers/pages";
 import Pages from "../app/controllers/index";
-import { privatePage } from "../app/controllers/pages";
+import { versionJson } from "./services/fetch";
+import { apiVer } from "./const.env";
 
 /*FUNCIONES*/
 export function filename() {
@@ -71,20 +72,31 @@ const fileExist = async (mod,url)=>{
 }
 
 export const router = (hash, mod, ext, title) => {
+  var token = localStorage.getItem("Token");
   consoleLocal('log','hash=>' + hash);
   let ext2 = (ext!='index')?' / '+capitalize(ext):'';
   document.title = title + ' - ' + capitalize(mod) + ext2;
-  getRoutesSesion(mod,privatePage);
-  let page = (mod!='Home' && ext!='index')?ext:mod;// console.log(page,mod,ext);
-  let content = document.getElementById('app');
-  content.innerHTML = '';
-  if(hash){
-    return content.appendChild(Pages(page));
-  }
+  getRoutesSesion(mod,privatePage);  
+  let page = (mod!='Home' && ext!='index')?ext:mod; //console.log(page,mod,ext);
+  //SEGMENTO PARA CARGAR EN DASHBOARD
+  //let idApp = (mod=='dashboard' && ext!='index')?'appDash':'app'; console.log(idApp);
+  //let content = document.getElementById(idApp);
+  //if(content){
+    content.innerHTML = '';
+    if(hash){
+      return content.appendChild(Pages(page));
+    }
+  /*}else{
+    if(token!=null && token!='undefined'){
+      window.location.href='#/dashboard';
+    }else{
+      window.location.href='#/';
+    }
+  }*/
 }
 
 const getRoutes = async (hash,url,routes_session)=>{
-  let content = document.getElementById('app-modulo'); 
+  let content = document.getElementById('app'); 
   let response = await fetch(url);
   if(!response.ok){
     console.error('Error 404(Fetch): La página No existe');
@@ -167,7 +179,7 @@ export function loadStyle(arrCss,prefix) {
       if(node){
         consoleLocal('log','Ok: dash-'+i);
       }else{
-        consoleLocal('log',arrCss[i]);
+        //consoleLocal('log',arrCss[i]);
         //<![CDATA[
         if (document.createStyleSheet) {
           document.createStyleSheet(arrCss[i]);
@@ -188,7 +200,7 @@ export function loadStyle(arrCss,prefix) {
 export function delStyle(arrNum,prefix){
   for(let i=0; i<arrNum; i++){
     let nodo = document.getElementById(prefix+i);
-    if(nodo){consoleLocal('log',nodo);
+    if(nodo){//consoleLocal('log',nodo);
       document.getElementsByTagName("head")[0].removeChild(nodo);
     }  
   }
@@ -260,7 +272,17 @@ export function loading(){
 export function controlLoading(){
   const {mod,ext} = variables();
   let page = (mod!='Home' && ext!='index')?ext:mod;// console.log(page,mod,ext);
-  //let pag = Pages(page); console.log('PAGINA:',pag);
   var views = pagesAll[page];
-  if(mod!='logout' && mod!='noauth' && views!=undefined){loading();}
+  if(mod!='logout' && mod!='noauth' && ext=='index' && views!=undefined){loading();}
+}
+
+export async function compVersion(base_url){
+  const {version} = await versionJson(`${base_url}assets/pwa/manifest.json`); console.log(`Version Actual: ${version}`);//consoleLocal('log','Version1 ' + ver1);
+  const ver2 = await versionJson(apiVer); 
+  if(ver2 && ver2!=undefined){//console.log('Version2',ver2);
+    const {ultimate} = ver2.data[0]; //console.log(ultimate);
+    if(version != ultimate){
+      console.log(`Actualizar version (${version} => ${ultimate})`);
+    }
+  }else{console.warn('No se pudo llevar a cabo la comprobación de versiones');}
 }
