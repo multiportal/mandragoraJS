@@ -11,7 +11,7 @@ import { linksEdit } from "../app/controllers/link-edit";
 
 //Functions for Controllers JS
 function controlRoutes(v){ 
-  const {route,mod,base_url} = v;consoleLocal('log','route='+route);
+  const {route,mod,id,base_url} = v;consoleLocal('log','route='+route);
   //if(mod){cssLoadMod(mod,base_url);controlLoading();}
   if(route=='login/index'){login();}
   if(route=='logout/index'){logout();}
