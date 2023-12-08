@@ -32,7 +32,7 @@ const linksList = async () => {
         list.innerHTML += `
           <!--div class="col-md-4"-->
             <div id="${ID}" class="card" style="width: 18rem;">
-              <img src="${path_build}assets/img/webpage.jpg" class="card-img-top" alt="">
+              <img src="${path_build}assets/img/web/page.jpg" class="card-img-top" alt="">
               <div class="card-body">
                 <a href="${url}" target="_blank">
                   <h5 class="card-title">${title}</h5>
