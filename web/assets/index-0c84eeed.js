@@ -10,7 +10,7 @@ var Di=(a,d)=>()=>(d||a((d={exports:{}}).exports,d),d.exports);var Fs=Di(($n,Wt)
   <div id="content" class="container-fluid" style="margin-top: 25px;">\r
     <div class="row">\r
       <div class="card" style="width: 18rem;">\r
-        <img src="../../assets/img/web/page.jpg" class="card-img-top" alt="">\r
+        <img src="./assets/img/webpage.jpg" class="card-img-top" alt="">\r
         <div class="card-body">\r
           <h5 class="card-title">Card title</h5>\r
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\r
@@ -331,7 +331,7 @@ var Di=(a,d)=>()=>(d||a((d={exports:{}}).exports,d),d.exports);var Fs=Di(($n,Wt)
     </div>`,g=Re;console.log(g);const _=await fetch(g);if(_.status==200){const{data:w}=await _.json();w?w.forEach(x=>{const{ID:O,title:I,url:$,description:B,cate:X,user_id:V,created_at:De}=x;a.innerHTML+=`
           <!--div class="col-md-4"-->
             <div id="${O}" class="card" style="width: 18rem;">
-              <img src="${xs}assets/img/web/page.jpg" class="card-img-top" alt="">
+              <img src="${xs}assets/img/webpage.jpg" class="card-img-top" alt="">
               <div class="card-body">
                 <a href="${$}" target="_blank">
                   <h5 class="card-title">${I}</h5>
