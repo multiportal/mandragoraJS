@@ -2,7 +2,6 @@ import { variables } from "./lib";
 import { pagesAll, privatePage } from "../app/controllers/pages";
 import Pages from "../app/controllers/index";
 import { versionJson } from "./services/fetch";
-import { apiVer } from "./const.env";
 
 //VARIABLES CONSTANTES
 const {host, hostDev, typeBack, apiVer} = variables();
