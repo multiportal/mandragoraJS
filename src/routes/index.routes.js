@@ -13,6 +13,7 @@ import { linksEdit } from "../app/controllers/link-edit";
 function controlRoutes(v){ 
   const {route,mod,id,base_url} = v;consoleLocal('log','route='+route);
   //if(mod){cssLoadMod(mod,base_url);controlLoading();}
+  //if(route=='Home/index'){Home();}
   if(route=='login/index'){login();}
   if(route=='logout/index'){logout();}
   if(route=='dashboard/index' || (mod=='dashboard' || mod=='links')){dashboard();}
