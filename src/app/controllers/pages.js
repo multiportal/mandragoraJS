@@ -50,3 +50,18 @@ export const privatePage = [
   'dashboard',
   'links'
 ];
+
+export const menuPages = {
+  dash:{
+    txt:'Dashboard',
+    icon:'fas fa-tachometer-alt'
+  },
+  tarjetas:{
+    txt:'Mis tarjetas',
+    icon:'far fa-address-card'
+  },
+  empresas:{
+    txt:'Mis empresas',
+    icon:'fas fa-industry'
+  }
+}
