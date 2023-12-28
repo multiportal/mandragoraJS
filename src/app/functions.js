@@ -4,7 +4,7 @@ import Pages from "../app/controllers/index";
 import { versionJson } from "./services/fetch";
 
 //VARIABLES CONSTANTES
-const {host, hostDev, typeBack, apiVer} = variables();
+const {hash, host, hostDev, typeBack, apiVer} = variables();
 
 /*FUNCIONES*/
 export function filename() {
@@ -287,4 +287,17 @@ export async function compVersion(mod,base_url){//const {mod,ext} = variables();
       }
     }else{console.warn('No se pudo llevar a cabo la comprobación de versiones');}
   }
+}
+
+export function btnMenuPages(btn){
+  let d = btn.getAttribute("data-menu");
+  btn.addEventListener('click', () => {
+    let content = document.getElementById('appDash');
+    if(content){consoleLocal('log','Click '+d);
+      content.innerHTML = '';
+      if(hash){
+        return content.appendChild(Pages(d));
+      }
+    }        
+  });
 }
