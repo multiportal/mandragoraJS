@@ -289,15 +289,17 @@ export async function compVersion(mod,base_url){//const {mod,ext} = variables();
   }
 }
 
+export function loadDashboard(d){
+  let content = document.getElementById('appDash');
+  if(content){consoleLocal('log','Click '+d);
+    content.innerHTML = '';
+    if(hash){
+      return content.appendChild(Pages(d));
+    }
+  }        
+}
+
 export function btnMenuPages(btn){
   let d = btn.getAttribute("data-menu");
-  btn.addEventListener('click', () => {
-    let content = document.getElementById('appDash');
-    if(content){consoleLocal('log','Click '+d);
-      content.innerHTML = '';
-      if(hash){
-        return content.appendChild(Pages(d));
-      }
-    }        
-  });
+  btn.addEventListener('click', ()=>{loadDashboard(d)});
 }
