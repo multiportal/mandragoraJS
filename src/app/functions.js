@@ -1,4 +1,4 @@
-import { variables } from "./lib";
+import { variables } from "./core/lib";
 import { pagesAll, privatePage } from "../app/controllers/pages";
 import Pages from "../app/controllers/index";
 import { versionJson } from "./services/fetch";

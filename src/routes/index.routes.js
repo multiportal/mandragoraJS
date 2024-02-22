@@ -4,10 +4,10 @@ import { login } from "../app/controllers/login";
 import { logout } from "../app/controllers/logout";
 import { dashboard } from "../app/controllers/dashboard";
 //import { cssLoadMod } from "./css.routes";
-import { links } from "../app/controllers/links";
-import { linksAdd } from "../app/controllers/link-add";
-import { linksEdit } from "../app/controllers/link-edit";
-//import Home from "../app/controllers/home";
+import { links } from "../pages/links/links";
+import { linksAdd } from "../pages/links/link-add";
+import { linksEdit } from "../pages/links/link-edit";
+//import Home from "../app/pages/home/home";
 
 //Functions for Controllers JS
 function controlRoutes(v){ 

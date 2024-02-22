@@ -1,7 +1,7 @@
 //LINKS.JS
-import { consoleLocal } from '../functions';
-import { variables } from '../lib';
-import { api_links } from '../const.env';
+import { consoleLocal } from '../../app/functions';
+import { variables } from '../../app/core/lib';
+import { api_links } from '../../app/core/const.env';
 
 /* VARIABLES CONSTANTES*/
 const { host, dominio, path_url, path_build, hostDev } = variables();

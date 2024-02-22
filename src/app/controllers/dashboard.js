@@ -1,7 +1,7 @@
 //DASHBOARD.JS
-import { variables } from '../lib';
+import { variables } from '../core/lib';
 import { functionFetch, fetchProfile } from '../services/fetch';
-import { Api } from '../const.env';
+import { Api } from '../core/const.env';
 import { consoleLocal } from '../functions';
 
 const v = variables();

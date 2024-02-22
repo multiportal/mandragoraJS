@@ -11,8 +11,8 @@ import linksAdd from "../../pages/links/add.html?raw";
 import linksEdit from "../../pages/links/edit.html?raw";
 
 /**COMPONENTS**/
-import menu from "../../components/menu.html?raw";
-import sidebar from "../../components/sidebar.html?raw";
+import menu from "../../components/menu/index.html?raw";
+import sidebar from "../../components/sidebar/index.html?raw";
 /**PAGES**/
 import Home from "../../pages/Home/index.html?raw";
 import nosotros from "../../pages/nosotros/index.html?raw";
