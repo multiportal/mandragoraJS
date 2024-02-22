@@ -3,7 +3,7 @@
 	"short_name": "MandragoraJS-APP",
 	"version": "1.2.2",
 	"description": "MandragoraJS - Single Page Application",
-	"scope": ".",
+	"scope": "/",
 	"start_url": "https://multiportal.github.io/mandragoraJS/web/",
 	"display": "standalone",
 	"orientation": "portrait",
@@ -20,5 +20,8 @@
 		"sizes": "152x152",
 		"type": "image/png"
 	  }
-	]
+	],
+	"serviceworker": {
+		"src": "/sw.js"
+	}
   }  
