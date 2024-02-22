@@ -10,8 +10,9 @@ import './public/assets/css/dashboard.css'; //** 3 WARNINGS IN WEBPACK FOR BUILD
 import './public/assets/font-awesome-5.14.0/css/all.min.css';
 import './public/assets/css/style.css';
 //import './public/assets/main.scss';
+import './public/assets/js/jquery-3.3.1.slim.min.js';
 import './public/assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js';
-//import './public/assets/js/sweetalert2.all.min.js';
+import './public/assets/js/sweetalert2.all.min.js';
 //import './public/assets/pwa/sw.js'; //SERVICE WORKER
 import './public/assets/pwa/appCon.js';
 //Files import for App
