@@ -1,6 +1,6 @@
-import {variables} from '../core/lib';
-import { Api } from '../core/const.env';
-import { consoleLocal } from '../functions';
+import {variables} from '../../core/lib';
+import { Api } from '../../core/const.env';
+import { consoleLocal } from '../../functions';
 const v = variables();
 /* VARIABLES CONSTANTES*/
 const { host, dominio, path_url, hostDev } = v;

@@ -1,8 +1,8 @@
 import { consoleLocal, router, controlLoading} from "../app/functions";
 import { pages, pagesSys } from "../app/controllers/pages";
-import { login } from "../app/controllers/login";
-import { logout } from "../app/controllers/logout";
-import { dashboard } from "../app/controllers/dashboard";
+import { login } from "../app/sys/login/login";
+import { logout } from "../app/sys/logout/logout";
+import { dashboard } from "../app/auth/dashboard/dashboard";
 //import { cssLoadMod } from "./css.routes";
 import { links } from "../pages/links/links";
 import { linksAdd } from "../pages/links/link-add";

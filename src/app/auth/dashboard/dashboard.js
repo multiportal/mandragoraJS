@@ -1,8 +1,8 @@
 //DASHBOARD.JS
-import { variables } from '../core/lib';
-import { functionFetch, fetchProfile } from '../services/fetch';
-import { Api } from '../core/const.env';
-import { consoleLocal } from '../functions';
+import { variables } from '../../core/lib';
+import { functionFetch, fetchProfile } from '../../services/fetch';
+import { Api } from '../../core/const.env';
+import { consoleLocal } from '../../functions';
 
 const v = variables();
 const { host, dominio, path_url, base_url, screenw, mod, hostDev } = v;
