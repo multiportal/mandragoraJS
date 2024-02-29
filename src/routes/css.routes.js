@@ -3,6 +3,17 @@ import {
     delStyle
 } from "../app/functions";
 
+export function classBody(mod){
+    let cBody=document.querySelector('.body');
+    if(cBody){
+        if(mod!='' && mod!='Home'){
+            cBody.style.display = 'none';
+        }else{
+            cBody.style.display = 'inherit';
+        }
+    }
+}
+
 export function cssLoadMod(mod, base_url) {
     //app ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     const prefixApp = 'app-';
