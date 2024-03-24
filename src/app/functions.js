@@ -83,12 +83,12 @@ export const router = (hash, mod, ext, title) => {
   //SEGMENTO PARA CARGAR EN DASHBOARD
   //let idApp = (mod=='dashboard' && ext!='index')?'appDash':'app'; console.log(idApp);
   let content = document.getElementById('app');
-  //if(content){
+  if(content){
     content.innerHTML = '';
     if(hash){
       return content.appendChild(Pages(page));
     }
-  /*}else{
+  }/*else{
     if(token!=null && token!='undefined'){
       window.location.href='#/dashboard';
     }else{
@@ -179,7 +179,7 @@ export function loadStyle(arrCss,prefix) {
       if(node){
         consoleLocal('log','Ok: dash-'+i);
       }else{
-        //consoleLocal('log',arrCss[i]);
+        consoleLocal('log',arrCss[i]);
         //<![CDATA[
         if (document.createStyleSheet) {
           document.createStyleSheet(arrCss[i]);
@@ -197,8 +197,36 @@ export function loadStyle(arrCss,prefix) {
   }
 }
 
-export function delStyle(arrNum,prefix){
-  for(let i=0; i<arrNum; i++){
+export function loadScript(arrJs,prefix) {
+  if (arrJs.length > 0) {
+    for (let i=0; i<arrJs.length; i++) {
+      let node = document.getElementById(prefix+i);
+      if(node){
+        consoleLocal('log','Ok: '+prefix+i);
+      }else{
+        consoleLocal('log',arrJs[i]);
+        //<![CDATA[
+        var newScript = document.createElement('script');
+        newScript.id = prefix+i;
+        newScript.src = arrJs[i]; // Especifica la ruta al archivo JavaScript que deseas cargar
+        document.body.appendChild(newScript);
+        //]]>
+      }
+    }
+  }
+}
+
+export function delScript(array,prefix){
+  for(let i=0; i<=array.length; i++){
+    let nodo = document.getElementById(prefix+i);
+    if(nodo){//consoleLocal('log',nodo);
+      document.body.removeChild(nodo);
+    }  
+  }
+}
+
+export function delStyle(array,prefix){
+  for(let i=0; i<array.length; i++){
     let nodo = document.getElementById(prefix+i);
     if(nodo){//consoleLocal('log',nodo);
       document.getElementsByTagName("head")[0].removeChild(nodo);
@@ -266,7 +294,7 @@ export function loading(){
     if(nodo){//console.log(nodo);
       body.removeChild(nodo);
     }
-  }, 1500);    
+  }, 2000);    
 }
 
 export function controlLoading(){
