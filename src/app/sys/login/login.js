@@ -3,11 +3,11 @@ import { Api } from '../../core/const.env';
 import { consoleLocal } from '../../functions';
 const v = variables();
 /* VARIABLES CONSTANTES*/
-const { host, dominio, path_url, hostDev } = v;
+const { host, dominio, path_url, hostDev, typeBack } = v;
 
 console.log('/* javascript login | VARIABLES CONSTANTES*/');
 let api_login = Api + '/login/';
-if(host==hostDev){console.log('api_login='+api_login);}
+if(host==hostDev && typeBack!='firebase'){console.log('api_login='+api_login);}
 
 function btnLogin(){
 const formulario = document.getElementById('form-login');

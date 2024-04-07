@@ -294,7 +294,7 @@ export function loading(){
     if(nodo){//console.log(nodo);
       body.removeChild(nodo);
     }
-  }, 2000);    
+  }, 5000);    
 }
 
 export function controlLoading(){
@@ -305,16 +305,19 @@ export function controlLoading(){
 }
 
 export async function compVersion(mod,base_url){//const {mod,ext} = variables();
-  if(mod=='Home'){
-    const {version} = await versionJson(`${base_url}assets/pwa/manifest.json`); console.log(`Version Actual: ${version}`);//consoleLocal('log','Version1 ' + ver1);
-    const ver2 = await versionJson(apiVer); 
-    if(ver2 && ver2!=undefined){//console.log('Version2',ver2);
-      const {ultimate} = ver2.data[0]; //console.log(ultimate);
-      if(version != ultimate){
-        console.log(`Actualizar version ${mod} (${version} => ${ultimate})`);
-      }
-    }else{console.warn('No se pudo llevar a cabo la comprobación de versiones');}
-  }
+  if(typeBack!='firebase'){
+    if(mod=='Home'){
+      const {version} = await versionJson(`${base_url}assets/pwa/manifest.json`); console.log(`Version Actual: ${version}`);//consoleLocal('log','Version1 ' + ver1);
+      const ver2 = await versionJson(apiVer); 
+      if(ver2 && ver2!=undefined){//console.log('Version2',ver2);
+        const {ultimate} = ver2.data[0]; //console.log(ultimate);
+        if(version != ultimate){
+          console.log(`Actualizar version ${mod} (${version} => ${ultimate})`);
+        }
+      }else{console.warn('No se pudo llevar a cabo la comprobación de versiones');}
+    }
+  }else{console.warn('Only Firebase');}
+
 }
 
 export function loadDashboard(d){
