@@ -45,6 +45,14 @@ export function saveUser(user) {console.log('saveUser');
   set(ref(db, "vcard_signup/" + user.uid), u);
 }
 
+/*export function getData(tab, callback) {
+  const tabRef = ref(db, tab+'/');
+  onValue(tabRef, (snapshot) => {
+    const data = snapshot.val();console.log(data);
+    callback(data);
+  });
+}*/
+
 export function getData(tab){
   const tabRef = ref(db, tab+'/');
   onValue(tabRef, (snapshot) => {
@@ -52,6 +60,35 @@ export function getData(tab){
     return data;
   });
 }
+
+export function getUserSesion(user){
+  const foto = document.querySelector("#photo");
+  const nom = document.querySelector("#nombre_session");
+  const mail = document.querySelector("#email_session");
+  const uid = document.querySelector("#id_code_google");
+  const tabRef = ref(db, 'vcard_signup/');
+  onValue(tabRef, (snapshot) => {
+      const data = snapshot.val(); //console.log(data);
+      for (let key in data){
+        const u = data[key]; 
+        if(u.uid == user.uid){console.log(u);
+          const f = (u.foto == null)?page_url+'bloques/files/images/photos/sinfoto.png':u.foto;
+          const cover = '<img src="' + f + '" class="img-fluid rounded-circle">';
+          const nombre = (u.usuario == null)?u.email:u.usuario;
+          const correo = u.email;
+          const ID_user = u.uid;
+
+          foto.innerHTML = cover;
+          nom.innerHTML = nombre;
+          mail.innerHTML = correo;
+          uid.innerHTML = ID_user;
+        }
+      }
+  });
+}
+
+
+
 
 export function saveData(){
 
@@ -69,12 +106,16 @@ export const loginCheck = (user) => { console.log('loginCheck');
   const formLogin = document.querySelector('.login-page');
   const dash = document.querySelector('.dashboard');
 
-  if (user) {
-    if(btnLogout){btnLogout.style.display = "block";}
-    //loggedInLinks.forEach((link) => (link.style.display = "block"));
-    //loggedOutLinks.forEach((link) => (link.style.display = "none"));
+  if (user) {    
+    formLogin.style.display = 'none';
+    formRegis.style.display = 'none';
+    dash.style.display = 'block';
+    //if(btnLogout){btnLogout.style.display = "block";}
   } else {
-    if(btnLogout){btnLogout.style.display = "none";}
+    formLogin.style.display = 'block';
+    //formRegis.style.display = 'block';
+    dash.style.display = 'none';
+    //if(btnLogout){btnLogout.style.display = "none";}
     if(btnRegis){
       btnRegis.addEventListener('click',()=>{
         formRegis.style.display = 'block';
@@ -87,8 +128,6 @@ export const loginCheck = (user) => { console.log('loginCheck');
         formLogin.style.display = 'block';
       });
     }
-    //loggedInLinks.forEach((link) => (link.style.display = "none"));
-    //loggedOutLinks.forEach((link) => (link.style.display = "block"));
   }
 };
 

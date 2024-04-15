@@ -172,19 +172,51 @@ export function capitalize(word) {
   return word[0].toUpperCase() + word.slice(1).toLowerCase();
 }
 
-export function loadStyle(arrCss,prefix) {
-  if (arrCss.length > 0) {
-    for (let i=0; i<arrCss.length; i++) {
+export function loadDelStyle(arr,prefix,mode) {
+  if (arr.length > 0) {
+    for (let i=0; i<arr.length; i++) { console.log('load',prefix+i);
+      let nodo = document.getElementById(prefix+i);
+      if(nodo){//console.log(nodo);
+        document.getElementsByTagName("head")[0].removeChild(nodo);
+      }  
+
+      if(mode=='load'){
+        let node = document.getElementById(prefix+i);
+        if(node){
+          console.log('Reload Ok: '+prefix+i);
+        }else{
+          console.log(prefix+i,arr[i]);
+          //<![CDATA[
+          if (document.createStyleSheet) {
+            document.createStyleSheet(arr[i]);
+          } else {
+            var styles = "@import url('" + arr[i] + "');";
+            var newSS = document.createElement('link');
+            newSS.id = prefix+i;
+            newSS.rel = 'stylesheet';
+            newSS.href = 'data:text/css,' + escape(styles);
+            document.getElementsByTagName("head")[0].appendChild(newSS);
+          }
+          //]]>
+        }
+      }
+    }
+  }
+}
+
+export function loadStyle(arr,prefix) {
+  if (arr.length > 0) {
+    for (let i=0; i<arr.length; i++) { console.log('load',prefix+i);
       let node = document.getElementById(prefix+i);
       if(node){
-        consoleLocal('log','Ok: dash-'+i);
+        console.log('Reload Ok: '+prefix+i);
       }else{
-        consoleLocal('log',arrCss[i]);
+        console.log(prefix+i,arr[i]);
         //<![CDATA[
         if (document.createStyleSheet) {
-          document.createStyleSheet(arrCss[i]);
+          document.createStyleSheet(arr[i]);
         } else {
-          var styles = "@import url('" + arrCss[i] + "');";
+          var styles = "@import url('" + arr[i] + "');";
           var newSS = document.createElement('link');
           newSS.id = prefix+i;
           newSS.rel = 'stylesheet';
@@ -197,18 +229,53 @@ export function loadStyle(arrCss,prefix) {
   }
 }
 
-export function loadScript(arrJs,prefix) {
-  if (arrJs.length > 0) {
-    for (let i=0; i<arrJs.length; i++) {
+export function delStyle(arr,prefix){
+  for(let i=0; i<arr.length; i++){console.log('delete',prefix+i);
+    let nodo = document.getElementById(prefix+i);
+    if(nodo){//console.log(nodo);
+      document.getElementsByTagName("head")[0].removeChild(nodo);
+    }  
+  }
+}
+
+export function loadDelScript(arr,prefix,mode) {
+  if (arr.length > 0) {
+    for (let i=0; i<arr.length; i++) {console.log('load',prefix+i);
+      let nodo = document.getElementById(prefix+i);
+      if(nodo){//console.log(nodo);
+        document.body.removeChild(nodo);
+      }
+
+      if(mode=='load'){
+        let node = document.getElementById(prefix+i);
+        if(node){
+          console.log('Reload Ok: '+prefix+i);
+        }else{
+          console.log(prefix+i,arr[i]);
+          //<![CDATA[
+          var newScript = document.createElement('script');
+          newScript.id = prefix+i;
+          newScript.src = arr[i]; // Especifica la ruta al archivo JavaScript que deseas cargar
+          document.body.appendChild(newScript);
+          //]]>
+        }
+      }
+    }
+  }
+}
+
+export function loadScript(arr,prefix) {
+  if (arr.length > 0) {
+    for (let i=0; i<arr.length; i++) {console.log('load',prefix+i);
       let node = document.getElementById(prefix+i);
       if(node){
-        consoleLocal('log','Ok: '+prefix+i);
+        console.log('Reload Ok: '+prefix+i);
       }else{
-        consoleLocal('log',arrJs[i]);
+        console.log(prefix+i,arr[i]);
         //<![CDATA[
         var newScript = document.createElement('script');
         newScript.id = prefix+i;
-        newScript.src = arrJs[i]; // Especifica la ruta al archivo JavaScript que deseas cargar
+        newScript.src = arr[i]; // Especifica la ruta al archivo JavaScript que deseas cargar
         document.body.appendChild(newScript);
         //]]>
       }
@@ -216,23 +283,15 @@ export function loadScript(arrJs,prefix) {
   }
 }
 
-export function delScript(array,prefix){
-  for(let i=0; i<=array.length; i++){
+export function delScript(arr,prefix){
+  for(let i=0; i<arr.length; i++){console.log('delete',prefix+i);
     let nodo = document.getElementById(prefix+i);
-    if(nodo){//consoleLocal('log',nodo);
+    if(nodo){//console.log(nodo);
       document.body.removeChild(nodo);
     }  
   }
 }
 
-export function delStyle(array,prefix){
-  for(let i=0; i<array.length; i++){
-    let nodo = document.getElementById(prefix+i);
-    if(nodo){//consoleLocal('log',nodo);
-      document.getElementsByTagName("head")[0].removeChild(nodo);
-    }  
-  }
-}
 
 export function fecha() {
   var dt = new Date();

@@ -12,6 +12,8 @@ export function loginApp(){
         const credentials = await signInWithPopup(auth, provider)
         console.log(credentials);
         console.log("google sign in");
+        localStorage.setItem("Token", credentials.user.accessToken);//localStorage.setItem("Token", JSON.stringify(data.token));
+        let token = localStorage.getItem("Token"); consoleLocal('log','Res-Token:'+token);
         // show welcome message
         //alertMessage("Welcome " + credentials.user.displayName, 'success');
         showMessage("Welcome " + credentials.user.displayName, 'success');
