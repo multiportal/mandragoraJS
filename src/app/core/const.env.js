@@ -1,8 +1,8 @@
 const {host} = window.location;
 /*VARIABLES DE ENTORNO*/
-export const title = 'Vcard';
+export const title = 'MandragoraJS SPA';
 //export const proyecto = 'mandragoraJS'; //PROYECTO
-export const typeBack = 'firebase'; //firebase / api
+export const typeBack = 'api'; //firebase / api
 export const path_hash = '#/'; //PATH HASH
 export const path_src = 'src/'; //PATH RESOURCE 
 export const path_page = path_src + 'pages/'; //PATH PAGE
@@ -14,7 +14,7 @@ export const Api = (host==hostDev || host==hostPre)?'http://localhost/MisSitios/
 export const apiVer = Api + '/v2/api_version';/* URL-VERSION */
 /* */
 export const api_links = Api + '/v2/links/';/* URL-LINKS */
-console.log(host+'=='+hostDev,host+'=='+hostPre);
-console.warn('Api='+Api);
 if(typeBack!='firebase'){
+    console.log(host+'=='+hostDev,host+'=='+hostPre);
+    console.warn('Api='+Api);
 }
