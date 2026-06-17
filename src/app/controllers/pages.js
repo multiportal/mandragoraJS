@@ -69,3 +69,33 @@ export const menuPages = {
     icon:'fas fa-industry'
   }
 }
+
+export const pagesAll2 = {
+  pages:{
+    Home:{
+      mod:menu+Home,
+      ext:[],
+      txt:'Inicio',
+      icon:null
+    },
+    nosotros:{
+      mod:menu+nosotros,
+      ext:[],
+      txt:'Nosotros',
+      icon:null
+    },
+    productos:{
+      mod:menu+productos,
+      ext:{categorias:menu+categorias},
+      txt:'Productos',
+      icon:null
+    }
+  },
+  pagesSys:{
+
+  },
+  pagesAuth:{
+    pages,
+    menu
+  }
+}
