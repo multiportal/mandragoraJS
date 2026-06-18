@@ -5,3 +5,6 @@ package-lock.json
 *.db
 .env
 .vscode
+
+#Misc
+*.bat
