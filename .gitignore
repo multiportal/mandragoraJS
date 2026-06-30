@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-#Misc
+# Misc
 package-lock.json
+#*.bat
