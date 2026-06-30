@@ -1,0 +1,68 @@
+<section class="home-section">
+    <div class="home-content">
+        <i class='bx bx-menu'></i>
+        <span class="text">DASHBOARD > LINKS </span>
+    </div>
+    <div id="content" class="container-fluid" style="margin-top: 25px;">
+        <div class="row">
+            <div class="col-md-10"></div>
+            <div class="col-md-2">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btnAdd" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    Agregar
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form id="save-form">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Nuevo</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <input type="hidden" class="form-control" id="Id">
+                                    <input type="hidden" class="form-control" id="uid">
+                                    <input type="hidden" class="form-control" id="create_at">
+                                    <div class="mb-3">
+                                        <label for="title" class="form-label">Titulo*</label>
+                                        <input type="text" class="form-control" id="title" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cate" class="form-label">Categoria</label>
+                                        <input type="text" class="form-control" id="cate" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="link" class="form-label">Url - Enlace</label>
+                                        <input type="text" class="form-control" id="link">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="desc" class="form-label">Descripción</label>
+                                        <textarea class="form-control" rows="2" id="desc"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                        id="btnCancel">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary"
+                                        data-bs-dismiss="modal">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Modal -->
+            </div>
+        </div>
+        <div class="row mt-3 links-list" id="product-list">
+            <div class="col-md-12">
+                Cargando...
+            </div>
+        </div>
+    </div>
+</section>
