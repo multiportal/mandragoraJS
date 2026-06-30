@@ -250,6 +250,10 @@
   /*12px;*/
 }
 
+#content{
+  padding-top: 25px;
+}
+
 .home-section {
   position: relative;
   background: #E4E9F7;

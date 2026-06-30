@@ -13,7 +13,7 @@ export function settingsDashboard() {
             <i class='bx bx-menu'></i>
             <span class="text">DASHBOARD > SETTINGS</span>
         </div>
-        <div id="content" class="container-fluid" style="margin-top: 25px;">
+        <div id="content" class="container-fluid" >
             <div class="row">
             </div>
         </div>

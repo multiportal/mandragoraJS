@@ -133,7 +133,7 @@ export function linksDashboard() {
             var { Id, key, title, link, desc, cate, uid, create_at } = item;
             //if (activo) {
             html += `
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="card" key="${key}" style="width: 100%">
                 <img src="../../assets/img/webpage.jpg" class="card-img-top" alt="">
                 <div class="card-body">
