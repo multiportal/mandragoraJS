@@ -5,6 +5,11 @@ import { loadCssJsMod } from "./hooks/loadCssJs.route.js";
 import { sesionActiva } from "./services/firebase.js";
 
 /* ==========================
+   VARIABLES
+========================== */
+const { host } = variables();
+
+/* ==========================
    PARAMETROS URL
 ========================== */
 export function urlVariables(p) {
@@ -178,11 +183,13 @@ export function fecha() {
 }
 
 export function consoleLocal(type, val) {
-  let host = window.location.host;
   if (host == 'localhost' || host == 'localhost:5173') {
     switch (type) {
       case 'log':
         console.log(val);
+        break;
+      case 'table':
+        console.table(val);
         break;
       case 'warn':
         console.warn(val);
@@ -197,21 +204,22 @@ export function consoleLocal(type, val) {
   }
 }
 
-export function loadStyle(arr,prefix) {
+export function loadStyle(arr, prefix) {
   if (arr.length > 0) {
-    for (let i=0; i<arr.length; i++) { console.log('load',prefix+i);
-      let node = document.getElementById(prefix+i);
-      if(node){
-        console.log('Reload Ok: '+prefix+i);
-      }else{
-        console.log(prefix+i,arr[i]);
+    for (let i = 0; i < arr.length; i++) {
+      console.log('load', prefix + i);
+      let node = document.getElementById(prefix + i);
+      if (node) {
+        console.log('Reload Ok: ' + prefix + i);
+      } else {
+        console.log(prefix + i, arr[i]);
         //<![CDATA[
         if (document.createStyleSheet) {
           document.createStyleSheet(arr[i]);
         } else {
           var styles = "@import url('" + arr[i] + "');";
           var newSS = document.createElement('link');
-          newSS.id = prefix+i;
+          newSS.id = prefix + i;
           newSS.rel = 'stylesheet';
           newSS.href = 'data:text/css,' + escape(styles);
           document.getElementsByTagName("head")[0].appendChild(newSS);
@@ -222,26 +230,28 @@ export function loadStyle(arr,prefix) {
   }
 }
 
-export function delStyle(arr,prefix){
-  for(let i=0; i<arr.length; i++){console.log('delete',prefix+i);
-    let nodo = document.getElementById(prefix+i);
-    if(nodo){//console.log(nodo);
+export function delStyle(arr, prefix) {
+  for (let i = 0; i < arr.length; i++) {
+    console.log('delete', prefix + i);
+    let nodo = document.getElementById(prefix + i);
+    if (nodo) {//console.log(nodo);
       document.getElementsByTagName("head")[0].removeChild(nodo);
-    }  
+    }
   }
 }
 
-export function loadScript(arr,prefix) {
+export function loadScript(arr, prefix) {
   if (arr.length > 0) {
-    for (let i=0; i<arr.length; i++) {console.log('load',prefix+i);
-      let node = document.getElementById(prefix+i);
-      if(node){
-        console.log('Reload Ok: '+prefix+i);
-      }else{
-        console.log(prefix+i,arr[i]);
+    for (let i = 0; i < arr.length; i++) {
+      console.log('load', prefix + i);
+      let node = document.getElementById(prefix + i);
+      if (node) {
+        console.log('Reload Ok: ' + prefix + i);
+      } else {
+        console.log(prefix + i, arr[i]);
         //<![CDATA[
         var newScript = document.createElement('script');
-        newScript.id = prefix+i;
+        newScript.id = prefix + i;
         newScript.src = arr[i]; // Especifica la ruta al archivo JavaScript que deseas cargar
         document.body.appendChild(newScript);
         //]]>
@@ -250,11 +260,12 @@ export function loadScript(arr,prefix) {
   }
 }
 
-export function delScript(arr,prefix){
-  for(let i=0; i<arr.length; i++){console.log('delete',prefix+i);
-    let nodo = document.getElementById(prefix+i);
-    if(nodo){//console.log(nodo);
+export function delScript(arr, prefix) {
+  for (let i = 0; i < arr.length; i++) {
+    console.log('delete', prefix + i);
+    let nodo = document.getElementById(prefix + i);
+    if (nodo) {//console.log(nodo);
       document.body.removeChild(nodo);
-    }  
+    }
   }
 }
