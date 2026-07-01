@@ -7,7 +7,7 @@ self.addEventListener("install", function (event) {
   console.log("[Service Worker] Instalando Service Worker (sw.js)...", event);
   event.waitUntil(
     caches.open("static").then(function (cache) {
-      console.log('path: '+path);
+      console.log('path: ' + path);
       cache.addAll([path, path + "index.html"]);
     })
   );
@@ -17,21 +17,24 @@ self.addEventListener("activate", function (event) {
   console.log("[Service Worker] Activando Service Worker (sw.js)...", event);
 });
 
-self.addEventListener("fetch", function (event) {
-  //console.log(event.request.url);
+self.addEventListener("fetch", event => {
+  const { request } = event;
+  const url = new URL(request.url);
+  if (url.protocol !== "http:" && url.protocol !== "https:") return;
   event.respondWith(
-    caches.match(event.request).then(function (response) {
-      if (response) {
+    caches.match(request).then(async cached => {
+      if (cached) return cached;
+      try {
+        const response = await fetch(request);
+        if (response.ok && request.method === "GET") {
+          const cache = await caches.open("dynamic");
+          cache.put(request, response.clone());
+        }
         return response;
-      } else {
-        return fetch(event.request).then(function (res) {
-          return caches.open("dynamic").then(function (cache) {
-            //cache.put(event.request.url, res.clone()).then(()=>{cache.delete(path);});
-            cache.put(event.request.url, res.clone()).then(() => {
-              cache.delete(event.request.url);
-            });
-            return res;
-          });
+      } catch (err) {
+        return new Response("Sin conexión", {
+          status: 503,
+          statusText: "Offline"
         });
       }
     })
