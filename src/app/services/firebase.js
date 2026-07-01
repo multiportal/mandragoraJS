@@ -3,9 +3,9 @@ import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/fi
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 import { getDatabase, ref, set, push, child, remove, onValue, get, update } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { showMessage } from "../functions";
-import { variables } from "../core/lib";
+//import { variables } from "../core/lib";
 import { prefix } from "../core/constants";
-import { navigate } from "../../routes";
+//import { navigate } from "../../routes/routes";
 // TODO: Add SDKs for Firebase products that you want to use
 console.log('Firebase SDK');
 // Your web app's Firebase configuration

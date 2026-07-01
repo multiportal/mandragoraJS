@@ -1,4 +1,4 @@
-import { navigate } from '../../../routes';
+import { navigate } from '../../../routes/routes';
 import { variables } from '../../core/lib';
 import Html from './index.html?raw';
 

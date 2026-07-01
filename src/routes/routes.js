@@ -1,20 +1,20 @@
-import { renderPage } from "./app/functions.js";
-import { dashboard } from "./app/auth/dashboard/dashboard.js";
-import { profileDashboard } from "./app/auth/dashboard/profile.js"
-import { settingsDashboard } from "./app/auth/dashboard/settings.js"
-import { linksDashboard } from "./app/auth/dashboard/links/links.js"
-import { productsDashboard } from "./app/auth/dashboard/products/products.js"
-import { register } from "./app/auth/register/register.js";
-import { login } from "./app/auth/login/login.js";
-import { logout } from "./app/auth/logout/logout.js";
-import { noauth } from "./app/auth/noauth/noauth.js";
-import { home } from "./app/pages/Home/home.js";
-import { productos } from "./app/pages/productos/productos.js";
-import { articulo } from "./app/pages/productos/articulo/articulo.js";
-import { notFound } from "./app/pages/404/404.js";
+import { renderPage } from "../app/functions.js";
+import { dashboard } from "../app/auth/dashboard/dashboard.js";
+import { profileDashboard } from "../app/auth/dashboard/profile.js"
+import { settingsDashboard } from "../app/auth/dashboard/settings.js"
+import { linksDashboard } from "../app/auth/dashboard/links/links.js"
+import { productsDashboard } from "../app/auth/dashboard/products/products.js"
+import { register } from "../app/auth/register/register.js";
+import { login } from "../app/auth/login/login.js";
+import { logout } from "../app/auth/logout/logout.js";
+import { noauth } from "../app/auth/noauth/noauth.js";
+import { home } from "../app/pages/Home/home.js";
+import { productos } from "../app/pages/productos/productos.js";
+import { articulo } from "../app/pages/productos/articulo/articulo.js";
+import { notFound } from "../app/pages/404/404.js";
 /**COMPONENTS**/
-import { menu } from "./app/components/menu/menu.js";
-import { sidebar } from "./app/components/sidebar/sidebar.js";
+import { menu } from "../app/components/menu/menu.js";
+import { sidebar } from "../app/components/sidebar/sidebar.js";
 
 /* ==========================
    RUTAS

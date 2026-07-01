@@ -2,7 +2,7 @@ import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/1
 import { auth } from "../../services/firebase.js";
 import { consoleLocal, showMessage, toggleEye } from "../../functions.js";
 import Html from './index.html?raw';
-import { navigate } from "../../../routes.js";
+import { navigate } from "../../../routes/routes.js";
 
 export function login() {
 

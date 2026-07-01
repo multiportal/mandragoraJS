@@ -1,4 +1,4 @@
-import { navigate, routes } from "../routes.js";
+import { navigate, routes } from "../routes/routes.js";
 import { app, name } from './core/constants.js';
 import { variables } from "./core/lib.js";
 import { loadCssJsMod } from "./hooks/loadCssJs.route.js";
