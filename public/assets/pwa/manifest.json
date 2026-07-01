@@ -1,14 +1,14 @@
 {
 	"name": "MandragoraJS-APP",
 	"short_name": "MandragoraJS-APP",
-	"version": "1.2.2",
+	"version": "0.0.1",
 	"description": "MandragoraJS - Single Page Application",
 	"scope": "/",
-	"start_url": "https://multiportal.github.io/mandragoraJS/web/",
+	"start_url": "http://localhost:5173/",
 	"display": "standalone",
 	"orientation": "portrait",
 	"theme_color": "#000",
-	"background_color": "#fff",
+	"background_color": "#000",
 	"icons": [
 	  {
 		"src": "icon/apple-icon-180x180.png",
