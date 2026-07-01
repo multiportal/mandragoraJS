@@ -1,13 +1,13 @@
 import Html from './index.html?raw';
 import './style.css';
-import { prefix } from '../../core/constants.js';
 import { getData } from '../../services/firebase.js';
 
 export function productos() {
+    const tab = "productos";
 
     const products = async () => {
         let html = '';
-        const data = await getData('productos'); console.log(data);
+        const data = await getData(tab); console.log(data);
         const productList = document.querySelector('#product-list');
         if (!data) {
             productList.innerHTML = '<p>No hay productos disponibles.</p>';

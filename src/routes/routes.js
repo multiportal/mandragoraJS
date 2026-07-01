@@ -1,4 +1,4 @@
-import { renderPage } from "../app/functions.js";
+import { loading, renderPage } from "../app/functions.js";
 import { dashboard } from "../app/auth/dashboard/dashboard.js";
 import { profileDashboard } from "../app/auth/dashboard/profile.js"
 import { settingsDashboard } from "../app/auth/dashboard/settings.js"
@@ -51,4 +51,7 @@ export function navigate(path = "/home") {
     return;
   }
   renderPage(path);
+  if(path=='/'){
+    loading();
+  }
 }

@@ -1,5 +1,5 @@
 import { navigate, routes } from "../routes/routes.js";
-import { app, name } from './core/constants.js';
+import { app, name, theme } from './core/constants.js';
 import { variables } from "./core/lib.js";
 import { loadCssJsMod } from "./hooks/loadCssJs.route.js";
 import { sesionActiva } from "./services/firebase.js";
@@ -268,4 +268,39 @@ export function delScript(arr, prefix) {
       document.body.removeChild(nodo);
     }
   }
+}
+
+export function loading(){
+  let body = document.getElementsByTagName("body")[0];
+  let layer = 'layerLoading';
+  let content = `<div class="${layer}">
+    <img src="./assets/img/loader-green.gif" alt=""/>
+    <p>Cargando ${theme}</p>
+    <!--p>by ${name}</p-->
+  </div>`;
+  var div = document.createElement('div');
+  div.id = 'load';
+  div.innerHTML=content;
+  body.appendChild(div);
+  setTimeout(() => {
+    let nodo = document.getElementById(div.id);
+    if(nodo){//console.log(nodo);
+      body.removeChild(nodo);
+    }
+  }, 5000);    
+}
+
+export function controlLoading(){
+  const {mod,ext} = variables();
+  let page = (mod!='Home' && ext!='index')?ext:mod;// console.log(page,mod,ext);
+  var views = pagesAll[page];
+  if(mod!='dashboard' && typeBack == 'firebase'){
+    if(mod!='logout' && mod!='noauth' && ext=='index' && views!=undefined){loading();}
+  }
+}
+
+export function footer(){
+  const f = document.querySelector("#footer_page");
+  if(!f)return;
+  f.innerHTML = year + ' &copy; MandragoraJS V.3.0.1 - Diseñada por <a target="_blank" href="http://multiportal.com.mx">[:MULTIPORTAL:]</a>.';
 }

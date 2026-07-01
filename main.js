@@ -10,6 +10,7 @@ import './publicDir/assets/bootstrap-5.0.2/css/bootstrap.min.css';
 import './publicDir/assets/css/dashboard.css'; //** 3 WARNINGS IN WEBPACK FOR BUILD -->ADD DOM */
 import './publicDir/assets/font-awesome-5.14.0/css/all.min.css';
 import './publicDir/assets/css/style.css';
+import './publicDir/assets/css/load.css';
 import './publicDir/assets/js/jquery-3.3.1.slim.min.js';
 import './publicDir/assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js';
 //import './publicDir/assets/js/sweetalert2.all.min.js';
