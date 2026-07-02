@@ -1,4 +1,4 @@
-import { urlVariables, consoleLocal } from './../functions.js';
+import { urlVariables } from './../functions.js';
 import { theme } from "./constants";
 
 /* ==========================
@@ -24,7 +24,7 @@ export function variables() {
     const quest = search; // [OBSOLETA] -> Obtención del valor de las variable ej. ?mod=producto&ext=cate
     const path_url = pathname.replace("/", "");
     //
-    const { mod, ext, id } = urlVariables(pathname);
+    const { mod, ext, id } = urlVariables(hash);
     const path_root = host == 'localhost' ? `/MisSitios/${theme}` : '';
     const page_url = origin + path_root;//
 
@@ -58,11 +58,3 @@ export function variables() {
     };
 }
 
-export function load() {
-    const v = variables(); consoleLocal('log', v);
-}
-
-export function inicio() {
-    console.log('Run function inicio');
-    load();
-}

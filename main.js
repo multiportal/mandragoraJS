@@ -9,6 +9,7 @@ import './public/assets/bootstrap-5.0.2/css/bootstrap.min.css';
 import './public/assets/css/dashboard.css'; //** 3 WARNINGS IN WEBPACK FOR BUILD -->ADD DOM */
 import './public/assets/font-awesome-5.14.0/css/all.min.css';
 import './public/assets/css/style.css';
+import './public/assets/css/load.css';
 //import './public/assets/main.scss';
 import './public/assets/js/jquery-3.3.1.slim.min.js';
 import './public/assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js';
@@ -16,8 +17,7 @@ import './public/assets/bootstrap-5.0.2/js/bootstrap.bundle.min.js';
 //import './public/assets/pwa/sw.js'; //SERVICE WORKER
 import './public/assets/pwa/appCon.js';
 //Files import for App
-import { inicio, load } from './src/app/core/lib.js';
-//import { consoleLocal } from './src/app/functions';
+import { inicio, load, consoleLocal } from './src/app/functions.js';
 
 //HASHCHANGE EVENT LISTENER FOR APP
 window.addEventListener('hashchange', () => {
