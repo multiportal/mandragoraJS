@@ -5,7 +5,7 @@ export default defineConfig({
   base: './',
   root: './',
   build: {
-    outDir: 'public',
+    outDir: 'web',
   },
-  publicDir: 'publicDir',
+  publicDir: 'public',
 })
