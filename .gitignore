@@ -25,4 +25,5 @@ dist-ssr
 
 # Misc
 package-lock.json
-*.bat
+_docs
+#*.bat
