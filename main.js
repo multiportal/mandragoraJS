@@ -2,12 +2,12 @@
 CMS-Javascript (hash/spa) 
 Autor: Guillermo Jiménez López
 Fecha de Actualización: 03.03.2023 / 30.06.2026
-Versión: 1.2.2 - Vite
+Versión: 0.0.1 - Vite
 */
 //Files import for webpack
 import './public/assets/bootstrap-5.0.2/css/bootstrap.min.css';
-import './public/assets/css/dashboard.css'; //** 3 WARNINGS IN WEBPACK FOR BUILD -->ADD DOM */
-import './public/assets/font-awesome-5.14.0/css/all.min.css';
+//import './public/assets/css/dashboard.css'; //** 3 WARNINGS IN WEBPACK FOR BUILD -->ADD DOM */
+//import './public/assets/font-awesome-5.14.0/css/all.min.css';
 import './public/assets/css/style.css';
 import './public/assets/css/load.css';
 //import './public/assets/main.scss';
