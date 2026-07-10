@@ -3,6 +3,7 @@ import { environments } from "../../environments/environments";
    CONSTANTES 
 ========================== */
 export const app = document.querySelector("#app");
+export const body = document.getElementsByTagName("body")[0];
 export const name = environments.name;
 export const version = environments.version;
 export const prefix = environments.prefix;

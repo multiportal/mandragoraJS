@@ -1,10 +1,9 @@
-import { version } from '../core/constants';
+import { name, version, body } from '../core/constants';
 /* ==========================
    LOAD-SCRIPT
 ========================== */
 
 export function loading() {
-  let body = document.getElementsByTagName("body")[0];
   let layer = 'layerLoading';
   let content = `<div class="${layer}">
     <img src="./assets/img/loader-green.gif" alt=""/>
