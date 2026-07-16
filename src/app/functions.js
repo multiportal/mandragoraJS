@@ -1,7 +1,7 @@
 import { navigate, routes } from "../routes/routes.js";
 import { app, name, theme, version } from './core/constants.js';
 import { variables } from "./core/lib.js";
-import { loadCssJsMod } from "./hooks/loadCssJs.route.js";
+//import { loadCssJsMod } from "./hooks/loadCssJs.route.js";
 //import { sesionActiva } from "./services/firebase.js";
 import { versionJson } from "./services/fetch.js";
 
@@ -44,6 +44,7 @@ export const router = async (v) => {
     //setTimeout(() => { sesionActiva(v); }, 0);
   }
   await comprobarVersion(v);
+  setTimeout(() => { tooltips(); }, 1500);
 };
 
 export function pageHtml(p) {
@@ -149,8 +150,8 @@ export async function comprobarVersion(v) {
 }
 
 export async function obtenerManifest() {
-  const { dominio, path_url } = variables();
-  const data = await fetch(`${dominio}${path_url}assets/pwa/manifest.json`).then(r => r.json());
+  const { page_url } = variables();
+  const data = await fetch(`${page_url}assets/pwa/manifest.json`).then(r => r.json());
   return data;
 }
 
@@ -171,3 +172,10 @@ export const getFormData = (form, key = "name") =>
         el.type === "checkbox" ? el.checked : el.value
       ])
   );
+
+export const tooltips = () => {
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]'); console.log(tooltipTriggerList);
+  tooltipTriggerList.forEach(el => {
+    new bootstrap.Tooltip(el);
+  });
+}

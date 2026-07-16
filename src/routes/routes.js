@@ -1,4 +1,4 @@
-import { router } from '../app/functions.js';
+import { consoleLocal, router } from '../app/functions.js';
 import { loading } from '../app/hooks/loadScripts.js';
 import { variables } from '../app/core/lib.js';
 import { login } from '../app/auth/sys/login/login.js';
@@ -10,7 +10,7 @@ import { contacto } from '../pages/contacto/contacto.js';
 import { notFound } from "../pages/404/404.js";
 /**COMPONENTS**/
 import { menu } from '../components/menu/menu.js';
-import { sidebar } from '../components/sidebar/sidebar.js';
+//import { sidebar } from '../components/sidebar/sidebar.js';
 
 /* ==========================
    RUTAS
@@ -34,7 +34,7 @@ export const routes = {
    NAVEGACIÓN
 ========================== */
 export function navigate(h) {
-    const Token = localStorage.getItem('Token'); console.log('Token navigate:', Token);
+    const Token = localStorage.getItem('Token'); consoleLocal('log','Token navigate:'+ Token);
     h = (!Token && h == '#/dashboard') ? '#/noauth' : h;
     console.log('Path navigate:', h);
     history.pushState({}, "", h);

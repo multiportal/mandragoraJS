@@ -6,6 +6,7 @@ export const app = document.querySelector("#app");
 export const body = document.getElementsByTagName("body")[0];
 export const name = environments.name;
 export const version = environments.version;
+export const entorno = environments.entorno;//(host == 'localhost:5173') ? 'Desarrollo' : environments.entorno;
 export const prefix = environments.prefix;
 export const KEY = environments.key;
 export const theme = 'links';

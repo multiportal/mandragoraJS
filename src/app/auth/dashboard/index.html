@@ -1,11 +1,100 @@
-<section class="home-section">
+<section class="home-section dashboard">
   <div class="home-content">
     <i class='bx bx-menu'></i>
     <span class="text">DASHBOARD</span>
   </div>
   <div id="content" class="container-fluid">
     <div class="row">
-      
+      <div class="col-lg-12 text-resumen mx-3">
+        <h3 id="name"></h3>
+        <p>Resumen general de la plataforma</p>
+      </div>
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-header">
+            <h5>Información</h5>
+          </div>
+          <div class="card-body">
+            <ul class="listas">
+              <li>
+                <i class="bi bi-calendar"></i>
+                <span>Fecha:</span>
+                <span id="fecha"></span>
+              </li>
+              <li>
+                <i class="bi bi-file-bar-graph-fill"></i>
+                <span>Total de enlaces:</span>
+                <span id="total"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-header">
+            <h5>Accesos rápidos</h5>
+          </div>
+          <div class="card-body">
+            <ul class="links">
+              <li>
+                <i class="bi bi-link-45deg"></i>
+                <a href="#/dashboard/links">
+                  Mis Links
+                </a>
+              </li>
+              <li>
+                <i class="bi bi-person-circle"></i>
+                <a href="#/dashboard/profile">
+                  Mi Perfil
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <h5>Estado del sistema</h5>
+          </div>
+          <div class="card-body cards">
+            <!--Card-->
+            <div class="card item">
+              <div class="btn-icon">
+                <i class="bi bi-database-check"></i>
+              </div>
+              <div class="text-align">
+                <h6>Firebase</h6>
+                <span>Conectado</span>
+              </div>
+            </div>
+            <!--/Card-->
+            <!--Card-->
+            <div class="card item">
+              <div class="btn-icon">
+                <i class="bi bi-code-slash"></i>
+              </div>
+              <div class="text-align">
+                <h6>Versión</h6>
+                <span id="version">Version</span>
+              </div>
+            </div>
+            <!--/Card-->
+            <!--Card-->
+            <div class="card item">
+              <div class="btn-icon">
+                <i class="bi bi-hdd-stack"></i>
+              </div>
+              <div class="text-align">
+                <h6>Entorno</h6>
+                <span id="entorno">Entorno</span>
+              </div>
+            </div>
+            <!--/Card-->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

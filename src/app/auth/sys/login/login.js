@@ -17,31 +17,13 @@ export function login() {
       let u = document.getElementById('username').value;
       let p = document.getElementById('password').value;
       console.log('Usuario:', u, 'Password:', p);
-      try {
-        const userCredential = await signInWithEmailAndPassword(auth, u, p);
-        console.log('Usuario inició sesión:', userCredential.user);
-        const { accessToken } = userCredential.user;
-        localStorage.setItem('Token', accessToken);
-        consoleLocal('log', accessToken);
-        const form = document.querySelector("#login-form");
-        if (form) form.reset();
-        navigate('#/dashboard')
-      } catch (error) {
-        console.error('Error al iniciar sesión:', error);
-        if (error.code === 'auth/wrong-password') {
-          showMessage("Contraseña incorrecta", "Error")
-        } else if (error.code === 'auth/user-not-found') {
-          showMessage("Email no encontrado", "Error")
-        } else if (error.code) {
-          showMessage("Hubo un error, intenta de nuevo", "Error")
-        }
-      }
     });
   };
 
   const onLoad = () => {
     toggleEye();
-    //btnIngresar();
+    btnIngresar();
+    //googleLogin();
   }
 
   setTimeout(onLoad, 0);

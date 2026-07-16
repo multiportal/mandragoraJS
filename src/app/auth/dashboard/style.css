@@ -1,0 +1,83 @@
+.dashboard {
+    .text-resumen p {
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    .listas,
+    .links {
+        padding: 0;
+        margin: 0;
+    }
+
+    .listas li,
+    .links li {
+        list-style: none;
+        padding: 2px 0px;
+        margin: 0;
+        color: #221c69;
+    }
+
+    .listas li {
+        color: #333
+    }
+
+    .links li a {
+        color: #221c69;
+        text-decoration: none;
+    }
+
+    .links li:hover,
+    .links li a:hover {
+        color: #5e0c94;
+    }
+
+    .cards {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .btn-icon {
+        background: rgb(213, 238, 241) !important;
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        padding: 5px 9px;
+    }
+
+    .item {
+        display: flex;
+        flex-direction: row;
+        padding: 10px 20px 10px 15px;
+        min-width: 250px;
+    }
+
+    .item i {
+        color: #0f0;
+    }
+
+    .item .text-align {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .item .text-align h6 {}
+
+    .item .text-align span {
+        color: #0f0;
+        font-size: 12px;
+    }
+
+    .item .text-align * {
+        padding: 0;
+        margin: 0 0 0 8px;
+    }
+
+    @media (max-width: 576px) {
+        .card {
+            width: 270px;
+        }
+    }
+}
