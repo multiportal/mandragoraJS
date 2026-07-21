@@ -1,16 +1,19 @@
 import { consoleLocal, router } from "../app/functions.js";
 import { loading } from "../app/hooks/loadScripts.js";
 import { variables } from "../app/core/lib.js";
+import { dashboard } from "../app/auth/dashboard/dashboard.js";
+import { settingsDashboard } from "../app/auth/dashboard/settings/settings.js";
 import { login } from "../app/auth/sys/login/login.js";
 import { logout } from "../app/auth/sys/logout/logout.js";
+import { noauth } from "../app/auth/sys/noauth/noauth.js";
 import { home } from "../pages/Home/home.js";
-import { nosotros } from '../pages/nosotros/nosotros.js';
+import { nosotros } from "../pages/nosotros/nosotros.js";
 import { productos } from "../pages/productos/productos.js";
-import { contacto } from '../pages/contacto/contacto.js';
+import { contacto } from "../pages/contacto/contacto.js";
 import { notFound } from "../pages/404/404.js";
 /**COMPONENTS**/
 import { menu } from "../components/menu/menu.js";
-//import { sidebar } from "../components/sidebar/sidebar.js";
+import { sidebar } from "../components/sidebar/sidebar.js";
 
 /* ==========================
    RUTAS
@@ -22,12 +25,15 @@ const compose = (...fns) => async () => {
 
 export const routes = {
   'Home': compose(menu, home),
-    'nosotros': compose(menu, nosotros),
-    'productos': compose(menu, productos),
-    'contacto': compose(menu, contacto),
-    'login': login,
-    'logout': logout,
-    '404': compose(menu, notFound)
+  'nosotros': compose(menu, nosotros),
+  'productos': compose(menu, productos),
+  'contacto': compose(menu, contacto),
+  'login': login,
+  'logout': logout,
+  'noauth': compose(menu, noauth),
+  'dashboard': compose(sidebar, dashboard),
+  'dashboard/settings': compose(sidebar, settingsDashboard),
+  '404': compose(menu, notFound),
 };
 
 /* ==========================

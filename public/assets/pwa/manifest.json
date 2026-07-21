@@ -1,10 +1,10 @@
 {
 	"name": "MandragoraJS-APP",
 	"short_name": "MandragoraJS",
-	"version": "0.0.1",
+	"version": "1.0.1",
 	"description": "MandragoraJS - Single Page Application",
 	"scope": "/",
-	"start_url": "http://localhost:5173/",
+	"start_url": "https://multiportal.github.io/mandragoraJS/",
 	"display": "standalone",
 	"orientation": "portrait",
 	"theme_color": "#000000",

@@ -1,12 +1,12 @@
 import Html from './index.html?raw';
 import './style.css';
-//import { getData } from '../../app/services/firebase.js';
 
 export function productos() {
     const tab = "productos";
 
     const products = async () => {
-  
+        let html = '';
+        
     };
 
     const onLoad = () => {

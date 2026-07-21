@@ -1,16 +1,37 @@
-*{
+* {
   font-family: 'Oswald', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: #f5f6fa;
+  background: #fff;
   font-family: 'Oswald', sans-serif !important;
   overflow: hidden;
+}
+
+.dark {
+  background: #050505;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: min(1200px, 90%);
+  margin: auto;
 }
 
 .index {
   width: 100vw;
   height: 100vh;
+}
+
+.navbar-brand span {
+  color: #6dff33;
 }
 
 .navbar {
@@ -40,7 +61,7 @@ body {
   padding: 0;
 }
 
-#content{
+#content {
   overflow-y: auto;
   height: 100%;
 }
@@ -54,8 +75,9 @@ body {
     font-size: 5.5rem;
   }
 }
+
 /**/
-.form-check-input:hover{
+.form-check-input:hover {
   cursor: pointer !important;
 }
 
@@ -69,8 +91,9 @@ body {
 
 }
 
-.links-list{
-  overflow-y: auto; height: 500px;
+.links-list {
+  overflow-y: auto;
+  height: 500px;
 }
 
 @media (max-width: 200px) {

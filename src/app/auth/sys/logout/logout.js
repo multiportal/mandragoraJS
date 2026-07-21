@@ -1,8 +1,9 @@
-//import { signOut } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+//import { signOut } from "firebase/auth";
 //import { auth } from "../../../services/firebase.js";
 import { navigate } from "../../../../routes/routes.js";
 import { clearCache } from "../../../functions.js";
 import Html from './index.html?raw';
+//import './style.css'
 
 export function logout() {
   const closeSesion = async () => {

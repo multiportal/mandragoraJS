@@ -27,3 +27,6 @@ dist-ssr
 package-lock.json
 _docs
 #*.bat
+
+# ENV
+/src/environments/
