@@ -31,15 +31,17 @@ export async function envConfig() {
 
     const path = `/src/environments/environments.${envMode}.js`;
 
-    const loadModule =
-        modules[path] ??
-        modules["/src/environments/environments.js"];
+    const loadModule = modules[path] ?? modules["/src/environments/environments.js"];
 
-    if (!modules[path]) {
-        console.warn(`No existe environments.${envMode}.js`);
+    if (typeof loadModule !== "function") {
+        console.error("NO SE ENCONTRÓ NINGÚN ARCHIVO DE CONFIGURACIÓN (environments).");
+    } else {
+        if (!modules[path]) {
+            console.warn(`No existe environments.${envMode}.js`);
+        }
     }
 
-    const config = await loadModule();
+    const config = (typeof loadModule !== "function") ? {} : await loadModule();
 
     return config.default ?? config;
 }

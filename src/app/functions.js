@@ -2,7 +2,7 @@ import { navigate, routes } from "../routes/routes.js";
 import { app, name, theme, version } from './core/constants.js';
 import { variables } from "./core/lib.js";
 import { loadCssJsMod } from "./hooks/loadCssJs.route.js";
-import { sesionActiva } from "./services/firebase.js";
+//import { sesionActiva } from "./services/firebase.js";
 import { versionJson } from "./services/fetch.js";
 
 /* ==========================
@@ -43,7 +43,7 @@ export const router = async (v) => {
   app.innerHTML = await routes[view]();
   if (v.mod != 'dashboard' || v.mod == 'dashboard' && v.ext == '') {
     //loadCssJsMod(v);
-    setTimeout(() => { sesionActiva(v); }, 0);
+    //setTimeout(() => { sesionActiva(v); }, 0);
   }
   await comprobarVersion(v);
   setTimeout(() => { tooltips(); }, 1500);
