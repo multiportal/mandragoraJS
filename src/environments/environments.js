@@ -1,0 +1,24 @@
+export const environments = {
+	name: "MandragoraJS",
+	version: "1.0.1",
+	description: "MandragoraJS - Single Page Application",
+	start_url: "https://multiportal.github.io/mandragoraJS/",
+	lang: "es-MX",
+	categories: [
+		"sales",
+		"business"
+	],
+	api: "https://api.midominio.com",
+	empresa: "Multiportal",
+	entorno: "produccion",
+	prefix : "man_",
+    key: '',
+    firebase: {
+
+    },
+    emailjs: {
+        PUBLIC_KEY: "",
+        SERVICE_ID: "",
+        TEMPLATE_ID: ""
+    }
+}

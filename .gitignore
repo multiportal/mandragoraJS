@@ -29,4 +29,7 @@ _docs
 #*.bat
 
 # ENV
-/src/environments/
+/src/environments/environments.develop.js
+/src/environments/environments.local.js
+/src/environments/environments.production.js
+/src/environments/environments.qa.js
