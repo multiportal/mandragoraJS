@@ -1,0 +1,6 @@
+.productos{
+    #product-list{
+        overflow-y: auto; 
+        height: 460px;
+    }
+}

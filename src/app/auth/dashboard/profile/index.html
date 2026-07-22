@@ -1,0 +1,103 @@
+<section class="home-section">
+  <div class="home-content">
+    <i class='bx bx-menu'></i>
+    <span class="text">DASHBOARD > PROFILE</span>
+  </div>
+  <div id="content" class="container-fluid profileDashboard">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-md-8">
+                <h2>Mi Perfil <span class="tipo"></span></h2>
+              </div>
+              <div class="col-md-4 btn-align">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btnAdd" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <i class="bi bi-pencil-square"></i> &nbsp; Editar perfil
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 text-center">
+                <div class="content-image mb-4">
+                  <img class="fotoProfile" src="./assets/img/sinfoto.png" alt="profileImg">
+                </div>
+              </div>
+              <div class="col-md-8 info-profile">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form id="form-profile">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-4 px-2">
+                  <div class="content-image mb-4">
+                    <img id="fotoProfile" src="./assets/img/sinfoto.png" alt="profileImg">
+                    <input id="changeImage" type="file" accept="image/*" />
+                    <label id="icon-upload" for="changeImage" class="btn btn-primary">
+                      <i class="bi bi-camera"></i>
+                    </label>
+                  </div>
+                  <div class="mb-3">
+                    <label for="userId" class="form-label">@ Nombre de usuario Id</label>
+                    <input type="text" class="form-control" id="userId" name="userId"
+                      placeholder="@ Nombre de usuario Id">
+                  </div>
+                  <input type="hidden" class="form-control" id="update_at" name="update_at" disabled>
+                  <input type="hidden" class="form-control" id="create_at" name="create_at" disabled>
+                  <input type="hidden" class="form-control" id="ID" name="ID" value="1" disabled>
+                  <input type="hidden" class="form-control" id="foto" name="foto" disabled>
+                  <input type="hidden" class="form-control" id="uid" name="uid" disabled>
+                </div>
+                <div class="col-lg-8 px-2">
+                  <div class="mb-3">
+                    <label for="usuario" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Nombre" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="direccion" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direccion">
+                  </div>
+                  <div class="mb-3">
+                    <label for="tel" class="form-label">Telefono</label>
+                    <input type="tel" class="form-control" id="tel" name="tel" placeholder="Tel">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="publico" checked>
+                <label class="form-check-label" for="publico">Privado/Publico</label>
+              </div>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCancel">Cancelar</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /Modal -->
+
+  </div>
+</section>

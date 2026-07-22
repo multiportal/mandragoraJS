@@ -1,0 +1,31 @@
+.layerLoading{
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.layerLoading p{
+    color: #fff;
+}
+.layerLoading a{
+    color: #0f0;
+}
+.layerLoading img{
+    width: 100px;
+}
+
+#fotoperfil,
+.public-user-block .avatar{
+    background-repeat: no-repeat !important; 
+    background-size:cover !important; 
+    background-position: center !important;
+}
