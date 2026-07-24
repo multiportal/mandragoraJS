@@ -2,7 +2,7 @@
 let loc = location;
 const { pathname } = loc;
 const path = pathname.replace("sw.js", "");
-const CACHE_NAME = "MandragoraJS-v1";
+const CACHE_NAME = "MandragoraJS-Ver.1.0.17";
 
 self.addEventListener("install", function (event) {
   console.log("[Service Worker] Instalando Service Worker (sw.js)...", event);

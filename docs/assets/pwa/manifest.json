@@ -1,7 +1,7 @@
 {
 	"name": "MandragoraJS-APP",
 	"short_name": "MandragoraJS",
-	"version": "1.0.1",
+	"version": "1.0.17",
 	"description": "MandragoraJS - Single Page Application",
 	"scope": "/",
 	"start_url": "https://multiportal.github.io/mandragoraJS/",
@@ -17,7 +17,7 @@
 	"api": "https://api.midominio.com",
 	"empresa": "Multiportal",
 	"entorno": "produccion",
-	"prefix" : "venta_",
+	"prefix" : "man_",
 	"debug": false,
 	"icons": [
 		{
