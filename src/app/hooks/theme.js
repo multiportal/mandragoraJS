@@ -1,4 +1,7 @@
-import { theme } from "../core/constants";
+import { body, theme } from "../core/constants";
+/* ==========================
+  TEMA
+========================== */
 
 export const temaHome = () => {
     const m = document.querySelector('.masthead');
@@ -19,5 +22,14 @@ export const temaLog = () => {
         t2.style.display = 'none';
     } else {
         t1.style.display = 'none';
+    }
+};
+
+export const temaBgColor = ({ mod }) => {
+    const modulos = mod == 'Home' || mod == 'login' || mod == 'registro';
+    if (modulos && theme == 'mandragorajs') {
+        body.style.background = '#050505';
+    } else {
+        body.style.background = '#fff';
     }
 };

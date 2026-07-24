@@ -1,5 +1,17 @@
 //import { navigate } from "../../routes/routes";
+/* ==========================
+   USE-STATE
+========================== */
+export const useState = (initialValue) => {
+    let state = initialValue;
 
+    return [
+        () => state,
+        (newValue) => {
+            state = newValue;
+        }
+    ];
+};
 //let rendering = false;
 /*
 export function useState(initial) {
@@ -13,22 +25,11 @@ export function useState(initial) {
         state = value;
 
         if(rendering){
-            navigate('/dashboard/profile');
+            navigate('#/dashboard/profile');
         }
         rendering = false;
     }
 
     return [() => state, setState];
 }*/
-
-export const useState = (initialValue) => {
-    let state = initialValue;
-
-    return [
-        () => state,
-        (newValue) => {
-            state = newValue;
-        }
-    ];
-};
 

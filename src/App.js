@@ -2,7 +2,7 @@
 CMS-Javascript (spa) 
 Autor: Guillermo Jiménez López
 Fecha de Actualización: 21.07.2026
-Versión: 1.0.1 - MandragoraJS - Vite
+Versión: 1.0.17 - MandragoraJS - Vite
 Notas: 
 */
 //BOOTSTRAP

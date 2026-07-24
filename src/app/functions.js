@@ -1,6 +1,7 @@
 import { navigate, routes } from "../routes/routes.js";
 import { app, name, theme, version } from './core/constants.js';
 import { variables } from "./core/lib.js";
+import { destroyEvents } from "./hooks/handleEventListener.js";
 import { loadCssJsMod } from "./hooks/loadCssJs.route.js";
 import { sesionActiva } from "./services/firebase.js";
 import { versionJson } from "./services/fetch.js";
@@ -9,7 +10,6 @@ import { versionJson } from "./services/fetch.js";
    VARIABLES
 ========================== */
 const { host } = variables();
-const controllers = [];
 
 /* ==========================
    PARAMETROS URL
@@ -62,27 +62,6 @@ export function render(template, data) {
       .split('.')
       .reduce((obj, prop) => obj?.[prop], data) ?? '';
   });
-}
-
-export const handleEventListener = (evento, fn, selector) => {
-  const controller = new AbortController();
-  controllers.push(controller);
-  (selector ?? document).addEventListener(
-    evento,
-    fn,
-    { signal: controller.signal }
-  );
-  return controller;
-};
-
-export const destroyEvents = () => {
-  controllers.forEach(c => c.abort());
-  controllers.length = 0;
-};
-
-export function destroy(controller) {
-  controller?.abort();
-  controller = null;
 }
 
 /* ==========================

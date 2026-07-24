@@ -1,6 +1,7 @@
 import { getData, createData, putData } from '../../../services/firebase';
-import { compressImage, imageToBase64, convertirBase64 } from '../../../hooks/loadImage';
-import { render, getFormData, handleEventListener } from '../../../functions.js';
+import { compressImage, convertirBase64 } from '../../../hooks/loadImage';
+import { render, getFormData } from '../../../functions.js';
+import { handleEventListener } from '../../../hooks/handleEventListener';
 import { variables } from '../../../core/lib.js';
 import Html from './index.html?raw';
 import './style.css';
@@ -84,7 +85,7 @@ export async function profileDashboard() {
         const perfilData = userData ? userData : userBasic; console.table(perfilData);
         const { key, ID, foto, email, usuario, uid, userId, tel, direccion, create_at, update_at, publico } = perfilData;
         if (key) { localStorage.setItem("Key", key); }
-        tipoPerfil(publico);
+        //tipoPerfil(publico);
         if (foto) {
             //Profile
             photo.src = foto;
@@ -102,13 +103,28 @@ export async function profileDashboard() {
         document.querySelector('#email').value = email;
         document.querySelector('#tel').value = tel ?? null;
         document.querySelector('#direccion').value = direccion ?? null;
+        //Check
+        const mode = localStorage.getItem("Mode");
+        if (mode && mode == 'edit') {
+            const chk = document.getElementById("publico");
+            chk.checked = publico;
+        }
         //Html
         html = `
             <div class="info-text">
                 <span>UserId:</span> ${uid}
             </div>
             <div class="text-nombre">
-                ${usuario} ${userId ? `/@` + userId : ''}
+                ${usuario}
+            </div>
+            ${userId ? `
+                <div class="info-arroba">
+                    @${userId}
+                </div>` : ''}
+             <div class="info-bag ${publico ? 'publico' : 'privado'}">
+                <span>
+                    <i class="bi bi-globe"></i> ${publico ? 'Publico' : 'Privado'}
+                </span> 
             </div>
             <div class="info-text">
                 ${email}

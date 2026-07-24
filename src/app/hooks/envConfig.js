@@ -1,3 +1,6 @@
+/* ==========================
+   ENV CONGIGURACIÓN
+========================== */
 const MODE = {
     LOCAL: "local",
     DEVELOP: "develop",

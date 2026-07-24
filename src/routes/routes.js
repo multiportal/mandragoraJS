@@ -4,6 +4,7 @@ import { variables } from "../app/core/lib.js";
 import { dashboard } from "../app/auth/dashboard/dashboard.js";
 import { profileDashboard } from "../app/auth/dashboard/profile/profile.js";
 import { settingsDashboard } from "../app/auth/dashboard/settings/settings.js";
+import { productsDashboard } from "../app/auth/dashboard/products/products.js";
 import { register } from "../app/auth/sys/register/register.js";
 import { login } from "../app/auth/sys/login/login.js";
 import { logout } from "../app/auth/sys/logout/logout.js";
@@ -16,6 +17,7 @@ import { notFound } from "../pages/404/404.js";
 /**COMPONENTS**/
 import { menu } from "../components/menu/menu.js";
 import { sidebar } from "../components/sidebar/sidebar.js";
+import { temaBgColor } from "../app/hooks/theme.js";
 
 /* ==========================
    RUTAS
@@ -37,6 +39,7 @@ export const routes = {
   'dashboard': compose(sidebar, dashboard),
   'dashboard/settings': compose(sidebar, settingsDashboard),
   'dashboard/profile': compose(sidebar, profileDashboard),
+  'dashboard/products': compose(sidebar, productsDashboard),
   '404': compose(menu, notFound),
 };
 
@@ -54,4 +57,5 @@ export function navigate(h) {
     window.location.href = '#/';
     loading();
   }
+  temaBgColor(v);//**Opcional
 }

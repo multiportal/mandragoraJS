@@ -1,8 +1,12 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 import { auth } from "../services/firebase.js";
 import { consoleLocal } from "../functions.js";
-import {navigate} from "../../routes/routes.js";
+import { navigate } from "../../routes/routes.js";
 import { alertMessage, showMessage } from "./messages.js";
+
+/* ==========================
+  GOOGLE LOGIN
+========================== */
 
 export const googleLogin = () => {
   const googleButton = document.querySelector("#googleLogin");

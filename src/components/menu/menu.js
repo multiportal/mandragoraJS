@@ -1,7 +1,5 @@
-import { fbCfg } from '../../app/services/firebase';
 import { variables } from '../../app/core/lib';
 import { name } from '../../app/core/constants';
-import { handleEventListener } from '../../app/functions';
 import menuHtml from './index.html?raw';
 
 export function menu() {
@@ -12,7 +10,6 @@ export function menu() {
             //nameElement.textContent = name;
             nameElement.setAttribute('href', page_url);
         }
-
         //SELECCION MENU
         const p = pathname == '/' ? '/Home' : pathname;
         const h = hash == '#/' ? '#/Home' : hash;
@@ -25,12 +22,6 @@ export function menu() {
                 link.classList.add("active");
             }
         });
-
-        //* FIREBASE * 
-        const loggedInLinks = document.querySelectorAll(".logged-in");
-        if (!fbCfg) {
-            loggedInLinks.forEach((link) => (link.style.display = "none"));
-        }
     };
 
     const onLoad = () => {

@@ -1,3 +1,6 @@
+/* ==========================
+   LOAD 
+========================== */
 /** Comprimir imagen base64 */
 export async function compressImage(
     file,

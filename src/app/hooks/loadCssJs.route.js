@@ -1,4 +1,7 @@
 import { loadStyle, delStyle } from "./loadScripts";
+/* ==========================
+  LOAD CSS
+========================== */
 
 export function loadCssJsMod({ mod, page_url }) {
     //dashboard ++++++++++++++++++++++++++++++++++++++++++++++++++++++++

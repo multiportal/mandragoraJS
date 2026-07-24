@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getDatabase, ref, set, push, child, remove, onValue, get, update } from "firebase/database";
+import { getDatabase, ref, set, push, child, remove, onValue, get, update, orderByChild, equalTo } from "firebase/database";
 import { showMessage } from "../hooks/messages";
 import { prefix, FirebaseCfg } from "../core/constants";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -25,7 +25,6 @@ export const fs = (!fbCfg) ? null : getFirestore(App);//FireStore
 ========================== */
 /** GET - LISTAR **/
 export function getData(tab) {
-  if (!fbCfg) { return; }
   return new Promise((resolve, reject) => {
     const tabRef = ref(db, `${prefix}${tab}/`);
     onValue(tabRef, (snapshot) => {
@@ -45,17 +44,17 @@ export async function createData(tab, body) {
   return newRef.key;
 }
 
-/** EDITAR REGISTRO **/
-export async function putData(tab, id, body) {
-  await update(ref(db, `${prefix}${tab}/${id}`), body);
-  showMessage("Se actualizo correctamente", "Exito");
-}
-
-/** CREAR/EDITAR REGISTRO **/
+/** CREAR/REEMPLAZAR REGISTRO **/
 export function postData(tab, id, body) {
   set(ref(db, `${prefix}${tab}/${id}`), body);
   if (id) { showMessage("Se actualizo correctamente", "Exito"); }
   else { showMessage("Se agrego correctamente", "Exito"); }
+}
+
+/** EDITAR REGISTRO **/
+export async function putData(tab, id, body) {
+  await update(ref(db, `${prefix}${tab}/${id}`), body);
+  showMessage("Se actualizo correctamente", "Exito");
 }
 
 /** BORRAR REGISTRO **/
@@ -73,6 +72,65 @@ export async function getDataById(tab, id) {
     ...snapshot.val()
   };
 }
+
+/** ESCUCHAR UN REGISTRO POR ID **/
+/* ===========================================================
+Ejemplo:
+const unsubscribe = onDataById("users", "12345", (data) => {
+  console.log("Datos actualizados:", data);
+});
+=========================================================== */
+export function onDataById(tab, id, callback) {
+  const dbRef = ref(db, `${prefix}${tab}/${id}`);
+  return onValue(dbRef, (snapshot) => {
+    if (!snapshot.exists()) {
+      callback(null);
+      return;
+    }
+    callback({
+      key: snapshot.key,
+      ...snapshot.val()
+    });
+  });
+}
+
+/** CONSULTAR POR CAMPO **/
+export async function queryData(tab, field, value) {
+  const q = query(
+    ref(db, `${prefix}${tab}`),
+    orderByChild(field),
+    equalTo(value)
+  );
+  const snapshot = await get(q);
+  if (!snapshot.exists()) return [];
+  return Object.entries(snapshot.val()).map(([key, item]) => ({
+    key,
+    ...item
+  }));
+}
+
+/** CONSULTAR VARIOS CAMPO **/
+/* ============================
+Ejemplo:
+const users = await queryData(
+    "users",
+    orderByChild("email"),
+    equalTo("memo@gmail.com")
+);
+============================ */
+export async function queryDataAll(tab, ...constraints) {
+  const q = query(
+    ref(db, `${prefix}${tab}`),
+    ...constraints
+  );
+  const snapshot = await get(q);
+  if (!snapshot.exists()) return [];
+  return Object.entries(snapshot.val()).map(([key, item]) => ({
+    key,
+    ...item
+  }));
+}
+
 
 /* ==========================
    APP - SESION
@@ -138,35 +196,40 @@ export function getUserSesion(user) {
 }
 
 export function sesionActiva({ mod, ext }) {
-  if (!fbCfg) { return; }
-  onAuthStateChanged(auth, async (user) => {
-    console.warn(mod, 'sesion activa:', user);
-    if (user) {
-      loginCheck(user);
-      if (mod == 'dashboard') {
-        try {
-          saveUser(user);
-          setTimeout(() => {
-            getUserSesionBasic(user);
-          }, 800);
-        } catch (error) {
-          console.log(error);
+  if (!fbCfg) {
+    const loggedInLinks = document.querySelectorAll(".logged-in");
+    if (!loggedInLinks) { return; }
+    loggedInLinks.forEach((link) => (link.style.display = "none"));
+  } else {
+    onAuthStateChanged(auth, async (user) => {
+      console.warn(mod, 'sesion activa:', user);
+      if (user) {
+        loginCheck(user);
+        if (mod == 'dashboard') {
+          try {
+            saveUser(user);
+            setTimeout(() => {
+              getUserSesionBasic(user);
+            }, 800);
+          } catch (error) {
+            console.log(error);
+          }
+          const w = localStorage.getItem('welcome');
+          if (w === 'false') {
+            showMessage('Bienvenido', 'Información');
+            localStorage.setItem('welcome', true);
+          }
         }
-        const w = localStorage.getItem('welcome');
-        if (w === 'false') {
-          showMessage('Bienvenido', 'Información');
-          localStorage.setItem('welcome', true);
-        }
+      } else {
+        loginCheck(user);
+        localStorage.setItem('welcome', false);
       }
-    } else {
-      loginCheck(user);
-      localStorage.setItem('welcome', false);
-    }
-  });
+    });
+  }
 }
 
 export const totalTab = async (tab) => {
   const data = await getData(tab);
   const total = data ? data.length : 0
   return total;
-}
+};
