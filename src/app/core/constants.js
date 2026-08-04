@@ -3,7 +3,7 @@ const { environments } = await envConfig();
 /* ==========================
    CONSTANTES 
 ========================== */
-export const MODE = 'SPA';
+export const MODE = 'HASH';
 export const app = document.querySelector("#app");
 export const body = document.getElementsByTagName("body")[0];
 export const name = environments?.name;
