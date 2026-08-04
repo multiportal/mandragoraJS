@@ -42,20 +42,3 @@ export const routes = {
   'dashboard/products': compose(sidebar, productsDashboard),
   '404': compose(menu, notFound),
 };
-
-/* ==========================
-   NAVEGACIÓN
-========================== */
-export function navigate(h) {
-  const Token = localStorage.getItem('Token'); consoleLocal('log', 'Token navigate:' + Token);
-  h = (!Token && h == '#/dashboard') ? '#/noauth' : h;
-  console.log('Path navigate:', h);
-  history.pushState({}, "", h);
-  const v = variables(); console.log('Variables navigate:', v);
-  router(v);
-  if (h == '') {
-    window.location.href = '#/';
-    loading();
-  }
-  temaBgColor(v);//**Opcional
-}

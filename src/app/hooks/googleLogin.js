@@ -1,7 +1,8 @@
+import { MODE } from "../core/constants.js";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 import { auth } from "../services/firebase.js";
 import { consoleLocal } from "../functions.js";
-import { navigate } from "../../routes/routes.js";
+import { navigate } from "../core/core.js";
 import { alertMessage, showMessage } from "./messages.js";
 
 /* ==========================
@@ -22,7 +23,7 @@ export const googleLogin = () => {
         consoleLocal('log', accessToken);
         const form = document.querySelector("#login-form");
         if (form) form.reset();
-        navigate('#/dashboard');
+        navigate(`${MODE === 'HASH' ? '#' : ''}/dashboard`);
       } catch (error) {
         console.log(error);
       }

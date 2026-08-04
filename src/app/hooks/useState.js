@@ -1,4 +1,5 @@
-//import { navigate } from "../../routes/routes";
+//import { MODE } from "../core/constants";
+//import { navigate } from "../core/core";
 /* ==========================
    USE-STATE
 ========================== */
@@ -25,7 +26,7 @@ export function useState(initial) {
         state = value;
 
         if(rendering){
-            navigate('#/dashboard/profile');
+            navigate(`${MODE === 'HASH' ? '#' : ''}/dashboard/profile`);
         }
         rendering = false;
     }

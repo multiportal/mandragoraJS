@@ -1,6 +1,6 @@
 import { temaHome } from '../../app/hooks/theme';
 import Html from './index.html?raw';
-import './style.css';
+//import './style.css';
 
 export function home() {
 

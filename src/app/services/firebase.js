@@ -94,6 +94,31 @@ export function onDataById(tab, id, callback) {
   });
 }
 
+export async function onDataByIdA(tab, id) {
+  return new Promise((resolve, reject) => {
+    const dbRef = ref(db, `${prefix}${tab}/${id}`);
+    const unsubscribe = onValue(
+      dbRef,
+      (snapshot) => {
+        unsubscribe(); // deja de escuchar
+
+        if (!snapshot.exists()) {
+          resolve(null);
+          return;
+        }
+
+        resolve({
+          key: snapshot.key,
+          ...snapshot.val()
+        });
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
 /** CONSULTAR POR CAMPO **/
 export async function queryData(tab, field, value) {
   const q = query(
@@ -185,7 +210,7 @@ export function getUserSesion(user) {
       const u = data[key];
       if (u.uid == user.uid) {
         console.log(u);
-        const f = (u.foto == null) ? page_url + 'bloques/files/images/photos/sinfoto.png' : u.foto;
+        const f = (u.foto == null) ? page_url + 'assets/img/sinfoto.png' : u.foto;
         foto.innerHTML = '<img src="' + f + '" class="img-fluid rounded-circle">';
         nom.innerHTML = (u.usuario == null) ? u.email : u.usuario;
         mail.innerHTML = u.email;
@@ -214,10 +239,12 @@ export function sesionActiva({ mod, ext }) {
           } catch (error) {
             console.log(error);
           }
-          const w = localStorage.getItem('welcome');
-          if (w === 'false') {
-            showMessage('Bienvenido', 'Información');
-            localStorage.setItem('welcome', true);
+          if (mod == 'dashboard' && ext == '') {
+            const w = localStorage.getItem('welcome');
+            if (w === 'false') {
+              showMessage('Bienvenido', 'Información');
+              localStorage.setItem('welcome', true);
+            }
           }
         }
       } else {

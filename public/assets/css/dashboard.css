@@ -73,6 +73,7 @@
   transition: all 0.4s ease;
 }
 
+.activo,
 .sidebar .nav-links li:hover {
   background: #1d1b31;
 }

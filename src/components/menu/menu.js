@@ -1,6 +1,7 @@
 import { variables } from '../../app/core/lib';
 import { name } from '../../app/core/constants';
 import menuHtml from './index.html?raw';
+import './style.css';
 
 export function menu() {
     const namePage = () => {
@@ -16,7 +17,7 @@ export function menu() {
         const listaMenu = document.querySelector('.navbar-nav');
         if (!listaMenu) return;
         document.querySelectorAll(".navbar-nav a").forEach((link) => {
-            const enlace = link.getAttribute("href");
+            const enlace = link.getAttribute("href") == '#/' ? '#/Home' : link.getAttribute("href");
             //console.warn(enlace, p, h);
             if (enlace == p || enlace == h) {
                 link.classList.add("active");

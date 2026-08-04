@@ -1,6 +1,6 @@
 export const environments = {
   name: "MandragoraJS",
-  version: "1.0.1",
+  version: "1.1.1",
   description: "MandragoraJS - Single Page Application",
   start_url: "https://multiportal.github.io/mandragoraJS/",
   lang: "es-MX",

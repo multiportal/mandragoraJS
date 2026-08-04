@@ -90,6 +90,7 @@
         border-radius: 50%;
         padding: 8px 12px;
         border: 1px solid #fff;
+        height: auto;
     }
 
     @media (max-width: 768px) {

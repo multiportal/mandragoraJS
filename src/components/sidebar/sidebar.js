@@ -1,10 +1,12 @@
+import { MODE, name } from '../../app/core/constants.js';
 import { getData } from '../../app/services/firebase.js';
-import { navigate } from '../../routes/routes.js';
+import { navigate } from '../../app/core/core.js';
 import { variables } from '../../app/core/lib.js';
 import Html from './index.html?raw';
+import { validImage } from '../../app/functions.js';
 
 export function sidebar() {
-    const { screenw } = variables();
+    const { screenw, pathname, hash } = variables();
     const tab = "users";
 
     const user = async () => {
@@ -17,7 +19,7 @@ export function sidebar() {
         let btnSalir = document.querySelector('.bx-log-out');
         if (btnSalir != null) {
             btnSalir.addEventListener('click', () => {
-                navigate('#/logout');
+                navigate(`${MODE === 'HASH' ? '#' : ''}/logout`);
             });
         }
     };
@@ -30,6 +32,21 @@ export function sidebar() {
                 arrowParent.classList.toggle("showMenu");
             });
         }
+    };
+
+    const menuSidebar = () => {
+        //SELECCION MENU
+        const p = pathname == '/' ? '/Home' : pathname;
+        const h = hash == '#/' ? '#/Home' : hash;
+        const listaMenu = document.querySelector('.menuSidebar');
+        if (!listaMenu) return;
+        document.querySelectorAll(".menuSidebar a").forEach((link) => {
+            const enlace = link.getAttribute("href") == '#/' ? '#/Home' : link.getAttribute("href");
+            //console.warn(enlace, p, h);
+            if (enlace == p || enlace == h) {
+                link.classList.add("activo");
+            }
+        });
     };
 
     const btnSidebar = () => {
@@ -48,6 +65,7 @@ export function sidebar() {
             localStorage.setItem("statusSidebar", closed);
             const status = localStorage.getItem("statusSidebar");
             console.log("Status Sidebar:", status);
+            linkName();
         });
     };
 
@@ -60,14 +78,22 @@ export function sidebar() {
         //OBTENER DATOS DE USUARIO
         const data = await user();
         const userData = data ? data.find(item => item.uid === userBasic?.uid) : null;
-        const perfilData = userData ? userData : userBasic; console.warn('PerfilData:',perfilData);
+        const perfilData = userData ? userData : userBasic; console.warn('PerfilData:', perfilData);
         const { key, ID, foto, email, usuario, uid, userId, tel, direccion, create_at, update_at, publico } = perfilData;
         if (u != null) { u.innerHTML = usuario || email.split("@")[0]; }
         if (job != null) { job.innerHTML = email; }
         if (fotoUser != null) {
             if (foto) {
-                fotoUser.src = foto;
+                fotoUser.src = validImage(foto) ? foto : './../assets/img/sinfoto.png';
             }
+        }
+    };
+
+    const linkName = () => {
+        const logoName = document.querySelector('.logo_name');
+        const statusClose = document.querySelector('.close');
+        if (logoName) {
+            logoName.innerHTML = (statusClose) ? '' : name;
         }
     };
 
@@ -75,6 +101,8 @@ export function sidebar() {
         btnArrowMenu();
         btnSidebar();
         btnLogout();
+        linkName();
+        menuSidebar();
         const userBasic = JSON.parse(localStorage.getItem('userBasic'));
         setTimeout(() => { getUser(); }, userBasic ? 0 : 1000);
 

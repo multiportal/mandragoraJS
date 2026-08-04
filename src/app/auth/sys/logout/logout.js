@@ -1,6 +1,7 @@
+import { MODE } from "../../../core/constants.js";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../services/firebase.js";
-import { navigate } from "../../../../routes/routes.js";
+import { navigate } from "../../../core/core.js";
 import { clearCache } from "../../../functions.js";
 import Html from './index.html?raw';
 //import './style.css'
@@ -16,7 +17,7 @@ export function logout() {
     const token = localStorage.getItem("Token");
     if (token == null) {
       console.warn('TOKEN CLEAR');
-      navigate('#/');
+      navigate(`${MODE === 'HASH' ? '#' : ''}/`);
     }
   }
 

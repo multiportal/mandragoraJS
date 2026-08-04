@@ -1,9 +1,10 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { MODE } from "../../../core/constants.js";
 import { auth } from "../../../services/firebase.js";
 import { consoleLocal, toggleEye } from "../../../functions.js";
 import { showMessage } from "../../../hooks/messages.js";
 import { googleLogin } from "../../../hooks/googleLogin.js";
-import { navigate } from "../../../../routes/routes.js";
+import { navigate } from "../../../core/core.js";
 import Html from './index.html?raw';
 //import './style.css'
 
@@ -26,7 +27,7 @@ export function login() {
         consoleLocal('log', accessToken);
         const form = document.querySelector("#login-form");
         if (form) form.reset();
-        navigate('#/dashboard')
+        navigate(`${MODE === 'HASH' ? '#' : ''}/dashboard`)
       } catch (error) {
         console.error('Error al iniciar sesión:', error.code);
         if (error.code === 'auth/wrong-password') {

@@ -1,6 +1,6 @@
 import { getData, createData, putData } from '../../../services/firebase';
 import { compressImage, convertirBase64 } from '../../../hooks/loadImage';
-import { render, getFormData } from '../../../functions.js';
+import { render, getFormData, btnChanceImage } from '../../../functions.js';
 import { handleEventListener } from '../../../hooks/handleEventListener';
 import { variables } from '../../../core/lib.js';
 import Html from './index.html?raw';
@@ -23,18 +23,6 @@ export async function profileDashboard() {
             if (!btn) return;
             console.warn('Cancelado!!!', tab);
             setTimeout(() => { getUser(); }, 100);
-        });
-    };
-
-    const btnChanceImage = (p, i) => {
-        //BOTON USERFILE
-        const input = document.querySelector("#changeImage");
-        input.addEventListener("change", async (e) => {
-            const archivo = e.target.files[0]; //console.log(archivo);
-            if (!archivo) return;
-            const base64 = await compressImage(archivo); //await convertirBase64(archivo);console.log(base64);
-            p.src = base64;
-            i.value = base64;
         });
     };
 
@@ -112,7 +100,7 @@ export async function profileDashboard() {
         //Html
         html = `
             <div class="info-text">
-                <span>UserId:</span> ${uid}
+                <span>UID:</span> ${uid}
             </div>
             <div class="text-nombre">
                 ${usuario}

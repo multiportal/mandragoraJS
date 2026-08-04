@@ -1,64 +1,22 @@
 import { getData, createData, putData, deleteData, getDataById } from '../../../services/firebase';
-import { getFormData } from '../../../functions';
+import { consoleLocal, getFormData, resetForm, btnBorrar, btnCancelar, toggleTitle, fillForm, closeModal } from '../../../functions';
 import { handleEventListener } from '../../../hooks/handleEventListener';
+import { variables } from '../../../core/lib';
 import Swal from 'sweetalert2';
 import Html from './index.html?raw';
 
 export function productsDashboard() {
     const tab = "productos";
-
-    const toggleTitle = () => {
-        const mode = localStorage.getItem("Mode");
-        const tit = document.querySelector('#exampleModalLabel');
-        tit.innerHTML = mode == 'edit' ? 'Editar' : 'Nuevo';
-    };
-
-    const btnCancelar = () => {
-        handleEventListener("click", (e) => {
-            const btn = e.target.closest("#btnCancel");
-            if (!btn) return;
-            console.warn('Cancelado!!!', tab);
-            setTimeout(() => { productos(); }, 100);
-        });
-    };
-
-    const btnBorrar = () => {
-        handleEventListener("click", (e) => {
-            const btn = e.target.closest(".btnDelete");
-            if (!btn) return;
-            Swal.fire({
-                title: "¿Esta seguro eliminar?",
-                text: "¡Este cambio sera irreversible!",
-                icon: "warning",
-                showCancelButton: true,
-                cancelButtonColor: "#6c757d",
-                cancelButtonText: "Cancelar",
-                confirmButtonColor: "#3085d6",
-                confirmButtonText: "Aceptar",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    const fila = btn.closest("tr");
-                    if (!fila) return;
-                    const key = fila.getAttribute("key");
-                    console.log("Eliminar:", key);
-                    deleteData(tab, key);
-                    setTimeout(() => { productos(); }, 1000);
-                    Swal.fire({
-                        title: "¡Borrado!",
-                        text: "Tu registro ha sido borrado",
-                        icon: "success",
-                    });
-                }
-            });
-        });
-    };
+    const { fecha } = variables();
 
     const btnAgregar = () => {
         handleEventListener("click", async (e) => {
             const btn = e.target.closest(".btnAdd");
             if (!btn) return;
-            const form = document.querySelector("#save-form");
-            form.reset();
+            localStorage.setItem("Mode", "add");
+            const user = JSON.parse(localStorage.getItem('userBasic'));
+            document.querySelector("#create_at").value = fecha;
+            document.querySelector("#uid").value = user.uid;
             toggleTitle();
         })
     };
@@ -67,22 +25,15 @@ export function productsDashboard() {
         handleEventListener("click", async (e) => {
             const btn = e.target.closest(".btnEdit");
             if (!btn) return;
-            const fila = btn.closest("tr");
-            if (!fila) return;
-            const key = fila.getAttribute("key");
+            const key = btn.getAttribute("data-id");
             console.log("Editar:", key);
             localStorage.setItem("Mode", "edit");
             localStorage.setItem("Key", key);
             const item = await getDataById(tab, key);//console.log(item);
-            document.querySelector("#Id").value = item.Id;
-            document.querySelector("#nombre").value = item.nombre;
-            document.querySelector("#precio").value = item.precio;
-            document.querySelector("#link").value = item.link;
-            document.querySelector("#desc").value = item.desc;
-            //Check
-            const chk = document.getElementById("activo");
-            chk.checked = item.activo;
+            if (!item) { return; }
             toggleTitle();
+            fillForm(item);
+            //document.querySelector("#update_at").value = fecha;
         });
     };
 
@@ -102,27 +53,36 @@ export function productsDashboard() {
                 if (!key) return;
                 putData(tab, key, body);
             }
-            setTimeout(() => { productos(); }, 1000);
+            resetForm("#save-form");
+            setTimeout(() => { productos(); }, 500);
+            closeModal();
         }, form);
     }
 
     const productos = async () => {
-        let html = "";
-        const data = await getData(tab); console.log(data);
         const productList = document.querySelector("#product-list");
         if (!productList) return;
+        const inputID = document.querySelector("#Id");
+        //* REGISTROS ********************* */
+        const registros = await getData(tab); consoleLocal('log', registros);
+        const newId = Math.max(0, ...(registros ?? [])
+            .map(item => Number(item?.Id)).filter(Number.isFinite)) + 1; consoleLocal('log', `Nuevo ID: ${newId}`);
+        //* DATOS ORDENADOS ********************* */
+        const datos = registros.sort((a, b) => Number(a.Id) - Number(b.Id));
+        //* DATA ********************* */
+        const data = datos; consoleLocal('log', data);
         localStorage.removeItem("Key");
-        localStorage.setItem("Mode", "add");
         if (!data) {
-            document.querySelector("#Id").value = 1;
+            inputID.value = 1;
             productList.innerHTML = '<tr><td colspan="5"><p class="text-center">No hay productos disponibles.</p></td></tr>';
             return;
         }
         //Cards
+        let html = '';
         for (const item of data) {
             var { Id, key, nombre, precio, link, desc, activo } = item;
-            //if (activo) {
             html += `
+            <!--/TR ID: ${Id} -->
             <tr key="${key}">
               <th scope="row">${Id}</th>
               <td title="${link}">${nombre}</td>
@@ -130,28 +90,30 @@ export function productsDashboard() {
               <td>${desc}</td>
               <td>
                 <span>${activo ? 'Activo' : 'Inactivo'}</span>
-                <button type="button" class="btn btn-primary mb-3 btnEdit" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" data-id="${key}" class="btn btn-primary mb-3 btnEdit" data-bs-toggle="modal" data-bs-target="#Modal">
                   <i class="bi bi-pencil"></i>
                 </button>
-                <button type="button" class="btn btn-danger mb-3 btnDelete">
+                <button type="button" data-id="${key}" class="btn btn-danger mb-3 btnDelete">
                   <i class="bi bi-trash"></i>
                 </button>
               </td>
             </tr>
+            <!--/TR-->
           `;
-            //}
         }
-        productList.innerHTML = html;
-        document.querySelector("#Id").value = Number(Id) + 1;
+        //
+        inputID.value = newId;
+        console.log('Registros encontrados:', data.length);
+        productList.innerHTML = data.length == 0 ? `<tr><td colspan="5"><p class="text-center">No hay productos disponibles.</p></td></tr>` : html;
     };
 
     const onLoad = () => {
         btnGuardar();
         btnAgregar();
         btnEditar();
-        btnBorrar();
-        btnCancelar();
-
+        //BOTONES CONFIGURACION
+        btnBorrar(tab, () => { productos(); });
+        btnCancelar(() => { console.warn('Cancelado!!!', tab); resetForm("#save-form"); productos(); });
         setTimeout(() => { productos(); }, 1000);
     }
 

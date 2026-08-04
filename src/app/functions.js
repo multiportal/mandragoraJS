@@ -1,15 +1,18 @@
-import { navigate, routes } from "../routes/routes.js";
+import * as bootstrap from 'bootstrap';
+import Swal from 'sweetalert2';
+import { routes } from "../routes/routes.js";
 import { app, name, theme, version } from './core/constants.js';
 import { variables } from "./core/lib.js";
-import { destroyEvents } from "./hooks/handleEventListener.js";
+import { destroyEvents, handleEventListener } from "./hooks/handleEventListener.js";
 import { loadCssJsMod } from "./hooks/loadCssJs.route.js";
-import { sesionActiva } from "./services/firebase.js";
+import { deleteData, sesionActiva } from "./services/firebase.js";
 import { versionJson } from "./services/fetch.js";
+import { compressImage } from './hooks/loadImage.js';
 
 /* ==========================
    VARIABLES
 ========================== */
-const { host } = variables();
+const { host, year } = variables();
 
 /* ==========================
    PARAMETROS URL
@@ -41,14 +44,16 @@ export const router = async (v) => {
   consoleLocal('log', { page, view });
   document.title = `${name} - ${capitalize(v.mod)}`;
   app.innerHTML = await routes[view]();
-  if (v.mod != 'dashboard' || v.mod == 'dashboard' && v.ext == '') {
-    //loadCssJsMod(v);
-    setTimeout(() => { sesionActiva(v); }, 0);
-  }
   await comprobarVersion(v);
+  //loadCssJsMod(v);
+  setTimeout(() => { sesionActiva(v); }, 0);
   setTimeout(() => { tooltips(); }, 1500);
+  if (v.mod != 'dashboard') { footer(); }
 };
 
+/* ==========================
+   GENERAL
+========================== */
 export function pageHtml(p) {
   const divElement = document.createElement('div');
   divElement.innerHTML = p;
@@ -63,24 +68,6 @@ export function render(template, data) {
       .reduce((obj, prop) => obj?.[prop], data) ?? '';
   });
 }
-
-/* ==========================
-   LOAD
-========================== */
-export function load() {
-  //const v = variables(); consoleLocal('log', v);
-  navigate(window.location.hash);
-  console.log('Carga del DOM completa');
-}
-
-export function inicio() {
-  console.log('Run function inicio');
-  load();
-}
-
-/* ==========================
-   GENERAL
-========================== */
 
 export const toggleEye = () => {
   const password = document.getElementById('password');
@@ -141,7 +128,7 @@ export function consoleLocal(type, val) {
 export function footer() {
   const f = document.querySelector("#footer_page");
   if (!f) return;
-  f.innerHTML = year + ' &copy; MandragoraJS V.3.0.1 - Diseñada por <a target="_blank" href="http://multiportal.com.mx">[:MULTIPORTAL:]</a>.';
+  f.innerHTML = year + ' &copy; ' + name + 'Todos los derechos reservados. V.' + version + ' - Diseñada por <a target="_blank" href="http://multiportal.com.mx">[:MULTIPORTAL:]</a>.';
 }
 
 export async function comprobarVersion(v) {
@@ -165,6 +152,64 @@ export async function clearCache() {
   console.log("Cache eliminado");
 }
 
+export const tooltips = () => {
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]'); consoleLocal('log', tooltipTriggerList);
+  tooltipTriggerList.forEach(el => {
+    new bootstrap.Tooltip(el);
+  });
+}
+
+export const closeModal = (idModal = '#Modal') => {
+  const modal = bootstrap.Modal.getOrCreateInstance(document.querySelector(idModal));
+  modal.hide();
+};
+
+export function validImage(url) {
+  return new Promise((resolve) => {
+    const image = new Image();
+    image.src = url;
+    image.onload = () => {
+      console.log('Imagen encontrada');
+      resolve(true);
+    };
+    image.onerror = () => {
+      console.log('Imagen No encontrada');
+      resolve(false);
+    };
+  });
+}
+
+/* ==========================
+   FORM
+========================== */
+
+export function fillForm(data, selector = document) {
+  Object.entries(data).forEach(([key, value]) => {
+    const field = selector.getElementById
+      ? selector.getElementById(key)
+      : selector.querySelector(`#${key}`);
+
+    if (!field) return;
+    // Omitir input[type="file"]
+    if (field.type === 'file') return;
+
+    switch (field.type) {
+      case 'checkbox':
+        field.checked = Boolean(value);
+        break;
+
+      case 'radio':
+        if (field.value === String(value)) {
+          field.checked = true;
+        }
+        break;
+
+      default:
+        field.value = value ?? '';
+    }
+  });
+}
+
 export const getFormData = (form, key = "name") =>
   Object.fromEntries(
     [...form.querySelectorAll("input, textarea, select")]
@@ -175,9 +220,85 @@ export const getFormData = (form, key = "name") =>
       ])
   );
 
-export const tooltips = () => {
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]'); consoleLocal('log', tooltipTriggerList);
-  tooltipTriggerList.forEach(el => {
-    new bootstrap.Tooltip(el);
+export const resetForm = (idForm) => {
+  const form = document.querySelector(idForm);
+  if (!form) { return; }
+  form.reset();
+  form.querySelectorAll('input[type="hidden"]').forEach(input => {
+    input.value = '';
   });
-}
+};
+
+export const toggleTitle = (newTitle = 'Nuevo') => {
+  const mode = localStorage.getItem("Mode");
+  const tit = document.querySelector('.title');
+  tit.innerHTML = mode == 'edit' ? 'Editar' : newTitle;
+};
+
+export const btnCancelar = (callback, selector = '#btnCancel') => {
+  handleEventListener('click', (e) => {
+    const btn = e.target.closest(selector);
+    if (!btn) return;
+    callback?.();
+  });
+};
+
+export const btnBorrar = (tab, callback, selector = ".btnDelete") => {
+  handleEventListener("click", async (e) => {
+    const btn = e.target.closest(selector);
+    if (!btn) return;
+    const { isConfirmed } = await confirmDelete();
+    if (!isConfirmed) return;
+    const key = btn.getAttribute("data-id");
+    if (!key) return;
+    try {
+      console.log("Eliminar:", key);
+      deleteData(tab, key);
+      callback?.();
+      susccesDelete();
+    } catch (error) {
+      console.error(error);
+      errorDelete();
+    }
+  });
+};
+
+export const confirmDelete = () =>
+  Swal.fire({
+    title: "¿Está seguro de eliminar?",
+    text: "¡Este cambio será irreversible!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Aceptar",
+    confirmButtonColor: "#3085d6",
+    cancelButtonText: "Cancelar",
+    cancelButtonColor: "#6c757d",
+  });
+
+export const susccesDelete = () =>
+  Swal.fire({
+    title: "¡Borrado!",
+    text: "Tu registro ha sido borrado",
+    icon: "success",
+  });
+
+export const errorDelete = () =>
+  Swal.fire({
+    icon: "error",
+    title: "Error",
+    text: "No fue posible eliminar el registro.",
+  });
+
+export const btnChanceImage = (p = null, i = null) => {
+  const fp = p ?? document.querySelector('#fotoProfile');
+  const f = i ?? document.querySelector('#foto');
+  //BOTON USERFILE
+  const input = document.querySelector("#changeImage");
+  input.addEventListener("change", async (e) => {
+    const archivo = e.target.files[0]; //console.log(archivo);
+    if (!archivo) return;
+    const base64 = await compressImage(archivo); //await convertirBase64(archivo);console.log(base64);
+    fp.src = base64;
+    f.value = base64;
+  });
+};
