@@ -101,10 +101,9 @@ export function sidebar() {
         btnArrowMenu();
         btnSidebar();
         btnLogout();
-        linkName();
         menuSidebar();
         const userBasic = JSON.parse(localStorage.getItem('userBasic'));
-        setTimeout(() => { getUser(); }, userBasic ? 0 : 1000);
+        setTimeout(() => { linkName(); linkName(); }, userBasic ? 0 : 1000);
 
         if (screenw <= 740) {
             let side = document.querySelector('.sidebar');
