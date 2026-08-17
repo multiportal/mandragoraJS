@@ -68,7 +68,7 @@ export function productsDashboard() {
         const newId = Math.max(0, ...(registros ?? [])
             .map(item => Number(item?.Id)).filter(Number.isFinite)) + 1; consoleLocal('log', `Nuevo ID: ${newId}`);
         //* DATOS ORDENADOS ********************* */
-        const datos = registros.sort((a, b) => Number(a.Id) - Number(b.Id));
+        const datos = registros?.sort((a, b) => Number(a.Id) - Number(b.Id));
         //* DATA ********************* */
         const data = datos; consoleLocal('log', data);
         localStorage.removeItem("Key");

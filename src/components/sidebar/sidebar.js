@@ -3,7 +3,6 @@ import { getData } from '../../app/services/firebase.js';
 import { navigate } from '../../app/core/core.js';
 import { variables } from '../../app/core/lib.js';
 import Html from './index.html?raw';
-import { validImage } from '../../app/functions.js';
 
 export function sidebar() {
     const { screenw, pathname, hash } = variables();
@@ -83,9 +82,7 @@ export function sidebar() {
         if (u != null) { u.innerHTML = usuario || email.split("@")[0]; }
         if (job != null) { job.innerHTML = email; }
         if (fotoUser != null) {
-            if (foto) {
-                fotoUser.src = validImage(foto) ? foto : './../assets/img/sinfoto.png';
-            }
+            fotoUser.src = foto && foto!='' ? foto : './../assets/img/sinfoto.png';
         }
     };
 
@@ -93,7 +90,7 @@ export function sidebar() {
         const logoName = document.querySelector('.logo_name');
         const statusClose = document.querySelector('.close');
         if (logoName) {
-            logoName.innerHTML = (statusClose) ? '' : name;
+            logoName.innerHTML = (!statusClose) ? name : '';
         }
     };
 
@@ -103,7 +100,7 @@ export function sidebar() {
         btnLogout();
         menuSidebar();
         const userBasic = JSON.parse(localStorage.getItem('userBasic'));
-        setTimeout(() => { linkName(); linkName(); }, userBasic ? 0 : 1000);
+        setTimeout(() => { getUser(); linkName(); }, userBasic ? 0 : 1000);
 
         if (screenw <= 740) {
             let side = document.querySelector('.sidebar');

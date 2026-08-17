@@ -2,10 +2,11 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   /*assetsInclude: ['** /*.html'],*/
-  base: './',
+  base: '/', //Configuar para "spa -> /" para "hash -> ./"
   root: './',
   build: {
-    outDir: 'docs',
+    outDir: 'web',
   },
   publicDir: 'public',
+  envDir: ".env"
 })

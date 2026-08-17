@@ -1,4 +1,4 @@
-import { MODE } from "../../../core/constants.js";
+import { MODE, version } from "../../../core/constants.js";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../services/firebase.js";
 import { navigate } from "../../../core/core.js";
@@ -16,6 +16,7 @@ export function logout() {
     console.log("Cache limpiado");
     const token = localStorage.getItem("Token");
     if (token == null) {
+      localStorage.setItem('VersionApp', version);//*Extra
       console.warn('TOKEN CLEAR');
       navigate(`${MODE === 'HASH' ? '#' : ''}/`);
     }

@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { MODE } from "../../../core/constants.js";
-import { auth } from "../../../services/firebase.js";
+import { auth, saveUser } from "../../../services/firebase.js";
 import { consoleLocal, toggleEye } from "../../../functions.js";
 import { showMessage } from "../../../hooks/messages.js";
 import { googleLogin } from "../../../hooks/googleLogin.js";
@@ -21,15 +21,18 @@ export function login() {
       console.log('Usuario:', u, 'Password:', p);
       try {
         const userCredential = await signInWithEmailAndPassword(auth, u, p);
+        saveUser(userCredential.user);
         console.log('Usuario inició sesión:', userCredential.user);
         const { accessToken } = userCredential.user;
         localStorage.setItem('Token', accessToken);
         consoleLocal('log', accessToken);
         const form = document.querySelector("#login-form");
         if (form) form.reset();
-        navigate(`${MODE === 'HASH' ? '#' : ''}/dashboard`)
+        setTimeout(() => {
+          navigate(`${MODE === 'HASH' ? '#' : ''}/dashboard`);
+        }, 500);
       } catch (error) {
-        console.error('Error al iniciar sesión:', error.code);
+        console.error('Error al iniciar sesión:', error);
         if (error.code === 'auth/wrong-password') {
           showMessage("Contraseña incorrecta", "Error")
         } else if (error.code === 'auth/user-not-found') {

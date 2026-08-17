@@ -1,0 +1,1117 @@
+/* =========================================================
+   MandragoraJS
+   Dashboard - Dark Neon Green
+   ========================================================= */
+
+
+/* =========================================================
+   IMPORTS
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@import url('https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css');
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+
+  /* -----------------------------------------
+     Brand
+     ----------------------------------------- */
+
+  --primary: #39ff14;
+  --primary-hover: #32e612;
+  --primary-dark: #20b90b;
+
+  --primary-light: rgba(57, 255, 20, 0.08);
+  --primary-medium: rgba(57, 255, 20, 0.14);
+  --primary-border: rgba(57, 255, 20, 0.25);
+
+  --primary-glow:
+    0 0 8px rgba(57, 255, 20, 0.25);
+
+
+  /* -----------------------------------------
+     Background
+     ----------------------------------------- */
+
+  --background: #080b09;
+  --background-secondary: #0c100d;
+
+
+  /* -----------------------------------------
+     Surfaces
+     ----------------------------------------- */
+
+  --surface: #101512;
+  --surface-hover: #151c17;
+  --surface-active: #19221b;
+
+
+  /* -----------------------------------------
+     Sidebar
+     ----------------------------------------- */
+
+  --sidebar-background: #090c0a;
+  --sidebar-hover: #111711;
+  --sidebar-active: rgba(57, 255, 20, 0.08);
+
+
+  /* -----------------------------------------
+     Borders
+     ----------------------------------------- */
+
+  --border: #202820;
+  --border-light: #181f1a;
+
+
+  /* -----------------------------------------
+     Text
+     ----------------------------------------- */
+
+  --text: #f2f5f2;
+  --text-secondary: #a8b2aa;
+  --text-muted: #687269;
+
+
+  /* -----------------------------------------
+     Status
+     ----------------------------------------- */
+
+  --success: #39ff14;
+  --danger: #ff4d4d;
+  --warning: #ffd166;
+
+
+  /* -----------------------------------------
+     Layout
+     ----------------------------------------- */
+
+  --sidebar-width: 260px;
+  --sidebar-collapsed: 78px;
+  --header-height: 64px;
+
+
+  /* -----------------------------------------
+     Effects
+     ----------------------------------------- */
+
+  --shadow-sm:
+    0 1px 3px rgba(0, 0, 0, 0.45);
+
+  --shadow:
+    0 8px 25px rgba(0, 0, 0, 0.35);
+
+  --radius: 8px;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+}
+
+
+/* =========================================================
+   APP
+   ========================================================= */
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: var(--sidebar-width);
+  height: 100vh;
+
+  background: var(--sidebar-background);
+
+  border-right: 1px solid var(--border);
+
+  z-index: 100;
+
+  transition: width 0.3s ease;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar.close {
+  width: var(--sidebar-collapsed);
+}
+
+
+/* =========================================================
+   SIDEBAR - LOGO
+   ========================================================= */
+
+.sidebar .logo-details {
+  width: 100%;
+  height: var(--header-height);
+
+  display: flex;
+  align-items: center;
+
+  border-bottom: 1px solid var(--border);
+}
+
+
+.sidebar .logo-details i {
+  min-width: var(--sidebar-collapsed);
+
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--primary);
+
+  font-size: 28px;
+
+  text-align: center;
+
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.35);
+}
+
+
+.sidebar .logo-details .logo_name {
+  color: var(--text);
+
+  font-size: 21px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition: all 0.3s ease;
+}
+
+
+.sidebar.close .logo-details .logo_name {
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.sidebar .nav-links {
+  height: calc(100% - var(--header-height));
+
+  padding: 20px 10px 120px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+.sidebar .nav-links::-webkit-scrollbar {
+  width: 4px;
+}
+
+
+.sidebar .nav-links::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.sidebar .nav-links::-webkit-scrollbar-thumb {
+  background: #263026;
+
+  border-radius: 10px;
+}
+
+
+.sidebar .nav-links::-webkit-scrollbar-thumb:hover {
+  background: #344334;
+}
+
+
+/* =========================================================
+   NAV ITEMS
+   ========================================================= */
+
+.sidebar .nav-links li {
+  position: relative;
+
+  list-style: none;
+
+  margin-bottom: 5px;
+
+  transition: all 0.3s ease;
+}
+
+
+/* LINK */
+
+.sidebar .nav-links li a {
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  text-decoration: none;
+
+  border-radius: var(--radius);
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+
+/* ICON */
+
+.sidebar .nav-links li i {
+  min-width: 58px;
+
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--text-secondary);
+
+  font-size: 21px;
+
+  transition:
+    color 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+
+/* TEXT */
+
+.sidebar .nav-links li a .link_name {
+  color: var(--text-secondary);
+
+  font-size: 15px;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.25s ease,
+    opacity 0.3s ease;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.sidebar .nav-links li:hover > a {
+  background: var(--sidebar-hover);
+}
+
+
+.sidebar .nav-links li:hover > a i,
+.sidebar .nav-links li:hover > a .link_name {
+  color: var(--primary);
+}
+
+
+.sidebar .nav-links li:hover > a i {
+  text-shadow: 0 0 6px rgba(57, 255, 20, 0.3);
+}
+
+
+/* =========================================================
+   ACTIVE
+   ========================================================= */
+
+.sidebar .nav-links li a.activo,
+.sidebar .nav-links li > a.activo {
+
+  background: var(--sidebar-active);
+
+  box-shadow:
+    inset 3px 0 0 var(--primary),
+    0 0 12px rgba(57, 255, 20, 0.03);
+}
+
+
+.sidebar .nav-links li a.activo i,
+.sidebar .nav-links li a.activo .link_name {
+
+  color: var(--primary);
+
+  font-weight: 600;
+}
+
+
+.sidebar .nav-links li a.activo i {
+  text-shadow:
+    0 0 6px rgba(57, 255, 20, 0.45);
+}
+
+
+/* =========================================================
+   COLLAPSED SIDEBAR
+   ========================================================= */
+
+.sidebar.close .nav-links {
+  overflow: visible;
+
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+.sidebar.close .nav-links li a {
+  justify-content: center;
+}
+
+
+.sidebar.close .nav-links li a .link_name {
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+.sidebar.close .nav-links li i {
+  min-width: var(--sidebar-collapsed);
+}
+
+
+/* =========================================================
+   SUB MENU
+   ========================================================= */
+
+.sidebar .nav-links li .sub-menu {
+  display: none;
+
+  padding: 6px 6px 14px 70px;
+
+  margin-top: -5px;
+
+  background: var(--surface);
+
+  border-radius: var(--radius);
+}
+
+
+.sidebar .nav-links li.showMenu .sub-menu {
+  display: block;
+}
+
+
+.sidebar .nav-links li .sub-menu a {
+  height: auto;
+
+  padding: 6px 0;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+}
+
+
+.sidebar .nav-links li .sub-menu a:hover {
+  color: var(--primary);
+}
+
+
+/* =========================================================
+   COLLAPSED SUB MENU
+   ========================================================= */
+
+.sidebar.close .nav-links li .sub-menu {
+  position: absolute;
+
+  top: 0;
+  left: 100%;
+
+  width: max-content;
+
+  margin: 0;
+
+  padding: 8px 18px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-left: 1px solid var(--primary-border);
+
+  border-radius: 0 8px 8px 0;
+
+  box-shadow: var(--shadow);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  display: block;
+
+  transition: opacity 0.2s ease;
+}
+
+
+.sidebar.close .nav-links li:hover .sub-menu {
+  opacity: 1;
+
+  pointer-events: auto;
+}
+
+
+.sidebar .nav-links li .sub-menu .link_name {
+  display: none;
+}
+
+
+.sidebar.close .nav-links li .sub-menu .link_name {
+  display: block;
+
+  color: var(--text);
+
+  font-size: 14px;
+
+  opacity: 1;
+}
+
+
+.sidebar.close .nav-links li:hover .sub-menu .link_name {
+  color: var(--primary);
+}
+
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
+.sidebar .profile-details {
+  position: fixed;
+
+  bottom: 0;
+  left: 0;
+
+  width: var(--sidebar-width);
+
+  min-height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 12px;
+
+  background: var(--sidebar-background);
+
+  border-top: 1px solid var(--border);
+
+  transition: width 0.3s ease;
+}
+
+
+.sidebar.close .profile-details {
+  width: var(--sidebar-collapsed);
+
+  justify-content: center;
+
+  padding: 10px;
+}
+
+
+/* PROFILE CONTENT */
+
+.sidebar .profile-details .profile-content {
+  display: flex;
+  align-items: center;
+}
+
+
+/* PROFILE IMAGE */
+
+.sidebar .profile-details img {
+  width: 44px;
+  height: 44px;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  margin-right: 10px;
+
+  border: 2px solid var(--primary-border);
+
+  background: var(--surface);
+
+  transition: border-color 0.25s ease;
+}
+
+
+.sidebar .profile-details img:hover {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 8px rgba(57, 255, 20, 0.2);
+}
+
+
+/* PROFILE NAME */
+
+.sidebar .profile-details .profile_name {
+  max-width: 125px;
+
+  color: var(--text);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/* PROFILE EMAIL */
+
+.sidebar .profile-details .job {
+  max-width: 125px;
+
+  margin-top: 2px;
+
+  color: var(--text-muted);
+
+  font-size: 9px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/* LOGOUT */
+
+.sidebar .profile-details > i {
+  color: var(--text-secondary);
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease;
+}
+
+
+.sidebar .profile-details > i:hover {
+  color: var(--primary);
+
+  text-shadow:
+    0 0 7px rgba(57, 255, 20, 0.35);
+}
+
+
+/* COLLAPSED PROFILE */
+
+.sidebar.close .profile-details .name-job,
+.sidebar.close .profile-details > i {
+  display: none;
+}
+
+
+.sidebar.close .profile-details img {
+  width: 42px;
+  height: 42px;
+
+  margin: 0;
+}
+
+
+/* =========================================================
+   HOME SECTION
+   ========================================================= */
+
+.home-section {
+  position: relative;
+
+  left: var(--sidebar-width);
+
+  width: calc(100% - var(--sidebar-width));
+
+  min-height: 100vh;
+
+  background: var(--background);
+
+  transition: all 0.3s ease;
+}
+
+
+.sidebar.close ~ .home-section {
+  left: var(--sidebar-collapsed);
+
+  width: calc(100% - var(--sidebar-collapsed));
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.home-section .home-content {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 90;
+
+  height: var(--header-height);
+
+  display: flex;
+  align-items: center;
+
+  background: var(--surface);
+
+  border-bottom: 1px solid var(--border);
+
+  box-shadow: var(--shadow-sm);
+}
+
+
+/* HEADER MENU */
+
+.home-section .home-content .bx-menu {
+  margin: 0 18px;
+
+  color: var(--text);
+
+  font-size: 27px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease;
+}
+
+
+.home-section .home-content .bx-menu:hover {
+  color: var(--primary);
+
+  text-shadow:
+    0 0 6px rgba(57, 255, 20, 0.3);
+}
+
+
+/* HEADER TITLE */
+
+.home-section .home-content .text {
+  color: var(--text);
+
+  font-size: 20px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+#content {
+  padding: 25px;
+}
+
+
+.row {
+  --bs-gutter-x: 20px;
+  --bs-gutter-y: 20px;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card {
+  margin: 0 0 20px;
+
+  padding: 0;
+
+  background: var(--surface);
+
+  color: var(--text);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow-sm);
+
+  overflow: hidden;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.card:hover {
+  border-color: var(--primary-border);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+.card-header {
+  background: var(--surface);
+
+  color: var(--text);
+
+  border-bottom: 1px solid var(--border);
+}
+
+
+.card-body {
+  background: var(--surface);
+
+  color: var(--text);
+}
+
+
+/* =========================================================
+   BOOTSTRAP FORMS
+   ========================================================= */
+
+.form-control,
+.form-select {
+
+  background-color: var(--background-secondary);
+
+  color: var(--text);
+
+  border-color: var(--border);
+}
+
+
+.form-control:hover,
+.form-select:hover {
+  border-color: #303930;
+}
+
+
+.form-control:focus,
+.form-select:focus {
+
+  background-color: var(--background-secondary);
+
+  color: var(--text);
+
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 0.2rem rgba(57, 255, 20, 0.08);
+}
+
+
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+
+/* =========================================================
+   CHECKBOX
+   ========================================================= */
+
+.form-check-input {
+  background-color: var(--background-secondary);
+
+  border-color: var(--border);
+}
+
+
+.form-check-input:checked {
+  background-color: var(--primary);
+
+  border-color: var(--primary);
+}
+
+
+.form-check-input:focus {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 0.2rem rgba(57, 255, 20, 0.08);
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn-primary {
+
+  background: var(--primary);
+
+  border-color: var(--primary);
+
+  color: #071007;
+
+  font-weight: 600;
+}
+
+
+.btn-primary:hover,
+.btn-primary:focus {
+
+  background: var(--primary-hover);
+
+  border-color: var(--primary-hover);
+
+  color: #071007;
+
+  box-shadow:
+    0 0 10px rgba(57, 255, 20, 0.18);
+}
+
+
+/* OUTLINE */
+
+.btn-outline-primary {
+
+  color: var(--primary);
+
+  border-color: var(--primary-border);
+}
+
+
+.btn-outline-primary:hover {
+
+  background: var(--primary-light);
+
+  color: var(--primary);
+
+  border-color: var(--primary);
+}
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.toast {
+
+  background: var(--surface);
+
+  color: var(--text);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+}
+
+
+.toast-header {
+
+  background: var(--surface-hover) !important;
+
+  color: var(--text) !important;
+
+  border-bottom: 1px solid var(--border);
+}
+
+
+.toast-body {
+  color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.table {
+
+  --bs-table-bg: transparent;
+
+  --bs-table-color: var(--text);
+
+  --bs-table-border-color: var(--border);
+
+  color: var(--text);
+}
+
+
+.table thead th {
+
+  color: var(--text-secondary);
+
+  font-weight: 500;
+}
+
+
+.table tbody tr:hover {
+
+  background: var(--surface-hover);
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+a:hover {
+  color: var(--primary);
+}
+
+
+/* =========================================================
+   BADGES / STATUS
+   ========================================================= */
+
+.text-success {
+  color: var(--success) !important;
+}
+
+
+.text-danger {
+  color: var(--danger) !important;
+}
+
+
+.text-warning {
+  color: var(--warning) !important;
+}
+
+
+.badge.bg-success {
+  background-color: var(--success) !important;
+
+  color: #071007;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+
+::-webkit-scrollbar-thumb {
+
+  background: #293229;
+
+  border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+  background: #394639;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  :root {
+    --sidebar-width: 230px;
+  }
+
+
+  #content {
+    padding: 20px 15px;
+  }
+
+
+  .home-section .home-content .text {
+    font-size: 18px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .home-section .home-content .text {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+
+/* =========================================================
+   EXTRA SMALL
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .home-section .home-content .text {
+    font-size: 15px;
+  }
+
+
+  #content {
+    padding: 12px 8px;
+  }
+}

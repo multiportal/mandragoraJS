@@ -1,3 +1,6 @@
+/* Google Fonts Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
 * {
   font-family: 'Oswald', sans-serif;
   margin: 0;
@@ -62,7 +65,7 @@ a {
 }
 
 #content {
-  height: 90%;
+  height: 89vh;
   overflow-x: hidden;
   padding-bottom: 15px;
 }

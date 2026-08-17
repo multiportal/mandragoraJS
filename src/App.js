@@ -2,7 +2,7 @@
 CMS-Javascript (spa) 
 Autor: Guillermo Jiménez López
 Fecha de Actualización: 21.07.2026
-Versión: 1.1.1 - MandragoraJS - Vite
+Versión: 1.1.5 - MandragoraJS - Vite
 Notas: 
 */
 //BOOTSTRAP
@@ -17,7 +17,7 @@ import './main.css';
 //Files Js import for App
 import '../public/assets/js/jquery-3.3.1.slim.min.js';
 //SERVICE WORKER
-import '../public/assets/pwa/appCon.js';
+//import '../public/assets/pwa/appCon.js';
 //Files import for App
 import { inicio } from './app/core/core.js';
 inicio();

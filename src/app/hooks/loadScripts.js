@@ -1,14 +1,16 @@
 import { name, version, body } from '../core/constants';
+import { comprobarVersion } from './serviceWorker';
 /* ==========================
    LOAD-SCRIPT
 ========================== */
 
 export function loading() {
+  const versiones = comprobarVersion(); //console.warn('VERSIONS:', versiones)
   let layer = 'layerLoading';
   let content = `<div class="${layer}">
+    <h3>Cargando ${name}</h3>
     <img src="./assets/img/loader-green.gif" alt=""/>
-    <p>Cargando ${name}</p>
-    <p style="font-size: 10px;">Ver. ${version}</p>
+    <p style="font-size: 14px;">${versiones.old ? `Versión ${versiones.old}` : `Instalando versión ${versiones.new}`}</p>
   </div>`;
   var div = document.createElement('div');
   div.id = 'load';

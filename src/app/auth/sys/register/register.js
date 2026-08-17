@@ -1,8 +1,14 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { MODE } from "../../../core/constants.js";
 import { auth } from "../../../services/firebase.js";
 import { toggleEye } from "../../../functions.js";
 import { showMessage } from "../../../hooks/messages.js";
+import { navigate } from "../../../core/core.js";
+import { googleLogin } from "../../../hooks/googleLogin.js";
 import Html from './index.html?raw';
+
+
+
 //import './style.css';
 
 export function register() {
@@ -22,6 +28,7 @@ export function register() {
         const form = document.querySelector("#register-form");
         if (form) form.reset();
         showMessage("Registro exitoso", "Exito");
+        navigate(`${MODE === 'HASH' ? '#' : ''}/login`);
       } catch (error) {
         console.error('Error al registrarse:', error);
         if (error.code === 'auth/email-already-in-use') {
@@ -40,6 +47,7 @@ export function register() {
   const onLoad = () => {
     toggleEye();
     btnGuardar();
+    googleLogin();
   }
 
   setTimeout(onLoad, 0);

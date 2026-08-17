@@ -1,5 +1,4 @@
 import * as bootstrap from 'bootstrap';
-import Swal from 'sweetalert2';
 import { routes } from "../routes/routes.js";
 import { app, name, theme, version } from './core/constants.js';
 import { variables } from "./core/lib.js";
@@ -8,6 +7,8 @@ import { loadCssJsMod } from "./hooks/loadCssJs.route.js";
 import { deleteData, sesionActiva } from "./services/firebase.js";
 import { versionJson } from "./services/fetch.js";
 import { compressImage } from './hooks/loadImage.js';
+import { registrosApp } from './functions/registros.js';
+import { modalConfirm, modalInfo } from './functions/modalAlerts.js';
 
 /* ==========================
    VARIABLES
@@ -44,8 +45,8 @@ export const router = async (v) => {
   consoleLocal('log', { page, view });
   document.title = `${name} - ${capitalize(v.mod)}`;
   app.innerHTML = await routes[view]();
-  await comprobarVersion(v);
   //loadCssJsMod(v);
+  registrosApp(v);
   setTimeout(() => { sesionActiva(v); }, 0);
   setTimeout(() => { tooltips(); }, 1500);
   if (v.mod != 'dashboard') { footer(); }
@@ -128,10 +129,10 @@ export function consoleLocal(type, val) {
 export function footer() {
   const f = document.querySelector("#footer_page");
   if (!f) return;
-  f.innerHTML = year + ' &copy; ' + name + 'Todos los derechos reservados. V.' + version + ' - Diseñada por <a target="_blank" href="http://multiportal.com.mx">[:MULTIPORTAL:]</a>.';
+  f.innerHTML = year + ' &copy; ' + name + ' Todos los derechos reservados. V.' + version + ' - Diseñada por <a target="_blank" href="http://multiportal.com.mx">[:MULTIPORTAL:]</a>.';
 }
 
-export async function comprobarVersion(v) {
+export async function comprobarVersionOld(v) {
   if (v.mod == 'Home') {
     const data = await obtenerManifest();
     console.log(`Version Actual: ${data.version}`);
@@ -177,6 +178,109 @@ export function validImage(url) {
       resolve(false);
     };
   });
+}
+
+/** * Obtiene el usuario actual desde localStorage. */
+export function getCurrentUser() {
+  try {
+    return JSON.parse(localStorage.getItem('userBasic'));
+  } catch (error) {
+    consoleLocal('error', error);
+    return null;
+  }
+}
+
+/** * Obtiene únicamente los registros activos y las ordena por ID. */
+export function getActive(data = []) {
+  return data.filter(item => item?.activo)
+    .sort((a, b) => Number(a.ID) - Number(b.ID));
+}
+
+/** * Renderiza un mensaje dentro de la lista. */
+export function renderMessage(element, message) {
+  element.innerHTML = ` <p class="text-center"> ${message} </p> `;
+}
+
+//** SEO **/
+export function setSEO({
+  title,
+  description,
+  canonical
+}) {
+  document.title = title;
+  let metaDescription = document.querySelector('meta[name="description"]');
+
+  if (!metaDescription) {
+    metaDescription = document.createElement('meta');
+    metaDescription.name = 'description';
+    document.head.appendChild(metaDescription);
+  }
+
+  metaDescription.content = description;
+
+  if (canonical) {
+    let linkCanonical = document.querySelector('link[rel="canonical"]');
+
+    if (!linkCanonical) {
+      linkCanonical = document.createElement('link');
+      linkCanonical.rel = 'canonical';
+      document.head.appendChild(linkCanonical);
+    }
+    linkCanonical.href = canonical;
+  }
+}
+
+export function setSEO2({
+  title,
+  description,
+  canonical,
+  image,
+  type = 'profile'
+}) {
+
+  document.title = title;
+  setMeta('name', 'description', description);
+
+  if (canonical) {
+    setLink('canonical', canonical);
+  }
+
+  setMeta('property', 'og:title', title);
+  setMeta('property', 'og:description', description);
+  setMeta('property', 'og:type', type);
+  setMeta('property', 'og:url', canonical);
+
+  if (image) {
+    console.log(`Imagen para SEO: ${image}`);
+    setMeta('property', 'og:image', image);
+  }
+}
+
+
+function setMeta(attribute, key, content) {
+  let meta = document.querySelector(`meta[${attribute}="${key}"]`);
+
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.setAttribute(attribute, key);
+    document.head.appendChild(meta);
+  }
+
+  meta.setAttribute('content', content);
+}
+
+
+function setLink(rel, href) {
+
+  let link = document.querySelector(`link[rel="${rel}"]`);
+
+  if (!link) {
+    link = document.createElement('link');
+    link.rel = rel;
+    document.head.appendChild(link);
+  }
+
+  link.href = href;
 }
 
 /* ==========================
@@ -235,19 +339,19 @@ export const toggleTitle = (newTitle = 'Nuevo') => {
   tit.innerHTML = mode == 'edit' ? 'Editar' : newTitle;
 };
 
-export const btnCancelar = (callback, selector = '#btnCancel') => {
-  handleEventListener('click', (e) => {
-    const btn = e.target.closest(selector);
-    if (!btn) return;
+export const btnCancelar = (callback, selector = '#Modal') => {
+  const modal = document.querySelector(selector);
+  if (!modal) return;
+  handleEventListener("hidden.bs.modal", () => {
     callback?.();
-  });
+  }, modal);
 };
 
 export const btnBorrar = (tab, callback, selector = ".btnDelete") => {
   handleEventListener("click", async (e) => {
     const btn = e.target.closest(selector);
     if (!btn) return;
-    const { isConfirmed } = await confirmDelete();
+    const { isConfirmed } = await modalConfirm('warning', '¿Está seguro de eliminar?', '¡Este cambio será irreversible!');
     if (!isConfirmed) return;
     const key = btn.getAttribute("data-id");
     if (!key) return;
@@ -255,39 +359,13 @@ export const btnBorrar = (tab, callback, selector = ".btnDelete") => {
       console.log("Eliminar:", key);
       deleteData(tab, key);
       callback?.();
-      susccesDelete();
+      modalInfo("success", "¡Borrado!", "Tu registro ha sido borrado");
     } catch (error) {
       console.error(error);
-      errorDelete();
+      modalInfo("eror", "Error", "No fue posible eliminar el registro.");
     }
   });
 };
-
-export const confirmDelete = () =>
-  Swal.fire({
-    title: "¿Está seguro de eliminar?",
-    text: "¡Este cambio será irreversible!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Aceptar",
-    confirmButtonColor: "#3085d6",
-    cancelButtonText: "Cancelar",
-    cancelButtonColor: "#6c757d",
-  });
-
-export const susccesDelete = () =>
-  Swal.fire({
-    title: "¡Borrado!",
-    text: "Tu registro ha sido borrado",
-    icon: "success",
-  });
-
-export const errorDelete = () =>
-  Swal.fire({
-    icon: "error",
-    title: "Error",
-    text: "No fue posible eliminar el registro.",
-  });
 
 export const btnChanceImage = (p = null, i = null) => {
   const fp = p ?? document.querySelector('#fotoProfile');

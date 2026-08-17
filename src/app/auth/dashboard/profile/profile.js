@@ -1,6 +1,6 @@
 import { getData, createData, putData } from '../../../services/firebase';
 import { compressImage, convertirBase64 } from '../../../hooks/loadImage';
-import { render, getFormData, btnChanceImage } from '../../../functions.js';
+import { render, getFormData, btnChanceImage, btnCancelar } from '../../../functions.js';
 import { handleEventListener } from '../../../hooks/handleEventListener';
 import { variables } from '../../../core/lib.js';
 import Html from './index.html?raw';
@@ -15,15 +15,6 @@ export async function profileDashboard() {
         const data = await getData(tab); //console.log(data);
         if (!data) return null;
         return data;
-    };
-
-    const btnCancelar = () => {
-        handleEventListener("click", (e) => {
-            const btn = e.target.closest("#btnCancel");
-            if (!btn) return;
-            console.warn('Cancelado!!!', tab);
-            setTimeout(() => { getUser(); }, 100);
-        });
     };
 
     const btnGuardar = () => {
@@ -127,10 +118,16 @@ export async function profileDashboard() {
         perfilInfo.innerHTML = html;
     };
 
+    const cancelar = () => {
+        console.warn('Cancelado!!!', tab);
+        //resetForm("#save-form");
+        setTimeout(() => { getUser(); }, 100);
+    };
+
     const onLoad = () => {
         getUser();
         btnGuardar();
-        btnCancelar();
+        btnCancelar(() => { cancelar(); });
     }
 
     setTimeout(onLoad, 0);

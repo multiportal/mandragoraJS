@@ -1,4 +1,237 @@
 .login {
     color: #fff;
+    /*
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
+    body {
+
+        font-family: Inter, sans-serif;
+        background: #070707;
+        color: white;
+
+    }
+    */
+
+    .login-page {
+
+        display: grid;
+        grid-template-columns: 58% 42%;
+        min-height: 100vh;
+
+    }
+
+    /*====================
+    FONDO
+    ====================*/
+    /*
+    .login-image {
+        background: url("./assets/logo.png") center center;
+        background-size: cover;
+        position: relative;
+    }
+
+    .login-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg,
+                rgba(0, 0, 0, .20),
+                rgba(0, 0, 0, .65));
+    }
+    */
+
+    /*====================
+    PANEL
+    ====================*/
+
+    .login-panel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #090909;
+        padding: 20px 40px 40px 40px;
+    }
+
+    .login-card {
+        width: 430px;
+        background: #111;
+        border: 1px solid rgba(109, 255, 51, .18);
+        border-radius: 18px;
+        padding: 12px 45px;
+        box-shadow: 0 0 35px rgba(0, 0, 0, .45);
+    }
+
+    .logo {
+        width: 70px;
+        display: block;
+        margin: auto;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 22px;
+        /*38px;*/
+        margin-bottom: 10px;
+    }
+
+    h1 span {
+        color: #6DFF33;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 18px;
+        /*30px;*/
+    }
+
+    .login-card p {
+        text-align: center;
+        color: #bdbdbd;
+        margin-bottom: 18px;
+        font-size: 12px;
+    }
+
+    .input-group {
+        display: flex;
+        align-items: center;
+        background: #181818;
+        border: 1px solid #2d2d2d;
+        margin-bottom: 18px;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .input-group i {
+        width: 55px;
+        text-align: center;
+        color: #6DFF33;
+    }
+
+    .input-group input {
+        flex: 1;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 15px;
+        padding: 18px 10px;
+        outline: none;
+    }
+
+    .eye {
+        cursor: pointer;
+        /*width: 55px;*/
+        margin-right: 24px;
+    }
+
+    .options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        margin: 0 0 18px;
+    }
+
+    .options label {
+        display: flex;
+        gap: 8px;
+    }
+
+    .options a {
+        color: #6DFF33;
+        text-decoration: none;
+    }
+
+    button {
+        width: 100%;
+        border: none;
+        background: #6DFF33;
+        color: #000;
+        font-weight: 700;
+        padding: 18px;
+        border-radius: 12px;
+        font-size: 17px;
+        cursor: pointer;
+        transition: .25s;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(109, 255, 51, .35);
+    }
+
+    .divider {
+        text-align: center;
+        margin: 3px 0 5px;
+        color: #888;
+    }
+
+    .social {
+        display: flex;
+        gap: 15px;
+    }
+
+    .social a {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid #2e2e2e;
+        color: white;
+        text-decoration: none;
+        padding: 15px;
+        border-radius: 10px;
+        transition: .25s;
+    }
+
+    .social a:hover {
+        border-color: #6DFF33;
+        color: #6DFF33;
+        cursor: pointer;
+    }
+
+    .register {
+        margin: 12px 0 4px !important;
+        text-align: center;
+    }
+
+    .register a {
+        color: #6DFF33;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    /*====================
+    RESPONSIVE
+    ====================*/
+
+    @media(max-width:992px) {
+        .login-page {
+            grid-template-columns: 1fr;
+        }
+
+        .login-image {
+            display: none;
+        }
+
+        .login-panel {
+            padding: 40px 20px 40px 20px;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 450px;
+        }
+    }
+
+    @media(max-width:576px) {
+        .eye {
+            width: 10px !important;
+        }
+    }
 }

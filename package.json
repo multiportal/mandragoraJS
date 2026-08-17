@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev:qa": "vite --mode qa",
+    "build:qa": "vite build --mode qa",
+    "build:pro": "vite build --mode production"
   },
   "devDependencies": {
     "gh-pages": "^5.0.0",
@@ -17,6 +20,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "5.3",
     "bootstrap-icons": "^1.13.1",
+    "chart.js": "^4.5.1",
     "firebase": "^12.16.0",
     "sweetalert2": "^9.14.4"
   }

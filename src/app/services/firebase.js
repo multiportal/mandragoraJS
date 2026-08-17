@@ -25,6 +25,7 @@ export const fs = (!fbCfg) ? null : getFirestore(App);//FireStore
 ========================== */
 /** GET - LISTAR **/
 export function getData(tab) {
+  if (!fbCfg) {return}
   return new Promise((resolve, reject) => {
     const tabRef = ref(db, `${prefix}${tab}/`);
     onValue(tabRef, (snapshot) => {
@@ -37,34 +38,35 @@ export function getData(tab) {
 }
 
 /** CREAR NUEVO REGISTRO **/
-export async function createData(tab, body) {
+export async function createData(tab, body, msj = true) {
   const newRef = push(ref(db, `${prefix}${tab}/`));
   await set(newRef, body);
-  showMessage("Se agrego correctamente", "Exito");
+  if (msj) showMessage("Se agrego correctamente", "Exito");
   return newRef.key;
 }
 
 /** CREAR/REEMPLAZAR REGISTRO **/
-export function postData(tab, id, body) {
-  set(ref(db, `${prefix}${tab}/${id}`), body);
-  if (id) { showMessage("Se actualizo correctamente", "Exito"); }
-  else { showMessage("Se agrego correctamente", "Exito"); }
+export function postData(tab, id, body, msj = true) {
+  set(ref(db, `${prefix}${tab}${id ? `/${id}` : ``}`), body);
+  if (id) { if (msj) showMessage("Se actualizo correctamente", "Exito"); }
+  else { if (msj) showMessage("Se agrego correctamente", "Exito"); }
 }
 
 /** EDITAR REGISTRO **/
-export async function putData(tab, id, body) {
+export async function putData(tab, id, body, msj = true) {
   await update(ref(db, `${prefix}${tab}/${id}`), body);
-  showMessage("Se actualizo correctamente", "Exito");
+  if (msj) showMessage("Se actualizo correctamente", "Exito");
 }
 
 /** BORRAR REGISTRO **/
-export async function deleteData(tab, id) {
+export async function deleteData(tab, id, msj = true) {
   await remove(ref(db, `${prefix}${tab}/${id}`));
-  showMessage("Se elimino correctamente", "Exito");
+  if (msj) showMessage("Se elimino correctamente", "Exito");
 }
 
 /** BUSCAR POR ID REGISTRO **/
 export async function getDataById(tab, id) {
+  if (!fbCfg) {return;}
   const snapshot = await get(child(ref(db), `${prefix}${tab}/${id}`));
   if (!snapshot.exists()) { return null; }
   return {

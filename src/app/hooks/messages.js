@@ -16,7 +16,7 @@ function closeAlert() {
   }
 }
 
-export function showMessage(msj, type) {
+export function showMessage(msj, type, time = 3000) {
   const alert = document.querySelector('#liveToast');
   if (!alert) return;
   alert.classList.remove('hide');
@@ -31,7 +31,7 @@ export function showMessage(msj, type) {
   </div>
   `;
   closeMessage();
-  setTimeout(closeAlert, 3000);
+  setTimeout(closeAlert, time);
 }
 
 export function alertMessage(msj, type) {
