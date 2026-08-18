@@ -19,7 +19,7 @@ const { host, year } = variables();
    PARAMETROS URL
 ========================== */
 export function urlVariables(p) {
-  const vars = p.split('/'); console.log(vars);
+  const vars = p.split('/'); consoleLocal('log', vars);
   var mod = vars[1] === '' || vars[1] === undefined ? 'Home' : vars[1];
   var ext = vars[2] === '' || vars[2] === undefined ? '' : vars[2];
   var id = vars[3] === '' || vars[3] === undefined ? '' : vars[3];
@@ -46,7 +46,8 @@ export const router = async (v) => {
   document.title = `${name} - ${capitalize(v.mod)}`;
   app.innerHTML = await routes[view]();
   //loadCssJsMod(v);
-  registrosApp(v);
+  /* EXPLORAR REGISTROS PARA MANDRAGORA PENDIENTE */
+  //registrosApp(v);
   setTimeout(() => { sesionActiva(v); }, 0);
   setTimeout(() => { tooltips(); }, 1500);
   if (v.mod != 'dashboard') { footer(); }
@@ -105,7 +106,8 @@ export function fecha() {
 }
 
 export function consoleLocal(type, val) {
-  if (host == 'localhost' || host == 'localhost:5173') {
+  const { host } = window.location;
+  if (host.includes('localhost')) {
     switch (type) {
       case 'log':
         console.log(val);
@@ -255,7 +257,6 @@ export function setSEO2({
     setMeta('property', 'og:image', image);
   }
 }
-
 
 function setMeta(attribute, key, content) {
   let meta = document.querySelector(`meta[${attribute}="${key}"]`);

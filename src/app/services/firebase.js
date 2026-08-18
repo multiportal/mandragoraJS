@@ -4,6 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import { getDatabase, ref, set, push, child, remove, onValue, get, update, orderByChild, equalTo } from "firebase/database";
 import { showMessage } from "../hooks/messages";
 import { prefix, FirebaseCfg } from "../core/constants";
+import { consoleLocal } from '../functions';
 // TODO: Add SDKs for Firebase products that you want to use
 export let fbCfg = FirebaseCfg != null && Object.keys(FirebaseCfg).length !== 0;
 console.log('Firebase SDK: ', fbCfg);
@@ -25,7 +26,6 @@ export const fs = (!fbCfg) ? null : getFirestore(App);//FireStore
 ========================== */
 /** GET - LISTAR **/
 export function getData(tab) {
-  if (!fbCfg) {return}
   return new Promise((resolve, reject) => {
     const tabRef = ref(db, `${prefix}${tab}/`);
     onValue(tabRef, (snapshot) => {
@@ -66,7 +66,6 @@ export async function deleteData(tab, id, msj = true) {
 
 /** BUSCAR POR ID REGISTRO **/
 export async function getDataById(tab, id) {
-  if (!fbCfg) {return;}
   const snapshot = await get(child(ref(db), `${prefix}${tab}/${id}`));
   if (!snapshot.exists()) { return null; }
   return {
@@ -176,7 +175,7 @@ export const loginCheck = (user) => {
 };
 
 export function saveUser(user) {
-  //console.log('saveUser');
+  console.log('saveUser');
   var u = {
     uid: user.uid,
     usuario: user.displayName ?? '',
@@ -184,7 +183,7 @@ export function saveUser(user) {
     foto: user.photoURL ?? ''
   };
   set(ref(db, prefix + "signup/" + user.uid), u);
-  //localStorage.setItem('userBasic', JSON.stringify(u));
+  localStorage.setItem('userBasic', JSON.stringify(u));
 }
 
 export function getUserSesionBasic(user) {
@@ -225,36 +224,34 @@ export function getUserSesion(user) {
 export function sesionActiva({ mod, ext }) {
   if (!fbCfg) {
     const loggedInLinks = document.querySelectorAll(".logged-in");
-    if (!loggedInLinks) { return; }
-    loggedInLinks.forEach((link) => (link.style.display = "none"));
-  } else {
-    onAuthStateChanged(auth, async (user) => {
-      console.warn(mod, 'sesion activa:', user);
-      if (user) {
-        loginCheck(user);
-        if (mod == 'dashboard') {
-          try {
-            saveUser(user);
-            setTimeout(() => {
-              getUserSesionBasic(user);
-            }, 800);
-          } catch (error) {
-            console.log(error);
-          }
-          if (mod == 'dashboard' && ext == '') {
-            const w = localStorage.getItem('welcome');
-            if (w === 'false') {
-              showMessage('Bienvenido', 'Información');
-              localStorage.setItem('welcome', true);
-            }
-          }
-        }
-      } else {
-        loginCheck(user);
-        localStorage.setItem('welcome', false);
-      }
-    });
+    loggedInLinks?.forEach((link) => (link.style.display = "none"));
+    return;
   }
+  onAuthStateChanged(auth, async (user) => {
+    consoleLocal('warn', { mod, 'sesion activa': user });
+    loginCheck(user);
+    if (!user) {
+      localStorage.setItem('welcome', false);
+      return;
+    }
+    if (mod == 'dashboard') {
+      try {
+        saveUser(user);
+        setTimeout(() => {
+          getUserSesionBasic(user);
+        }, 800);
+      } catch (error) {
+        console.log(error);
+      }
+      if (ext == '') {
+        const w = localStorage.getItem('welcome');
+        if (w === 'false') {
+          showMessage('Bienvenido', 'Información');
+          localStorage.setItem('welcome', true);
+        }
+      }
+    }
+  });
 }
 
 export const totalTab = async (tab) => {
