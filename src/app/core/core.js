@@ -2,7 +2,7 @@ import * as bootstrap from 'bootstrap';
 import { MODE } from './constants';
 import { serviceWorker } from '../hooks/serviceWorker';
 import { variables } from './lib';
-import { loading } from '../hooks/loadScripts';
+import { controlLoading, loading } from '../hooks/loadScripts';
 import { temaBgColor } from '../hooks/theme';
 import { router, consoleLocal } from '../functions';
 
@@ -44,6 +44,7 @@ export function navigate(h) {
         }
         loading();
     }
+    //controlLoading(v);//**Opcional
     temaBgColor(v);//**Opcional
 }
 

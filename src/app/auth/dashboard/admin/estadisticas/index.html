@@ -1,0 +1,1216 @@
+<section class="home-section">
+  <div class="home-content">
+    <i class='bx bx-menu'></i>
+    <span class="text">ESTADISTICAS</span>
+  </div>
+  <div id="content" class="container-fluid">
+    <div class="row estadisticas">
+
+
+<!-- ============================================================
+     VCARDAPP - ESTADÍSTICAS
+     Solo contenido de la página, sin sidebar
+============================================================ -->
+
+<main class="statistics-page">
+
+  <!-- ========================================================
+         HEADER / FILTROS PRINCIPALES
+    ========================================================= -->
+  <section class="statistics-header">
+
+    <div class="statistics-title">
+      <h1>
+        <i class="bi bi-bar-chart-line"></i>
+        Estadísticas
+      </h1>
+
+      <p>
+        Resumen general de visitas y actividad en VcardApp.
+      </p>
+    </div>
+
+    <div class="statistics-actions">
+
+      <div class="filter-control">
+        <i class="bi bi-calendar3"></i>
+
+        <select id="filterPeriod">
+          <option value="today">Hoy</option>
+          <option value="7days">Últimos 7 días</option>
+          <option value="30days" selected>
+            Últimos 30 días
+          </option>
+          <option value="90days">
+            Últimos 90 días
+          </option>
+          <option value="month">
+            Este mes
+          </option>
+          <option value="year">
+            Este año
+          </option>
+          <option value="custom">
+            Personalizado
+          </option>
+        </select>
+
+        <i class="bi bi-chevron-down"></i>
+      </div>
+
+      <div class="date-range">
+
+        <div class="date-input">
+          <input type="date" id="dateStart" value="2026-07-14">
+        </div>
+
+        <span>→</span>
+
+        <div class="date-input">
+          <input type="date" id="dateEnd" value="2026-08-13">
+        </div>
+
+      </div>
+
+      <button type="button" class="btn-filter" id="btnApplyFilters">
+        <i class="bi bi-funnel"></i>
+        Aplicar filtros
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+         FILTROS SECUNDARIOS
+    ========================================================= -->
+  <section class="advanced-filters">
+
+    <div class="filter-group">
+
+      <label for="filterUser">
+        Usuario
+      </label>
+
+      <select id="filterUser">
+        <option value="all">Todos</option>
+        <option value="guest">Visitantes</option>
+        <option value="auth">Autenticados</option>
+      </select>
+
+      <i class="bi bi-chevron-down"></i>
+
+    </div>
+
+
+    <div class="filter-group">
+
+      <label for="filterDevice">
+        Dispositivo
+      </label>
+
+      <select id="filterDevice">
+        <option value="all">Todos</option>
+        <option value="desktop">Desktop</option>
+        <option value="mobile">Mobile</option>
+        <option value="tablet">Tablet</option>
+      </select>
+
+      <i class="bi bi-chevron-down"></i>
+
+    </div>
+
+
+    <div class="filter-group">
+
+      <label for="filterBrowser">
+        Navegador
+      </label>
+
+      <select id="filterBrowser">
+        <option value="all">Todos</option>
+        <option value="chrome">Chrome</option>
+        <option value="edge">Edge</option>
+        <option value="firefox">Firefox</option>
+        <option value="safari">Safari</option>
+        <option value="other">Otros</option>
+      </select>
+
+      <i class="bi bi-chevron-down"></i>
+
+    </div>
+
+
+    <div class="filter-group">
+
+      <label for="filterOS">
+        Sistema Operativo
+      </label>
+
+      <select id="filterOS">
+        <option value="all">Todos</option>
+        <option value="windows">Windows</option>
+        <option value="android">Android</option>
+        <option value="ios">iOS</option>
+        <option value="macos">macOS</option>
+        <option value="linux">Linux</option>
+      </select>
+
+      <i class="bi bi-chevron-down"></i>
+
+    </div>
+
+
+    <div class="filter-group">
+
+      <label for="filterPage">
+        Página / Sección
+      </label>
+
+      <select id="filterPage">
+        <option value="all">Todas</option>
+        <option value="home">Inicio</option>
+        <option value="community">Comunidad</option>
+        <option value="profile">Perfil</option>
+        <option value="contact">Contacto</option>
+        <option value="features">Características</option>
+        <option value="pricing">Precios</option>
+      </select>
+
+      <i class="bi bi-chevron-down"></i>
+
+    </div>
+
+
+    <button type="button" class="btn-clear-filters" id="btnClearFilters">
+      <i class="bi bi-arrow-counterclockwise"></i>
+      Limpiar filtros
+    </button>
+
+  </section>
+
+
+  <!-- ========================================================
+         KPI CARDS
+    ========================================================= -->
+  <section class="statistics-kpis">
+
+    <!-- VISITAS -->
+    <article class="kpi-card">
+
+      <div class="kpi-icon kpi-purple">
+        <i class="bi bi-eye"></i>
+      </div>
+
+      <div class="kpi-content">
+
+        <span class="kpi-label">
+          Visitas
+        </span>
+
+        <strong class="kpi-value">
+          12,458
+        </strong>
+
+        <span class="kpi-growth positive">
+          <i class="bi bi-arrow-up"></i>
+          12.4%
+        </span>
+
+        <small>
+          vs. periodo anterior
+        </small>
+
+      </div>
+
+    </article>
+
+
+    <!-- VISITANTES -->
+    <article class="kpi-card">
+
+      <div class="kpi-icon kpi-green">
+        <i class="bi bi-people"></i>
+      </div>
+
+      <div class="kpi-content">
+
+        <span class="kpi-label">
+          Visitantes
+        </span>
+
+        <strong class="kpi-value">
+          8,231
+        </strong>
+
+        <span class="kpi-growth positive">
+          <i class="bi bi-arrow-up"></i>
+          8.2%
+        </span>
+
+        <small>
+          vs. periodo anterior
+        </small>
+
+      </div>
+
+    </article>
+
+
+    <!-- AUTENTICADOS -->
+    <article class="kpi-card">
+
+      <div class="kpi-icon kpi-blue">
+        <i class="bi bi-person-check"></i>
+      </div>
+
+      <div class="kpi-content">
+
+        <span class="kpi-label">
+          Usuarios autenticados
+        </span>
+
+        <strong class="kpi-value">
+          1,284
+        </strong>
+
+        <span class="kpi-growth positive">
+          <i class="bi bi-arrow-up"></i>
+          15.3%
+        </span>
+
+        <small>
+          vs. periodo anterior
+        </small>
+
+      </div>
+
+    </article>
+
+
+    <!-- PAGE VIEWS -->
+    <article class="kpi-card">
+
+      <div class="kpi-icon kpi-orange">
+        <i class="bi bi-file-earmark-text"></i>
+      </div>
+
+      <div class="kpi-content">
+
+        <span class="kpi-label">
+          Páginas vistas
+        </span>
+
+        <strong class="kpi-value">
+          24,821
+        </strong>
+
+        <span class="kpi-growth positive">
+          <i class="bi bi-arrow-up"></i>
+          10.1%
+        </span>
+
+        <small>
+          vs. periodo anterior
+        </small>
+
+      </div>
+
+    </article>
+
+  </section>
+
+
+  <!-- ========================================================
+         ROW 1 - VISITAS + VISITANTES
+    ========================================================= -->
+  <section class="statistics-grid statistics-grid-main">
+
+    <!-- VISITAS POR FECHA -->
+    <article class="chart-card chart-large">
+
+      <div class="card-header">
+
+        <div>
+          <h2>
+            Visitas por fecha
+          </h2>
+
+          <p>
+            Evolución de visitas durante el periodo seleccionado.
+          </p>
+        </div>
+
+        <select class="chart-filter">
+          <option>Por día</option>
+          <option>Por semana</option>
+          <option>Por mes</option>
+        </select>
+
+      </div>
+
+
+      <div class="chart-legend">
+
+        <span>
+          <i class="legend-dot visits"></i>
+          Visitas
+        </span>
+
+        <span>
+          <i class="legend-dot visitors"></i>
+          Visitantes
+        </span>
+
+      </div>
+
+
+      <div class="chart-container chart-line">
+        <canvas id="visitsChart"></canvas>
+      </div>
+
+    </article>
+
+
+    <!-- VISITANTES VS AUTENTICADOS -->
+    <article class="chart-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>
+            Visitantes vs. Autenticados
+          </h2>
+
+          <p>
+            Distribución de usuarios.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="donut-wrapper">
+
+        <div class="chart-container chart-donut">
+          <canvas id="usersChart"></canvas>
+        </div>
+
+        <div class="donut-total">
+
+          <span>
+            Total
+          </span>
+
+          <strong>
+            9,515
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="donut-legend">
+
+        <div class="legend-item">
+
+          <span class="legend-color purple"></span>
+
+          <div>
+            <strong>
+              Visitantes
+            </strong>
+
+            <small>
+              7,801
+            </small>
+          </div>
+
+          <b>
+            82%
+          </b>
+
+        </div>
+
+
+        <div class="legend-item">
+
+          <span class="legend-color green"></span>
+
+          <div>
+            <strong>
+              Autenticados
+            </strong>
+
+            <small>
+              1,714
+            </small>
+          </div>
+
+          <b>
+            18%
+          </b>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- DISPOSITIVOS -->
+    <article class="chart-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>
+            Dispositivos
+          </h2>
+
+          <p>
+            Tipo de dispositivo utilizado.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="donut-wrapper">
+
+        <div class="chart-container chart-donut">
+          <canvas id="devicesChart"></canvas>
+        </div>
+
+      </div>
+
+
+      <div class="device-legend">
+
+        <div class="device-item">
+
+          <span class="device-color desktop"></span>
+
+          <span>
+            Desktop
+          </span>
+
+          <strong>
+            62.1%
+          </strong>
+
+        </div>
+
+        <div class="device-item">
+
+          <span class="device-color mobile"></span>
+
+          <span>
+            Mobile
+          </span>
+
+          <strong>
+            33.7%
+          </strong>
+
+        </div>
+
+        <div class="device-item">
+
+          <span class="device-color tablet"></span>
+
+          <span>
+            Tablet
+          </span>
+
+          <strong>
+            4.2%
+          </strong>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  </section>
+
+
+  <!-- ========================================================
+         ROW 2 - NAVEGADORES / SO / HORAS
+    ========================================================= -->
+  <section class="statistics-grid statistics-grid-three">
+
+
+    <!-- NAVEGADORES -->
+    <article class="chart-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>
+            Navegadores
+          </h2>
+
+          <p>
+            Navegadores utilizados.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="ranking-list">
+
+        <div class="ranking-item">
+
+          <div class="ranking-info">
+
+            <i class="bi bi-browser-chrome"></i>
+
+            <span>
+              Chrome
+            </span>
+
+          </div>
+
+          <div class="ranking-bar">
+            <span style="width: 71.3%;"></span>
+          </div>
+
+          <strong>
+            71.3%
+          </strong>
+
+        </div>
+
+
+        <div class="ranking-item">
+
+          <div class="ranking-info">
+
+            <i class="bi bi-browser-edge"></i>
+
+            <span>
+              Edge
+            </span>
+
+          </div>
+
+          <div class="ranking-bar">
+            <span style="width: 17.8%;"></span>
+          </div>
+
+          <strong>
+            17.8%
+          </strong>
+
+        </div>
+
+
+        <div class="ranking-item">
+
+          <div class="ranking-info">
+
+            <i class="bi bi-browser-firefox"></i>
+
+            <span>
+              Firefox
+            </span>
+
+          </div>
+
+          <div class="ranking-bar">
+            <span style="width: 6.8%;"></span>
+          </div>
+
+          <strong>
+            6.8%
+          </strong>
+
+        </div>
+
+
+        <div class="ranking-item">
+
+          <div class="ranking-info">
+
+            <i class="bi bi-browser-safari"></i>
+
+            <span>
+              Safari
+            </span>
+
+          </div>
+
+          <div class="ranking-bar">
+            <span style="width: 3.1%;"></span>
+          </div>
+
+          <strong>
+            3.1%
+          </strong>
+
+        </div>
+
+
+        <div class="ranking-item">
+
+          <div class="ranking-info">
+
+            <i class="bi bi-globe"></i>
+
+            <span>
+              Otros
+            </span>
+
+          </div>
+
+          <div class="ranking-bar">
+            <span style="width: 1%;"></span>
+          </div>
+
+          <strong>
+            1%
+          </strong>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- SISTEMAS OPERATIVOS -->
+    <article class="chart-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>
+            Sistemas operativos
+          </h2>
+
+          <p>
+            Sistemas utilizados.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="ranking-list">
+
+        <div class="ranking-item">
+
+          <div class="ranking-info">
+
+            <i class="bi bi-windows"></i>
+
+            <span>
+              Windows
+            </span>
+
+          </div>
+
+          <div class="ranking-bar os">
+            <span style="width: 51.8%;"></span>
+          </div>
+
+          <strong>
+            51.8%
+          </strong>
+
+        </div>
+
+
+        <div class="ranking-item">
+
+          <div class="ranking-info">
+
+            <i class="bi bi-android"></i>
+
+            <span>
+              Android
+            </span>
+
+          </div>
+
+          <div class="ranking-bar os">
+            <span style="width: 30.7%;"></span>
+          </div>
+
+          <strong>
+            30.7%
+          </strong>
+
+        </div>
+
+
+        <div class="ranking-item">
+
+          <div class="ranking-info">
+
+            <i class="bi bi-apple"></i>
+
+            <span>
+              iOS
+            </span>
+
+          </div>
+
+          <div class="ranking-bar os">
+            <span style="width: 9.6%;"></span>
+          </div>
+
+          <strong>
+            9.6%
+          </strong>
+
+        </div>
+
+
+        <div class="ranking-item">
+
+          <div class="ranking-info">
+
+            <i class="bi bi-apple"></i>
+
+            <span>
+              macOS
+            </span>
+
+          </div>
+
+          <div class="ranking-bar os">
+            <span style="width: 5.8%;"></span>
+          </div>
+
+          <strong>
+            5.8%
+          </strong>
+
+        </div>
+
+
+        <div class="ranking-item">
+
+          <div class="ranking-info">
+
+            <i class="bi bi-terminal"></i>
+
+            <span>
+              Linux
+            </span>
+
+          </div>
+
+          <div class="ranking-bar os">
+            <span style="width: 2.1%;"></span>
+          </div>
+
+          <strong>
+            2.1%
+          </strong>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- VISITAS POR HORA -->
+    <article class="chart-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>
+            Visitas por hora
+          </h2>
+
+          <p>
+            Distribución durante el día.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="chart-container chart-hourly">
+        <canvas id="hourlyChart"></canvas>
+      </div>
+
+    </article>
+
+  </section>
+
+
+  <!-- ========================================================
+         ROW 3 - PÁGINAS + USUARIOS ACTIVOS
+    ========================================================= -->
+  <section class="statistics-grid statistics-grid-bottom">
+
+
+    <!-- PÁGINAS MÁS VISITADAS -->
+    <article class="chart-card pages-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>
+            Páginas / Secciones más visitadas
+          </h2>
+
+          <p>
+            Las páginas con mayor número de visitas.
+          </p>
+        </div>
+
+        <button class="btn-secondary">
+          Ver todas
+        </button>
+
+      </div>
+
+
+      <div class="table-responsive">
+
+        <table class="statistics-table">
+
+          <thead>
+
+            <tr>
+              <th>
+                Página / Sección
+              </th>
+
+              <th>
+                Visitas
+              </th>
+
+              <th>
+                Visitantes
+              </th>
+
+              <th>
+                %
+              </th>
+            </tr>
+
+          </thead>
+
+
+          <tbody>
+
+            <tr>
+
+              <td>
+                <div class="page-name">
+
+                  <span class="page-icon">
+                    <i class="bi bi-person-vcard"></i>
+                  </span>
+
+                  <span>
+                    /vcard/perfil
+                  </span>
+
+                </div>
+              </td>
+
+              <td>
+                <strong>
+                  5,821
+                </strong>
+              </td>
+
+              <td>
+                3,912
+              </td>
+
+              <td>
+                23.4%
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                <div class="page-name">
+
+                  <span class="page-icon">
+                    <i class="bi bi-people"></i>
+                  </span>
+
+                  <span>
+                    /comunidad
+                  </span>
+
+                </div>
+              </td>
+
+              <td>
+                <strong>
+                  3,214
+                </strong>
+              </td>
+
+              <td>
+                2,451
+              </td>
+
+              <td>
+                12.9%
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                <div class="page-name">
+
+                  <span class="page-icon">
+                    <i class="bi bi-envelope"></i>
+                  </span>
+
+                  <span>
+                    /contacto
+                  </span>
+
+                </div>
+              </td>
+
+              <td>
+                <strong>
+                  1,842
+                </strong>
+              </td>
+
+              <td>
+                1,423
+              </td>
+
+              <td>
+                7.4%
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                <div class="page-name">
+
+                  <span class="page-icon">
+                    <i class="bi bi-grid"></i>
+                  </span>
+
+                  <span>
+                    /caracteristicas
+                  </span>
+
+                </div>
+              </td>
+
+              <td>
+                <strong>
+                  1,203
+                </strong>
+              </td>
+
+              <td>
+                921
+              </td>
+
+              <td>
+                4.8%
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                <div class="page-name">
+
+                  <span class="page-icon">
+                    <i class="bi bi-tag"></i>
+                  </span>
+
+                  <span>
+                    /precios
+                  </span>
+
+                </div>
+              </td>
+
+              <td>
+                <strong>
+                  894
+                </strong>
+              </td>
+
+              <td>
+                721
+              </td>
+
+              <td>
+                3.6%
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </article>
+
+
+    <!-- USUARIOS ACTIVOS -->
+    <article class="chart-card active-users-card">
+
+      <div class="card-header">
+
+        <div>
+
+          <h2>
+            Usuarios activos ahora
+          </h2>
+
+          <p>
+            Usuarios navegando actualmente.
+          </p>
+
+        </div>
+
+        <span class="live-indicator">
+          <i></i>
+          En vivo
+        </span>
+
+      </div>
+
+
+      <div class="active-users-number">
+
+        <span class="pulse-dot"></span>
+
+        <strong>
+          27
+        </strong>
+
+        <span>
+          usuarios activos
+        </span>
+
+      </div>
+
+
+      <div class="active-pages">
+
+        <div class="active-page">
+
+          <span>
+            /vcard/perfil
+          </span>
+
+          <strong>
+            12
+          </strong>
+
+        </div>
+
+
+        <div class="active-page">
+
+          <span>
+            /comunidad
+          </span>
+
+          <strong>
+            8
+          </strong>
+
+        </div>
+
+
+        <div class="active-page">
+
+          <span>
+            /precios
+          </span>
+
+          <strong>
+            4
+          </strong>
+
+        </div>
+
+
+        <div class="active-page">
+
+          <span>
+            /contacto
+          </span>
+
+          <strong>
+            3
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="active-users-placeholder">
+
+        <i class="bi bi-globe-americas"></i>
+
+        <span>
+          Actividad global
+        </span>
+
+      </div>
+
+    </article>
+
+  </section>
+
+
+  <!-- ========================================================
+         FOOTER
+    ========================================================= -->
+  <footer class="statistics-footer">
+
+    <i class="bi bi-arrow-repeat"></i>
+
+    Los datos se actualizan automáticamente cada 5 minutos.
+
+  </footer>
+
+</main>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CHART.JS
+============================================================ -->
+<!--script src="https://cdn.jsdelivr.net/npm/chart.js"></script-->
+
+

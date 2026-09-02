@@ -4,11 +4,12 @@ import { app, name, theme, version } from './core/constants.js';
 import { variables } from "./core/lib.js";
 import { destroyEvents, handleEventListener } from "./hooks/handleEventListener.js";
 import { loadCssJsMod } from "./hooks/loadCssJs.route.js";
-import { deleteData, sesionActiva } from "./services/firebase.js";
+import { deleteData, getDataById, sesionActiva } from "./services/firebase.js";
 import { versionJson } from "./services/fetch.js";
 import { compressImage } from './hooks/loadImage.js';
 import { registrosApp } from './functions/registros.js';
 import { modalConfirm, modalInfo } from './functions/modalAlerts.js';
+import { mx } from './functions/htmx.man.js';
 
 /* ==========================
    VARIABLES
@@ -47,9 +48,9 @@ export const router = async (v) => {
   app.innerHTML = await routes[view]();
   //loadCssJsMod(v);
   /* EXPLORAR REGISTROS PARA MANDRAGORA PENDIENTE */
-  //registrosApp(v);
+  registrosApp(v);
   setTimeout(() => { sesionActiva(v); }, 0);
-  setTimeout(() => { tooltips(); }, 1500);
+  setTimeout(() => { mx(); tooltips(); }, 1000);
   if (v.mod != 'dashboard') { footer(); }
 };
 
@@ -75,7 +76,6 @@ export const toggleEye = () => {
   const password = document.getElementById('password');
   const togglePassword = document.getElementById('togglePassword');
   const icon = togglePassword.querySelector('i');
-
   togglePassword.addEventListener('click', () => {
     const isPassword = password.type === 'password';
     password.type = isPassword ? 'text' : 'password';
@@ -156,16 +156,30 @@ export async function clearCache() {
 }
 
 export const tooltips = () => {
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]'); consoleLocal('log', tooltipTriggerList);
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]'); //consoleLocal('log', tooltipTriggerList);
   tooltipTriggerList.forEach(el => {
     new bootstrap.Tooltip(el);
   });
+  console.log('tooltips activo');
 }
 
 export const closeModal = (idModal = '#Modal') => {
   const modal = bootstrap.Modal.getOrCreateInstance(document.querySelector(idModal));
   modal.hide();
 };
+
+export function validaImagen(url, id) {
+  var image = new Image();
+  image.src = url;
+  image.addEventListener('load', () => {
+    console.log('Imagen cargada.');
+    //id.style.backgroundImage = `url('${url}')`;
+  });
+  image.addEventListener('error', () => {
+    console.warn('Error: Fallo carga de imagen.', url);
+    id.style.backgroundImage = `url(/assets/img/sinfoto.png)`;
+  });
+}
 
 export function validImage(url) {
   return new Promise((resolve) => {
@@ -182,6 +196,16 @@ export function validImage(url) {
   });
 }
 
+export async function validImage2(url) {
+  try {
+    const res = await fetch(url, { method: 'HEAD' });
+    return res.ok;
+  } catch (error) {
+    console.error('Error validando imagen:', error);
+    return false;
+  }
+}
+
 /** * Obtiene el usuario actual desde localStorage. */
 export function getCurrentUser() {
   try {
@@ -191,6 +215,15 @@ export function getCurrentUser() {
     return null;
   }
 }
+
+export const getCurrentUserData = async () => {
+  const userBasic = getCurrentUser();
+  if (!userBasic) { return; }
+  const { uid } = userBasic;
+  const data = await getDataById('users', uid);
+  if (!data) return null;
+  return data;
+};
 
 /** * Obtiene únicamente los registros activos y las ordena por ID. */
 export function getActive(data = []) {
@@ -204,11 +237,7 @@ export function renderMessage(element, message) {
 }
 
 //** SEO **/
-export function setSEO({
-  title,
-  description,
-  canonical
-}) {
+export function setSEO({ title, description, canonical }) {
   document.title = title;
   let metaDescription = document.querySelector('meta[name="description"]');
 
@@ -217,12 +246,10 @@ export function setSEO({
     metaDescription.name = 'description';
     document.head.appendChild(metaDescription);
   }
-
   metaDescription.content = description;
 
   if (canonical) {
     let linkCanonical = document.querySelector('link[rel="canonical"]');
-
     if (!linkCanonical) {
       linkCanonical = document.createElement('link');
       linkCanonical.rel = 'canonical';
@@ -260,27 +287,21 @@ export function setSEO2({
 
 function setMeta(attribute, key, content) {
   let meta = document.querySelector(`meta[${attribute}="${key}"]`);
-
   if (!meta) {
     meta = document.createElement('meta');
     meta.setAttribute(attribute, key);
     document.head.appendChild(meta);
   }
-
   meta.setAttribute('content', content);
 }
 
-
 function setLink(rel, href) {
-
   let link = document.querySelector(`link[rel="${rel}"]`);
-
   if (!link) {
     link = document.createElement('link');
     link.rel = rel;
     document.head.appendChild(link);
   }
-
   link.href = href;
 }
 
@@ -302,13 +323,11 @@ export function fillForm(data, selector = document) {
       case 'checkbox':
         field.checked = Boolean(value);
         break;
-
       case 'radio':
         if (field.value === String(value)) {
           field.checked = true;
         }
         break;
-
       default:
         field.value = value ?? '';
     }

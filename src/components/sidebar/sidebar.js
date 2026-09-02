@@ -2,10 +2,13 @@ import { MODE, name } from '../../app/core/constants.js';
 import { getData } from '../../app/services/firebase.js';
 import { navigate } from '../../app/core/core.js';
 import { variables } from '../../app/core/lib.js';
+import { Auth } from '../../app/functions/security.js';
 import Html from './index.html?raw';
+import './style.css';
+import { validImage } from '../../app/functions.js';
 
 export function sidebar() {
-    const { screenw, pathname, hash } = variables();
+    const { host, screenw, pathname, hash } = variables();
     const tab = "users";
 
     const user = async () => {
@@ -77,12 +80,14 @@ export function sidebar() {
         //OBTENER DATOS DE USUARIO
         const data = await user();
         const userData = data ? data.find(item => item.uid === userBasic?.uid) : null;
-        const perfilData = userData ? userData : userBasic; console.warn('PerfilData:', perfilData);
+        const perfilData = userData ? userData : userBasic;
+        if (host.includes('localhost')) { console.warn('PerfilData:', perfilData); }
         const { key, ID, foto, email, usuario, uid, userId, tel, direccion, create_at, update_at, publico } = perfilData;
         if (u != null) { u.innerHTML = usuario || email.split("@")[0]; }
         if (job != null) { job.innerHTML = email; }
         if (fotoUser != null) {
-            fotoUser.src = foto && foto!='' ? foto : './../assets/img/sinfoto.png';
+            const isValidImage = await validImage(foto);
+            fotoUser.src = foto && foto != '' ? isValidImage ? foto : '/assets/img/sinfoto.png' : '/assets/img/sinfoto.png';
         }
     };
 
@@ -94,11 +99,27 @@ export function sidebar() {
         }
     };
 
+    const permisosMenu = async () => {
+        const permisos = await Auth(); console.warn('AUTH:', permisos);
+        if (permisos) {
+            const opcAuth = document.querySelectorAll('.auth'); //console.log(opcAuth);
+            const opcNoAuth = document.querySelectorAll('.noauth'); //console.log(opcNoAuth);
+            //if (!opcAuth) { return; }
+            opcAuth?.forEach(element => {
+                element.classList.add('showAuth');
+            });
+            opcNoAuth?.forEach(element => {
+                element.classList.add('hiddenAuth');
+            });
+        }
+    };
+
     const onLoad = () => {
         btnArrowMenu();
         btnSidebar();
         btnLogout();
         menuSidebar();
+        permisosMenu();
         const userBasic = JSON.parse(localStorage.getItem('userBasic'));
         setTimeout(() => { getUser(); linkName(); }, userBasic ? 0 : 1000);
 

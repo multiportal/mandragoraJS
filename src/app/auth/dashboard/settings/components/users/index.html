@@ -1,0 +1,185 @@
+<section class="users-manager mt-4">
+
+    <!-- =========================
+         TOOLBAR
+    ========================== -->
+    <div class="users-toolbar">
+
+        <!-- Buscador -->
+        <div class="users-search">
+            <svg viewBox="0 0 24 24">
+                <path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" />
+            </svg>
+
+            <input type="search" id="userSearch" placeholder="Buscar usuario..." autocomplete="off">
+        </div>
+
+
+        <div class="users-toolbar-actions">
+
+            <!-- Filtro por rol -->
+            <div class="users-filter">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 5h16l-6 7v5l-4 2v-7L4 5Z" />
+                </svg>
+
+                <select id="roleFilter">
+                    <option value="all">Rol: Todos</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Editor">Editor</option>
+                    <option value="Usuario">Usuario</option>
+                </select>
+
+            </div>
+
+
+            <!-- Agregar usuario -->
+            <button type="button" class="btn-add-user" id="btnAddUser">
+                <span>+</span>
+                Agregar usuario
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         TABLE
+    ========================== -->
+    <div class="users-table-wrapper">
+
+        <table class="users-table">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Estado</th>
+                    <th>Fecha de registro</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody id="usersTableBody">
+                <!-- JavaScript -->
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER / PAGINATION
+    ========================== -->
+    <div class="users-footer">
+
+        <div class="users-info" id="usersInfo">
+            Mostrando 0 a 0 de 0 usuarios
+        </div>
+
+
+        <div class="users-pagination-container">
+
+            <!-- Registros por página -->
+            <div class="users-page-size">
+
+                <span>Mostrar</span>
+
+                <select id="pageSize">
+                    <option value="5" selected>5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+
+            </div>
+
+
+            <!-- Paginación -->
+            <nav class="users-pagination" id="usersPagination" aria-label="Paginación de usuarios">
+            </nav>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form id="form-profile">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLabel">Editar</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-4 px-2">
+                  <div class="content-image mb-2">
+                    <img id="fotoProfile" src="../../assets/img/sinfoto.png" alt="profileImg">
+                    <input id="changeImage" type="file" accept="image/*" />
+                    <label id="icon-upload" for="changeImage" class="btn btn-primary">
+                      <i class="bi bi-camera"></i>
+                    </label>
+                  </div>
+                  <div class="mb-3">
+                    <label for="userId" class="form-label">@ Nombre de usuario Id</label>
+                    <input type="text" class="form-control" id="userId" name="userId"
+                      placeholder="@ Nombre de usuario Id">
+                  </div>
+                  <input type="hidden" class="form-control" id="update_at" name="update_at" disabled />
+                  <input type="hidden" class="form-control" id="create_at" name="create_at" disabled />
+                  <input type="hidden" class="form-control" id="ID" name="ID" value="1" disabled />
+                  <input type="hidden" class="form-control" id="foto" name="foto" disabled />
+                  <input type="hidden" class="form-control" id="uid" name="uid" disabled />
+                  <div class="mb-3">
+                    <label for="codiPlan" class="form-label container-codiPlan">Código de plan <span id="changeCodi"><i
+                          class="bi bi-pencil"></i> Cambiar</span></label>
+                    <input type="text" class="form-control" id="codiPlan" name="codiPlan"
+                      placeholder="Código de plan" />
+                  </div>
+                  <input type="hidden" class="form-control" id="nivel" name="nivel" placeholder="Nivel" disabled />
+                  <input type="hidden" class="form-control" id="rol" name="rol" placeholder="Rol" disabled />
+                  <input type="hidden" class="form-control" id="fecCodiPlan" name="fecCodiPlan"
+                    placeholder="Fecha Código de plan" disabled />
+                </div>
+                <div class="col-lg-8 px-2">
+                  <div class="mb-3">
+                    <label for="usuario" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Nombre" required />
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" required />
+                  </div>
+                  <div class="mb-3">
+                    <label for="direccion" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direccion" />
+                  </div>
+                  <div class="mb-3">
+                    <label for="tel" class="form-label">Telefono</label>
+                    <input type="tel" class="form-control" id="tel" name="tel" placeholder="Tel" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="publico" checked>
+                <label class="form-check-label" for="publico">Privado/Publico</label>
+              </div>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCancel">Cancelar</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /Modal -->

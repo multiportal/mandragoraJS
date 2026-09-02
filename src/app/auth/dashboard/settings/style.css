@@ -1,0 +1,683 @@
+.settings {
+
+    #fotoProfile,
+    .fotoProfile {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        margin: 0px 5px 25px;
+    }
+
+    #icon-upload {
+        margin-top: 53px;
+        margin-left: -40px;
+        border-radius: 50%;
+        padding: 8px 12px;
+        border: 1px solid #fff;
+        height: auto;
+    }
+
+    .content-image {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .container-ima {
+        width: 100%;
+        border: 1px solid #ccc;
+    }
+
+    /* =========================================================
+   USERS MANAGER
+========================================================= */
+
+    .users-manager {
+        width: 100%;
+        background: #ffffff;
+        border: 1px solid #e1e5ed;
+        border-radius: 8px;
+        padding: 18px;
+        box-sizing: border-box;
+    }
+
+
+    /* =========================================================
+   TOOLBAR
+========================================================= */
+
+    .users-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 18px;
+    }
+
+
+    /* =========================
+   SEARCH
+========================= */
+
+    .users-search {
+        width: 320px;
+        height: 42px;
+
+        display: flex;
+        align-items: center;
+
+        border: 1px solid #dce1e9;
+        border-radius: 6px;
+
+        background: #fff;
+
+        transition: border-color .2s, box-shadow .2s;
+    }
+
+    .users-search:focus-within {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, .10);
+    }
+
+    .users-search svg {
+        width: 18px;
+        height: 18px;
+
+        margin-left: 13px;
+
+        fill: none;
+        stroke: #8a94a6;
+        stroke-width: 2;
+    }
+
+    .users-search input {
+        width: 100%;
+        height: 100%;
+
+        border: 0;
+        outline: 0;
+
+        padding: 0 12px;
+
+        font-size: 14px;
+        color: #30384a;
+
+        background: transparent;
+    }
+
+    .users-search input::placeholder {
+        color: #9aa3b2;
+    }
+
+
+    /* =========================================================
+   TOOLBAR ACTIONS
+========================================================= */
+
+    .users-toolbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+
+    /* =========================================================
+   ROLE FILTER
+========================================================= */
+
+    .users-filter {
+        height: 42px;
+
+        display: flex;
+        align-items: center;
+
+        border: 1px solid #dce1e9;
+        border-radius: 6px;
+
+        background: #fff;
+    }
+
+    .users-filter svg {
+        width: 17px;
+        height: 17px;
+
+        margin-left: 12px;
+
+        fill: none;
+        stroke: #7e8797;
+        stroke-width: 1.8;
+    }
+
+    .users-filter select {
+        height: 100%;
+
+        border: 0;
+        outline: 0;
+
+        padding: 0 35px 0 8px;
+
+        color: #3d4657;
+        font-size: 14px;
+
+        background: transparent;
+
+        cursor: pointer;
+    }
+
+
+    /* =========================================================
+   ADD BUTTON
+========================================================= */
+
+    .btn-add-user {
+        height: 42px;
+
+        display: flex;
+        align-items: center;
+        gap: 7px;
+
+        padding: 0 18px;
+
+        border: 0;
+        border-radius: 6px;
+
+        background: #0d6efd;
+        color: #fff;
+
+        font-size: 14px;
+        font-weight: 500;
+
+        cursor: pointer;
+
+        transition:
+            background .2s,
+            transform .1s,
+            box-shadow .2s;
+    }
+
+    .btn-add-user:hover {
+        background: #0b5ed7;
+        box-shadow: 0 4px 12px rgba(13, 110, 253, .25);
+    }
+
+    .btn-add-user:active {
+        transform: translateY(1px);
+    }
+
+    .btn-add-user span {
+        font-size: 21px;
+        line-height: 1;
+    }
+
+
+    /* =========================================================
+   TABLE
+========================================================= */
+
+    .users-table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+
+        border: 1px solid #e2e6ec;
+        border-radius: 7px;
+    }
+
+
+    .users-table {
+        width: 100%;
+        min-width: 950px;
+
+        border-collapse: collapse;
+
+        color: #384152;
+        font-size: 13px;
+    }
+
+
+    /* =========================
+   HEADER
+========================= */
+
+    .users-table thead {
+        background: #fafbfc;
+    }
+
+    .users-table th {
+        height: 52px;
+
+        padding: 0 16px;
+
+        border-bottom: 1px solid #e2e6ec;
+
+        text-align: left;
+
+        color: #273043;
+
+        font-size: 13px;
+        font-weight: 600;
+
+        white-space: nowrap;
+    }
+
+
+    /* =========================
+   BODY
+========================= */
+
+    .users-table td {
+        height: 66px;
+
+        padding: 0 16px;
+
+        border-bottom: 1px solid #edf0f4;
+
+        white-space: nowrap;
+    }
+
+    .users-table tbody tr {
+        transition: background .15s;
+    }
+
+    .users-table tbody tr:hover {
+        background: #fafcff;
+    }
+
+    .users-table tbody tr:last-child td {
+        border-bottom: 0;
+    }
+
+
+    /* =========================================================
+   USER
+========================================================= */
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+    }
+
+    .user-avatar {
+        width: 36px;
+        height: 36px;
+
+        flex-shrink: 0;
+
+        border-radius: 50%;
+
+        object-fit: cover;
+
+        background: #e9edf3;
+    }
+
+    .user-name {
+        font-weight: 500;
+        color: #30394a;
+    }
+
+
+    /* =========================================================
+   ROLE BADGES
+========================================================= */
+
+    .role-badge {
+        display: inline-flex;
+        align-items: center;
+
+        padding: 5px 9px;
+
+        border-radius: 5px;
+
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+
+    .role-admin {
+        color: #1769e0;
+        background: #eaf2ff;
+        border: 1px solid #cfe1ff;
+    }
+
+    .role-editor {
+        color: #7950d8;
+        background: #f1eaff;
+        border: 1px solid #e1d5ff;
+    }
+
+    .role-user {
+        color: #1769e0;
+        background: #edf5ff;
+        border: 1px solid #d8e8ff;
+    }
+
+
+    /* =========================================================
+   STATUS
+========================================================= */
+
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 9px;
+        border-radius: 5px;
+        font-size: 12px;
+    }
+
+    .status-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+    }
+
+    .status-active {
+        color: #16834b;
+        background: #edf9f2;
+        border: 1px solid #d4f0df;
+    }
+
+    .status-active::before {
+        background: #18a957;
+    }
+
+    .status-inactive {
+        color: #596273;
+        background: #f4f5f7;
+        border: 1px solid #e5e7eb;
+    }
+
+    .status-inactive::before {
+        background: #697386;
+    }
+
+
+    .Privado {
+        color: #ff0000;
+        background: #ff000048;
+        border: 1px solid #ff0000;
+    }
+
+    .Publico {
+        color: #6dff33;
+        background: #6dff3348;
+        border: 1px solid #6dff33;
+    }
+
+    /* =========================================================
+   ACTIONS
+========================================================= */
+
+    .user-actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+    }
+
+    .user-action {
+        width: 38px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #dfe4eb;
+        border-radius: 6px;
+        background: #fff;
+        cursor: pointer;
+        transition:
+            background .2s,
+            border-color .2s,
+            transform .1s;
+    }
+
+    .user-action:hover {
+        background: #f8faff;
+    }
+
+    .user-action:active {
+        transform: scale(.96);
+    }
+
+    .user-action svg {
+        width: 18px;
+        height: 18px;
+
+        fill: none;
+        stroke-width: 2;
+    }
+    /*
+    .user-action.edit {
+        background-color: #f5a717;
+        color: #fff;
+    }
+
+    .user-action.edit:hover {
+        background-color: #c78812;
+    }*/
+
+    .user-action.delete {
+        background-color: #ef233c;
+        color: #fff;
+    }
+
+    .user-action.delete:hover {
+        background-color: #bd192c;
+    }
+
+
+    /* =========================================================
+   FOOTER
+========================================================= */
+
+    .users-footer {
+        min-height: 60px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 20px;
+    }
+
+    .users-info {
+        color: #697386;
+        font-size: 13px;
+    }
+
+
+    /* =========================================================
+   PAGINATION CONTAINER
+========================================================= */
+
+    .users-pagination-container {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+
+    /* =========================================================
+   PAGE SIZE
+========================================================= */
+
+    .users-page-size {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+
+        color: #697386;
+        font-size: 13px;
+    }
+
+    .users-page-size select {
+        height: 34px;
+
+        padding: 0 25px 0 9px;
+
+        border: 1px solid #dce1e9;
+        border-radius: 5px;
+
+        background: #fff;
+
+        color: #414a5a;
+
+        outline: none;
+
+        cursor: pointer;
+    }
+
+
+    /* =========================================================
+   PAGINATION
+========================================================= */
+
+    .users-pagination {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .page-btn {
+        min-width: 38px;
+        height: 36px;
+
+        padding: 0 8px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 1px solid #dfe4eb;
+        border-radius: 6px;
+
+        background: #fff;
+
+        color: #4e586a;
+
+        font-size: 13px;
+
+        cursor: pointer;
+
+        transition:
+            background .2s,
+            border-color .2s,
+            color .2s;
+    }
+
+    .page-btn:hover:not(:disabled) {
+        border-color: #b9c8dc;
+        background: #f8faff;
+    }
+
+    .page-btn.active {
+        border-color: #0d6efd;
+        background: #0d6efd;
+        color: #fff;
+    }
+
+    .page-btn:disabled {
+        opacity: .45;
+        cursor: not-allowed;
+    }
+
+    .page-dots {
+        min-width: 25px;
+
+        text-align: center;
+
+        color: #8a94a6;
+    }
+
+
+    /* =========================================================
+   EMPTY
+========================================================= */
+
+    .users-empty {
+        height: 180px;
+
+        text-align: center;
+
+        color: #8a94a6;
+    }
+
+    .users-empty td {
+        height: 180px !important;
+    }
+
+
+    /* =========================================================
+   RESPONSIVE
+========================================================= */
+
+    @media (max-width: 900px) {
+
+        .users-toolbar {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .users-search {
+            width: 100%;
+        }
+
+        .users-toolbar-actions {
+            justify-content: space-between;
+        }
+
+        .users-footer {
+            flex-direction: column;
+            align-items: flex-start;
+
+            padding: 12px 0;
+        }
+
+        .users-pagination-container {
+            width: 100%;
+
+            justify-content: space-between;
+        }
+    }
+
+
+    @media (max-width: 600px) {
+
+        .users-manager {
+            padding: 12px;
+        }
+
+        .users-toolbar-actions {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .users-filter,
+        .btn-add-user {
+            width: 100%;
+        }
+
+        .users-filter select {
+            width: 100%;
+        }
+
+        .users-pagination-container {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .users-pagination {
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 3px;
+        }
+    }
+}

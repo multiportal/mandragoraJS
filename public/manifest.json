@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "LinksApp",
+    "version": "1.0",
+    "description": "LinksApp - Single Page Application",
+    "icons": {
+        "128": "logo.png"
+    },
+    "action": {
+        "default_popup": "index.html"
+    },
+    "permissions": [
+        "storage"
+    ],
+    "host_permissions": [
+        "https://*.firebaseio.com/*",
+        "https://*.googleapis.com/*",
+        "https://identitytoolkit.googleapis.com/*",
+        "https://securetoken.googleapis.com/*",
+        "https://*apis.google.com/*",
+        "https://*.gstatic.com/*",
+        "https://*.cdn.jsdelivr.net/*"
+    ]
+}

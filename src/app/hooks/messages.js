@@ -22,12 +22,12 @@ export function showMessage(msj, type, time = 3000) {
   alert.classList.remove('hide');
   alert.classList.add('show');
   alert.innerHTML = `
-  <div class="toast-header ${type === 'Exito' ? 'bg-success text-white' : type === 'Error' ? 'bg-danger text-white' : 'bg-secondary text-white'}">
+  <div class="toast-header ${type === 'Exito' ? 'bg-success text-white' : type === 'Error' ? 'bg-danger text-white' : type === 'Warn' ? 'bg-warning text-white' : 'bg-secondary text-white'}">
     <strong class="me-auto">${type}</strong>
     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
   <div class="toast-body">
-    ${type}: ${msj}
+    ${msj}
   </div>
   `;
   closeMessage();

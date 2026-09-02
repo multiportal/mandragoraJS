@@ -1,13 +1,5 @@
 .profileDashboard {
 
-    #fotoProfile,
-    .fotoProfile {
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        margin: 0px 5px 25px;
-    }
-
     .card {
         min-width: 250px;
     }
@@ -21,6 +13,23 @@
 
     .tipo {
         font-size: 18px;
+    }
+
+    #fotoProfile,
+    .fotoProfile {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        margin: 0px 5px 25px;
+    }
+
+    #icon-upload {
+        margin-top: 53px;
+        margin-left: -40px;
+        border-radius: 50%;
+        padding: 8px 12px;
+        border: 1px solid #fff;
+        height: auto;
     }
 
     .content-image {
@@ -84,18 +93,36 @@
         text-align: right;
     }
 
-    #icon-upload {
-        margin-top: 53px;
-        margin-left: -40px;
-        border-radius: 50%;
-        padding: 8px 12px;
-        border: 1px solid #fff;
-        height: auto;
+    .btnDelete {
+        background: linear-gradient(135deg, #ef5350, #b71c1c);
+        color: white !important;
+        box-shadow: 0 12px 35px rgba(183, 28, 28, .30);
+        border: 1px solid rgba(183, 28, 28, 0.30);
     }
 
-    @media (max-width: 768px) {
+    .btnDelete:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 35px rgba(183, 28, 28, .45);
+        border: 1px solid rgba(183, 28, 28, .45);
+    }
+
+    #changeCodi {
+        color: var(--primary);
+        cursor: pointer;
+    }
+
+    .container-codiPlan {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    @media (max-width: 480px) {
         .btn-align {
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
     }
 }

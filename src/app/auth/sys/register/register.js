@@ -6,9 +6,6 @@ import { showMessage } from "../../../hooks/messages.js";
 import { navigate } from "../../../core/core.js";
 import { googleLogin } from "../../../hooks/googleLogin.js";
 import Html from './index.html?raw';
-
-
-
 //import './style.css';
 
 export function register() {

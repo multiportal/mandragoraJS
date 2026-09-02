@@ -9,13 +9,16 @@
         <div class="card">
           <div class="card-header">
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-4">
                 <h2>Mi Perfil</h2>
               </div>
-              <div class="col-md-4 btn-align">
+              <div class="col-md-8 btn-align">
+                <button type="button" class="btn btn-secondary btnDelete">
+                  <i class="bi bi-person-x-fill"></i> Eliminar perfil
+                </button>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary btnAdd" data-bs-toggle="modal" data-bs-target="#Modal">
-                  <i class="bi bi-pencil-square"></i> &nbsp; Editar perfil
+                <button type="button" id="btnUpdate" class="btn btn-primary btnAdd" data-bs-toggle="modal" data-bs-target="#Modal">
+                  <i class="bi bi-pencil-square"></i> Editar perfil
                 </button>
               </div>
             </div>
@@ -24,7 +27,7 @@
             <div class="row">
               <div class="col-md-4 text-center">
                 <div class="content-image mb-4">
-                  <img class="fotoProfile" src="./assets/img/sinfoto.png" alt="profileImg">
+                  <img class="fotoProfile" src="../../assets/img/sinfoto.png" alt="profileImg">
                 </div>
               </div>
               <div class="col-md-8 info-profile">
@@ -47,8 +50,8 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-lg-4 px-2">
-                  <div class="content-image mb-4">
-                    <img id="fotoProfile" src="./assets/img/sinfoto.png" alt="profileImg">
+                  <div class="content-image mb-2">
+                    <img id="fotoProfile" src="../../assets/img/sinfoto.png" alt="profileImg">
                     <input id="changeImage" type="file" accept="image/*" />
                     <label id="icon-upload" for="changeImage" class="btn btn-primary">
                       <i class="bi bi-camera"></i>
@@ -59,28 +62,35 @@
                     <input type="text" class="form-control" id="userId" name="userId"
                       placeholder="@ Nombre de usuario Id">
                   </div>
-                  <input type="hidden" class="form-control" id="update_at" name="update_at" disabled>
-                  <input type="hidden" class="form-control" id="create_at" name="create_at" disabled>
-                  <input type="hidden" class="form-control" id="ID" name="ID" value="1" disabled>
-                  <input type="hidden" class="form-control" id="foto" name="foto" disabled>
-                  <input type="hidden" class="form-control" id="uid" name="uid" disabled>
+                  <input type="hidden" class="form-control" id="update_at" name="update_at" disabled />
+                  <input type="hidden" class="form-control" id="create_at" name="create_at" disabled />
+                  <input type="hidden" class="form-control" id="ID" name="ID" value="1" disabled />
+                  <input type="hidden" class="form-control" id="foto" name="foto" disabled />
+                  <input type="hidden" class="form-control" id="uid" name="uid" disabled />
+                  <div class="mb-3">
+                    <label for="codiPlan" class="form-label container-codiPlan">Código de plan <span id="changeCodi"><i class="bi bi-pencil"></i> Cambiar</span></label>
+                    <input type="text" class="form-control" id="codiPlan" name="codiPlan" placeholder="Código de plan" />
+                  </div>
+                  <input type="hidden" class="form-control" id="nivel" name="nivel" placeholder="Nivel" disabled />
+                  <input type="hidden" class="form-control" id="rol" name="rol" placeholder="Rol" disabled />
+                  <input type="hidden" class="form-control" id="fecCodiPlan" name="fecCodiPlan" placeholder="Fecha Código de plan" disabled />
                 </div>
                 <div class="col-lg-8 px-2">
                   <div class="mb-3">
                     <label for="usuario" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Nombre" required>
+                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Nombre" required />
                   </div>
                   <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" required />
                   </div>
                   <div class="mb-3">
                     <label for="direccion" class="form-label">Dirección</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direccion">
+                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direccion" />
                   </div>
                   <div class="mb-3">
                     <label for="tel" class="form-label">Telefono</label>
-                    <input type="tel" class="form-control" id="tel" name="tel" placeholder="Tel">
+                    <input type="tel" class="form-control" id="tel" name="tel" placeholder="Tel" />
                   </div>
                 </div>
               </div>

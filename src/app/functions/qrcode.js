@@ -1,4 +1,3 @@
-//import * as QRCode from 'qrcodejs';
 import QRCode from 'qrcode';
 
 export const createQR = async (ele, url) => {

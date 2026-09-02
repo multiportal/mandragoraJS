@@ -3,8 +3,67 @@
     <i class='bx bx-menu'></i>
     <span class="text">DASHBOARD > SETTINGS</span>
   </div>
-  <div id="content" class="container-fluid">
+  <div id="content" class="container-fluid settings">
     <div class="row">
+      <div class="col-md-12">
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+              type="button" role="tab" aria-controls="nav-home" aria-selected="true">General</button>
+            <!--class="nav-link auth"-->
+            <button class="nav-link auth" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+              type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Gestión de usuarios</button>
+            <!--class="nav-link auth"-->
+            <button class="nav-link auth" id="nav-develop-tab" data-bs-toggle="tab" data-bs-target="#nav-develop"
+              type="button" role="tab" aria-controls="nav-develop" aria-selected="false">Developer</button>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12 my-4">
+                  <div class="d-flex align-items-start">
+                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
+                      aria-orientation="vertical">
+                      <button class="nav-link col-md-12 active" id="v-pills-home-tab" data-bs-toggle="pill"
+                        data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                        aria-selected="true">Sistema</button>
+                      <button class="nav-link col-md-12" id="v-pills-profile-tab" data-bs-toggle="pill"
+                        data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
+                        aria-selected="false">Tema</button>
+                    </div>
+                    <div class="tab-content" id="v-pills-tabContent">
+                      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+                        {{Sistema}}
+
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+
+                        {{Tema}}
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+            {{Users}}
+
+          </div>
+          <div class="tab-pane fade" id="nav-develop" role="tabpanel" aria-labelledby="nav-develop-tab">
+
+            {{Developer}}
+            
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

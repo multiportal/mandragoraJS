@@ -11,7 +11,7 @@ export function productos() {
         if (!productList) { return; }
         let html = '';
         const data = await getData(tab); consoleLocal('log', data);
-        const n = (data) ? data.length : 0; console.log(n);
+        const n = data.length; console.log(n);
         if (!data) {
             productList.innerHTML = '<p class="text-center">No hay productos disponibles.</p>';
             return;

@@ -1,8 +1,7 @@
 import { version, activeDevelop } from '../core/constants';
-import { clearCache } from '../functions';
+import { clearCache, consoleLocal } from '../functions';
 
 export const serviceWorker = () => {
-    //const activeDevelop = false; //*Para Develop poner en "true" */
     const { host } = window.location;
     if (!host.includes('localhost') || activeDevelop) {
         if ('serviceWorker' in navigator) {
@@ -120,7 +119,7 @@ function showBannerUpdate(newVersion, worker = null) {
             });
 
             setTimeout(() => {
-                console.warn('ACTULIZADO!!!');
+                console.warn('ACTUALIZADO!!!');
                 localStorage.setItem('VersionApp', version);
                 window.location.reload()
             }, 3000);
@@ -150,7 +149,7 @@ function showUpdateMessage() {
 export const comprobarVersion = () => {
     const verActual = localStorage.getItem('VersionApp');
     const verNueva = version;
-    console.warn('VERSIONES:', verNueva, verActual);
+    consoleLocal('warn',{ 'VERSIONES': { verNueva, verActual } });
     const versiones = {
         new: verNueva,
         old: verActual

@@ -1,4 +1,4 @@
-import { name, version, body } from '../core/constants';
+import { name, body } from '../core/constants';
 import { comprobarVersion } from './serviceWorker';
 /* ==========================
    LOAD-SCRIPT
@@ -24,25 +24,9 @@ export function loading() {
   }, 5000);
 }
 
-export function loadM() {
-  let body = document.getElementsByTagName("body")[0];
-  let layer = 'layerLoading';
-  let content = `
-  <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
-    <div id="liveToast" class="toast fade hide" role="alert" aria-live="assertive" aria-atomic="true"></div>
-  </div>`;
-  var div = document.createElement('div');
-  div.id = 'loadM';
-  div.innerHTML = content;
-  body.appendChild(div);
-}
-
-export function controlLoading() {
-  const { mod, ext } = variables();
-  let page = (mod != 'Home' && ext != 'index') ? ext : mod;// console.log(page,mod,ext);
-  var views = pagesAll[page];
-  if (mod != 'dashboard' && typeBack == 'firebase') {
-    if (mod != 'logout' && mod != 'noauth' && ext == 'index' && views != undefined) { loading(); }
+export function controlLoading({ mod, ext }) {
+  if (mod == 'Home') {
+    loading();
   }
 }
 
