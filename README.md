@@ -1,5 +1,5 @@
 # MandragoraJS
-Single Page Application (spa) - CMS Javascript
+Single Page Application (spa) - Javascript Framework
 
 MandragoraJS es un framework SPA ligero desarrollado en JavaScript puro que proporciona una arquitectura modular para construir CMS, aplicaciones web, aplicaciones móviles mediante Manifest y extensiones de Chrome, utilizando una única base de código.
 
