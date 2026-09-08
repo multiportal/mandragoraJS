@@ -170,7 +170,7 @@ export async function profileDashboard() {
             deleteData(tab, user.uid);
             deleteData('signup', user.uid);
             setTimeout(() => {
-                navigate('/logout');
+                navigate(`${MODE === 'HASH' ? '#' : ''}/logout`);
             }, 1000);
         }, btndel);
     };
