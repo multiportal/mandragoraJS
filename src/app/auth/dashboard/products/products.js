@@ -1,8 +1,8 @@
-import { getData, createData, putData, deleteData, getDataById } from '../../../services/firebase';
-import { consoleLocal, getFormData, resetForm, btnBorrar, btnCancelar, toggleTitle, fillForm, closeModal } from '../../../functions';
+import { getData, createData, putData, getDataById } from '../../../services/firebase';
+import { consoleLocal, getFormData, resetForm, btnBorrar, btnCancelar, toggleTitle, fillForm } from '../../../functions';
 import { handleEventListener } from '../../../hooks/handleEventListener';
 import { variables } from '../../../core/lib';
-import Swal from 'sweetalert2';
+import { closeModal } from '../../../functions/modalAlerts';
 import Html from './index.html?raw';
 
 export function productsDashboard() {

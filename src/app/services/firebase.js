@@ -254,8 +254,10 @@ export function sesionActiva({ mod, ext }) {
   });
 }
 
-export const totalTab = async (tab) => {
+export const totalTab = async (tab, uid = null) => {
   const data = await getData(tab);
-  const total = data ? data.length : 0
+  if(!data) return 0;
+  const res = uid ? data.filter(x => x.uid === uid) : data;
+  const total = res ? res.length : 0
   return total;
 };

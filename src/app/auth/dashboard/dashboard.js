@@ -3,8 +3,10 @@ import { capitalize, consoleLocal, fecha, render } from "../../functions.js";
 import { version, entorno, codiPlanStandar } from '../../core/constants.js';
 import { handleEventListener } from "../../hooks/handleEventListener.js";
 //import { closeWelcome, loadRedirect, loadWelcome } from "../../hooks/loadScripts.js";
+import { data } from "./data.js";
 import Html from './index.html?raw';
 import './style.css';
+
 
 export async function dashboard() {
     const tab = "users";
@@ -22,7 +24,7 @@ export async function dashboard() {
         const name = document.querySelector('#name');
         const ver = document.querySelector('#version');
         const env = document.querySelector('#entorno');
-        const total = await totalTab('vcard'); consoleLocal('log', total);
+        const total = await totalTab('vcards', userBasic.uid); consoleLocal('log', total);
         const fechaHora = fecha();
         //OBTENER DATOS DE USUARIO
         const data = await user();
@@ -39,22 +41,21 @@ export async function dashboard() {
         if (!create_at) {
             await putData('users', uid, { codiPlan: codiPlanStandar }, false);
         }
-        /*
-        if (!create_at) {
+        /*if (!create_at) {
             loadWelcome();
             await putData('users', uid, { codiPlan: codiPlanStandar }, false);
             const btnCloseWelcome = document.querySelector('#btnCloseWelcome');
-            if (!btnCloseWelcome) { return; }
+            if (!btnCloseWelcome) return;
             handleEventListener('click', () => {
                 closeWelcome();
             }, btnCloseWelcome);
             return;
-        }
-        loadRedirect();
-        */
+        }*/
+        //loadRedirect();
     };
 
     const onLoad = () => {
+        data();
         const userBasic = JSON.parse(localStorage.getItem('userBasic'));
         setTimeout(() => { getUser(); }, userBasic ? 0 : 1000);
     }

@@ -14,7 +14,7 @@ body {
   overflow: hidden;
 }
 
-.dark {
+.dark-mode {
   background: #050505;
   color: #fff;
 }
@@ -30,7 +30,8 @@ a {
 
 .index {
   width: 100vw;
-  height: 100vh;
+  height: 88.5vh;
+  size: 100% 88%;
 }
 
 .navbar-brand span {
@@ -95,7 +96,7 @@ a {
 
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1400px) {
   body {
     overflow-y: auto;
   }

@@ -1,15 +1,13 @@
 import * as bootstrap from 'bootstrap';
 import { routes } from "../routes/routes.js";
-import { app, name, theme, version } from './core/constants.js';
+import { app, name, version } from './core/constants.js';
 import { variables } from "./core/lib.js";
 import { destroyEvents, handleEventListener } from "./hooks/handleEventListener.js";
-import { loadCssJsMod } from "./hooks/loadCssJs.route.js";
-import { deleteData, getDataById, sesionActiva } from "./services/firebase.js";
+import { deleteData, getDataById } from "./services/firebase.js";
 import { versionJson } from "./services/fetch.js";
 import { compressImage } from './hooks/loadImage.js';
-import { registrosApp } from './functions/registros.js';
 import { modalConfirm, modalInfo } from './functions/modalAlerts.js';
-import { mx } from './functions/htmx.man.js';
+import { loadFunctions } from './functions/loadFun.js';
 
 /* ==========================
    VARIABLES
@@ -46,12 +44,7 @@ export const router = async (v) => {
   consoleLocal('log', { page, view });
   document.title = `${name} - ${capitalize(v.mod)}`;
   app.innerHTML = await routes[view]();
-  //loadCssJsMod(v);
-  /* EXPLORAR REGISTROS PARA MANDRAGORA PENDIENTE */
-  registrosApp(v);
-  setTimeout(() => { sesionActiva(v); }, 0);
-  setTimeout(() => { mx(); tooltips(); }, 1000);
-  if (v.mod != 'dashboard') { footer(); }
+  loadFunctions(v);
 };
 
 /* ==========================
@@ -162,11 +155,6 @@ export const tooltips = () => {
   });
   console.log('tooltips activo');
 }
-
-export const closeModal = (idModal = '#Modal') => {
-  const modal = bootstrap.Modal.getOrCreateInstance(document.querySelector(idModal));
-  modal.hide();
-};
 
 export function validaImagen(url, id) {
   var image = new Image();

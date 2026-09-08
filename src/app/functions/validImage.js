@@ -2,8 +2,8 @@ export function validaImagen(url,id){
   var image = new Image();
   image.src = url;
   image.addEventListener('load', () => {
-    console.log('Imagen cargada.');
-    //id.style.backgroundImage = `url('${url}')`;
+    //console.log('Imagen cargada.');
+    id.style.backgroundImage = `url('${url}')`;
   });
   image.addEventListener('error', () => {
     console.warn('Error: Fallo carga de imagen.',url);
@@ -16,7 +16,7 @@ export function validImage(url) {
     const image = new Image();
     image.src = url;
     image.onload = () => {
-      console.log('Imagen encontrada');
+      //console.log('Imagen encontrada');
       resolve(true);
     };
     image.onerror = () => {

@@ -1,7 +1,8 @@
 import { dashboard } from "../app/auth/dashboard/dashboard.js";
-import { profileDashboard } from "../app/auth/dashboard/profile/profile.js";
-import { estadisticasDashboard } from "../app/auth/dashboard/estadisticas/estadisticas.js";
 import { settingsDashboard } from "../app/auth/dashboard/settings/settings.js";
+import { profileDashboard } from "../app/auth/dashboard/profile/profile.js";
+import { editorPagesDashboard } from "../app/auth/dashboard/editorPages/editorPages.js";
+import { estadisticasDashboard } from "../app/auth/dashboard/estadisticas/estadisticas.js";
 import { productsDashboard } from "../app/auth/dashboard/products/products.js";
 import { register } from "../app/auth/sys/register/register.js";
 import { login } from "../app/auth/sys/login/login.js";
@@ -36,9 +37,10 @@ export const routes = {
   'forget': forget,
   'noauth': compose(menu, noauth),
   'dashboard': compose(sidebar, dashboard),
-  'dashboard/estadisticas': compose(sidebar, estadisticasDashboard),
   'dashboard/settings': compose(sidebar, settingsDashboard),
   'dashboard/profile': compose(sidebar, profileDashboard),
+  'dashboard/editorpages': compose(sidebar, editorPagesDashboard),
+  'dashboard/estadisticas': compose(sidebar, estadisticasDashboard),
   'dashboard/products': compose(sidebar, productsDashboard),
   '404': compose(menu, notFound),
 };

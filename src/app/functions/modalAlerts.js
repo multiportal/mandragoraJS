@@ -20,3 +20,8 @@ export const modalConfirm = (icon, title, text, model = {}) =>
     cancelButtonColor: "#646566",
     ...model
   });
+
+  export const closeModal = (idModal = '#Modal') => {
+    const modal = bootstrap.Modal.getOrCreateInstance(document.querySelector(idModal));
+    modal.hide();
+  };

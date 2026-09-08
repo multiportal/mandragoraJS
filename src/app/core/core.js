@@ -55,7 +55,7 @@ export function navigate(h) {
 function observeDOM() {
     // Observador para detectar cambios en el DOM
     const observer = new MutationObserver(() => {
-        console.log("Carga del DOM detectada");
+        console.log('--- DOM Actualizado ---');
         // Aquí puedes ejecutar lógica adicional
         // cuando se agreguen nodos dinámicamente.
     });

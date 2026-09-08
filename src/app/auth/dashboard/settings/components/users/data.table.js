@@ -65,7 +65,7 @@ export const tableSettings = async () => {
        RENDER TABLE
     ========================================================= */
 
-    function renderTable() {
+    async function renderTable() {
 
         const filteredUsers = getFilteredUsers();
 
@@ -117,9 +117,10 @@ export const tableSettings = async () => {
            TABLE
         ========================== */
 
-        tableBody.innerHTML = currentUsers
-            .map(user => createUserRow(user))
-            .join("");
+        const rows = await Promise.all(
+            currentUsers.map(user => createUserRow(user))
+        );    
+        tableBody.innerHTML = rows.join("");
 
 
         /* =========================
@@ -143,7 +144,7 @@ export const tableSettings = async () => {
        CREATE USER ROW
     ========================================================= */
 
-    function createUserRow(user) {
+    async function createUserRow(user) {
 
         const roleClass = {
             Administrador: "role-admin",
@@ -151,13 +152,13 @@ export const tableSettings = async () => {
             usuario: "role-user"
         }[user.role] || "role-user";
 
-        const isValidImage = validImage(user.foto);//**REVISAR */
+        const isValidImage = await validImage(user.foto);//**REVISAR */
         //const statusClass = user.status === "Activo" ? "status-active" : "status-inactive";
         const statusClass = user.publico ? 'status-active' : 'status-inactive';
         const photo = user.foto ? isValidImage ? user.foto : '/assets/img/sinfoto.png' : '/assets/img/sinfoto.png';
         const status = user.publico ? 'Publico' : 'Privado';
         return `
-        <tr data-id="${user.ID}">
+        <tr data-id="${user.ID}" key="${user.uid}">
             <td>
                 ${user.ID}
             </td>
@@ -193,7 +194,8 @@ export const tableSettings = async () => {
                 <div class="user-actions">
                     <button
                         type="button"
-                        class="btn btn-primary edit"
+                        class="btn btn-primary edit" 
+                        key="${user.uid}" 
                         data-action="edit"
                         data-id="${user.ID}"
                         title="Editar"
@@ -204,7 +206,8 @@ export const tableSettings = async () => {
                     </button>
                     <button
                         type="button"
-                        class="btn user-action delete"
+                        class="btn user-action delete" 
+                        key="${user.uid}" 
                         data-action="delete"
                         data-id="${user.ID}"
                         title="Eliminar"
@@ -295,9 +298,9 @@ export const tableSettings = async () => {
         button.className = `page-btn ${active ? "active" : ""}`;
         button.textContent = text;
         button.disabled = disabled;
-        button.addEventListener("click", () => {
+        button.addEventListener("click", async () => {
             state.page = page;
-            renderTable();
+            await renderTable();
         });
         return button;
     }
@@ -370,10 +373,10 @@ export const tableSettings = async () => {
        SEARCH
     ========================================================= */
 
-    searchInput.addEventListener("input", event => {
+    searchInput.addEventListener("input", async event => {
         state.search = event.target.value;
         state.page = 1;
-        renderTable();
+        await renderTable();
     }
     );
 
@@ -382,10 +385,10 @@ export const tableSettings = async () => {
        ROLE FILTER
     ========================================================= */
 
-    roleFilter.addEventListener("change", event => {
+    roleFilter.addEventListener("change", async event => {
         state.role = event.target.value;
         state.page = 1;
-        renderTable();
+        await renderTable();
     }
     );
 
@@ -394,10 +397,10 @@ export const tableSettings = async () => {
        PAGE SIZE
     ========================================================= */
 
-    pageSizeSelect.addEventListener("change", event => {
+    pageSizeSelect.addEventListener("change", async event => {
         state.pageSize = Number(event.target.value);
         state.page = 1;
-        renderTable();
+        await renderTable();
     }
     );
 
@@ -410,10 +413,12 @@ export const tableSettings = async () => {
         const button = event.target.closest("[data-action]");
         if (!button) return;
         const id = button.dataset.id;
+        const k = button.getAttribute("key"); console.log("Key:", k);
         const action = button.dataset.action;
-        const user = users.find(user => user.ID === id);
+        const user = users.find(user => user.ID === id || user.uid === k);
         if (!user) return;
-        const {key, usuario} = user;
+        //const {key, usuario} = user;
+        const key = user.uid || k;
 
         /* =========================
            EDIT
@@ -467,14 +472,14 @@ export const tableSettings = async () => {
        INITIAL RENDER
     ========================================================= */
 
-    renderTable();
+    await renderTable();
     btnGuardar();
 
     async function refreshTable() {
         try {
             const data = await getData(tab);
             users = (data || []).sort((a, b) => Number(b.ID) - Number(a.ID));
-            renderTable();
+            await renderTable();
         } catch (error) {
             console.error("Error al actualizar la tabla:", error);
         }

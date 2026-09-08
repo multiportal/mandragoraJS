@@ -4,6 +4,15 @@ import { body, theme } from "../core/constants";
 ========================== */
 const tema = 'links';//DEFAULT
 
+export  const loadDarkMode = (mod) => {
+    const darkMode = localStorage.getItem('darkMode');
+    if (darkMode && darkMode === 'true' && mod !== 'dashboard') {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+}
+
 export const temaBgColor = ({ mod }) => {
     const modulos = mod == 'Home';
     if (modulos && theme == tema) {
@@ -11,17 +20,18 @@ export const temaBgColor = ({ mod }) => {
     } else {
         body.style.background = '#fff';
     }
+    loadDarkMode(mod);
 };
 
 export const temaHome = () => {
     const m = document.querySelector('.masthead');
-    const t1 = document.querySelector('.index');
-    const t2 = document.querySelector('.hero');
+    const t1 = document.querySelector('.default');
+    const t2 = document.querySelector('.home');
     if (theme == tema) {
-        t2.style.display = 'none';
+        t1.style.display = 'none';
         m.style.position = 'inherit';
     } else {
-        t1.style.display = 'none';
+        t2.style.display = 'none';
     }
 };
 

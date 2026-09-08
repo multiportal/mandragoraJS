@@ -1,11 +1,12 @@
-import { MODE, name } from '../../app/core/constants.js';
+import { HASH, MODE, name } from '../../app/core/constants.js';
 import { getData } from '../../app/services/firebase.js';
 import { navigate } from '../../app/core/core.js';
 import { variables } from '../../app/core/lib.js';
 import { Auth } from '../../app/functions/security.js';
+import { validImage } from '../../app/functions.js';
+import { pagesEditor } from '../../app/auth/dashboard/settings/components/pages/pages.js';
 import Html from './index.html?raw';
 import './style.css';
-import { validImage } from '../../app/functions.js';
 
 export function sidebar() {
     const { host, screenw, pathname, hash } = variables();
@@ -21,7 +22,7 @@ export function sidebar() {
         let btnSalir = document.querySelector('.bx-log-out');
         if (btnSalir != null) {
             btnSalir.addEventListener('click', () => {
-                navigate(`${MODE === 'HASH' ? '#' : ''}/logout`);
+                navigate(`${HASH ? '#' : ''}/logout`);
             });
         }
     };
@@ -120,6 +121,7 @@ export function sidebar() {
         btnLogout();
         menuSidebar();
         permisosMenu();
+        pagesEditor();
         const userBasic = JSON.parse(localStorage.getItem('userBasic'));
         setTimeout(() => { getUser(); linkName(); }, userBasic ? 0 : 1000);
 
