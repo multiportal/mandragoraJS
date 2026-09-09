@@ -155,7 +155,7 @@ export const tableSettings = async () => {
         const isValidImage = await validImage(user.foto);//**REVISAR */
         //const statusClass = user.status === "Activo" ? "status-active" : "status-inactive";
         const statusClass = user.publico ? 'status-active' : 'status-inactive';
-        const photo = user.foto ? isValidImage ? user.foto : '/assets/img/sinfoto.png' : '/assets/img/sinfoto.png';
+        const photo = user.foto && isValidImage ? user.foto : '/assets/img/sinfoto.png';
         const status = user.publico ? 'Publico' : 'Privado';
         return `
         <tr data-id="${user.ID}" key="${user.uid}">

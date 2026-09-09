@@ -1,67 +1,59 @@
 import { version, activeDevelop } from '../core/constants';
-import { clearCache, consoleLocal } from '../functions';
+import { consoleLocal } from '../functions';
 
 export const serviceWorker = () => {
     const { host } = window.location;
-    if (!host.includes('localhost') || activeDevelop) {
-        if ('serviceWorker' in navigator) {
 
-            //setTimeout(() => {
-            navigator.serviceWorker.ready.then((registration) => {
-                registration.active?.postMessage({
-                    type: 'GET_SW_VERSION'
-                });
-            });
-
-            navigator.serviceWorker.addEventListener('message', (event) => {
-                //console.warn(event.data);
-                if (event.data?.type === 'SW_VERSION') {
-                    const version = event.data.version;
-                    localStorage.setItem('VersionApp', version);
-                    console.warn(`[SW] Versión instalada: ${version}`);
-                }
-            });
-            //}, 1000);
-
-            navigator.serviceWorker.register('/sw.js').then(function (registration) {
-                console.log(
-                    'Service Worker registro correcto con scope: ',
-                    registration.scope
-                );
-                // Comprobar si existe una nueva versión
-                registration.update();
-                // Nueva versión encontrada
-                registration.addEventListener('updatefound', () => {
-                    const newWorker = registration.installing;
-                    //console.warn(newWorker);
-                    if (!newWorker) {
-                        //Comprueba nuevamente
-                        return;
-                    }
-                    console.warn('[SW] Nueva versión detectada...', newWorker);
-                    newWorker.addEventListener('statechange', () => {
-                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                            console.log('[SW] Nueva versión disponible');
-                            console.log('[SW] Estado:', newWorker.state);
-                            //showUpdateMessage();
-                            /*
-                             * Cuando termina install: installed
-                             * Como NO usamos skipWaiting() el SW queda en waiting.
-                            */
-                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                console.log('[SW] Nueva versión disponible');
-                                //showBannerUpdate(version, newWorker);
-                            }
-                        }
-                    });
-                });
-            }).catch(function (err) {
-                console.warn('Service Worker registro fallo: ', err);
+    if (host.includes('localhost') && !activeDevelop) {
+        return;
+    }
+    if (!('serviceWorker' in navigator)) {
+        return;
+    }
+    //const swUrl = host.includes('github.io') ? `${window.location.origin}/mandragoraJS/sw.js` : './sw.js';
+    navigator.serviceWorker.register('./sw.js').then((registration) => {
+        console.log('[SW] Registro correcto:', registration.scope);
+        // Obtener versión del SW activo
+        if (registration.active) {
+            registration.active.postMessage({
+                type: 'GET_SW_VERSION'
             });
         }
-    }
-};
 
+        // Comprobar actualización
+        registration.update();
+        registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+            if (!newWorker) {
+                return;
+            }
+
+            console.warn('[SW] Nueva versión detectada...', newWorker);
+            newWorker.addEventListener('statechange', () => {
+                console.log('[SW] Estado:', newWorker.state);
+                //showUpdateMessage();
+                /*
+                 * Cuando termina install: installed
+                 * Como NO usamos skipWaiting() el SW queda en waiting.
+                */
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    console.log('[SW] Nueva versión disponible');
+                    // showBannerUpdate(version, newWorker);
+                }
+            });
+        });
+    }).catch((err) => {
+        console.warn('[SW] Registro falló:', err);
+    });
+
+    navigator.serviceWorker.addEventListener('message', (event) => {
+        if (event.data?.type === 'SW_VERSION') {
+            const swVersion = event.data.version;
+            localStorage.setItem('VersionApp', swVersion);
+            console.warn(`[SW] Versión instalada: ${swVersion}`);
+        }
+    });
+};
 
 function showBannerUpdate(newVersion, worker = null) {
     // 1. Crear el contenedor del mensaje (Toast / Banner)
@@ -149,7 +141,7 @@ function showUpdateMessage() {
 export const comprobarVersion = () => {
     const verActual = localStorage.getItem('VersionApp');
     const verNueva = version;
-    consoleLocal('warn',{ 'VERSIONES': { verNueva, verActual } });
+    consoleLocal('warn', { 'VERSIONES': { verNueva, verActual } });
     const versiones = {
         new: verNueva,
         old: verActual

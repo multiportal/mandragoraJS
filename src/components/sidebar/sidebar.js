@@ -88,7 +88,7 @@ export function sidebar() {
         if (job != null) { job.innerHTML = email; }
         if (fotoUser != null) {
             const isValidImage = await validImage(foto);
-            fotoUser.src = foto && foto != '' ? isValidImage ? foto : '/assets/img/sinfoto.png' : '/assets/img/sinfoto.png';
+            fotoUser.src = (foto && foto != '') && isValidImage ? foto : '/assets/img/sinfoto.png';
         }
     };
 

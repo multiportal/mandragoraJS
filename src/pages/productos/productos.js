@@ -7,7 +7,7 @@ export function productos() {
     const tab = "productos";
 
     const onLoad = () => {
-        
+
     }
 
     setTimeout(onLoad, 0);

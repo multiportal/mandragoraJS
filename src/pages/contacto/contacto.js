@@ -4,7 +4,7 @@ import Html from "./index.html?raw";
 export function contacto() {
 
   const onLoad = () => {
-
+    //enviar();
   };
 
   setTimeout(onLoad, 0);

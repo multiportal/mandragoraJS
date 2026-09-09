@@ -30,4 +30,4 @@ _docs
 
 # ENV
 #.env/
-/src/environments/environments
+/src/environments/
