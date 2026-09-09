@@ -3,8 +3,8 @@ const VERSION = '1.1.7';
 const CACHE_NAME = `MandragoraJs-${VERSION}`;
 
 const STATIC_ASSETS = [
-  "/mandragoraJS/",
-  "/mandragoraJS/index.html"
+  '/mandragoraJS/',
+  '/mandragoraJS/index.html',
 ];
 
 // ─────────────────────────────────────────────
