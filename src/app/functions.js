@@ -165,7 +165,7 @@ export function validaImagen(url, id) {
   });
   image.addEventListener('error', () => {
     console.warn('Error: Fallo carga de imagen.', url);
-    id.style.backgroundImage = `url(/assets/img/sinfoto.png)`;
+    id.style.backgroundImage = `url(./assets/img/sinfoto.png)`;
   });
 }
 

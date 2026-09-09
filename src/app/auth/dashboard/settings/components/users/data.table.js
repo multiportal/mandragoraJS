@@ -155,7 +155,7 @@ export const tableSettings = async () => {
         const isValidImage = await validImage(user.foto);//**REVISAR */
         //const statusClass = user.status === "Activo" ? "status-active" : "status-inactive";
         const statusClass = user.publico ? 'status-active' : 'status-inactive';
-        const photo = user.foto && isValidImage ? user.foto : '/assets/img/sinfoto.png';
+        const photo = user.foto && isValidImage ? user.foto : './assets/img/sinfoto.png';
         const status = user.publico ? 'Publico' : 'Privado';
         return `
         <tr data-id="${user.ID}" key="${user.uid}">
@@ -427,7 +427,7 @@ export const tableSettings = async () => {
         if (action === "edit") {
             localStorage.setItem("Mode", "edit");
             fillForm(user);
-            document.querySelector("#fotoProfile").src = user.foto && user.foto !== '' ? user.foto : '/assets/img/sinfoto.png';
+            document.querySelector("#fotoProfile").src = user.foto && user.foto !== '' ? user.foto : './assets/img/sinfoto.png';
             document.querySelector("#foto").value = user.foto && user.foto !== '' ? user.foto : '';
             document.querySelector("#update_at").value = fecha;
             //return;

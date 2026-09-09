@@ -72,9 +72,9 @@ export async function profileDashboard() {
         if (foto) {
             const isValidImage = await validImage(foto);
             //Profile
-            photo.src = isValidImage ? foto : '/assets/img/sinfoto.png';
+            photo.src = isValidImage ? foto : './assets/img/sinfoto.png';
             //Form
-            photoId.src = isValidImage ? foto : '/assets/img/sinfoto.png';
+            photoId.src = isValidImage ? foto : './assets/img/sinfoto.png';
             imagen.value = foto;
         }
         //Form
@@ -170,7 +170,7 @@ export async function profileDashboard() {
             deleteData(tab, user.uid);
             deleteData('signup', user.uid);
             setTimeout(() => {
-                navigate('/logout');
+                navigate(`${MODE === 'HASH' ? '#' : ''}/logout`);
             }, 1000);
         }, btndel);
     };
