@@ -1795,7 +1795,7 @@ https://sweetalert2.github.io/#ajax-request`),e.animation=T(e.animation),$n(e),t
                       <button class="nav-link col-md-12" id="v-pills-profile-tab" data-bs-toggle="pill"\r
                         data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"\r
                         aria-selected="false">Tema</button>\r
-                      <button class="nav-link col-md-12" id="v-pills-pages-tab" data-bs-toggle="pill"\r
+                      <button class="nav-link col-md-12 auth" id="v-pills-pages-tab" data-bs-toggle="pill"\r
                       data-bs-target="#v-pills-pages" type="button" role="tab" aria-controls="v-pills-pages"\r
                       aria-selected="false">Paginas</button>\r
                     </div>\r
