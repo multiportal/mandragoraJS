@@ -1,0 +1,18 @@
+.auth,
+.hiddenAuth {
+    display: none;
+}
+
+.showAuth {
+    display: block;
+}
+
+.movil {
+    display: none;
+}
+
+@media (max-width: 740px) {
+    .movil {
+        display: inherit;
+    }
+}

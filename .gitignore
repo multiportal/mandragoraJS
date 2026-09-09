@@ -26,10 +26,8 @@ dist-ssr
 # Misc
 package-lock.json
 _docs
-#*.bat
+*.bat
 
 # ENV
-/src/environments/environments.develop.js
-/src/environments/environments.local.js
-/src/environments/environments.production.js
-/src/environments/environments.qa.js
+#.env/
+/src/environments/

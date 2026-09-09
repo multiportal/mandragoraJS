@@ -1,0 +1,128 @@
+.profileDashboard {
+
+    .card {
+        min-width: 250px;
+    }
+
+    .text-tit-line h2 {
+        color: #fff;
+        background-color: rgba(15, 2, 39, 0.781);
+        border-bottom: 1px solid #111;
+        margin-bottom: 15px;
+    }
+
+    .tipo {
+        font-size: 18px;
+    }
+
+    #fotoProfile,
+    .fotoProfile {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        margin: 0px 5px 25px;
+    }
+
+    #icon-upload {
+        margin-top: 53px;
+        margin-left: -40px;
+        border-radius: 50%;
+        padding: 8px 12px;
+        border: 1px solid #fff;
+        height: auto;
+    }
+
+    .content-image {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .container-ima {
+        width: 100%;
+        border: 1px solid #ccc;
+    }
+
+    .info-text {
+        font-size: 12px;
+    }
+
+    .info-text span {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .info-bag {
+        margin: 12px 0px 6px;
+    }
+
+    .info-bag span {
+        padding: 2px 20px;
+        border-radius: 50px;
+        font-size: 15px;
+    }
+
+    .publico span {
+        border: 1px solid #6dff33;
+        color: #6dff33;
+        background-color: #6dff3348;
+    }
+
+    .privado span {
+        border: 1px solid #ff0000;
+        color: #ff0000;
+        background-color: #ff000048;
+    }
+
+    /*.info-bag span i {
+        font-size: 16px;
+    }*/
+
+    .text-nombre {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .btn-align {
+        text-align: right;
+    }
+
+    .btnDelete {
+        background: linear-gradient(135deg, #ef5350, #b71c1c);
+        color: white !important;
+        box-shadow: 0 12px 35px rgba(183, 28, 28, .30);
+        border: 1px solid rgba(183, 28, 28, 0.30);
+    }
+
+    .btnDelete:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 35px rgba(183, 28, 28, .45);
+        border: 1px solid rgba(183, 28, 28, .45);
+    }
+
+    #changeCodi {
+        color: var(--primary);
+        cursor: pointer;
+    }
+
+    .container-codiPlan {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    @media (max-width: 480px) {
+        .btn-align {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+    }
+}

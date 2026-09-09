@@ -1,0 +1,365 @@
+<section class="home-section">
+  <div class="home-content">
+    <i class='bx bx-menu'></i>
+    <span class="text">ESTADÍSTICAS</span>
+  </div>
+  <div id="content" class="container-fluid">
+    <div class="row estadisticas">
+
+
+<!-- ============================================================
+     VCARDAPP - ESTADÍSTICAS
+     Solo contenido de la página, sin sidebar
+============================================================ -->
+
+<main class="statistics-page">
+
+  <!-- ========================================================
+         HEADER / FILTROS PRINCIPALES
+    ========================================================= -->
+  <section class="statistics-header">
+
+    <div class="statistics-title">
+      <h1>
+        <i class="bi bi-bar-chart-line"></i>
+        Estadísticas
+      </h1>
+
+      <p>
+        Resumen general de visitas y actividad en VcardApp.
+      </p>
+    </div>
+
+    <div class="statistics-actions">
+
+      <div class="filter-control">
+        <i class="bi bi-calendar3"></i>
+        <select id="filterPeriod">
+          <option value="today">Hoy</option>
+          <option value="7days">Últimos 7 días</option>
+          <option value="30days" selected>
+            Últimos 30 días
+          </option>
+          <option value="90days">
+            Últimos 90 días
+          </option>
+          <option value="month">
+            Este mes
+          </option>
+          <option value="year">
+            Este año
+          </option>
+          <option value="custom">
+            Personalizado
+          </option>
+        </select>
+
+        <!--i class="bi bi-chevron-down"></i-->
+      </div>
+
+      <div class="date-range">
+        <div class="date-input">
+          <input type="date" id="dateStart" value="">
+        </div>
+        <span>→</span>
+        <div class="date-input">
+          <input type="date" id="dateEnd" value="">
+        </div>
+      </div>
+
+      <button type="button" class="btn-filter" id="btnApplyFilters">
+        <i class="bi bi-funnel"></i>
+        Aplicar filtros
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+         FILTROS SECUNDARIOS
+    ========================================================= -->
+  <!--section class="advanced-filters">
+
+    <div class="filter-group">
+
+      <label for="filterUser">
+        Usuario
+      </label>
+
+      <select id="filterUser">
+        <option value="all">Todos</option>
+        <option value="guest">Visitantes</option>
+        <option value="auth">Autenticados</option>
+      </select>
+
+      <i class="bi bi-chevron-down"></i>
+
+    </div>
+
+
+    <div class="filter-group">
+
+      <label for="filterDevice">
+        Dispositivo
+      </label>
+
+      <select id="filterDevice">
+        <option value="all">Todos</option>
+        <option value="desktop">Desktop</option>
+        <option value="mobile">Mobile</option>
+        <option value="tablet">Tablet</option>
+      </select>
+
+      <i class="bi bi-chevron-down"></i>
+
+    </div>
+
+
+    <div class="filter-group">
+
+      <label for="filterBrowser">
+        Navegador
+      </label>
+
+      <select id="filterBrowser">
+        <option value="all">Todos</option>
+        <option value="chrome">Chrome</option>
+        <option value="edge">Edge</option>
+        <option value="firefox">Firefox</option>
+        <option value="safari">Safari</option>
+        <option value="other">Otros</option>
+      </select>
+
+      <i class="bi bi-chevron-down"></i>
+
+    </div>
+
+
+    <div class="filter-group">
+
+      <label for="filterOS">
+        Sistema Operativo
+      </label>
+
+      <select id="filterOS">
+        <option value="all">Todos</option>
+        <option value="windows">Windows</option>
+        <option value="android">Android</option>
+        <option value="ios">iOS</option>
+        <option value="macos">macOS</option>
+        <option value="linux">Linux</option>
+      </select>
+
+      <i class="bi bi-chevron-down"></i>
+
+    </div>
+
+
+    <div class="filter-group">
+
+      <label for="filterPage">
+        Página / Sección
+      </label>
+
+      <select id="filterPage">
+        <option value="all">Todas</option>
+        <option value="home">Inicio</option>
+        <option value="community">Comunidad</option>
+        <option value="profile">Perfil</option>
+        <option value="contact">Contacto</option>
+        <option value="features">Características</option>
+        <option value="pricing">Precios</option>
+      </select>
+
+      <i class="bi bi-chevron-down"></i>
+
+    </div>
+
+
+    <button type="button" class="btn-clear-filters" id="btnClearFilters">
+      <i class="bi bi-arrow-counterclockwise"></i>
+      Limpiar filtros
+    </button>
+
+  </section-->
+
+
+  <!-- ========================================================
+         KPI CARDS
+    ========================================================= -->
+  <section class="statistics-kpis">
+
+    <!-- VISITAS -->
+    <article class="kpi-card">
+
+      <div class="kpi-icon kpi-purple">
+        <i class="bi bi-eye"></i>
+      </div>
+
+      <div class="kpi-content">
+
+        <span class="kpi-label">
+          Visitas
+        </span>
+
+        <span class="kpi-value" >
+          <strong id="visitasTot">0</strong> Totales
+          <sub class="kpi-label">
+            &nbsp;<span id="visitasTotUnicas">0</span> Vistas unicas
+          </sub>
+        </span>
+
+        <!--span class="kpi-growth positive">
+          <i class="bi bi-arrow-up"></i>
+          12.4%
+        </span-->
+
+        <!--small>
+          vs. periodo anterior
+        </small-->
+
+      </div>
+
+    </article>
+
+
+    <!-- VISITANTES -->
+    <article class="kpi-card">
+
+      <div class="kpi-icon kpi-green">
+        <i class="bi bi-people"></i>
+      </div>
+
+      <div class="kpi-content">
+
+        <span class="kpi-label">
+          Visitantes
+        </span>
+
+        <span class="kpi-value">
+          <strong id="visitantesTot">0</strong> Unicos
+          <!--sub id="visitantesUnicos">0</sub-->
+        </span>
+ 
+        <!--span class="kpi-growth positive">
+          <i class="bi bi-arrow-up"></i>
+          8.2%
+        </span-->
+
+        <!--small>
+          vs. periodo anterior
+        </small-->
+
+      </div>
+
+    </article>
+
+
+    <!-- AUTENTICADOS -->
+    <article class="kpi-card">
+
+      <div class="kpi-icon kpi-blue">
+        <i class="bi bi-person-check"></i>
+      </div>
+
+      <div class="kpi-content">
+
+        <span class="kpi-label">
+          Usuarios autenticados
+        </span>
+
+        <span class="kpi-value">
+          <strong id="usuariosTot">0</strong> Unicos
+          <!--sub id="usuariosUnicos">0</sub-->
+        </span>
+
+        <!--span class="kpi-growth positive">
+          <i class="bi bi-arrow-up"></i>
+          15.3%
+        </span-->
+
+        <!--small>
+          vs. periodo anterior
+        </small-->
+
+      </div>
+
+    </article>
+
+
+    <!-- PAGE VIEWS -->
+    <!--article class="kpi-card">
+
+      <div class="kpi-icon kpi-orange">
+        <i class="bi bi-file-earmark-text"></i>
+      </div>
+
+      <div class="kpi-content">
+
+        <span class="kpi-label">
+          Páginas vistas
+        </span>
+
+        <strong class="kpi-value">
+          24,821
+        </strong>
+
+        <span class="kpi-growth positive">
+          <i class="bi bi-arrow-up"></i>
+          10.1%
+        </span>
+
+        <small>
+          vs. periodo anterior
+        </small>
+
+      </div>
+
+    </article-->
+
+  </section>
+
+
+  <!-- ========================================================
+         ROW 1 - VISITAS + VISITANTES
+    ========================================================= -->
+
+
+  <!-- ========================================================
+         ROW 2 - NAVEGADORES / SO / HORAS
+    ========================================================= -->
+
+
+
+  <!-- ========================================================
+         ROW 3 - PÁGINAS + USUARIOS ACTIVOS
+    ========================================================= -->
+
+
+
+  <!-- ========================================================
+         FOOTER
+    ========================================================= -->
+  <footer class="statistics-footer">
+
+    <i class="bi bi-arrow-repeat"></i>
+
+    Los datos se actualizan automáticamente cada 5 minutos.
+
+  </footer>
+
+</main>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CHART.JS
+============================================================ -->
+<!--script src="https://cdn.jsdelivr.net/npm/chart.js"></script-->
+
+
