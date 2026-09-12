@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signOut, onAuthStateChanged, deleteUser } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getDatabase, ref, set, push, child, remove, onValue, get, update, orderByChild, equalTo } from "firebase/database";
 import { showMessage } from "../hooks/messages";
@@ -66,6 +66,7 @@ export async function deleteData(tab, id, msj = true) {
 
 /** BUSCAR POR ID REGISTRO **/
 export async function getDataById(tab, id) {
+  if (!fbCfg) return;
   const snapshot = await get(child(ref(db), `${prefix}${tab}/${id}`));
   if (!snapshot.exists()) { return null; }
   return {
@@ -256,8 +257,24 @@ export function sesionActiva({ mod, ext }) {
 
 export const totalTab = async (tab, uid = null) => {
   const data = await getData(tab);
-  if(!data) return 0;
+  if (!data) return 0;
   const res = uid ? data.filter(x => x.uid === uid) : data;
   const total = res ? res.length : 0
   return total;
 };
+
+export async function eliminarCuenta() {
+  const auth = getAuth();
+  const user = auth.currentUser;
+  if (!user) {
+    throw new Error("No hay ningún usuario autenticado");
+  }
+  try {
+    await deleteUser(user);
+    console.log("Cuenta eliminada:", user.email);
+    return true;
+  } catch (error) {
+    console.error("No se pudo eliminar la cuenta:", error);
+    throw error;
+  }
+}

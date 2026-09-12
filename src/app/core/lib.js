@@ -1,5 +1,5 @@
 import { urlVariables, filename } from "../functions";
-import { MODE, proyect } from "./constants";
+import { MODE, HASH, proyect } from "./constants";
 
 /* ==========================
    VARIABLES
@@ -25,7 +25,7 @@ export function variables() {
   const path_url = pathname.replace("/", "");
   const page_name = filename();
   //
-  const m = MODE === 'HASH' ? hash : pathname;
+  const m = HASH ? hash : pathname;
   const { mod, ext, id } = urlVariables(m);
   const path_base = host == 'localhost' ? 'MisSitios/' : '';
   const path_host = host.includes("github.io") ? proyect + '/' : '';

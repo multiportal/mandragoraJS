@@ -1,10 +1,10 @@
 //Service Worker sw.js
-const VERSION = '1.1.7';
+const VERSION = '1.1.9';
 const CACHE_NAME = `MandragoraJs-${VERSION}`;
 
 const STATIC_ASSETS = [
-  '/mandragoraJS/',
-  '/mandragoraJS/index.html',
+  '/',
+  '/index.html',
 ];
 
 // ─────────────────────────────────────────────

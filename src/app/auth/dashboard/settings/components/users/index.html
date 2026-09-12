@@ -1,57 +1,41 @@
 <section class="users-manager mt-4">
-
     <!-- =========================
          TOOLBAR
     ========================== -->
     <div class="users-toolbar">
-
         <!-- Buscador -->
         <div class="users-search">
             <svg viewBox="0 0 24 24">
                 <path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" />
             </svg>
-
             <input type="search" id="userSearch" placeholder="Buscar usuario..." autocomplete="off">
         </div>
-
-
         <div class="users-toolbar-actions">
-
             <!-- Filtro por rol -->
             <div class="users-filter">
-
                 <svg viewBox="0 0 24 24">
                     <path d="M4 5h16l-6 7v5l-4 2v-7L4 5Z" />
                 </svg>
-
                 <select id="roleFilter">
                     <option value="all">Rol: Todos</option>
                     <option value="Administrador">Administrador</option>
                     <option value="Editor">Editor</option>
                     <option value="Usuario">Usuario</option>
                 </select>
-
             </div>
-
-
             <!-- Agregar usuario -->
-            <button type="button" class="btn-add-user" id="btnAddUser">
+            <!--button type="button" class="btn-add-user" id="btnAddUser">
                 <span>+</span>
                 Agregar usuario
-            </button>
-
+            </button-->
         </div>
-
     </div>
-
 
     <!-- =========================
          TABLE
     ========================== -->
     <div class="users-table-wrapper">
-
         <table class="users-table">
-
             <thead>
                 <tr>
                     <th>ID</th>
@@ -63,13 +47,10 @@
                     <th class="text-center">Acciones</th>
                 </tr>
             </thead>
-
             <tbody id="usersTableBody">
                 <!-- JavaScript -->
             </tbody>
-
         </table>
-
     </div>
 
 
@@ -77,37 +58,25 @@
          FOOTER / PAGINATION
     ========================== -->
     <div class="users-footer">
-
         <div class="users-info" id="usersInfo">
             Mostrando 0 a 0 de 0 usuarios
         </div>
-
-
         <div class="users-pagination-container">
-
             <!-- Registros por página -->
             <div class="users-page-size">
-
                 <span>Mostrar</span>
-
                 <select id="pageSize">
                     <option value="5" selected>5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
                     <option value="20">20</option>
                 </select>
-
             </div>
-
-
             <!-- Paginación -->
             <nav class="users-pagination" id="usersPagination" aria-label="Paginación de usuarios">
             </nav>
-
         </div>
-
     </div>
-
 </section>
 
     <!-- Modal -->
@@ -123,7 +92,7 @@
               <div class="row">
                 <div class="col-lg-4 px-2">
                   <div class="content-image mb-2">
-                    <img id="fotoProfile" src="./assets/img/sinfoto.png" alt="profileImg">
+                    <img id="fotoProfile" src="/assets/img/sinfoto.png" alt="profileImg">
                     <input id="changeImage" type="file" accept="image/*" />
                     <label id="icon-upload" for="changeImage" class="btn btn-primary">
                       <i class="bi bi-camera"></i>

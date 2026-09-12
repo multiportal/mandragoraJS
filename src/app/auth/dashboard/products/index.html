@@ -5,40 +5,53 @@
     </div>
     <div id="content" class="container-fluid">
         <div class="row">
-            <div class="col-md-10"></div>
-            <div class="col-md-2">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary btnAdd" data-bs-toggle="modal" data-bs-target="#Modal">
-                    <i class="bi bi-plus-square"></i> Nuevo
-                </button>
-            </div>
-        </div>
-        <div class="row mt-3">
             <div class="col-md-12">
-                <table class="table">
-                    <thead class="table-dark">
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Descripción</th>
-                            <th scope="col">Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody id="product-list">
-                        <tr>
-                            <td colspan="5">
-                                <p class="text-center">
-                                    Cargando...
-                                </p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-12 title-header">
+                                <h2>Mis Links</h2>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary btnAdd" data-bs-toggle="modal"
+                                    data-bs-target="#Modal">
+                                    <i class="bi bi-plus-lg"></i> <span>Nuevo</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <table class="table">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Precio</th>
+                                            <th scope="col">Descripción</th>
+                                            <th scope="col">Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="product-list">
+                                        <tr>
+                                            <td colspan="5">
+                                                <div class="text-center loading">
+                                                    <div class="spinner-border text-secondary" role="status">
+                                                        <span class="visually-hidden">Cargando...</span>
+                                                    </div>
+                                                    <p class="text-center loading">Cargando...</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 
     <!-- Modal -->
     <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">

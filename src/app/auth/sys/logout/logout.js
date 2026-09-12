@@ -1,7 +1,7 @@
-import { MODE, version } from "../../../core/constants.js";
+import { version } from "../../../core/constants.js";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../services/firebase.js";
-import { navigate } from "../../../core/core.js";
+import { navi } from "../../../core/core.js";
 import { clearCache } from "../../../functions.js";
 import Html from './index.html?raw';
 //import './style.css'
@@ -18,7 +18,7 @@ export function logout() {
     if (token == null) {
       localStorage.setItem('VersionApp', version);//*Extra
       console.warn('TOKEN CLEAR');
-      navigate(`${MODE === 'HASH' ? '#' : ''}/`);
+      navi(`/`);
     }
   }
 

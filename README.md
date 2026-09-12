@@ -3,12 +3,14 @@ Single Page Application (spa) - Javascript Framework
 
 MandragoraJS es un framework SPA ligero desarrollado en JavaScript puro que proporciona una arquitectura modular para construir CMS, aplicaciones web, aplicaciones móviles mediante Manifest y extensiones de Chrome, utilizando una única base de código.
 
+![Alt text](anuncioMandragora.png)
+
 # Descripción
 Desarrolla una sola vez y despliega en múltiples plataformas.
 
 MandragoraJS es una SPA construida completamente en JavaScript que integra todo lo necesario para desarrollar CMS, aplicaciones web, aplicaciones móviles (Android/iOS) y extensiones para Google Chrome, utilizando una única base de código.
 
-Su arquitectura modular, rápida y escalable permite crear proyectos profesionales sin depender de frameworks complejos, incorporando desde el inicio configuraciones para PWA, Vite, Firebase, Capacitor, Chrome Extensions y herramientas modernas de desarrollo.
+Su arquitectura modular, rápida y escalable permite crear proyectos profesionales sin depender de frameworks complejos, incorporando desde el inicio configuraciones para PWA, Vite, Firebase, PWA, Chrome Extensions y herramientas modernas de desarrollo.
 
 # Características
 
@@ -19,7 +21,7 @@ Panel de administración flexible y extensible.
 SPA rápidas, modernas y optimizadas.
 
 📱 Apps Móviles
-Configuración lista para Android e iOS mediante Capacitor.
+Configuración lista para Android e iOS mediante PWA.
 
 🧩 Extensiones Chrome
 Estructura preparada para crear y publicar extensiones.

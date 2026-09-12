@@ -1,6 +1,6 @@
 export const environments = {
   name: "MandragoraJS",
-  version: "1.1.7",
+  version: "1.1.9",
   description: "MandragoraJS - Single Page Application",  
   start_url: import.meta.env.VITE_START_URL,
   lang: "es-MX",

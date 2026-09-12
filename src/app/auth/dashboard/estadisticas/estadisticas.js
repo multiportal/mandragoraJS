@@ -102,7 +102,7 @@ export function estadisticasDashboard() {
         }); //console.log("Datos filtrados por fecha:", datosFecha);
         if (!datosFecha) { showMessage('No hay datos registrados. Verifique que la consulta se correcta.', 'Warn'); return; };
         //* DATOS FILTRADOS POR MIS TARJETAS ********************************************* */
-        const filtrados = datosFecha.filter(x => dataKeysCards.includes(x.id));
+        const filtrados = datosFecha.filter(x => dataKeysCards?.includes(x.id));
         //console.log("Datos filtrados por mis tarjetas:", filtrados);
         /* VISITAS TOTALES *************************************************************** */
         const visitasTot = document.querySelector("#visitasTot");

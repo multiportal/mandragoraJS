@@ -1,5 +1,5 @@
-//import { MODE } from "../core/constants";
-//import { navigate } from "../core/core";
+//import { HASH } from "../core/constants";
+//import { navi } from "../core/core";
 /* ==========================
    USE-STATE
 ========================== */
@@ -26,7 +26,7 @@ export function useState(initial) {
         state = value;
 
         if(rendering){
-            navigate(`${MODE === 'HASH' ? '#' : ''}/dashboard/profile`);
+            navi(`/dashboard/profile`);
         }
         rendering = false;
     }

@@ -1,0 +1,9 @@
+.editorPages{
+    .content-buttons{
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 22px;
+    }
+}

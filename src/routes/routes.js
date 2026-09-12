@@ -21,7 +21,7 @@ import { sidebar } from "../components/sidebar/sidebar.js";
 /* ==========================
    RUTAS
 ========================== */
-const compose = (...fns) => async () => {
+export const compose = (...fns) => async () => {
   const results = await Promise.all(fns.map(fn => fn()));
   return results.join("");
 };

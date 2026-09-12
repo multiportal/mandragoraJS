@@ -1,9 +1,9 @@
-import { HASH, MODE, name } from '../../app/core/constants.js';
+import { name } from '../../app/core/constants.js';
 import { getData } from '../../app/services/firebase.js';
-import { navigate } from '../../app/core/core.js';
+import { navi } from '../../app/core/core.js';
 import { variables } from '../../app/core/lib.js';
 import { Auth } from '../../app/functions/security.js';
-import { validImage } from '../../app/functions.js';
+import { validImage } from '../../app/functions/validImage.js';
 import { pagesEditor } from '../../app/auth/dashboard/settings/components/pages/pages.js';
 import Html from './index.html?raw';
 import './style.css';
@@ -22,7 +22,7 @@ export function sidebar() {
         let btnSalir = document.querySelector('.bx-log-out');
         if (btnSalir != null) {
             btnSalir.addEventListener('click', () => {
-                navigate(`${HASH ? '#' : ''}/logout`);
+                navi(`/logout`);
             });
         }
     };
@@ -88,7 +88,7 @@ export function sidebar() {
         if (job != null) { job.innerHTML = email; }
         if (fotoUser != null) {
             const isValidImage = await validImage(foto);
-            fotoUser.src = (foto && foto != '') && isValidImage ? foto : './assets/img/sinfoto.png';
+            fotoUser.src = (foto && foto != '') && isValidImage ? foto : '/assets/img/sinfoto.png';
         }
     };
 
