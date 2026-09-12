@@ -5,7 +5,7 @@ export default defineConfig({
   base: '/', //Configuarar para [spa -> '/'] para [hash -> './'] // /mandragoraJS/
   root: './',
   build: {
-    outDir: 'docs',
+    outDir: 'web',
   },
   publicDir: 'public',
   envDir: ".env"

@@ -308,6 +308,13 @@
   /*min-width: 260px;*/
 }
 
+.title-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+
 /*TABS*/
 
 .home-section .nav {

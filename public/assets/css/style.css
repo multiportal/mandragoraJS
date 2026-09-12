@@ -72,9 +72,9 @@ a {
 }
 
 @media (min-width: 992px) {
-  .masthead {
-    height: 100vh;
-  }
+  /*.masthead {
+    height: 100%;
+  }*/
 
   .masthead h1 {
     font-size: 5.5rem;

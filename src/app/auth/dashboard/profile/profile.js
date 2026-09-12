@@ -1,12 +1,13 @@
-import { getData, createData, putData, deleteData } from '../../../services/firebase';
-import { render, getFormData, btnChanceImage, btnCancelar, consoleLocal, getCurrentUser, validImage } from '../../../functions.js';
+import { getData, createData, putData, deleteData, eliminarCuenta } from '../../../services/firebase';
+import { render, getFormData, btnChanceImage, btnCancelar, consoleLocal, getCurrentUser } from '../../../functions.js';
 import { handleEventListener } from '../../../hooks/handleEventListener';
 import { variables } from '../../../core/lib.js';
 import { codiPlanStandar } from '../../../core/constants.js';
 import { rolNivelAuth } from '../../../functions/security.js';
 import { showMessage } from '../../../hooks/messages.js';
 import { modalConfirm } from '../../../functions/modalAlerts.js';
-import { navigate } from '../../../core/core.js';
+import { navi } from '../../../core/core.js';
+import { validImage } from '../../../functions/validImage';
 import Html from './index.html?raw';
 import './style.css';
 
@@ -70,7 +71,7 @@ export async function profileDashboard() {
         if (key) { localStorage.setItem("Key", key); }
         //tipoPerfil(publico);
         if (foto) {
-            const isValidImage = await validImage(foto);
+            const isValidImage = await validImage(foto);            
             //Profile
             photo.src = isValidImage ? foto : '/assets/img/sinfoto.png';
             //Form
@@ -169,8 +170,9 @@ export async function profileDashboard() {
             const user = getCurrentUser();
             deleteData(tab, user.uid);
             deleteData('signup', user.uid);
+            eliminarCuenta();
             setTimeout(() => {
-                navigate('/logout');
+                navi(`/logout`);
             }, 1000);
         }, btndel);
     };

@@ -1,5 +1,5 @@
 import * as bootstrap from 'bootstrap';
-import { MODE } from './constants';
+import { HASH, MODE } from './constants';
 import { serviceWorker } from '../hooks/serviceWorker';
 import { variables } from './lib';
 import { controlLoading, loading } from '../hooks/loadScripts';
@@ -33,13 +33,13 @@ export function loadNavigate() {
 
 export function navigate(h) {
     const Token = localStorage.getItem('Token'); consoleLocal('log', 'Token navigate:' + Token);
-    h = (!Token && h.includes('dashboard')) ? `${MODE === 'HASH' ? '#' : ''}/noauth` : h;
+    h = (!Token && h.includes('dashboard')) ? `${HASH ? '#' : ''}/noauth` : h;
     console.log('Path navigate:', h);
     history.pushState({}, '', h);
     const v = variables(); consoleLocal('log', { 'Variables navigate': v });
     router(v);
     if (h == '' || h == '/') {
-        if (MODE === 'HASH') {
+        if (HASH) {
             window.location.href = '#/';
         }
         loading();
@@ -47,6 +47,10 @@ export function navigate(h) {
     //controlLoading(v);//**Opcional
     temaBgColor(v);//**Opcional
 }
+
+export const navi = (p) => {
+    navigate(`${HASH ? '#'+p : p}`);
+};
 
 /* ==========================
    OBSERVADOR DOM
@@ -71,7 +75,7 @@ function observeDOM() {
 
 export function load() {
     window.bootstrap = bootstrap;
-    if (MODE === 'HASH') {
+    if (HASH) {
         navigate(window.location.hash);
         console.log('Carga del DOM completa');
         return;
@@ -92,7 +96,7 @@ export function inicio() {
     console.log(`Run function inicio - MODE: ${MODE}`);
     serviceWorker();
     load();
-    if (MODE === 'HASH') {
+    if (HASH) {
         //HASHCHANGE EVENT LISTENER FOR APP
         window.addEventListener('hashchange', () => {
             consoleLocal('warn', 'Event Listener');

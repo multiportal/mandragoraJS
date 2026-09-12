@@ -3,8 +3,7 @@ import { routes } from "../routes/routes.js";
 import { app, name, version } from './core/constants.js';
 import { variables } from "./core/lib.js";
 import { destroyEvents, handleEventListener } from "./hooks/handleEventListener.js";
-import { deleteData, getDataById } from "./services/firebase.js";
-import { versionJson } from "./services/fetch.js";
+import { deleteData, getData, getDataById } from "./services/firebase.js";
 import { compressImage } from './hooks/loadImage.js';
 import { modalConfirm, modalInfo } from './functions/modalAlerts.js';
 import { loadFunctions } from './functions/loadFun.js';
@@ -12,7 +11,7 @@ import { loadFunctions } from './functions/loadFun.js';
 /* ==========================
    VARIABLES
 ========================== */
-const { host, year } = variables();
+const { year } = variables();
 
 /* ==========================
    PARAMETROS URL
@@ -154,44 +153,6 @@ export const tooltips = () => {
     new bootstrap.Tooltip(el);
   });
   console.log('tooltips activo');
-}
-
-export function validaImagen(url, id) {
-  var image = new Image();
-  image.src = url;
-  image.addEventListener('load', () => {
-    console.log('Imagen cargada.');
-    //id.style.backgroundImage = `url('${url}')`;
-  });
-  image.addEventListener('error', () => {
-    console.warn('Error: Fallo carga de imagen.', url);
-    id.style.backgroundImage = `url(/assets/img/sinfoto.png)`;
-  });
-}
-
-export function validImage(url) {
-  return new Promise((resolve) => {
-    const image = new Image();
-    image.src = url;
-    image.onload = () => {
-      console.log('Imagen encontrada');
-      resolve(true);
-    };
-    image.onerror = () => {
-      console.log('Imagen No encontrada');
-      resolve(false);
-    };
-  });
-}
-
-export async function validImage2(url) {
-  try {
-    const res = await fetch(url, { method: 'HEAD' });
-    return res.ok;
-  } catch (error) {
-    console.error('Error validando imagen:', error);
-    return false;
-  }
 }
 
 /** * Obtiene el usuario actual desde localStorage. */
@@ -381,10 +342,41 @@ export const btnChanceImage = (p = null, i = null) => {
   //BOTON USERFILE
   const input = document.querySelector("#changeImage");
   input.addEventListener("change", async (e) => {
-    const archivo = e.target.files[0]; //console.log(archivo);
+    const archivo = e.target.files[0];
     if (!archivo) return;
     const base64 = await compressImage(archivo); //await convertirBase64(archivo);console.log(base64);
     fp.src = base64;
     f.value = base64;
   });
+};
+
+export const permisoLocalPro = async (h, tab, reg) => {
+  const data = await getDataById(tab, reg);
+  const regDev = data?.regDev ?? false;
+  const regPro = data?.regPro ?? false;
+  return h.includes('localhost') ? !regDev : !regPro;
+};
+
+export const pages = async (v) => {
+  const { host } = window.location;
+  const noPermitido = await permisoLocalPro(host, 'config', 'pages'); //console.log('noPermitido:', noPermitido);
+  if (noPermitido) {
+    console.warn('AVISO: Las paginas estan inactivas.');
+    return;
+  }
+  const tab = 'editPages';
+  const data = await getData(tab);
+  const page = data.filter(x => x.activo && x.titulo == v.mod); console.warn(page);
+  if (page.length) {
+    console.warn(`Cargando pagina: ${v.mod}`);
+    const con = document.querySelector("#" + v.mod);
+    if (con) {
+      con.innerHTML = page[0].descHTML;
+      return;
+    }
+    const nodo = document.querySelector('#app > :nth-child(2)');
+    if (nodo) {
+      nodo.innerHTML = page[0].descHTML;
+    }
+  }
 };

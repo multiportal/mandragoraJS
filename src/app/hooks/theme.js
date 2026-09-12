@@ -27,6 +27,7 @@ export const temaHome = () => {
     const m = document.querySelector('.masthead');
     const t1 = document.querySelector('.default');
     const t2 = document.querySelector('.home');
+    if(!m || !t1 || !t2) return;
     if (theme == tema) {
         t1.style.display = 'none';
         m.style.position = 'inherit';

@@ -1,4 +1,4 @@
-import { consoleLocal } from '../functions';
+import { consoleLocal, permisoLocalPro } from '../functions';
 import { createData, getData, getDataById } from '../services/firebase';
 import { encriptar, desencriptar } from './encriptar';
 //import { obtenerInformacionNavegador } from './getBrowser';
@@ -10,11 +10,7 @@ import { encriptar, desencriptar } from './encriptar';
 
 export const registrosApp = async (v) => {
     const { dt, fecha, host, pathname, URL, mod, ext, id } = v;
-    const data = await getDataById('config', 'registros'); console.log('DATOS RECIBIDOS:', data);
-    const regDev = data?.regDev ?? false;
-    const regPro = data?.regPro ?? false;
-    //console.log(regDev, regPro);
-    const noPermitido = host.includes('localhost') ? !regDev : !regPro;
+    const noPermitido = await permisoLocalPro(host, 'config', 'registros'); //console.log('noPermitido:', noPermitido);
     if (noPermitido) {
         console.warn('AVISO: Los registros estan apagados.');
         return;
@@ -51,9 +47,9 @@ export const registrosApp = async (v) => {
         // Mostrar registro original
         consoleLocal('warn', { REGISTRO: regis });
         // Guardar únicamente si existe ID
-        if (id) {
+        //if (id) {
             await createData('registros', regis, false);
-        }
+        //}
         // Crear una copia con IP desencriptada para visualizarla
         const data2 = data.map(item => ({ ...item, ip: desencriptar(item.ip) }));
         // Agregar el nuevo registro a la copia para visualizarlo

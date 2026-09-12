@@ -1,10 +1,9 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { MODE } from "../../../core/constants.js";
 import { auth, saveUser } from "../../../services/firebase.js";
 import { consoleLocal, toggleEye } from "../../../functions.js";
 import { showMessage } from "../../../hooks/messages.js";
 import { googleLogin } from "../../../hooks/googleLogin.js";
-import { navigate } from "../../../core/core.js";
+import { navi } from "../../../core/core.js";
 import Html from './index.html?raw';
 //import './style.css'
 
@@ -29,7 +28,7 @@ export function login() {
         const form = document.querySelector("#login-form");
         if (form) form.reset();
         setTimeout(() => {
-          navigate(`${MODE === 'HASH' ? '#' : ''}/dashboard`);
+          navi(`/dashboard`);
         }, 500);
       } catch (error) {
         console.error('Error al iniciar sesión:', error);

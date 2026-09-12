@@ -48,7 +48,7 @@ export const serviceWorker = () => {
 
     navigator.serviceWorker.addEventListener('message', (event) => {
         if (event.data?.type === 'SW_VERSION') {
-            const swVersion = event.data.version;
+            const swVersion = event.data.version; consoleLocal('warn', { 'SW_VERSION': swVersion });
             localStorage.setItem('VersionApp', swVersion);
             console.warn(`[SW] Versión instalada: ${swVersion}`);
         }

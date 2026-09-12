@@ -1,8 +1,10 @@
-import { fillForm, getFormData, validImage } from "../../../../../functions";
+import { fillForm, getFormData } from "../../../../../functions";
 import { deleteData, getData, postData } from "../../../../../services/firebase";
 import { modalConfirm, modalInfo } from "../../../../../functions/modalAlerts";
 import { variables } from "../../../../../core/lib";
 import { handleEventListener } from "../../../../../hooks/handleEventListener";
+import { validImage } from "../../../../../functions/validImage";
+//import { eliminarUsuario } from "../../../../../services/firebase.deleteUser";
 
 export const tableSettings = async () => {
     /* =========================================================
@@ -54,13 +56,24 @@ export const tableSettings = async () => {
 
             const matchesRole =
                 state.role === "all" ||
-                user.role === state.role;
+                user.rol === state.role;
 
             return matchesSearch && matchesRole;
         });
     }
 
+    const lista = (data) => {
+        let html = '<option value="all">Rol: Todos</option>';
+        const listaRol = roleFilter;
+        if (!data || !listaRol) { return }
+        const categorias = [...new Set(data.map(item => item.rol))].sort();
+        for (let i = 0; i < categorias.length; i++) {
+            html += `<option value="${categorias[i]}">${categorias[i]}</option>`
+        }
+        listaRol.innerHTML = html;
+    };
 
+    lista(data);
     /* =========================================================
        RENDER TABLE
     ========================================================= */
@@ -145,12 +158,11 @@ export const tableSettings = async () => {
     ========================================================= */
 
     async function createUserRow(user) {
-
         const roleClass = {
             Administrador: "role-admin",
             Editor: "role-editor",
             usuario: "role-user"
-        }[user.role] || "role-user";
+        }[user.rol] || "role-user";
 
         const isValidImage = await validImage(user.foto);//**REVISAR */
         //const statusClass = user.status === "Activo" ? "status-active" : "status-inactive";
@@ -386,7 +398,9 @@ export const tableSettings = async () => {
     ========================================================= */
 
     roleFilter.addEventListener("change", async event => {
+        console.log("Role filter changed:", event.target.value);
         state.role = event.target.value;
+        console.log("State role updated:", state.role);
         state.page = 1;
         await renderTable();
     }
@@ -442,6 +456,7 @@ export const tableSettings = async () => {
             if (!isConfirmed) return;
             try {
                 console.warn("Eliminar:", key);
+                //await eliminarUsuario(key);
                 deleteData(tab, key, false);
                 deleteData('signup', key, false);
                 modalInfo("success", "¡Borrado!", "El usuario ha sido borrado");
@@ -458,14 +473,14 @@ export const tableSettings = async () => {
     /* =========================================================
        ADD USER
     ========================================================= */
-
+    /*
     document.querySelector("#btnAddUser").addEventListener("click", () => {
         console.log("Agregar nuevo usuario");
         /*
          * Aquí puedes abrir tu modal:
-         */
-    }
-    );
+         *
+    });
+    */
 
 
     /* =========================================================

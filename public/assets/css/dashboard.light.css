@@ -4,10 +4,8 @@
 
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 /* Boxicons */
 @import url('https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css');
-
 
 /* =========================================================
    VARIABLES
@@ -17,34 +15,22 @@
   --primary: #6c63ff;
   --primary-hover: #574ee8;
   --primary-light: #eeecff;
-
   --background: #f5f6fa;
-  --surface: #ffffff;
+  --surface: #fff;
   --surface-hover: #f8f8fc;
-
   --border: #e5e7eb;
-
   --text: #1f2937;
   --text-secondary: #6b7280;
   --text-muted: #9ca3af;
-
   --success: #16a34a;
   --danger: #dc2626;
-
   --sidebar-width: 260px;
   --sidebar-collapsed: 78px;
   --header-height: 64px;
-
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
   --shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-
   --radius: 8px;
 }
-
-
-/* =========================================================
-   RESET
-   ========================================================= */
 
 * {
   margin: 0;
@@ -64,7 +50,6 @@ body {
   color: var(--text);
 }
 
-
 /* =========================================================
    APP
    ========================================================= */
@@ -74,7 +59,6 @@ body {
   min-height: 100vh;
 }
 
-
 /* =========================================================
    SIDEBAR
    ========================================================= */
@@ -83,24 +67,18 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-
   width: var(--sidebar-width);
   height: 100vh;
-
   background: var(--surface);
   border-right: 1px solid var(--border);
-
   z-index: 100;
-
-  transition: width 0.3s ease;
-
+  transition: width .3s ease;
   box-shadow: var(--shadow-sm);
 }
 
 .sidebar.close {
   width: var(--sidebar-collapsed);
 }
-
 
 /* =========================================================
    LOGO
@@ -109,37 +87,27 @@ body {
 .sidebar .logo-details {
   height: var(--header-height);
   width: 100%;
-
   display: flex;
   align-items: center;
-
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border)
 }
 
 .sidebar .logo-details i {
   min-width: var(--sidebar-collapsed);
-
   height: 50px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: var(--primary);
-
   font-size: 28px;
-
   text-align: center;
 }
 
 .sidebar .logo-details .logo_name {
   color: var(--text);
-
   font-size: 21px;
   font-weight: 600;
-
   white-space: nowrap;
-
   transition: all 0.3s ease;
 }
 
@@ -148,16 +116,13 @@ body {
   pointer-events: none;
 }
 
-
 /* =========================================================
    NAVIGATION
    ========================================================= */
 
 .sidebar .nav-links {
   height: calc(100% - var(--header-height));
-
   padding: 20px 10px 120px;
-
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -171,85 +136,65 @@ body {
   border-radius: 10px;
 }
 
-
 /* ITEM */
 
 .sidebar .nav-links li {
   position: relative;
-
   list-style: none;
-
   margin-bottom: 5px;
-
   transition: all 0.3s ease;
 }
-
 
 /* LINK */
 
 .sidebar .nav-links li a {
   height: 48px;
-
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-
   text-decoration: none;
-
   border-radius: var(--radius);
-
   transition: all 0.25s ease;
 }
-
 
 /* ICON */
 
 .sidebar .nav-links li i {
   min-width: 58px;
-
   height: 48px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: var(--text-secondary);
-
   font-size: 21px;
-
   transition: all 0.25s ease;
 }
-
 
 /* TEXT */
 
 .sidebar .nav-links li a .link_name {
   color: var(--text-secondary);
-
   font-size: 15px;
   font-weight: 500;
-
   white-space: nowrap;
-
   transition: all 0.3s ease;
 }
 
-
 /* HOVER */
 
-.sidebar .nav-links li:hover > a {
+.sidebar .nav-links li:hover>a {
   background: var(--surface-hover);
 }
 
-.sidebar .nav-links li:hover > a i,
-.sidebar .nav-links li:hover > a .link_name {
-  color: var(--primary);
+.sidebar .nav-links li:hover>a i,
+.sidebar .nav-links li:hover>a .link_name {
+  color: var(--primary)
 }
-
 
 /* ACTIVE */
 
 .sidebar .nav-links li a.activo,
-.sidebar .nav-links li > a.activo {
+.sidebar .nav-links li>a.activo {
   background: var(--primary-light);
 }
 
@@ -258,7 +203,6 @@ body {
   color: var(--primary);
   font-weight: 600;
 }
-
 
 /* =========================================================
    COLLAPSED SIDEBAR
@@ -283,20 +227,15 @@ body {
   min-width: var(--sidebar-collapsed);
 }
 
-
 /* =========================================================
    SUB MENU
    ========================================================= */
 
 .sidebar .nav-links li .sub-menu {
   display: none;
-
   padding: 6px 6px 14px 70px;
-
   margin-top: -5px;
-
   background: var(--surface-hover);
-
   border-radius: var(--radius);
 }
 
@@ -306,11 +245,8 @@ body {
 
 .sidebar .nav-links li .sub-menu a {
   height: auto;
-
   padding: 6px 0;
-
   color: var(--text-secondary);
-
   font-size: 14px;
 }
 
@@ -318,37 +254,24 @@ body {
   color: var(--primary);
 }
 
-
 /* =========================================================
    COLLAPSED SUB MENU
    ========================================================= */
 
 .sidebar.close .nav-links li .sub-menu {
   position: absolute;
-
   top: 0;
   left: 100%;
-
   width: max-content;
-
   margin: 0;
-
   padding: 8px 18px;
-
   background: var(--surface);
-
   border: 1px solid var(--border);
-
   border-radius: 0 8px 8px 0;
-
   box-shadow: var(--shadow);
-
   opacity: 0;
-
   pointer-events: none;
-
   display: block;
-
   transition: all 0.2s ease;
 }
 
@@ -363,14 +286,10 @@ body {
 
 .sidebar.close .nav-links li .sub-menu .link_name {
   display: block;
-
   color: var(--text);
-
   font-size: 14px;
-
   opacity: 1;
 }
-
 
 /* =========================================================
    PROFILE
@@ -378,35 +297,24 @@ body {
 
 .sidebar .profile-details {
   position: fixed;
-
   bottom: 0;
   left: 0;
-
   width: var(--sidebar-width);
-
   min-height: 76px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 10px 12px;
-
   background: var(--surface);
-
   border-top: 1px solid var(--border);
-
   transition: width 0.3s ease;
 }
 
 .sidebar.close .profile-details {
   width: var(--sidebar-collapsed);
-
   justify-content: center;
-
   padding: 10px;
 }
-
 
 /* PROFILE IMAGE */
 
@@ -418,79 +326,56 @@ body {
 .sidebar .profile-details img {
   width: 44px;
   height: 44px;
-
   object-fit: cover;
-
   border-radius: 50%;
-
   margin-right: 10px;
-
   border: 2px solid var(--primary-light);
 }
-
 
 /* PROFILE TEXT */
 
 .sidebar .profile-details .profile_name,
 .sidebar .profile-details .job {
   color: var(--text);
-
   white-space: nowrap;
-
   overflow: hidden;
-
   text-overflow: ellipsis;
 }
 
 .sidebar .profile-details .profile_name {
   max-width: 125px;
-
   font-size: 12px;
   font-weight: 600;
 }
 
 .sidebar .profile-details .job {
   max-width: 125px;
-
   margin-top: 2px;
-
   color: var(--text-muted);
-
   font-size: 9px;
 }
 
-
-/* LOGOUT */
-
-.sidebar .profile-details > i {
+.sidebar .profile-details>i {
   color: var(--text-secondary);
-
   font-size: 20px;
-
   cursor: pointer;
-
   transition: all 0.25s ease;
 }
 
-.sidebar .profile-details > i:hover {
+.sidebar .profile-details>i:hover {
   color: var(--danger);
 }
 
-
-/* COLLAPSED PROFILE */
-
 .sidebar.close .profile-details .name-job,
-.sidebar.close .profile-details > i {
+.sidebar.close .profile-details>i {
   display: none;
 }
 
 .sidebar.close .profile-details img {
   width: 42px;
   height: 42px;
-
   margin: 0;
 }
-
 
 /* =========================================================
    HOME SECTION
@@ -498,24 +383,17 @@ body {
 
 .home-section {
   position: relative;
-
   left: var(--sidebar-width);
-
   width: calc(100% - var(--sidebar-width));
-
   min-height: 100vh;
-
   background: var(--background);
-
   transition: all 0.3s ease;
 }
 
-.sidebar.close ~ .home-section {
+.sidebar.close~.home-section {
   left: var(--sidebar-collapsed);
-
   width: calc(100% - var(--sidebar-collapsed));
 }
-
 
 /* =========================================================
    TOP HEADER
@@ -524,33 +402,20 @@ body {
 .home-section .home-content {
   position: sticky;
   top: 0;
-
   z-index: 90;
-
   height: var(--header-height);
-
   display: flex;
   align-items: center;
-
   background: var(--surface);
-
   border-bottom: 1px solid var(--border);
-
   box-shadow: var(--shadow-sm);
 }
 
-
-/* MENU */
-
 .home-section .home-content .bx-menu {
   margin: 0 18px;
-
   color: var(--text);
-
   font-size: 27px;
-
   cursor: pointer;
-
   transition: color 0.2s ease;
 }
 
@@ -558,18 +423,14 @@ body {
   color: var(--primary);
 }
 
-
 /* TITLE */
 
 .home-section .home-content .text {
   color: var(--text);
-
   font-size: 20px;
   font-weight: 600;
-
-  letter-spacing: 0.3px;
+  letter-spacing: .3px
 }
-
 
 /* =========================================================
    CONTENT
@@ -584,81 +445,115 @@ body {
   --bs-gutter-y: 20px;
 }
 
-
 /* =========================================================
    DASHBOARD CARDS
    ========================================================= */
 
 .card {
   margin: 0 0 20px;
-
   padding: 0;
-
   background: var(--surface);
-
   border: 1px solid var(--border);
-
   border-radius: 8px;
-
   box-shadow: var(--shadow-sm);
-
   overflow: hidden;
-
-  transition:
-    box-shadow 0.25s ease,
-    transform 0.25s ease;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .card:hover {
   box-shadow: var(--shadow);
 }
-
-
 /* =========================================================
    BOOTSTRAP TOAST
    ========================================================= */
 
+/*
 .toast {
   border: 1px solid var(--border);
-
   border-radius: var(--radius);
-
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow)
 }
 
 .toast-header {
   background: var(--primary) !important;
-
   color: #fff !important;
-
-  border-bottom: none;
+  border-bottom: 0
 }
-
-
+*/
 /* =========================================================
    BUTTONS
    ========================================================= */
 
+/*
 .btn-primary {
   background: var(--primary);
-
-  border-color: var(--primary);
+  border-color: var(--primary)
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
   background: var(--primary-hover);
+  border-color: var(--primary-hover)
+}*/
 
-  border-color: var(--primary-hover);
+.title-header {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
 }
 
+/*TABS*/
+
+.home-section .nav {
+  height: inherit;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.home-section .active {
+  border-bottom: inherit;
+}
+
+.home-section .nav-tabs {
+  border-bottom: 1px solid #ccc;
+}
+
+.home-section .nav-tabs .nav-link,
+.home-section .nav .nav-link {
+  color: var(--bs-nav-link-color) !important;
+}
+
+.home-section .nav-tabs .nav-link:hover,
+.home-section .nav-tabs .nav-link.active {
+  background-color: #0d6efd;
+  color: #fff !important;
+  border-color: #ccc;
+}
+
+.home-section .nav-tabs .nav-link.active {
+  color: #1d1b31 !important;
+  border-bottom: 1px solid #E4E9F7;
+}
+
+/*VERTICAL*/
+.home-section .flex-column {
+  width: 250px; /*auto*/
+}
+
+.home-section .nav .nav-link.active {
+  color: #fff !important;
+}
+
+.tab-content {
+  width: stretch;
+}
 
 /* =========================================================
    RESPONSIVE
    ========================================================= */
 
-@media (max-width: 768px) {
-
+@media(max-width:768px) {
   :root {
     --sidebar-width: 230px;
   }
@@ -670,24 +565,20 @@ body {
   .home-section .home-content .text {
     font-size: 18px;
   }
-
 }
 
-
-@media (max-width: 600px) {
+@media(max-width:600px) {
   .home-section .home-content .text {
     font-size: 16px;
     font-weight: 600;
   }
 }
 
-
 /* =========================================================
    EXTRA SMALL
    ========================================================= */
 
-@media (max-width: 400px) {
-
+@media(max-width:400px) {
   .home-section .home-content .text {
     font-size: 15px;
   }
@@ -695,5 +586,4 @@ body {
   #content {
     padding: 12px 8px;
   }
-
 }

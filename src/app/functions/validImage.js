@@ -7,7 +7,7 @@ export function validaImagen(url,id){
   });
   image.addEventListener('error', () => {
     console.warn('Error: Fallo carga de imagen.',url);
-    id.style.backgroundImage = `url(assets/img/no-disponible.jpg)`;
+    id.style.backgroundImage = `url(/assets/img/no-disponible.jpg)`;
   });
 }
 

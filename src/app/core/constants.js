@@ -6,8 +6,8 @@ const { host } = window.location;
 /* ==========================
    CONSTANTES 
 ========================== */
-export const MODE = 'SPA';
 export const HASH = false;//New [HASH => true | SPA => false] 
+export const MODE = HASH ? 'HASH' : 'SPA';
 export const app = document.querySelector("#app");
 export const body = document.getElementsByTagName("body")[0];
 export const name = environments?.name;
