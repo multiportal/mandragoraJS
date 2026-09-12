@@ -366,8 +366,9 @@ export const pages = async (v) => {
   }
   const tab = 'editPages';
   const data = await getData(tab);
-  const page = data.filter(x => x.activo && x.titulo == v.mod); console.warn(page);
-  if (page.length) {
+  if (!data) { console.warn(`No se encontraron registros en la tabla: ${tab}`); return; }
+  const page = data?.filter(x => x.activo && x.titulo == v.mod); console.warn(page);
+  if (page && page.length) {
     console.warn(`Cargando pagina: ${v.mod}`);
     const con = document.querySelector("#" + v.mod);
     if (con) {

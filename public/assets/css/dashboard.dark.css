@@ -291,6 +291,17 @@ body {
   font-weight: 600;
 }
 
+.sidebar .nav-links li.showMenu i.arrow {
+  transform: rotate(-180deg);
+}
+
+.sidebar.close .nav-links i.arrow {
+  display: none;
+}
+
+.sidebar .icon-link {
+  gap: 80px;
+}
 
 /* =========================================================
    COLLAPSED SIDEBAR
@@ -313,9 +324,9 @@ body {
   pointer-events: none;
 }
 
-.sidebar.close .nav-links li i {
+/*.sidebar.close .nav-links li i {
   min-width: var(--sidebar-collapsed);
-}
+}*/
 
 
 /* =========================================================
@@ -351,7 +362,6 @@ body {
 .sidebar .nav-links li .sub-menu a:hover {
   color: var(--primary);
 }
-
 
 /* =========================================================
    COLLAPSED SUB MENU
@@ -398,12 +408,10 @@ body {
 
 .sidebar.close .nav-links li .sub-menu .link_name {
   display: block;
-
   color: var(--text);
-
   font-size: 14px;
-
   opacity: 1;
+  padding: 6px 10px;
 }
 
 

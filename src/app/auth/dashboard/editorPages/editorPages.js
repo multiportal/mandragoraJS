@@ -75,7 +75,10 @@ export function editorPagesDashboard() {
         //const modValida = modPages.includes(mod);
         //* DATA ********************* */
         const data = registros; consoleLocal('log', data);
-        if (!data || data?.length == 0) { return; }
+        if (!data || data?.length == 0) { 
+            tabsContent.innerHTML = `<div class="alert alert-warning text-center" role="alert">No hay registros disponibles.</div>`;
+            return; 
+        }
         //CONTENT
         const htmlMenu = data.map(tabsMenuHTML).join("");
         const htmlContent = data.map(tabsContentHTML).join("");
